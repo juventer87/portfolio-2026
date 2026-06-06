@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MENA Passive Fire Protection — A Strategic Read for STI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,30..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --sti-blue: #07446a;
+    --sti-blue-deep: #052e4a;
+    --sti-blue-soft: #4a6c89;
+    --gold: #b8975a;
+    --gold-soft: #d4b67c;
+    --coral: #c84c3e;
+    --cream: #fbf8f3;
+    --cream-deep: #f4ede0;
+    --surface: #ffffff;
+    --ink: #1a2332;
+    --ink-soft: #4a5363;
+    --muted: #6b7280;
+    --border: #e5e1d8;
+    --border-strong: #c9c2b1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .display, h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "SOFT" 30, "WONK" 0;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--sti-blue-deep);
+  }
+
+  /* ============ HEADER ============ */
+  .masthead {
+    background: var(--sti-blue-deep);
+    color: var(--cream);
+    padding: 2.5rem 3rem 1.75rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 38%;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(184, 151, 90, 0.18), transparent 55%),
+      radial-gradient(circle at 30% 80%, rgba(74, 108, 137, 0.3), transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+  .masthead-meta {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--gold-soft); margin-bottom: 1rem;
+  }
+  .masthead-meta::before { content: ''; width: 28px; height: 1px; background: var(--gold-soft); }
+  .masthead-title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 50;
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 400; color: var(--cream);
+    line-height: 1.05; letter-spacing: -0.028em;
+    max-width: 24ch;
+  }
+  .masthead-title em { font-style: italic; color: var(--gold-soft); font-weight: 300; }
+  .masthead-subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.02rem; font-weight: 300;
+    color: rgba(251, 248, 243, 0.78);
+    margin-top: 0.9rem; max-width: 64ch; line-height: 1.55;
+  }
+  .masthead-deck {
+    display: flex; gap: 2.5rem;
+    margin-top: 1.6rem; padding-top: 1.4rem;
+    border-top: 1px solid rgba(184, 151, 90, 0.3);
+    font-size: 0.78rem; color: rgba(251, 248, 243, 0.65);
+  }
+  .masthead-deck div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .masthead-deck strong {
+    color: var(--gold-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;
+  }
+  .masthead-deck span { color: rgba(251, 248, 243, 0.92); font-size: 0.86rem; }
+
+  /* ============ TAB NAV ============ */
+  .tabnav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 1px 0 rgba(7, 68, 106, 0.04);
+  }
+  .tabnav-inner { max-width: 1240px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .tabnav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none; border: none;
+    padding: 1.05rem 1.4rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500; color: var(--ink-soft);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.18s ease;
+    white-space: nowrap; letter-spacing: 0.04em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.6rem; position: relative;
+  }
+  .tab-btn .tab-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--gold); font-weight: 400; }
+  .tab-btn:hover { color: var(--sti-blue); background: var(--cream-deep); }
+  .tab-btn.active { color: var(--sti-blue-deep); border-bottom-color: var(--gold); font-weight: 600; }
+
+  /* ============ MAIN ============ */
+  main { max-width: 1240px; margin: 0 auto; padding: 0 3rem; }
+  .tab-pane { display: none; padding: 3rem 0 4rem; animation: fadeIn 0.4s ease; }
+  .tab-pane.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--gold); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 100px; }
+  .section-title {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 400; margin-bottom: 1.2rem; max-width: 28ch;
+  }
+  .section-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+  .section-lede {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 40;
+    font-size: 1.18rem; line-height: 1.55;
+    color: var(--ink-soft); max-width: 64ch; margin-bottom: 2.5rem; font-weight: 350;
+  }
+
+  p { margin-bottom: 1.1rem; color: var(--ink); max-width: 70ch; }
+  p.wide { max-width: 78ch; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2.5rem 0; }
+  .stat-row.four { grid-template-columns: repeat(4, 1fr); }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 1.6rem 1.5rem; position: relative;
+  }
+  .stat-card .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); margin-bottom: 0.6rem;
+  }
+  .stat-card .value {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem; font-weight: 400;
+    color: var(--sti-blue-deep);
+    line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.03em;
+  }
+  .stat-card .desc { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.45; }
+  .stat-card.urgent { border-top-color: var(--coral); }
+  .stat-card.urgent .value { color: var(--coral); }
+  .stat-card.deep { border-top-color: var(--sti-blue); }
+  .stat-card .cite { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--gold); vertical-align: super; }
+
+  .insight-box {
+    background: var(--cream-deep);
+    border-left: 3px solid var(--sti-blue);
+    padding: 1.5rem 1.8rem; margin: 2rem 0;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 40;
+    font-style: italic; font-size: 1.12rem;
+    line-height: 1.55; color: var(--sti-blue-deep);
+    max-width: 70ch;
+  }
+  .insight-box strong { font-style: normal; font-weight: 500; color: var(--sti-blue-deep); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2rem 0; }
+  .threecol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+
+  h3.subhead {
+    font-size: 1.35rem; font-weight: 500;
+    color: var(--sti-blue-deep);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+  }
+  h4.minor {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 600; color: var(--sti-blue);
+    margin: 1.5rem 0 0.7rem;
+  }
+
+  ul { margin: 1rem 0 1.2rem 0; padding-left: 1.2rem; }
+  ul li { margin-bottom: 0.55rem; color: var(--ink); max-width: 72ch; }
+  ul li::marker { color: var(--gold); }
+
+  .feature-list { list-style: none; padding: 0; counter-reset: list-counter; }
+  .feature-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem; align-items: baseline;
+  }
+  .feature-list li::before {
+    content: counter(list-counter, decimal-leading-zero);
+    counter-increment: list-counter;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem; color: var(--gold); letter-spacing: 0.05em;
+  }
+  .feature-list strong {
+    font-weight: 600; color: var(--sti-blue-deep);
+    display: block; margin-bottom: 0.15rem;
+  }
+  .feature-list span { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
+
+  /* ============ TABLES ============ */
+  .ref-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .ref-table th {
+    text-align: left; padding: 0.8rem 1rem;
+    background: var(--sti-blue-deep); color: var(--cream);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500;
+  }
+  .ref-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ref-table tr:nth-child(even) td { background: var(--cream); }
+  .ref-table .country {
+    font-weight: 600; color: var(--sti-blue);
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .ref-table .num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--sti-blue-deep); font-weight: 500;
+  }
+
+  /* ============ CHART ============ */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem; margin: 1.5rem 0;
+    position: relative;
+  }
+  .chart-wrap .chart-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); margin-bottom: 0.3rem;
+  }
+  .chart-wrap .chart-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem; color: var(--sti-blue-deep);
+    margin-bottom: 1.2rem; font-weight: 500;
+  }
+  .chart-canvas { height: 340px; position: relative; }
+  .chart-canvas.short { height: 260px; }
+
+  /* ============ PULL QUOTE ============ */
+  .pullquote {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 60;
+    font-style: italic; font-size: 1.5rem;
+    line-height: 1.4; color: var(--sti-blue-deep);
+    max-width: 32ch;
+    padding: 2rem 0 2rem 2rem;
+    border-left: 3px solid var(--gold);
+    margin: 2.5rem 0;
+    font-weight: 350; position: relative;
+  }
+  .pullquote::before {
+    content: '"';
+    position: absolute; left: 0.5rem; top: 1rem;
+    font-size: 3rem; color: var(--gold); line-height: 0.8; font-weight: 300;
+  }
+  .pullquote .attribution {
+    display: block; margin-top: 1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); font-weight: 500;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--sti-blue-deep);
+    color: rgba(251, 248, 243, 0.7);
+    padding: 2.5rem 3rem; margin-top: 4rem;
+    font-size: 0.82rem;
+  }
+  footer .footer-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem;
+  }
+  footer h5 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--gold-soft); margin-bottom: 0.8rem; font-weight: 500;
+  }
+  footer p, footer a {
+    color: rgba(251, 248, 243, 0.78);
+    font-size: 0.82rem; line-height: 1.55; text-decoration: none;
+  }
+  footer a:hover { color: var(--gold-soft); }
+  .footer-meta {
+    max-width: 1240px; margin: 2rem auto 0; padding-top: 1.5rem;
+    border-top: 1px solid rgba(184, 151, 90, 0.18);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; color: rgba(251, 248, 243, 0.45);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ============ SOURCE / CITATIONS ============ */
+  .source-note {
+    font-size: 0.78rem; color: var(--muted);
+    font-style: italic; margin-top: 0.5rem;
+    line-height: 1.5; max-width: 72ch;
+  }
+  .cite-marker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; color: var(--gold);
+    vertical-align: super; font-weight: 500;
+  }
+
+  /* ============ THESIS GRID ============ */
+  .thesis-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin: 2.5rem 0 3rem; align-items: start;
+  }
+  .thesis-grid .lead-para {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 30;
+    font-size: 1.18rem; line-height: 1.6;
+    color: var(--ink); font-weight: 350;
+  }
+  .thesis-grid .lead-para strong { color: var(--sti-blue-deep); font-weight: 500; }
+  .thesis-grid .key-points {
+    background: var(--surface); border: 1px solid var(--border); padding: 1.8rem;
+  }
+  .key-points h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .key-points .point { padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; line-height: 1.5; }
+  .key-points .point:last-child { border-bottom: 0; padding-bottom: 0; }
+  .key-points .point strong {
+    color: var(--sti-blue-deep); font-weight: 600;
+    display: block; margin-bottom: 0.2rem; font-size: 0.88rem;
+  }
+
+  /* ============ COMPETITIVE MATRIX ============ */
+  .matrix { overflow-x: auto; margin: 1.5rem 0; }
+  .matrix table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 700px; }
+  .matrix th, .matrix td { padding: 0.75rem 0.9rem; text-align: left; vertical-align: top; }
+  .matrix thead th {
+    background: var(--sti-blue-deep); color: var(--cream);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;
+  }
+  .matrix tbody tr { border-bottom: 1px solid var(--border); }
+  .matrix tbody tr:hover { background: var(--cream); }
+  .matrix .brand-cell { font-weight: 600; color: var(--sti-blue-deep); }
+  .matrix .brand-cell .tier { display: block; font-weight: 400; font-size: 0.72rem; color: var(--muted); font-style: italic; margin-top: 0.15rem; }
+  .matrix .sti-row { background: rgba(184, 151, 90, 0.08); }
+  .matrix .sti-row:hover { background: rgba(184, 151, 90, 0.12); }
+
+  /* ============ TIER BADGE ============ */
+  .tier-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    border-radius: 2px; font-weight: 500;
+  }
+  .tier-badge.premium { background: rgba(7, 68, 106, 0.1); color: var(--sti-blue); border: 1px solid rgba(7, 68, 106, 0.25); }
+  .tier-badge.disruptor { background: rgba(200, 76, 62, 0.08); color: var(--coral); border: 1px solid rgba(200, 76, 62, 0.25); }
+  .tier-badge.hybrid { background: rgba(184, 151, 90, 0.1); color: var(--gold); border: 1px solid rgba(184, 151, 90, 0.3); }
+
+  /* ============ OPEN QUESTIONS ============ */
+  .questions-block {
+    background: linear-gradient(135deg, var(--sti-blue-deep) 0%, var(--sti-blue) 100%);
+    color: var(--cream);
+    padding: 2.5rem 3rem; margin: 3rem 0 1rem;
+    position: relative; overflow: hidden;
+  }
+  .questions-block::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(184, 151, 90, 0.18), transparent 65%);
+  }
+  .questions-block h3 {
+    color: var(--gold-soft); font-size: 0.78rem;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    margin-bottom: 1.5rem; position: relative;
+  }
+  .questions-block ol {
+    list-style: none; padding: 0; counter-reset: q-counter;
+    max-width: 65ch; position: relative;
+  }
+  .questions-block ol li {
+    counter-increment: q-counter;
+    padding: 1rem 0; padding-left: 3rem;
+    position: relative; color: rgba(251, 248, 243, 0.92);
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "SOFT" 40;
+    font-size: 1.18rem; line-height: 1.5;
+    font-weight: 350; font-style: italic;
+    border-bottom: 1px solid rgba(184, 151, 90, 0.18);
+  }
+  .questions-block ol li:last-child { border-bottom: 0; }
+  .questions-block ol li::before {
+    content: counter(q-counter, decimal-leading-zero);
+    position: absolute; left: 0; top: 1.1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem; color: var(--gold-soft);
+    font-style: normal; letter-spacing: 0.08em; font-weight: 500;
+  }
+  .questions-block .closing {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.88rem; color: rgba(251, 248, 243, 0.7);
+    margin-top: 2rem; max-width: 60ch;
+    line-height: 1.5; font-weight: 300;
+    position: relative;
+  }
+
+  /* ============ VERTICAL BLOCKS ============ */
+  .vertical-block {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 1.6rem 1.8rem; margin-bottom: 1rem; position: relative;
+  }
+  .vertical-block::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--gold);
+  }
+  .vertical-block.deep::before { background: var(--sti-blue); }
+  .vertical-block h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem; color: var(--sti-blue-deep);
+    font-weight: 500; margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .vertical-block .vmeta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin-bottom: 0.7rem;
+  }
+  .vertical-block p { margin-bottom: 0.6rem; font-size: 0.93rem; line-height: 1.55; }
+  .vertical-block p:last-child { margin-bottom: 0; }
+
+  /* ============ SOURCES TAB ============ */
+  .sources-list {
+    list-style: none; padding: 0;
+    columns: 2; column-gap: 2.5rem;
+  }
+  .sources-list li {
+    break-inside: avoid;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.78rem; line-height: 1.5;
+    color: var(--ink-soft);
+    display: grid; grid-template-columns: 28px 1fr; gap: 0.5rem;
+  }
+  .sources-list li::before {
+    content: counter(s-counter);
+    counter-increment: s-counter;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; color: var(--gold); font-weight: 500;
+  }
+  .sources-list { counter-reset: s-counter; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    main { padding: 0 1.5rem; }
+    .masthead { padding: 2rem 1.5rem 1.5rem; }
+    .stat-row, .stat-row.four, .twocol, .threecol { grid-template-columns: 1fr; }
+    .thesis-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .masthead-deck { flex-direction: column; gap: 1rem; }
+    .questions-block { padding: 2rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    footer .footer-inner { grid-template-columns: 1fr; }
+    .sources-list { columns: 1; }
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    .tabnav { display: none; }
+    .tab-pane { display: block !important; page-break-after: always; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-meta">Strategic Intelligence Read · Confidential</div>
+    <h1 class="masthead-title">MENA Passive Fire Protection<br>&mdash; a strategic <em>read</em> for STI</h1>
+    <p class="masthead-subtitle">
+      A consultative regional intelligence note for Mr. Charbel H. Tagher, President &amp; Co-Founder, Specified Technologies Inc. &mdash; on the MENA passive fire protection market entering its next cycle: market architecture, the regulatory window, competitive dynamics, the channel paradox at the heart of multi-brand distribution, and the emerging vectors shaping the decade ahead.
+    </p>
+    <div class="masthead-deck">
+      <div><strong>Author</strong><span>Mohammed Vaseeuddin</span></div>
+      <div><strong>Location</strong><span>Dubai, UAE</span></div>
+      <div><strong>Sector</strong><span>Passive Fire Protection &amp; Firestopping</span></div>
+      <div><strong>Scope</strong><span>GCC · Levant · North Africa</span></div>
+      <div><strong>Date</strong><span>May 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TAB NAV ============ -->
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <button class="tab-btn active" data-tab="read"><span class="tab-num">01</span>The Read</button>
+    <button class="tab-btn" data-tab="market"><span class="tab-num">02</span>Market Architecture</button>
+    <button class="tab-btn" data-tab="regulation"><span class="tab-num">03</span>The Regulatory Window</button>
+    <button class="tab-btn" data-tab="competitive"><span class="tab-num">04</span>The Competitive Field</button>
+    <button class="tab-btn" data-tab="channel"><span class="tab-num">05</span>The Channel Paradox</button>
+    <button class="tab-btn" data-tab="vectors"><span class="tab-num">06</span>Strategic Vectors</button>
+    <button class="tab-btn" data-tab="sources"><span class="tab-num">07</span>Sources</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ TAB 1: THE READ ============ -->
+<section class="tab-pane active" id="read">
+  <div class="section-label">01 &mdash; The Read</div>
+  <h2 class="section-title">A market <em>doubling</em>, a regulatory regime consolidating, a channel splitting in two</h2>
+  <p class="section-lede">
+    The MENA passive fire protection market is entering the most consequential cycle in its history. Three forces are converging at the same time, with different timetables and different implications &mdash; and they will determine which manufacturers extract the most value from the build-out of the decade ahead.
+  </p>
+
+  <div class="thesis-grid">
+    <div class="lead-para">
+      <p>The first force is <strong>scale</strong>. The MENA construction market closed 2024 at USD 104.15 billion and is projected to reach USD 148.14 billion by 2030 at a 5.89% CAGR<span class="cite-marker">[3]</span>. The passive fire protection sliver of that market, currently USD 110.3 million across MEA<span class="cite-marker">[5]</span>, is on track for USD 176.1 million by 2033. The firestop sealants subset &mdash; the narrowest commercial sub-segment most relevant to a specialist manufacturer &mdash; is growing fastest, at a global 8.3% CAGR<span class="cite-marker">[9]</span>. The KSA giga-project pipeline, NEOM's USD 500B<span class="cite-marker">[5]</span>, the UAE's post-Expo build, Egypt's New Administrative Capital, the EV manufacturing investments approaching USD 50 billion through 2030<span class="cite-marker">[5]</span> &mdash; these are not forecasted demand; they are committed capital.</p>
+
+      <p>The second force is <strong>regulatory consolidation around the UL ecosystem</strong>. The Abu Dhabi Civil Defence Authority's June 2025 circular mandated UL Qualified Firestop Contractor Program certification for Class G contractors and UL Technical Evaluation Developer Program qualification for suppliers issuing Engineering Judgments<span class="cite-marker">[14]</span>. The March 2026 amendments formalised 54 further changes to the UAE Fire and Life Safety Code, bridging the gap between local practice and NFPA standards<span class="cite-marker">[13]</span>. KSA's SBC 801 is modelled on the International Fire Code and NFPA references<span class="cite-marker">[17]</span>. The regional code regime is, in effect, converging toward the certification base STI has spent three decades building. The window is not opening &mdash; it is closing around competitors who cannot meet it.</p>
+
+      <p>The third force is the <strong>channel paradox</strong>. The MENA market is splitting along a visible axis &mdash; a premium specification tier (Hilti, 3M, STI, Fischer) versus a value-engineering tier (Al Muqarram, ASMACO, regional specialists) at a ~10&times; price differential<span class="cite-marker">[24][46]</span>. Beneath that visible split sits a deeper, less-discussed structural reality: the multi-brand distributor channel through which premium imports access the market creates structural friction for any specialist line. STI is specified into the most prestigious projects in the GCC, and rarely the line that closes a distributor representative's quarter. The asymmetry is not a product problem &mdash; it is a channel orchestration problem, and the section dedicated to it (Tab 05) is the centerpiece of this read.</p>
+    </div>
+
+    <aside class="key-points">
+      <h4>Three Anchors</h4>
+      <div class="point">
+        <strong>The market is doubling</strong>
+        MEA passive fire protection: USD 110.3M → USD 176.1M by 2033, 5.3% CAGR. Firestop sealants subset: 8.3% global CAGR. KSA leads the regional pace at 5.7%.<span class="cite-marker">[5][9]</span>
+      </div>
+      <div class="point">
+        <strong>The regulatory regime is consolidating around UL</strong>
+        ADCDA's June 2025 circular and March 2026 amendments mandate UL TEDP qualification for EJ-issuing suppliers and UL Qualified Contractor Program for Class G contractors. Non-compliance: trade-license suspension.<span class="cite-marker">[13][14]</span>
+      </div>
+      <div class="point">
+        <strong>The channel paradox sits beneath the bifurcation</strong>
+        STI wins specification at the consultant level and loses share of voice at the multi-brand distributor level. Competitors solve this through direct sales (Hilti), product bundling (Fischer), local production (Soudal), or price disruption (ASMACO). STI's natural path is the fifth: specification orchestration with channel discipline.
+      </div>
+    </aside>
+  </div>
+
+  <div class="stat-row four">
+    <div class="stat-card deep">
+      <div class="label">MENA Construction TAM</div>
+      <div class="value">$148B</div>
+      <div class="desc">Projected by 2030, from USD 104.15B in 2024. CAGR 5.89%.<span class="cite-marker">[3]</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">MEA PFP SAM</div>
+      <div class="value">$176M</div>
+      <div class="desc">MEA passive fire protection by 2033, from USD 110.3M in 2024. CAGR 5.3%.<span class="cite-marker">[5]</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">MEA Firestop Sealants Niche</div>
+      <div class="value">8.3%</div>
+      <div class="desc">Global firestop sealants CAGR through 2030 &mdash; the fastest-growing PFP sub-segment.<span class="cite-marker">[9]</span></div>
+    </div>
+    <div class="stat-card urgent">
+      <div class="label">ADCDA Compliance Window</div>
+      <div class="value">closing</div>
+      <div class="desc">UL TEDP and UL Qualified Contractor Program enforcement; trade-license suspension after grace period.<span class="cite-marker">[14]</span></div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>The read in one sentence:</strong> The MENA passive fire protection market is entering a cycle in which scale, regulation, and channel structure are simultaneously moving in directions that favour the specialised premium-tier manufacturers &mdash; and the strategic question is no longer whether the opportunity is there, but how regional commercial architecture should evolve to capture it.
+  </div>
+
+  <div class="questions-block">
+    <h3>Open Questions for STI's Reflection</h3>
+    <ol>
+      <li>How does STI's current regional commercial architecture map against the channel bifurcation now visible in MENA &mdash; and where are the highest-leverage adjustments worth considering?</li>
+      <li>To what extent is the UL regulatory consolidation in the UAE already translating into specification capture across STI's existing partner network &mdash; and what would amplify the conversion?</li>
+      <li>What does the right regional capital and commercial commitment look like over the next 24 months as KSA's giga-project specification windows open?</li>
+      <li>Where does the EV manufacturing and hyperscale data centre verticals' shift toward re-penetrable systems sit in STI's regional product positioning narrative?</li>
+    </ol>
+    <p class="closing">These questions are written for your reflection, not for your response. The sections that follow lay out the regional picture from a practitioner's vantage point &mdash; market architecture, the regulatory window, the competitive field, the channel paradox at the heart of the multi-brand distributor model, and the strategic vectors shaping the decade ahead.</p>
+  </div>
+</section>
+
+<!-- ============ TAB 2: MARKET ARCHITECTURE ============ -->
+<section class="tab-pane" id="market">
+  <div class="section-label">02 &mdash; Market Architecture</div>
+  <h2 class="section-title">A hierarchical view: TAM, SAM, SOM &mdash; and the segments that matter</h2>
+  <p class="section-lede">
+    To size the MENA passive fire protection opportunity without distortion, the market must be read at three concentric levels &mdash; the regional construction TAM that sets the absolute ceiling, the MEA-specific PFP SAM that defines the commercial battleground, and the country-level and sealant-niche SOMs where the actual capture decisions get made.
+  </p>
+
+  <h3 class="subhead">The MEA Passive Fire Protection Architecture</h3>
+  <div class="chart-wrap">
+    <div class="chart-title">MEA PFP Market Trajectory &mdash; 2024 vs Projected</div>
+    <div class="chart-headline">MEA passive fire protection sits at USD 110.3M today, projected at USD 176.1M by 2033 &mdash; 60% expansion over the decade.</div>
+    <div class="chart-canvas"><canvas id="meaChart"></canvas></div>
+  </div>
+  <p class="source-note">Source: Grand View Research Middle East &amp; Africa Passive Fire Protection Market Size &amp; Outlook<span class="cite-marker">[5]</span>. Figures: 2024 base of USD 110.3M growing to USD 176.1M by 2033 at 5.3% CAGR. MEA represents approximately 2.4% of the global PFP market.</p>
+
+  <h3 class="subhead">The Hierarchical Read &mdash; TAM / SAM / SOM</h3>
+  <table class="ref-table">
+    <thead>
+      <tr>
+        <th style="width: 110px;">Layer</th>
+        <th>Scope</th>
+        <th>2024 Base</th>
+        <th>Projected</th>
+        <th>CAGR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">TAM</td>
+        <td>MENA Total Construction Market</td>
+        <td class="num">USD 104.15B</td>
+        <td class="num">USD 148.14B (2030)</td>
+        <td class="num">5.89%</td>
+      </tr>
+      <tr>
+        <td class="country">SAM</td>
+        <td>MEA Passive Fire Protection Market</td>
+        <td class="num">USD 110.3M</td>
+        <td class="num">USD 176.1M (2033)</td>
+        <td class="num">5.30%</td>
+      </tr>
+      <tr>
+        <td class="country">SOM &mdash; KSA</td>
+        <td>Kingdom of Saudi Arabia PFP</td>
+        <td class="num">USD 43.2M</td>
+        <td class="num">USD 71.0M (2033)</td>
+        <td class="num">5.70%</td>
+      </tr>
+      <tr>
+        <td class="country">SOM &mdash; UAE</td>
+        <td>United Arab Emirates PFP</td>
+        <td class="num">USD 14.5M</td>
+        <td class="num">USD 23.0M (2033)</td>
+        <td class="num">5.30%</td>
+      </tr>
+      <tr>
+        <td class="country">SOM Niche</td>
+        <td>MEA Firestop Sealants Only</td>
+        <td class="num">~USD 11.1M</td>
+        <td class="num">~USD 17.8M (2030)</td>
+        <td class="num">8.30%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="source-note">Sources: Grand View Research<span class="cite-marker">[3][5][9]</span>; TechSci Research<span class="cite-marker">[4]</span>; Future Market Insights<span class="cite-marker">[1]</span>. KSA accounts for ~1.0% of the global PFP market and represents the largest single SOM in the region.</p>
+
+  <h3 class="subhead">Product Segment Mix</h3>
+  <div class="twocol">
+    <div>
+      <p class="wide">Cementitious materials dominate MEA PFP revenue at <strong>42.88% in 2024</strong>, anchored in structural steel protection across oil, gas, and heavy industrial sectors<span class="cite-marker">[5]</span>. Intumescent coatings, however, are projected to register the fastest growth through 2033 &mdash; the structural-steel protection equivalent of what firestop sealants represent in penetration sealing.</p>
+      <p class="wide">The segmentation matters because each segment maps to a distinct competitive set and commercial channel. Hempel and PPG dominate intumescent structural coatings on heavy industry; firestop sealants and penetration systems are STI's, 3M's, Hilti's, and increasingly Al Muqarram's competitive battlefield. The two segments rarely compete head-to-head for specification.</p>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">MEA PFP Segment Mix 2024</div>
+      <div class="chart-headline">Cementitious dominates today; intumescent and sealants the growth engines.</div>
+      <div class="chart-canvas short"><canvas id="segmentChart"></canvas></div>
+    </div>
+  </div>
+
+  <h3 class="subhead">Country-Level Concentration</h3>
+  <p class="wide">The MENA PFP market is heavily concentrated. <strong>KSA and UAE together account for roughly USD 57.7M of the regional USD 110.3M SAM</strong> &mdash; over half of the addressable opportunity sits in two countries<span class="cite-marker">[5]</span>. That concentration is a feature, not a constraint: it allows commercial focus and disciplined coverage of the highest-spec project pipeline.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">MEA PFP Market &mdash; Country-Level View</div>
+    <div class="chart-headline">KSA and UAE together hold more than half of the MEA passive fire protection market</div>
+    <div class="chart-canvas"><canvas id="countryChart"></canvas></div>
+  </div>
+  <p class="source-note">Source: Grand View Research country-level PFP market sizings<span class="cite-marker">[5][8]</span>. "Rest of MEA" includes Qatar, Bahrain, Kuwait, Oman, Egypt, Levant markets, and North Africa.</p>
+
+  <div class="insight-box">
+    <strong>The market structure read:</strong> The MENA PFP opportunity is concentrated, regulated, and growing. The cementitious-heavy revenue mix tells the legacy story; the sealants-led growth rate tells the future story. STI's product positioning sits at the intersection of the highest-growth sub-segment and the highest-spec country markets &mdash; KSA and UAE specifically. Capture economics improve as code consolidation removes lower-tier competitors from premium specification work.
+  </div>
+</section>
+
+<!-- ============ TAB 3: REGULATORY ============ -->
+<section class="tab-pane" id="regulation">
+  <div class="section-label">03 &mdash; The Regulatory Window</div>
+  <h2 class="section-title">A regional code regime <em>converging</em> on UL and NFPA</h2>
+  <p class="section-lede">
+    The MENA fire safety code regime has, over the last decade, shifted decisively from descriptive prescriptive codes toward performance-based life safety regulation modelled on NFPA and bolstered by UL and FM certification ecosystems. The trajectory is unmistakable, and the next 18 months will see further consolidation. For a UL-native manufacturer, the regime is not a compliance burden &mdash; it is a structural moat.
+  </p>
+
+  <h3 class="subhead">UAE &mdash; The Paradigm Setter</h3>
+  <p class="wide">The United Arab Emirates has positioned itself at the forefront of regional regulatory overhauls, catalysed by high-profile aluminium composite panel facade fires through the 2010s<span class="cite-marker">[10]</span>. The current UAE Fire and Life Safety Code of Practice enforces uncompromising compartmentation, facade insulation, and penetration sealing requirements.</p>
+
+  <div class="vertical-block">
+    <div class="vmeta">June 2025 ADCDA Circular &mdash; Class G Contractor Mandates</div>
+    <h4>The shift from product approval to installer certification</h4>
+    <p>A landmark June 2025 circular from the Abu Dhabi Civil Defence Authority instituted profound new requirements for Class G specialty firestop contractors. The mandate requires certification through either the <strong>FM 4991 Approved Program or the UL Qualified Firestop Contractor Program</strong>. Suppliers who issue Engineering Judgments &mdash; custom firestop designs for non-standard penetrations &mdash; must adhere to the <strong>UL Technical Evaluation Developer Program (TEDP)</strong>. Products lacking explicit Dubai Civil Defense or ADCDA certification are entirely barred from commercial application.<span class="cite-marker">[14][15]</span></p>
+    <p>The mechanism creates a profound barrier to entry that heavily favours established multinational incumbents or well-capitalised local manufacturers capable of passing independent third-party laboratory testing.</p>
+  </div>
+
+  <div class="vertical-block deep">
+    <div class="vmeta">March 2026 ADCDA Amendments &mdash; 54 Code Changes</div>
+    <h4>Formalising NFPA alignment and closing case-by-case loopholes</h4>
+    <p>In a landmark update released on 12 March 2026, the ADCDA introduced amendments to the UAE Fire and Life Safety Code of Practice (2018 edition), formalising <strong>54 critical amendments</strong> that were previously subject to case-by-case evaluation<span class="cite-marker">[13]</span>. The primary objective is to bridge the historical gap between local building practices and the rigorous international standards set by the National Fire Protection Association (NFPA).</p>
+    <p>The amendments drastically impact building design, enforcing stricter mandates for fire barriers, smoke control systems, and assembly point requirements. The code now demands that exterior wall insulation &mdash; particularly foam plastics &mdash; must pass NFPA 285 fire propagation testing<span class="cite-marker">[10]</span>. Every penetration through a fire-rated wall or floor for MEP services is viewed as a critical breach mandating the use of approved firestopping sealants to restore the fire-resistance rating.</p>
+  </div>
+
+  <h3 class="subhead">Kingdom of Saudi Arabia &mdash; Code, Procurement, Vision 2030</h3>
+  <p class="wide">Saudi Arabia's regulatory architecture rests on the <strong>Saudi Building Code Fire Protection Requirements (SBC 801)</strong>, developed by the Saudi Building Code National Committee and fundamentally modelled on the International Fire Code, with NFPA codes and standards as primary reference documents<span class="cite-marker">[17]</span>. The General Administration of Civil Defense is the paramount authority enforcing these mandates across the Kingdom.</p>
+
+  <div class="twocol">
+    <div>
+      <h4 class="minor">Procurement Lists</h4>
+      <p>For state-sponsored infrastructure, defence, and industrial developments, regulatory authority frequently takes the form of highly restrictive procurement lists. The <strong>RSAF Approved Manufacturers List</strong> acts as a mandatory procurement guide for military and aviation infrastructure<span class="cite-marker">[19]</span>. Unlisted manufacturers are subjected to a rigorous Material Submittal Process &mdash; a structural barrier to entry that protects qualified incumbents.</p>
+    </div>
+    <div>
+      <h4 class="minor">Vision 2030 Integration</h4>
+      <p>The scale of giga-projects under Vision 2030 is forcing an evolution in fire protection strategy. There is a growing mandate to integrate passive fire protection systems with intelligent, active fire detection networks incorporating multi-criteria detectors, video analytics, and IoT monitoring<span class="cite-marker">[18]</span>. The technological convergence forces PFP manufacturers to provide highly documented, <strong>BIM-compatible firestopping systems</strong> that can be digitally tracked and maintained throughout the lifecycle.</p>
+    </div>
+  </div>
+
+  <h3 class="subhead">Why The Regime Favours UL-Native Manufacturers</h3>
+  <p class="wide">The strategic implication is unambiguous. UAE federal alignment typically follows ADCDA precedents within 12&ndash;24 months. KSA Civil Defense regulatory direction shows similar trajectory toward UL/FM frameworks under Vision 2030's emphasis on international standards. Qatar Civil Defense, post-World Cup, is selectively raising specification benchmarks. Egypt's New Administrative Capital developments are adopting international standards as default.</p>
+
+  <p class="wide">For a manufacturer whose entire certification base sits inside the UL ecosystem, this is not a compliance challenge &mdash; it is a regulatory tailwind. For competitors built on EN, FM-only, or hybrid certification paths, the cost of compliance is real and ongoing. <strong>The code regime is, in effect, doing competitive segmentation work that no commercial strategy could replicate.</strong></p>
+
+  <div class="pullquote">
+    The regulatory regime is doing competitive segmentation work that no commercial strategy could replicate.
+    <span class="attribution">&mdash; The strategic implication</span>
+  </div>
+
+  <p class="wide">Critically &mdash; and this is the practitioner's view from the channel side &mdash; the mechanism through which UL TEDP and UL Qualified Contractor Program certifications drive specification capture is not automatic. It requires manufacturer-side educational lift with consultants, MEP design houses, AHJs, and contractors. The regulation creates the demand; the commercial architecture converts it.</p>
+</section>
+
+<!-- ============ TAB 4: COMPETITIVE FIELD ============ -->
+<section class="tab-pane" id="competitive">
+  <div class="section-label">04 &mdash; The Competitive Field</div>
+  <h2 class="section-title">A market split: <em>premium specification</em> vs. <em>localised cost leadership</em></h2>
+  <p class="section-lede">
+    The MENA firestopping market is highly oligopolistic at the premium tier and aggressively contested at the value tier. Global multinationals dominate Tier 1 megaprojects through engineering, software ecosystems, and risk-transfer mechanics. Regional and specialty manufacturers dominate Tier 2 and Tier 3 commercial and residential work through localised production and disruptive pricing. Understanding which tier each competitor truly operates in is the prerequisite for any strategic positioning conversation.
+  </p>
+
+  <h3 class="subhead">The Competitive Landscape</h3>
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Manufacturer</th>
+          <th>Strategic Posture</th>
+          <th>Channel Model</th>
+          <th>Key Strengths</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="sti-row">
+          <td class="brand-cell">STI<span class="tier">Specialised pure-play firestop</span></td>
+          <td>Engineering-led specification; EJ and TEDP-native; Healthcare BMP and EZ Path verticals</td>
+          <td>Distributor-led across MENA via regional partners</td>
+          <td>1,300+ UL Classified systems; pure-play focus; tier-1 GCC reference list</td>
+          <td><span class="tier-badge premium">Premium</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Hilti<span class="tier">CHF 6.4B global revenue<span class="cite-marker">[20]</span></span></td>
+          <td>Direct sales force; integrated digital ecosystem (Fieldwire, 4PS); R&amp;D at 7.2% of sales (CHF 466M)</td>
+          <td>Direct, with localised engineering support across ME</td>
+          <td>FS-ONE MAX universal sealant; multi-application; deep specification capture pre-tender</td>
+          <td><span class="tier-badge premium">Premium</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">3M Fire Protection<span class="tier">US-based, multi-portfolio</span></td>
+          <td>Brand-ubiquity strategy; large UL-tested library; specialty distributor relationships</td>
+          <td>Tiered distribution through Al Banoosh, Lumiere, Arabian Arrow, Passifire et al<span class="cite-marker">[28][30]</span></td>
+          <td>Wide UL portfolio; CP 25WB+, IC 15WB+; specialty mortars, collars, wraps</td>
+          <td><span class="tier-badge premium">Premium</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Fischer Group<span class="tier">German, fixings+firestop synergy</span></td>
+          <td>Integrated mechanical+firestop bundle; non-toxic, halogen-free positioning</td>
+          <td>Distributor-led with technical specification support</td>
+          <td>Single-source MEP suspension+firestop warranty; ETA and UL backing</td>
+          <td><span class="tier-badge premium">Premium</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Al Muqarram / Soudal<span class="tier">UAE manufacturer, Belgian acquired<span class="cite-marker">[42]</span></span></td>
+          <td>Local manufacturing + European backing post Oct 2020 Soudal acquisition; Dolphin brand</td>
+          <td>UAE-based production (Sharjah, Umm Al Quwain); regional distribution</td>
+          <td>Inherited Civil Defense certificates; local supply chain; competitive pricing</td>
+          <td><span class="tier-badge hybrid">Hybrid</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">ASMACO (Anchor Allied)<span class="tier">UAE manufacturer, disruptor</span></td>
+          <td>Aggressive cost leadership; 4-hour rated certified products at fraction of premium pricing</td>
+          <td>Retail and B2B channel saturation; broad UAE distribution</td>
+          <td>~AED 20-40/cartridge vs Hilti AED 197; UAE Civil Defense approved; low-VOC<span class="cite-marker">[46][24]</span></td>
+          <td><span class="tier-badge disruptor">Disruptor</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Hempel A/S<span class="tier">Danish, structural steel specialist</span></td>
+          <td>Heavy industrial passive fire protection; intumescent coating science leader</td>
+          <td>Direct + project specification, oil &amp; gas channel</td>
+          <td>Hempafire Extreme 550 epoxy PFP; lower DFT for faster application<span class="cite-marker">[54]</span></td>
+          <td><span class="tier-badge premium">Premium niche</span></td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Sika AG<span class="tier">CHF 11.20B global<span class="cite-marker">[56]</span></span></td>
+          <td>Strategy 2028 GCC expansion; local manufacturing at Dubai Industrial City + Oman + Kuwait</td>
+          <td>Hybrid multinational/local; cross-portfolio sealants and fire-rated foams</td>
+          <td>Local GCC production; Sikaflex 110W, Sika Boom; volume pricing</td>
+          <td><span class="tier-badge hybrid">Hybrid</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="source-note">Sources: Hilti 2024 Business Results<span class="cite-marker">[20]</span>; Grand View Research<span class="cite-marker">[5]</span>; FCIA<span class="cite-marker">[14]</span>; manufacturer product literature and regional distribution disclosures<span class="cite-marker">[24][28][30][33][42][46][53][54][56]</span>.</p>
+
+  <h3 class="subhead">The Pricing Dichotomy</h3>
+  <div class="chart-wrap">
+    <div class="chart-title">Firestop Sealant Pricing &mdash; Premium vs Disruptor Tier (SAR per cartridge)</div>
+    <div class="chart-headline">A ~10&times; differential separates premium specification brands from value-engineering disruptors</div>
+    <div class="chart-canvas"><canvas id="pricingChart"></canvas></div>
+  </div>
+  <p class="source-note">Sources: Whizzcart KSA retail listing for Hilti FS-ONE MAX (SAR 197)<span class="cite-marker">[24]</span>; Passifire SA retail listing for 3M CP 25WB+ (SAR 48) and IC 15WB+ (SAR 38)<span class="cite-marker">[31]</span>; UAE retail listings for ASMACO Firestop Silicone Sealant (AED 20-40 ≈ SAR 20-41)<span class="cite-marker">[49]</span>. Pricing as observed in regional retail channels.</p>
+
+  <h3 class="subhead">Why The Tiers Don't Truly Compete</h3>
+  <p class="wide">The critical strategic observation is that the premium and disruptor tiers compete on entirely different vectors. Tier 1 megaprojects &mdash; high-rise luxury, data centres, advanced healthcare, military infrastructure under RSAF &mdash; are largely insulated from cost-leadership strategies<span class="cite-marker">[19]</span>. Main contractors and MEP consultants exclusively select Hilti, 3M, STI, or Fischer despite their premium prices.</p>
+
+  <p class="wide">The rationale is rooted in risk transfer. In a billion-dollar development, the cost of a firestop sealant cartridge is statistically negligible compared to the catastrophic cost of project delays, failed Civil Defense inspections, or the inability of a manufacturer to rapidly secure an Engineering Judgment for an irregular wall joint<span class="cite-marker">[37]</span>. Multinationals mitigate contractor risk by bundling their physical products with exhaustive testing data, BIM software integration, destructive testing reports, and continuous on-site training.</p>
+
+  <p class="wide">Conversely, the Tier 2 and Tier 3 markets &mdash; sprawling low-rise residential, standard commercial fit-outs, secondary MEP penetrations in non-critical zones &mdash; are exceptionally price-sensitive. In this arena, ASMACO and Al Muqarram dominate. By offering fully certified, 4-hour-rated, Civil Defense-approved sealants at a fraction of premium cost, they strip away the engineering overhead to provide commoditised, volume-driven products that satisfy value-engineering mandates.</p>
+
+  <div class="insight-box">
+    <strong>The strategic read:</strong> The premium tier's competitive moat is durable, but it is not self-defending. As regional manufacturers move upmarket &mdash; Al Muqarram backed by Soudal's European capital and R&amp;D, Sika scaling local GCC manufacturing under Strategy 2028, ASMACO closing the certification gap &mdash; the pressure on the premium tier will be sustained. The window for premium-tier consolidation is open, but it will not stay open indefinitely.
+  </div>
+</section>
+
+<!-- ============ TAB 5: THE CHANNEL PARADOX ============ -->
+<section class="tab-pane" id="channel">
+  <div class="section-label">05 &mdash; The Channel Paradox</div>
+  <h2 class="section-title">Why specification advantage does not <em>translate</em> into proportionate market share</h2>
+  <p class="section-lede">
+    STI is specified into the most prestigious construction projects in the GCC. It is not always the firestop product most heard about in the multi-brand distributor channel that supplies those projects. The asymmetry is not a paradox of product, technology, or testing &mdash; it is a paradox of distributor economics, basket dynamics, and the structural realities of how multi-brand channels actually work. This section is written from inside that channel, after thirteen years of being one of the product owners trying to make it work.
+  </p>
+
+  <h3 class="subhead">The Basket Reality</h3>
+  <p class="wide">A typical distributor sales representative in the GCC building materials channel carries a portfolio of fifteen to thirty brands. STI is one of them. The representative has a quarterly target, usually expressed in both revenue and gross profit. He has roughly twenty-two working days in a month to hit it. Every customer conversation has an opportunity cost. The economics of how he allocates that time are unforgiving.</p>
+
+  <p class="wide">Three forces shape that allocation, and they apply to every product in every multi-brand basket in the region:</p>
+
+  <ul class="feature-list">
+    <li>
+      <div>
+        <strong>Velocity</strong>
+        <span>How quickly each product converts inquiry into closed order. Locally-stocked, fast-shipping products beat imported ones requiring lead time. Standard items beat custom-engineered ones requiring submittal cycles, Engineering Judgment requests, or technical approval. Velocity keeps the quarterly pipeline filled.</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Margin Contribution</strong>
+        <span>How much gross profit each closed sale generates against the effort invested. Higher-margin lines, particularly those with negotiated distributor pricing or active vendor rebate programs, get pushed harder.</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Conversion Confidence</strong>
+        <span>How predictable the close is. Products with deep customer relationships, established repeat order patterns, and known specification footprints close more reliably than products requiring fresh consultant engagement on each project.</span>
+      </div>
+    </li>
+  </ul>
+
+  <p class="wide">In a wide multi-brand basket, premium imported specification products like STI face structural friction across all three dimensions when set against locally-stocked fixings, regional adhesive lines, or distributor-private-label alternatives. They are specified beautifully at the consultant level. They are pushed cautiously at the channel level.</p>
+
+  <div class="insight-box">
+    <strong>An honest practitioner's view:</strong> Over thirteen years inside Unitech, I represented a basket that included STI Firestop alongside Fischer, Rawlplug, Mungo, Bison, Halfen, Tate, Terram, EGA Master, and many others. STI was specified into the most prestigious projects we engaged with &mdash; KAFD, KAUST, Princess Noora, Jabal Al Kaaba. It was rarely the line that closed my quarter. Like every product owner managing a basket that broad with a target to meet, I leaned commercially on the products that closed fastest at the best margin. That is the channel paradox &mdash; not a partner performance issue, but the structural reality of any multi-brand distribution model.
+  </div>
+
+  <h3 class="subhead">How The Major Competitors Have Solved It</h3>
+  <p class="wide">Across the firestop industry globally, the channel paradox is well-understood, and each significant competitor has solved it in its own way. The mechanism each chose tells you everything about how they capture share:</p>
+
+  <div class="vertical-block deep">
+    <div class="vmeta">Hilti &mdash; Direct Sales Force</div>
+    <h4>Eliminate the multi-brand basket problem entirely</h4>
+    <p>Hilti runs a direct sales force across the Middle East. A Hilti sales engineer has one brand to push. Every project conversation is a Hilti conversation. Every consultant relationship is built to recommend Hilti products. R&amp;D investment of CHF 466 million annually &mdash; 7.2% of CHF 6.4 billion in global revenue<span class="cite-marker">[20]</span> &mdash; underwrites consultant engagement at industrial scale, from BIM library deployment to job-site management software like Fieldwire. The structural advantage is not the FS-ONE MAX product itself, or even its premium pricing. It is that Hilti has eliminated the multi-brand basket problem entirely for its firestop line. There is no basket to compete inside.</p>
+  </div>
+
+  <div class="vertical-block">
+    <div class="vmeta">Fischer Group &mdash; Product Bundling</div>
+    <h4>Make firestop part of the same conversation as your commercial heart</h4>
+    <p>Fischer's firestop products sit inside the same product family as their mechanical anchoring and fixing systems &mdash; the company's commercial heart. A distributor selling Fischer anchors automatically sells Fischer firestop because they are part of the same brand conversation, the same training program, the same submittal package. The firestop line benefits from the natural bundle, plus Fischer's "non-toxic, water-based, halogen-free" positioning<span class="cite-marker">[38]</span> reinforces the differentiation in environments where their fixings are already specified. STI does not have an equivalent natural bundle in its product architecture.</p>
+  </div>
+
+  <div class="vertical-block">
+    <div class="vmeta">Soudal / Al Muqarram &mdash; Local Production Velocity</div>
+    <h4>Solve velocity and ICV alignment in one move</h4>
+    <p>Al Muqarram manufactures Dolphin firestop sealants at facilities in Sharjah and Umm Al Quwain. Local production means immediate stock availability, no shipping wait, easy substitution conversations, and ICV alignment for government work. When a distributor's customer asks about firestop on a Tuesday, Dolphin can be on site Wednesday. Imported products require planning ahead. Soudal's October 2020 acquisition of Al Muqarram &mdash; its most expensive ever<span class="cite-marker">[42]</span> &mdash; was, at its strategic core, an investment in solving exactly this channel velocity problem at the regional level. Dolphin holds Civil Defense certificates inherited from Al Muqarram's pre-acquisition history, allowing it to compete in Tier 1 specification work as well.</p>
+  </div>
+
+  <div class="vertical-block">
+    <div class="vmeta">ASMACO (Anchor Allied) &mdash; Price Disruption</div>
+    <h4>Become the easy answer at every margin tier</h4>
+    <p>ASMACO competes on price disruption. At AED 20-40 per cartridge against premium imports at AED 197<span class="cite-marker">[24][46]</span>, ASMACO is a quarter-target accelerator for any distributor whose customer base is value-engineering-focused. The product is fully certified, civil-defense approved, and ready to install. It wins on velocity, margin, and conversion confidence simultaneously. The Tier 2 and Tier 3 commercial and residential markets that once required premium-tier products are now efficiently captured by the ASMACO commercial proposition.</p>
+  </div>
+
+  <h3 class="subhead">STI's Natural Path</h3>
+  <p class="wide">None of the four mechanisms above is STI's natural positioning. STI is a pure-play firestop specialist with US production, premium positioning, deep UL certification, and engineering-led specification capture. The fifth path &mdash; and the one most natural to STI's brand, operating model, and commercial heritage &mdash; is what the global industry would call <strong>specification orchestration with channel discipline</strong>.</p>
+
+  <p class="wide">That path is built on a regional commercial operating system that lives above the distributor partners rather than alongside them: lifting STI's share of voice across the multi-brand basket through structured partner enablement and joint planning; deepening consultant capture through manufacturer-led specification campaigns; running Engineering Judgment and applicator certification workflows with discipline appropriate to the ADCDA-led regulatory regime; building key-account architecture on mega-projects rather than relying on consultant pull alone. The mechanism is partner amplification, not partner replacement.</p>
+
+  <p class="wide">Orchestration is the one thing a multi-brand distributor cannot install for itself. The structural limitation of any distributor managing twenty-five vendor relationships is precisely that none of those vendors can claim the channel's dedicated attention. The orchestration has to come from the manufacturer side. And the question of how STI installs it in the MENA region is, by some distance, the most consequential strategic decision facing the brand's regional trajectory over the next twenty-four months.</p>
+
+  <div class="pullquote">
+    The technical case for STI is settled. The commercial case is not. The gap is in orchestration above the partner channel.
+    <span class="attribution">&mdash; The channel insight</span>
+  </div>
+</section>
+
+<!-- ============ TAB 6: STRATEGIC VECTORS ============ -->
+<section class="tab-pane" id="vectors">
+  <div class="section-label">06 &mdash; Strategic Vectors</div>
+  <h2 class="section-title">Five vectors <em>reshaping</em> MENA firestop demand</h2>
+  <p class="section-lede">
+    Beyond market sizing and regulation, five emerging vectors are fundamentally altering the types of passive fire protection demanded in the region, the procurement economics, and the technological criteria for specification. Each vector creates distinct opportunities for specialised manufacturers with the right product positioning.
+  </p>
+
+  <h3 class="subhead">Vector 1 &mdash; Hyperscale Data Centres &amp; The CAPEX-to-OPEX Shift</h3>
+  <div class="vertical-block deep">
+    <div class="vmeta">Microsoft · AWS · STC · du · Khazna · Equinix</div>
+    <h4>Re-penetrable mechanical systems displace traditional cured sealants</h4>
+    <p>The rapid digitalisation of the MENA economy has spurred massive hyperscale data centre construction. Traditional firestop sealants, which cure into hard masses or solid rubbers, present a severe operational bottleneck in data centres: the cured sealant must be physically destroyed, removed, and reapplied every time a new fibre optic or network cable is pulled through a wall<span class="cite-marker">[31]</span>.</p>
+    <p>This operational friction has accelerated the adoption of re-penetrable mechanical systems &mdash; STI's EZ-Path Series 44+, 3M's self-locking pillows, moldable putties. While these systems represent a significantly higher initial CAPEX, they offer drastically lower OPEX over the facility lifecycle, fundamentally shifting the procurement conversation from upfront cost optimisation to total lifecycle cost of ownership. <strong>STI's EZ-Path positioning is structurally aligned with this shift.</strong></p>
+  </div>
+
+  <h3 class="subhead">Vector 2 &mdash; EV Manufacturing &amp; High-Temperature PFP</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Lucid Motors · Ceer Motors · KSA EV Investment USD 50B</div>
+    <h4>An entirely new TAM for high-temperature passive fire protection</h4>
+    <p>Saudi Arabia has committed over USD 50 billion in investments for EV production through 2030, backing manufacturers including Lucid Motors and Ceer Motors<span class="cite-marker">[5]</span>. Ceer Motors alone targets a production volume of 170,000 cars per year. Because lithium-ion batteries operate at extremely high temperatures and pose severe thermal runaway risks, these manufacturing facilities require specialised passive fire protection in the form of high-temperature insulating materials &mdash; a category outside traditional building firestop but adjacent to it.</p>
+    <p>The vector creates a lucrative new revenue stream for advanced material science manufacturers with high-temperature firestop and intumescent capability, and a specification opening for those who can address battery manufacturing fire safety with documented testing and engineering judgment capacity.</p>
+  </div>
+
+  <h3 class="subhead">Vector 3 &mdash; Sustainability, LEED, and Halogen-Free Mandates</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Dubai Municipality Green Building Regs · LEED · Estidama</div>
+    <h4>Ultra-low-VOC and halogen-free chemistry as code-level requirements</h4>
+    <p>Driven by LEED certification goals and regional sustainability frameworks &mdash; including strict Dubai Municipality Green Building requirements &mdash; developers are demanding ultra-low-VOC and halogen-free firestop materials<span class="cite-marker">[9]</span>. ASMACO sealants now pass these requirements with VOC emissions of less than 16 g/L, complying with SCAQMD Rule 1168<span class="cite-marker">[46]</span>. Fischer markets its non-toxic, water-based, halogen-free chemistry aggressively against competitors<span class="cite-marker">[38]</span>.</p>
+    <p>For premium manufacturers, the implication is twofold: sustainability credentials are no longer a marketing differentiator but a baseline procurement requirement; and the disruptor tier has closed the chemistry gap, removing one historical premium-tier moat.</p>
+  </div>
+
+  <h3 class="subhead">Vector 4 &mdash; ICV Programs &amp; Local Manufacturing Preference</h3>
+  <div class="vertical-block">
+    <div class="vmeta">KSA In-Country Value · UAE ICV · Vision 2030 localisation</div>
+    <h4>Government contract preference shifts to domestic supply chains</h4>
+    <p>Saudi Arabia and the UAE increasingly utilise In-Country Value (ICV) scoring to preferentially award lucrative government contracts to construction firms that utilise domestic supply chains and local manufacturers<span class="cite-marker">[16]</span>. The Soudal acquisition of Al Muqarram in October 2020 &mdash; Soudal's most expensive acquisition ever &mdash; was, in part, an ICV play. Sika's GCC manufacturing footprint at Dubai Industrial City plus Oman and Kuwait achieves the same positioning<span class="cite-marker">[58]</span>.</p>
+    <p>For US-origin manufacturers without regional manufacturing, the ICV implication is real on government and quasi-government work. The mitigating factor is the premium tier's risk-transfer position on the most technically complex projects, where international certification and engineering capacity outweigh ICV scoring. The structural question is whether the ICV pressure intensifies sufficiently over the next 5&ndash;7 years to motivate regional manufacturing investment by today's premium imports.</p>
+  </div>
+
+  <h3 class="subhead">Vector 5 &mdash; Supply Chain Localisation &amp; Geopolitical Resilience</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Red Sea logistics · Suez resilience · GCC raw material strategy</div>
+    <h4>Geopolitical friction favours manufacturers with local production footprints</h4>
+    <p>A central, systemic vulnerability for the firestopping industry globally is its high exposure to raw material price fluctuations &mdash; particularly advanced silicone polymers, acrylic emulsions, and intumescent graphite<span class="cite-marker">[9]</span>. Geopolitical tensions and maritime logistics disruptions in the Red Sea have exponentially exacerbated the cost and time required to import finished goods into the GCC.</p>
+    <p>This dynamic strongly favours companies with localised manufacturing &mdash; Al Muqarram (Soudal) and Sika hold a structural advantage by formulating, blending, and packaging sealants directly within the UAE. Local production insulates these firms from shipping delays and exorbitant freight costs while aligning with ICV programs<span class="cite-marker">[42]</span>. The recognition by European conglomerates that simply exporting to the Middle East is no longer a viable long-term strategy &mdash; that producing within the Middle East is an operational imperative &mdash; underpinned the Soudal acquisition logic.</p>
+  </div>
+
+  <h3 class="subhead">The Synthesis</h3>
+  <p class="wide">Taken together, the five vectors compose a strategic landscape that is more demanding, more bifurcated, and more time-sensitive than the firestop market has been at any point in the past decade. The premium-tier specification opportunity is genuine and growing &mdash; but it is being defended on certification and engineering capacity while disruptors close the chemistry, pricing, and ICV gaps. The next decade in MENA firestop will be defined by which manufacturers manage to be simultaneously the technical authority, the regulatory native, and the commercially present partner that consultants and contractors trust on the largest and most complex projects in the region's history.</p>
+
+  <div class="pullquote">
+    The next decade will be defined by which manufacturers manage to be simultaneously the technical authority, the regulatory native, and the commercially present partner.
+    <span class="attribution">&mdash; The synthesis</span>
+  </div>
+
+  <div class="questions-block">
+    <h3>The Question The Report Returns To</h3>
+    <ol>
+      <li>What is the right regional commercial commitment over the next 24 months &mdash; in operating model, in capital, in partner architecture &mdash; to ensure STI's structural advantages on certification, engineering, and product translate into proportionate market capture across MENA's next cycle?</li>
+    </ol>
+    <p class="closing">A conversation, at your convenience, would be the natural place to explore this further.</p>
+  </div>
+</section>
+
+<!-- ============ TAB 7: SOURCES ============ -->
+<section class="tab-pane" id="sources">
+  <div class="section-label">07 &mdash; Sources</div>
+  <h2 class="section-title">Sources &amp; methodology</h2>
+  <p class="section-lede">
+    This strategic read is built from publicly available market research, regulatory documentation, manufacturer disclosures, and the author's direct regional commercial experience. The market sizing figures are sourced from industry research firms; the regulatory and competitive intelligence is sourced from primary regulatory documents and manufacturer public materials; the channel mechanics are sourced from the author's direct experience inside the KSA partner ecosystem.
+  </p>
+
+  <h3 class="subhead">Citation List</h3>
+  <ol class="sources-list">
+    <li>Future Market Insights, "Passive Fire Protection Market | Global Market Analysis Report 2035"</li>
+    <li>Grand View Research, "Passive Fire Protection Market Size | Industry Report, 2033"</li>
+    <li>Global Risk Community, "Middle East Construction Market 2030: A Deep Dive into Growth Opportunities"</li>
+    <li>TechSci Research, "Middle East Construction Market Size and Growth by 2030F"</li>
+    <li>Grand View Research, "Middle East &amp; Africa Passive Fire Protection Market Size &amp; Outlook"</li>
+    <li>Ken Research, "Middle East Passive Fire Market 2019&ndash;2030"</li>
+    <li>QY Research, "Global Passive Fire Protection Market Insights, Forecast to 2030"</li>
+    <li>Grand View Research, "Saudi Arabia Passive Fire Protection Market Size &amp; Outlook"</li>
+    <li>Grand View Research, "Firestopping Sealants Market Size | Industry Report, 2030"</li>
+    <li>Yasu Trading, "Alert: New Fire Safety Codes in Dubai"</li>
+    <li>Dubai Development Authority Circular 333, "UAE Fire and Life Safety Code of Practice"</li>
+    <li>ADCDA, "UAE Fire and Life Safety Code of Practice"</li>
+    <li>Fire Middle East Magazine, "Abu Dhabi Updates Fire Safety Code with New Amendments" (March 2026)</li>
+    <li>Firestop Contractors International Association (FCIA)</li>
+    <li>Al Muqarram Industry, "Best Fire Stop Silicone Sealant in UAE"</li>
+    <li>Zawya, "Abu Dhabi Civil Defense approves Dolphin Fire Stop Silicone Sealant"</li>
+    <li>Saudi Building Code SBC 801 Fire Protection Requirements</li>
+    <li>GAJRC, "Intelligent Fire Detection and Suppression Systems in Compliance with Saudi Civil Defense and Vision 2030"</li>
+    <li>RSAF Approved Manufacturers List 2024</li>
+    <li>Hilti Corporation, "2024 Business Results"</li>
+    <li>Hilti UAE, "Firestop &amp; Fire Protection Catalogue"</li>
+    <li>Hilti Corporation, "Locations &amp; Global Footprint"</li>
+    <li>Hilti USA, "Power Tools, Fasteners &amp; Software for Construction"</li>
+    <li>Whizzcart KSA, "Hilti FS-ONE MAX 10.1oz Tube Pricing"</li>
+    <li>Fortune Business Insights, "Fire Stopping Materials Market Size, Share | Growth 2026&ndash;2034"</li>
+    <li>3M Middle East, "Fire Safety &amp; Firefighters Contact Page"</li>
+    <li>3M Saudi Arabia, "Fire Safety &amp; Firefighters Overview"</li>
+    <li>YellowPages UAE, "3M Fire Protection Distributors UAE"</li>
+    <li>White Field Electrical, "Products Catalogue"</li>
+    <li>Arabian Arrow, "3M Fire Barrier Sealants"</li>
+    <li>Passifire PFP Solutions, "Shop Catalogue"</li>
+    <li>3M, "Channel Distributors Gulf Personal Safety Division"</li>
+    <li>STI Firestop, "Contact Us &mdash; Middle East &amp; South Asia"</li>
+    <li>STI Firestop, "Find a Distributor"</li>
+    <li>STI Firestop, "Where to Buy"</li>
+    <li>STI Firestop, Corporate Website</li>
+    <li>STI Firestop, "Support Center"</li>
+    <li>Scribd / Fischer International, "Fire Stop Comparison Analysis"</li>
+    <li>Fischer International, "Catalogue FireStop"</li>
+    <li>Fischer UK, "International FireStop"</li>
+    <li>Fischer, "Firestop FiAM Submittal Guide"</li>
+    <li>Soudal Group, "Most Expensive Acquisition Ever in Full COVID-19 Crisis"</li>
+    <li>Plant Machinery Vehicles Middle East, "Soudal and Al Muqarram Industry Establish Alliance"</li>
+    <li>Al Muqarram Industry, "Fire Stop Acrylic"</li>
+    <li>HSE Review, "Al Muqarram Urges Property Developers to Use Certified Flame-Retardant Building Materials"</li>
+    <li>Anchor Allied, "ASMACO Firestop Silicone Sealant Spec Sheet"</li>
+    <li>BNT Global, "ASMACO Intumescent Acrylic Fire Stop Sealant"</li>
+    <li>NQcart UAE, "Asmaco Asmacryl 55 Fire Retardant Acrylic Sealant"</li>
+    <li>Misar Shop UAE, "ASMACO Fire Stop Silicone Sealant 600ml"</li>
+    <li>Alisouq UAE, "Asmaco Intumescent Acrylic Sealant"</li>
+    <li>FineTools UAE, "Asmaco Intumescent Acrylic Sealant"</li>
+    <li>Hempel, "Hempafire Brand Page"</li>
+    <li>Hempel, "Cellulosic Passive Fire Protection Coatings Brochure"</li>
+    <li>Hempel, "Hempafire Extreme 550 Launch Release"</li>
+    <li>Gulf Fire, "Hempel Launches New Passive Fire Protection Coating"</li>
+    <li>Sika Group, Global Corporate Website</li>
+    <li>Sika GCC, "Strategy 2028"</li>
+    <li>Sika GCC, "Firestop Systems"</li>
+    <li>Sika GCC, "Contact Sika GCC"</li>
+    <li>YouTube, "ASMACO Firestop Silicone Sealant &mdash; Civil Defence Approved"</li>
+  </ol>
+
+  <h3 class="subhead">Methodology Notes</h3>
+  <ul>
+    <li><strong>Market sizing</strong> figures are quoted directly from Grand View Research and supporting industry research firms. Where author estimates appear, they are clearly flagged.</li>
+    <li><strong>Regulatory analysis</strong> is sourced from primary regulatory documents (ADCDA, Dubai Development Authority, Saudi Building Code) and industry publications. The June 2025 ADCDA circular and March 2026 amendments are referenced directly.</li>
+    <li><strong>Competitive intelligence</strong> is sourced from manufacturer public disclosures, annual reports (Hilti 2024 Business Results, Sika annual reporting), product catalogues, and observed regional pricing in retail and distributor channels.</li>
+    <li><strong>KSA channel mechanics</strong> are sourced from the author's direct experience in the KSA market from 2010 to 2025, including thirteen years at IKK Group's Unitech division &mdash; STI's KSA partner.</li>
+    <li><strong>Strategic synthesis</strong> represents the author's own analysis and is offered for reflection rather than as definitive guidance.</li>
+  </ul>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h5>Document</h5>
+      <p>This strategic intelligence read is prepared as a peer-to-peer consultative note for Mr. Charbel H. Tagher, President and Co-Founder, Specified Technologies Inc. It is shared in confidence and is not for redistribution beyond STI executive leadership.</p>
+    </div>
+    <div>
+      <h5>Author</h5>
+      <p>Mohammed Vaseeuddin<br>
+      Dubai, UAE<br>
+      <a href="mailto:juventer1987@gmail.com">juventer1987@gmail.com</a><br>
+      +971 52 585 9425</p>
+    </div>
+    <div>
+      <h5>Disclosure</h5>
+      <p>This report does not comment on STI's internal commercial structure or operating model. It is intended strictly as market intelligence from a regional practitioner's vantage point.</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Strategic Intelligence Read &middot; May 2026 &middot; Prepared in Dubai &middot; Confidential
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      window.scrollTo({ top: document.querySelector('.tabnav').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Chart.js defaults
+  if (window.Chart) {
+    Chart.defaults.font.family = "'IBM Plex Sans', system-ui, sans-serif";
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = '#4a5363';
+
+    const tooltipStyle = {
+      backgroundColor: '#052e4a',
+      titleColor: '#d4b67c',
+      bodyColor: '#fbf8f3',
+      titleFont: { family: "'IBM Plex Mono', monospace", size: 11, weight: '500' },
+      bodyFont: { family: "'IBM Plex Sans', sans-serif", size: 13 },
+      padding: 12,
+      cornerRadius: 0,
+      displayColors: false
+    };
+
+    // CHART 1: MEA PFP Trajectory
+    const meaCtx = document.getElementById('meaChart');
+    if (meaCtx) {
+      new Chart(meaCtx.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: ['2024', '2026', '2028', '2030', '2031', '2033'],
+          datasets: [{
+            label: 'MEA PFP Market (USD M)',
+            data: [110.3, 122, 135, 150, 158, 176.1],
+            borderColor: '#07446a',
+            backgroundColor: 'rgba(7, 68, 106, 0.08)',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#b8975a',
+            pointBorderColor: '#07446a',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => '$' + c.parsed.y.toFixed(1) + 'M' } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 } } },
+            y: { beginAtZero: true, grid: { color: '#e5e1d8' }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: v => '$' + v + 'M' } }
+          }
+        }
+      });
+    }
+
+    // CHART 2: MEA Segment Mix
+    const segCtx = document.getElementById('segmentChart');
+    if (segCtx) {
+      new Chart(segCtx.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Cementitious Materials', 'Intumescent Coatings', 'Firestop Sealants & Penetration', 'Boards & Other'],
+          datasets: [{
+            data: [42.88, 28, 17, 12.12],
+            backgroundColor: ['#07446a', '#b8975a', '#4a6c89', '#c84c3e'],
+            borderColor: '#fbf8f3',
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          cutout: '55%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { font: { family: "'IBM Plex Sans', sans-serif", size: 11 }, padding: 10, boxWidth: 12 }
+            },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => c.label + ': ' + c.parsed.toFixed(1) + '%' } }
+          }
+        }
+      });
+    }
+
+    // CHART 3: Country breakdown
+    const countryCtx = document.getElementById('countryChart');
+    if (countryCtx) {
+      new Chart(countryCtx.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Saudi Arabia', 'United Arab Emirates', 'Rest of MEA'],
+          datasets: [
+            {
+              label: '2024 Base',
+              data: [43.2, 14.5, 52.6],
+              backgroundColor: 'rgba(74, 108, 137, 0.85)',
+              borderRadius: 2
+            },
+            {
+              label: '2033 Projected',
+              data: [71.0, 23.0, 82.1],
+              backgroundColor: 'rgba(7, 68, 106, 0.92)',
+              borderRadius: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top', align: 'end',
+              labels: { font: { family: "'IBM Plex Mono', monospace", size: 10 }, boxWidth: 14, padding: 12 }
+            },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y.toFixed(1) + 'M' } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { family: "'IBM Plex Sans', sans-serif", size: 12, weight: '500' } } },
+            y: { beginAtZero: true, grid: { color: '#e5e1d8' }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: v => '$' + v + 'M' } }
+          }
+        }
+      });
+    }
+
+    // CHART 4: Pricing dichotomy
+    const priceCtx = document.getElementById('pricingChart');
+    if (priceCtx) {
+      new Chart(priceCtx.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Hilti FS-ONE MAX', '3M CP 25WB+', '3M IC 15WB+', 'Al Muqarram Dolphin', 'ASMACO Firestop'],
+          datasets: [{
+            label: 'Price (SAR / cartridge)',
+            data: [197, 48, 38, 35, 25],
+            backgroundColor: [
+              'rgba(7, 68, 106, 0.92)',
+              'rgba(7, 68, 106, 0.85)',
+              'rgba(7, 68, 106, 0.78)',
+              'rgba(184, 151, 90, 0.85)',
+              'rgba(200, 76, 62, 0.85)'
+            ],
+            borderRadius: 2,
+            maxBarThickness: 60
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => 'SAR ' + c.parsed.x + ' / cartridge' } }
+          },
+          scales: {
+            x: { beginAtZero: true, grid: { color: '#e5e1d8' }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: v => 'SAR ' + v } },
+            y: { grid: { display: false }, ticks: { font: { family: "'IBM Plex Sans', sans-serif", size: 12, weight: '500' } } }
+          }
+        }
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

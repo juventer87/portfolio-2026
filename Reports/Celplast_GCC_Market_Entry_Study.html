@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GCC Thermal Insulation &amp; Radiant Barrier — A Market Entry Study for Celplast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* CELPLAST PALETTE — deep navy + radiant-heat solar amber + reflective steel on warm paper */
+    --ink:#0E2236; --ink-soft:#2A3D4F; --ink-light:#52606B; --ink-faint:#8A95A0;
+    --paper:#F7F5EF; --paper-warm:#EFEBE0; --paper-deep:#E6E0D1;
+    --rule:#DAD3C4; --rule-light:#E8E2D5; --muted:#6E6A60;
+    --solar:#D9682A; --solar-deep:#A8480E; --solar-light:#F3DBC6;
+    --steel:#3E647F; --steel-deep:#27485F; --steel-soft:#7FA0B5;
+    --surface:#FFFFFF;
+    --green:#3E8E5A; --amber:#C68A2E; --red:#C24A3A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    background:var(--paper); color:var(--ink);
+    line-height:1.6; font-weight:400; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 18% 20%, rgba(217,104,42,0.022) 0%, transparent 52%), radial-gradient(circle at 84% 68%, rgba(62,100,127,0.03) 0%, transparent 55%);
+    background-attachment:fixed;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.45;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.06 0 0 0 0 0.08 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+
+  /* NAV */
+  .nav{position:sticky; top:0; z-index:100; background:rgba(247,245,239,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--solar); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--solar-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:17px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.11em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--solar);}
+  @media(max-width:1080px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--solar-deep); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--solar);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(42px,6.4vw,80px); line-height:0.99; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--solar); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:780px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:30px; padding-top:34px; border-top:1px solid var(--rule); max-width:980px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+
+  /* SECTION SCAFFOLD */
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--solar-deep); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:84px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(31px,4.2vw,50px); line-height:1.04; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:940px;}
+  .block h2 em{font-style:italic; color:var(--solar);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:760px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;}
+  strong{color:var(--ink); font-weight:600;}
+  em{font-style:italic;}
+
+  /* THESIS */
+  .thesis{background:linear-gradient(180deg, transparent 0%, rgba(239,235,224,0.5) 100%);}
+  .thesis-grid{display:grid; grid-template-columns:1.45fr 1fr; gap:72px; margin-top:8px;}
+  @media(max-width:880px){ .thesis-grid{grid-template-columns:1fr; gap:44px;} }
+  .thesis-body p{font-size:18px; line-height:1.7; color:var(--ink-soft);}
+  .data-stack{display:flex; flex-direction:column; gap:20px; padding:34px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .data-stack::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--solar); border-left:3px solid var(--solar);}
+  .data-row{padding-bottom:18px; border-bottom:1px solid var(--rule);}
+  .data-row:last-child{border-bottom:none; padding-bottom:0;}
+  .data-row .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;}
+  .data-row .figure{font-family:'Fraunces',serif; font-size:27px; font-weight:500; color:var(--ink); letter-spacing:-0.02em; line-height:1.1;}
+  .data-row .figure .accent{color:var(--solar);}
+  .data-row .figure .steel{color:var(--steel);}
+  .data-row .caption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45;}
+
+  /* STAT CARD GRID */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:44px;}
+  @media(max-width:900px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .stat-grid{grid-template-columns:1fr;} }
+  .stat{padding:30px 26px 34px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .stat .big{font-family:'Fraunces',serif; font-size:38px; font-weight:500; color:var(--ink); letter-spacing:-0.03em; line-height:1; margin-bottom:10px;}
+  .stat .big .u{font-size:20px; color:var(--solar);}
+  .stat .desc{font-size:13.5px; line-height:1.5; color:var(--muted);}
+
+  /* CARD GRID (generic) */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:32px 28px 38px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-warm);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:32px; color:var(--solar); line-height:1; margin-bottom:18px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:20px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+
+  /* TWO-COLUMN editorial with aside data cards */
+  .split{display:grid; grid-template-columns:1.5fr 1fr; gap:72px; margin-top:36px;}
+  @media(max-width:880px){ .split{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:30px;}
+  .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--solar-deep); margin-bottom:11px; font-weight:600;}
+  .sub-label.move{color:var(--paper); background:var(--solar); display:inline-block; padding:5px 12px 4px; margin-bottom:13px;}
+  .sub-block p{font-size:16.5px; line-height:1.62; color:var(--ink-soft);}
+  .data-card{padding:28px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:22px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(28px,3.4vw,40px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.05; margin-bottom:12px;}
+  .data-card .dc-figure .accent{color:var(--solar);}
+  .data-card .dc-caption{font-size:14px; line-height:1.55; color:rgba(247,245,239,0.82); font-style:italic;}
+
+  /* TABLES */
+  .tbl-wrap{margin-top:34px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14.5px; min-width:560px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; text-align:left; padding:13px 16px; vertical-align:bottom;}
+  tbody td{padding:12px 16px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(239,235,224,0.4);}
+  tbody td strong{color:var(--ink);}
+  td .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; padding:2px 8px; border-radius:3px; font-weight:600;}
+  .pill.go,.pill.green{background:rgba(62,142,90,0.14); color:#2c6b41;}
+  .pill.park,.pill.amber{background:rgba(198,138,46,0.16); color:#8a5e16;}
+  .pill.nogo,.pill.red{background:rgba(194,74,58,0.14); color:#962f22;}
+  .pill.crit{background:var(--red); color:#fff;}
+  .pill.high{background:rgba(198,138,46,0.2); color:#7a4f12;}
+  .pill.solar{background:var(--solar-light); color:var(--solar-deep);}
+  .row-em td{background:var(--solar-light)!important;}
+  .row-em td strong{color:var(--solar-deep);}
+  .tbl-note{font-size:13px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+
+  /* CHART block */
+  .chart-wrap{margin-top:40px; background:var(--surface); border:1px solid var(--rule); padding:36px 32px;}
+  .chart-wrap .chart-title{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;}
+  svg{display:block; width:100%; height:auto;}
+
+  /* CALLOUT */
+  .callout{margin-top:34px; padding:28px 32px; background:var(--solar-light); border-left:4px solid var(--solar); }
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--solar-deep); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:16px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--solar-deep);}
+  .callout.steel{background:rgba(62,100,127,0.1); border-left-color:var(--steel);}
+  .callout.steel .ttl{color:var(--steel-deep);}
+  .callout.steel p strong{color:var(--steel-deep);}
+
+  /* NUMBERED MOVES */
+  .moves{margin-top:42px; display:flex; flex-direction:column; gap:0; border-top:1px solid var(--rule);}
+  .move{display:grid; grid-template-columns:88px 1fr; gap:28px; padding:30px 0; border-bottom:1px solid var(--rule); align-items:start;}
+  @media(max-width:620px){ .move{grid-template-columns:1fr; gap:8px;} }
+  .move .mnum{font-family:'Fraunces',serif; font-style:italic; font-size:54px; line-height:0.8; color:var(--solar); font-weight:400;}
+  .move .mttl{font-family:'Fraunces',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:8px; letter-spacing:-0.01em;}
+  .move .mtxt{font-size:16px; line-height:1.58; color:var(--ink-soft);}
+
+  /* TIMELINE phases */
+  .phases{margin-top:40px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:860px){ .phases{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .phases{grid-template-columns:1fr;} }
+  .phase{padding:26px 22px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .phase .pk{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--solar-deep); font-weight:600; margin-bottom:6px;}
+  .phase .pt{font-family:'Fraunces',serif; font-size:18px; font-weight:500; color:var(--ink); margin-bottom:12px; line-height:1.1;}
+  .phase ul{list-style:none; padding:0; margin:0;}
+  .phase li{font-size:13.5px; line-height:1.45; color:var(--muted); padding:6px 0 6px 15px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .phase li:last-child{border-bottom:none;}
+  .phase li::before{content:""; position:absolute; left:0; top:13px; width:5px; height:5px; background:var(--solar); border-radius:50%;}
+
+  /* DECISIONS list */
+  .decisions{margin-top:36px; counter-reset:dc; border-top:1px solid var(--rule);}
+  .decision{display:flex; gap:22px; padding:18px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+  .decision::before{counter-increment:dc; content:counter(dc,decimal-leading-zero); font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--solar); font-weight:600; min-width:28px;}
+  .decision .dtxt{font-size:16px; color:var(--ink-soft); line-height:1.5;}
+  .decision .dtxt strong{color:var(--ink);}
+
+  /* PARTNER cards */
+  .partner{background:var(--surface); border:1px solid var(--rule); padding:34px 34px 30px; margin-top:26px; position:relative;}
+  .partner::before{content:""; position:absolute; top:-1px; left:-1px; width:30px; height:30px; border-top:3px solid var(--steel); border-left:3px solid var(--steel);}
+  .partner .pmeta{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--steel-deep); font-weight:600; margin-bottom:10px;}
+  .partner h3{font-family:'Fraunces',serif; font-size:26px; font-weight:500; color:var(--ink); letter-spacing:-0.015em; margin-bottom:6px;}
+  .partner .psub{font-size:14px; color:var(--muted); margin-bottom:18px;}
+  .partner .pfit{font-size:16px; line-height:1.6; color:var(--ink-soft);}
+  .partner .pscope{margin-top:18px; padding-top:16px; border-top:1px solid var(--rule); font-size:14px; color:var(--ink-soft);}
+  .partner .pscope strong{color:var(--steel-deep);}
+
+  /* FOOTER */
+  .footer{background:var(--ink); color:rgba(247,245,239,0.72); padding:56px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--solar);}
+  .footer .small{font-size:11.5px; color:rgba(247,245,239,0.5); padding-top:24px; border-top:1px solid rgba(247,245,239,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--solar-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+
+  /* reveal animation */
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Celplast × Zenith&amp;<span class="sub">GCC Entry · Phase 2</span></div>
+    <ul class="nav-links">
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#macro">Macro</a></li>
+      <li><a href="#sizing">Sizing</a></li>
+      <li><a href="#regulatory">Approvals</a></li>
+      <li><a href="#competition">Competition</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#channel">Channel</a></li>
+      <li><a href="#risk">Risk</a></li>
+      <li><a href="#gtm">GTM</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">Phase 2 Market Entry Study · GCC</div>
+    <h1>The Gulf is building in the heat. Celplast <em>reflects it away</em>.</h1>
+    <p class="hero-sub">A metallized radiant barrier enters a USD&nbsp;50–110M segment that is growing faster than the market it sits inside, has no dominant brand, and is structurally underpenetrated relative to the region's solar load. This study turns that opening into an executable, sequenced plan.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Client</div><div class="value">Celplast Metallized Products · Toronto</div></div>
+      <div class="hero-meta-item"><div class="label">Study Partner</div><div class="value">Zenith&amp; · Sharjah</div></div>
+      <div class="hero-meta-item"><div class="label">Lead Analyst</div><div class="value">Mohammed Vaseeuddin · Technical &amp; Business Consultant</div></div>
+      <div class="hero-meta-item"><div class="label">Markets</div><div class="value">KSA + UAE primary · Oman, Qatar secondary</div></div>
+      <div class="hero-meta-item"><div class="label">Period</div><div class="value">Q1–Q2 2026</div></div>
+      <div class="hero-meta-item"><div class="label">Evidence Base</div><div class="value">7,610 tracked projects · 13 competitors · 82 stakeholders</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS -->
+<section class="block thesis" id="thesis">
+  <div class="container">
+    <div class="section-label"><span class="num">00</span> Executive Recommendation</div>
+    <h2>Enter through the UAE. Win the <em>PEB roof</em> first. Sell film to fabricators and a brand to projects — in parallel.</h2>
+    <div class="thesis-grid">
+      <div class="thesis-body">
+        <p>The recommendation is to <strong>proceed</strong>. The question is not whether to enter the GCC, but how fast Celplast can execute before the window closes.</p>
+        <p>Five validated findings carry the decision. The market is <strong>real and growing</strong> — a USD&nbsp;50–110M serviceable segment compounding at 7–9%, faster than the USD&nbsp;1.7–2.0B insulation market around it. The competitive window is <strong>open but closing</strong> — roughly 18–24 months before Fi-Foil/Forma and certified Chinese imports reach parity. The <strong>UAE is the right first market</strong> — 5% customs duty versus 12–15% in KSA, higher project velocity, and far less code ambiguity. <strong>PEB metal roofing is the right first application</strong> — it scores 4.9/5.0, the installation method is confirmed, and a handful of fabricators control specification. And the <strong>economics work</strong> — product lands under $1.60/m² and sells delivered at $1.55–2.90/m², 30–58% below aluminum foil.</p>
+        <p>Celplast's metallized film is differentiated from every competitor: cheaper than aluminum foil, lighter than foam-core reflectives, and with better fire performance (Class A, FSI=0) than any polymer-based insulation in the market. The strategy below is built to capture that position before anyone else fills it.</p>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row">
+          <div class="label">Serviceable market (SAM)</div>
+          <div class="figure"><span class="accent">$50–110M</span></div>
+          <div class="caption">GCC reflective &amp; radiant barrier segment, growing 7–9% — no dominant brand.</div>
+        </div>
+        <div class="data-row">
+          <div class="label">Year 1–3 capture (SOM)</div>
+          <div class="figure">$1.5–3.6M</div>
+          <div class="caption">Cumulative revenue, ~1–2.4% of SAM by Year 3. Conservative, certification-gated.</div>
+        </div>
+        <div class="data-row">
+          <div class="label">Cost vs aluminum foil</div>
+          <div class="figure"><span class="accent">−30 to 58%</span></div>
+          <div class="caption">Direct foil-replacement is the most concrete entry vector ($30–80M pool).</div>
+        </div>
+        <div class="data-row">
+          <div class="label">Competitive window</div>
+          <div class="figure"><span class="steel">18–24 mo</span></div>
+          <div class="caption">Before the first-mover "value-approved" position narrows.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section class="block" id="macro">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> GCC Construction Macro Context</div>
+    <h2>Why this market, why now: a <em>typology shift</em> toward the buildings where radiant barriers win.</h2>
+    <p class="lead">The GCC construction market is ~USD 175–178B in 2025, heading to ~USD 222–227B by 2030. But beneath the steady headline sits a sharp re-pricing: 2024 awards hit a record USD 273B, then fell ~30% in 2025 as Saudi awards halved. For the first time since 2021, the <strong>UAE overtook KSA as the region's #1 contract awarder</strong> — which is the clearest argument for a UAE-led entry.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="big">$87.7<span class="u">B</span></div><div class="desc">UAE 2025 contract awards — now #1 in the GCC, ahead of KSA's $84.5B.</div></div>
+      <div class="stat"><div class="big">7,610</div><div class="desc">Building projects tracked in this study; 1,865 are at 0–50% completion — the live specification window.</div></div>
+      <div class="stat"><div class="big">8–10<span class="u">M m²</span></div><div class="desc">Annual GCC PEB cladding — foil-faced blanket over purlins is the universal standard. Celplast's core slot.</div></div>
+      <div class="stat"><div class="big">20–40%</div><div class="desc">GCC radiant-barrier penetration vs US Sun Belt — despite higher cooling-degree-day intensity.</div></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">The NEOM pivot — favorable, not fatal</div>
+          <p>The Line has been scaled from a 170 km vision to 2.4 km by 2030, and PIF reportedly suspended construction in late 2025. But the redirection is toward <strong>AI and data-center infrastructure</strong> — DataVolt's $5B 1.5 GW campus at Oxagon, xAI at 500 MW, Humain targeting 6.6 GW. These are metal-deck and PEB-intensive facilities where radiant barriers are the standard envelope solution. The typology shift works <em>for</em> Celplast.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The regulatory drumbeat</div>
+          <p>Estidama (Abu Dhabi), Al Sa'fat (Dubai), and UAE Net Zero 2050 progressively tighten envelope performance. In KSA, <strong>SBC 601/602 makes insulation a precondition for electricity hookup</strong> on every new building — the most powerful demand driver, and simultaneously the largest barrier, since its prescriptive U-values exclude standalone radiant barriers. The performance path (§1.2.5) is the route Celplast must navigate.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The four high-fit growth segments</div>
+          <p>Warehousing &amp; logistics (PEB-dominant), data centers (18.2% CAGR), cold storage (21.1% CAGR — the fastest in GCC construction), and mass villa roofing (ROSHN alone: 400,000 homes). All four grow faster than the overall market and align precisely with the product's physics.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure"><span class="accent">+7–10</span> pts</div>
+          <div class="dc-caption">Landed-cost advantage from clearing at Jebel Ali (5%) and trucking to KSA, versus 12–15% direct import. The single largest commercial lever.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">198<span class="accent">M m²</span></div>
+          <div class="dc-caption">MODON's developed land across 35+ industrial cities with 3,474 active factories — the largest single aggregator of PEB demand in KSA.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">50–60%</div>
+          <div class="dc-caption">of GCC building heat gain enters as radiant energy — the component mass insulation ignores, and the one Celplast addresses directly.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SIZING -->
+<section class="block" id="sizing">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> Market Sizing · TAM / SAM / SOM</div>
+    <h2>A small, fast, <em>underpenetrated</em> segment inside a large stable market.</h2>
+    <p class="lead">Celplast is entering a USD 50–110M reflective-barrier segment within a USD 1.7–2.0B insulation market. The segment grows faster (7–9% vs 6.5–7.2%), has no dominant brand, and is fragmented between commodity Chinese imports at the bottom and one credible local fabricator at the top.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 1 — Opportunity funnel: TAM → SAM → SOM (2024 values)</div>
+      <style>
+        .tsom{display:flex; flex-direction:column; align-items:center; gap:12px;}
+        .tsom .tier{width:100%; padding:26px 30px; text-align:center; color:#fff;}
+        .tsom .tier .tm{font-family:'Fraunces',serif; font-size:clamp(22px,3vw,30px); font-weight:500; letter-spacing:-0.02em; line-height:1.08;}
+        .tsom .tier .ts{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; opacity:0.9; line-height:1.45;}
+        .tsom .t1{background:#0E2236;}
+        .tsom .t2{background:#3E647F; max-width:74%;}
+        .tsom .t3{background:#D9682A; max-width:50%;}
+        @media(max-width:620px){ .tsom .tier{max-width:100%;} }
+      </style>
+      <div class="tsom">
+        <div class="tier t1"><div class="tm">TAM · $1.7–2.0B</div><div class="ts">Total GCC thermal insulation · 6.5–7.2% CAGR</div></div>
+        <div class="tier t2"><div class="tm">SAM · $50–110M</div><div class="ts">Reflective &amp; radiant barrier · 7–9% CAGR</div></div>
+        <div class="tier t3"><div class="tm">SOM · $1.5–3.6M</div><div class="ts">Celplast Yr 1–3 cumulative · ~1–2.4% of SAM</div></div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Material type</th><th>GCC share</th><th>Est. value</th><th>CAGR</th><th>Key players</th></tr></thead>
+        <tbody>
+          <tr><td>Mineral / stone wool</td><td>30–35%</td><td>$510–700M</td><td>5–6%</td><td>Saudi Rockwool, Fujairah RW, KIMMCO, Knauf</td></tr>
+          <tr><td>Glass wool / fiberglass</td><td>30–37%</td><td>$510–740M</td><td>5–6%</td><td>AFICO (Owens Corning JV), KIMMCO, Knauf</td></tr>
+          <tr><td>EPS</td><td>10–15%</td><td>$170–300M</td><td>6.8–8%</td><td>STYRO, GIBCA, Forma</td></tr>
+          <tr><td>XPS</td><td>8–12%</td><td>$136–240M</td><td>5–6%</td><td>EEP, Insultherm, Forma, Arnon</td></tr>
+          <tr><td>PIR / PUR</td><td>8–12%</td><td>$136–240M</td><td>6–7%</td><td>Kingspan, Insultherm, Soprema</td></tr>
+          <tr class="row-em"><td><strong>Reflective / radiant barriers</strong></td><td><strong>2.5–5.8%</strong></td><td><strong>$50–110M</strong></td><td><strong>7–9%</strong></td><td>Hira AeroReflect, Chinese imports, foil converters</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">The highlighted row is the most consequential finding: a structurally underpenetrated category, no dominant brand, fragmented supply, growing faster than the market around it.</p>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">The concrete entry vector</div>
+      <p>A critical subset of the SAM is the <strong>aluminum foil pool</strong> — 6,000–12,000 MT/year worth $30–80M, used as radiant barrier, vapor barrier, and facing on mass insulation. Celplast's core proposition — metallized film replacing foil at up to 58% cost savings with equivalent emittance (ε≤0.05 per ASTM C1371) — targets it directly. This is <strong>material substitution, not category creation</strong>, which is why it is the lowest-friction revenue path.</p>
+    </div>
+
+    <div class="split" style="margin-top:48px;">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">SOM — the three-year capture path</div>
+          <p><strong>Year 1 (UAE only):</strong> ECAS + DCL obtained, 1–2 distributors, first PEB fabricator relationship, 2–4 pilots — PEB roofing and HVAC duct wrap. <strong>Year 2 (UAE scale + KSA entry):</strong> SABER PCoC, first KSA partner, consultant campaign live, villa roofing and cold storage added. <strong>Year 3 (dual-market scale):</strong> named-manufacturer status on 2–3 master specs, fabricator supply agreements, 20–40 active projects.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The upside that breaks the base case</div>
+          <p>A single fabricator integration — a Zamil/AFICO blanket-facing switch from foil to Celplast film — could generate 1–2M m²/year from one relationship, lifting Year 2–3 volumes 3–5×. An ESCO program adoption (Tarshid, Etihad ESCO) could add 500K–1M m²/year. Both are accelerators, not assumptions.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">Year 1 revenue</div><div class="figure">$100–200K</div><div class="caption">50–100K m², UAE only, 2–4 pilots.</div></div>
+        <div class="data-row"><div class="label">Year 2 revenue</div><div class="figure">$400K–1M</div><div class="caption">200–500K m², UAE + KSA, 8–15 projects.</div></div>
+        <div class="data-row"><div class="label">Year 3 revenue</div><div class="figure"><span class="accent">$1–2.4M</span></div><div class="caption">500K–1.2M m², both markets, 20–40 projects.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- DYNAMICS -->
+<section class="block" id="dynamics">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> Market Dynamics &amp; Primary Validation</div>
+    <h2>How insulation actually gets specified, value-engineered, and bought in the Gulf.</h2>
+    <p class="lead">Three specification pathways govern the market, each with a different decision-maker and clock. The strategic implication is that Celplast must run all three in parallel from Day 1 — the slow one builds the moat, the fast one pays the bills, the high-volume one scales.</p>
+
+    <div class="cards">
+      <div class="card"><div class="roman">A.</div><div class="ttl">Consultant-led spec</div><div class="txt">Premium projects. Building-physics firms (Buro Happold, AESG, Arup, Cundall, WME) write the clause 12–18 months before procurement. ~25–35% of demand by value, highest-value projects. The long game.</div></div>
+      <div class="card"><div class="roman">B.</div><div class="ttl">Contractor value engineering</div><div class="txt">Mass-market. Contractors substitute on installed cost via a 7–21 day submittal cycle. ~40–50% of demand by value, and the fastest entry route. Installed-cost advantage is the argument.</div></div>
+      <div class="card"><div class="roman">C.</div><div class="ttl">Developer approved-vendor list</div><div class="txt">Institutional. Emaar, Aldar, ROSHN pre-qualify products (6–12 month process, 3–5 yr validity). Emaar's MEP Guidelines Rev 6 unlocks 90+ projects; ROSHN is explicitly VE-open.</div></div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:54px 0 0; color:var(--ink);">The objection matrix — and the calibrated responses</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:38%;">Anticipated objection</th><th>Recommended response framework</th></tr></thead>
+        <tbody>
+          <tr><td><strong>"It has no R-value — it's just a film."</strong></td><td>Reframe to the 50–60% of heat gain mass insulation ignores. Show assembly R-value (post ASTM C1363). Hybrid argument: Celplast + reduced-thickness XPS beats thicker XPS at lower cost.</td></tr>
+          <tr><td><strong>"We always use Rockwool / XPS / PIR."</strong></td><td>Don't position as a replacement — position as a second layer. "Yours stops conductive heat; this stops radiant heat. Use both." Non-threatening to the existing spec relationship.</td></tr>
+          <tr><td><strong>"It's not non-combustible."</strong></td><td>Acknowledge honestly. Show ASTM E84 Class A (FSI=0, SDI=0). Note XPS/EPS are also combustible; Celplast outperforms all foam on fire. Position for roofing/HVAC where non-combustibility isn't mandated.</td></tr>
+          <tr><td><strong>"The Chinese product is half the price."</strong></td><td>Ask: does it have ECAS? DCL? Civil Defence CoC? An E84 report? A warranty? The answer is almost always no. Celplast is the affordable option that actually has approvals — price vs risk.</td></tr>
+          <tr><td><strong>"Who else is using it in GCC?"</strong></td><td>Year 1: acknowledge the gap, offer a fully-supported documented pilot. Year 2+: reference completed pilots with photos, data, and testimonials.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout steel">
+      <div class="ttl">Six decision-ready findings</div>
+      <p>The spec cycle leads procurement by 12–18 months, so <strong>consultant engagement must start immediately</strong>. Contractor VE is the fastest revenue. PEB fabricators are the highest-leverage single decision. <strong>Local stock is non-negotiable</strong> — availability beats a marginally better product on a 6–8 week lead time. Reference projects are the #1 credibility accelerator. And the "second layer" framing is safer than "replacement."</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY -->
+<section class="block" id="regulatory">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> Regulatory &amp; Approvals Landscape</div>
+    <h2>What it takes to sell legally — and the one code barrier worth engineering around.</h2>
+    <p class="lead">Three parallel tracks must clear: federal product conformity (ECAS in UAE, SABER in KSA), local authority listing (DCL in Dubai), and Civil Defence fire certification. Celplast's existing ASTM portfolio already covers most requirements — the gaps are achievable in 3–6 months, and being the first <strong>approved</strong> radiant barrier is itself the differentiator, since Chinese imports hold none.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Certification</th><th>Est. cost (USD)</th><th>Timeline</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td>ECAS CoC (UAE federal)</td><td>$800–2,500</td><td>6–12 weeks</td><td><span class="pill solar">P1 essential</span></td></tr>
+          <tr><td><strong>DCL Product Conformity (Dubai)</strong></td><td>$5,000–15,000</td><td>3–6 months</td><td><span class="pill solar">P1 essential</span></td></tr>
+          <tr><td>UAE Civil Defence CoC</td><td>$8,000–25,000</td><td>3–6 months</td><td><span class="pill solar">P1 essential</span></td></tr>
+          <tr><td>SABER PCoC (KSA)</td><td>$2,500–6,000</td><td>4–8 weeks</td><td><span class="pill solar">P1 essential</span></td></tr>
+          <tr><td>EN 13501-1 testing</td><td>$5,000–12,000</td><td>8–12 weeks</td><td><span class="pill amber">P1 recommended</span></td></tr>
+          <tr class="row-em"><td><strong>ASTM C1363 hot-box (×2 assemblies)</strong></td><td><strong>$15,000–30,000</strong></td><td>8–16 weeks</td><td><span class="pill amber">P1 recommended</span></td></tr>
+          <tr><td>QCC Trustmark (Abu Dhabi)</td><td>$3,000–8,000</td><td>2–4 months</td><td><span class="pill park">P2 important</span></td></tr>
+          <tr><td>NFPA 285 assembly test</td><td>$50,000–120,000</td><td>6–12 months</td><td><span class="pill nogo">P3 defer</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Phase 1 certification investment (excl. NFPA 285): <strong>USD 42,000–104,000 over 3–6 months</strong>. NFPA 285 alone is roughly half the full cost and only applies to high-rise façade — an application Celplast should not pursue.</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">The SBC 601 problem — and the path through it</div>
+          <p>Saudi's SBC 601 prescribes maximum U-values along the conductive path (roof U ≤ 0.17–0.20 W/m²·K). A standalone radiant barrier has negligible conductive R-value and <strong>cannot satisfy the prescriptive path</strong> — which structurally excludes it from the default consultant workflow. The solution is §1.2.5: the performance path, which accepts whole-assembly thermal data via <strong>ASTM C1363 hot-box testing</strong>. Commissioning two priority assemblies is the single highest-impact action in the entire plan — it unlocks the whole KSA specification channel.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Claims governance — a commercial weapon, not just compliance</div>
+          <p>Celplast can claim today (with evidence): ε=0.04 per ASTM C1371, Class A fire per E84 (FSI=0), no bleeding/delamination, corrosion Rating 2, water-vapour and fungi resistance, up to 96% radiant reflectance, up to 58% foil cost savings. It <strong>cannot yet claim</strong>: assembly R-values, SBC 601 compliance, EN Euroclass, or "non-combustible." GCC consultants have been burned by overclaimers — a disciplined, evidence-based posture is a competitive advantage.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure"><span class="accent">FSI = 0</span></div>
+          <div class="dc-caption">ASTM E84 Class A (SDI 0/25), tested Jan 2026. Outperforms every foam product — and most foils carry no fire test at all.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">ZERO</div>
+          <div class="dc-caption">Formal GCC approvals held by Chinese commodity foil imports — Celplast's most direct competitor. First-mover certification is the moat.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="block" id="competition">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> Competitor Intelligence &amp; Positioning</div>
+    <h2>The <em>value-approved</em> quadrant is empty. Celplast is built to fill it.</h2>
+    <p class="lead">The market has Chinese commodity imports (cheap, unapproved) at one extreme and Hira AeroReflect (approved, expensive) at the other. The $1.50–3.00/m² "value-approved" corridor — branded, certified, technically supported, fairly priced — has no occupant. That is precisely where Celplast sits.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 2 — Positioning map: price (×) vs specification credibility (y)</div>
+      <svg viewBox="0 0 760 420" role="img" aria-label="Competitive positioning map">
+        <!-- axes -->
+        <line x1="70" y1="360" x2="740" y2="360" stroke="#DAD3C4" stroke-width="1.5"></line>
+        <line x1="70" y1="40" x2="70" y2="360" stroke="#DAD3C4" stroke-width="1.5"></line>
+        <text x="405" y="398" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#6E6A60" letter-spacing="1.5">PRICE PER m²  →</text>
+        <text x="30" y="200" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#6E6A60" letter-spacing="1.5" transform="rotate(-90,30,200)">SPEC CREDIBILITY  →</text>
+        <!-- value-approved highlight zone -->
+        <rect x="120" y="150" width="150" height="150" fill="#F3DBC6" opacity="0.55"></rect>
+        <text x="195" y="142" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A8480E" letter-spacing="1">VALUE-APPROVED (EMPTY)</text>
+        <!-- competitors: cx, cy bubbles -->
+        <!-- Chinese imports: low price, very low cred -->
+        <circle cx="115" cy="330" r="13" fill="#8A95A0"></circle>
+        <text x="115" y="334" text-anchor="middle" font-family="IBM Plex Sans" font-size="9" fill="#fff">CN</text>
+        <text x="115" y="356" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">Chinese foil</text>
+        <!-- Celplast target -->
+        <circle cx="195" cy="215" r="20" fill="#D9682A"></circle>
+        <text x="195" y="219" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#fff" font-weight="600">CEL</text>
+        <text x="195" y="248" text-anchor="middle" font-family="Fraunces,serif" font-size="12.5" fill="#A8480E" font-weight="600">Celplast</text>
+        <!-- AFICO foil-faced GW -->
+        <circle cx="320" cy="200" r="14" fill="#3E647F"></circle>
+        <text x="320" y="204" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#fff">AFICO</text>
+        <text x="320" y="226" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">Foil-faced GW</text>
+        <!-- Hira -->
+        <circle cx="430" cy="150" r="15" fill="#27485F"></circle>
+        <text x="430" y="154" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#fff">Hira</text>
+        <text x="430" y="176" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">AeroReflect</text>
+        <!-- Fi-Foil -->
+        <circle cx="455" cy="235" r="13" fill="#7FA0B5"></circle>
+        <text x="455" y="239" text-anchor="middle" font-family="IBM Plex Sans" font-size="8" fill="#fff">Fi</text>
+        <text x="455" y="262" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">Fi-Foil/Forma</text>
+        <!-- Rockwool -->
+        <circle cx="590" cy="95" r="16" fill="#0E2236"></circle>
+        <text x="590" y="99" text-anchor="middle" font-family="IBM Plex Sans" font-size="8" fill="#fff">RW</text>
+        <text x="590" y="76" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">Saudi Rockwool</text>
+        <!-- Kingspan -->
+        <circle cx="695" cy="80" r="15" fill="#0E2236"></circle>
+        <text x="695" y="84" text-anchor="middle" font-family="IBM Plex Sans" font-size="7.5" fill="#fff">KS</text>
+        <text x="695" y="61" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#52606B">Kingspan PIR</text>
+      </svg>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Competitor</th><th>Price $/m²</th><th>Spec credibility</th><th>Celplast strategy</th></tr></thead>
+        <tbody>
+          <tr><td>Chinese foil imports</td><td>$1–2</td><td>Very low</td><td>Don't compete on price — differentiate on approvals &amp; consistency</td></tr>
+          <tr class="row-em"><td><strong>Celplast (target)</strong></td><td><strong>$1.50–3</strong></td><td>Medium → High</td><td><strong>First-mover, value-approved quadrant</strong></td></tr>
+          <tr><td>AFICO foil-faced glass wool</td><td>$3.50–5</td><td>Medium–High</td><td>Facing-replacement <em>partner</em>, not competitor</td></tr>
+          <tr><td>Hira AeroReflect</td><td>$4–6.50</td><td>High</td><td>Undercut 40–65%; premium is presence, not product</td></tr>
+          <tr><td>Fi-Foil (via Forma)</td><td>$4–7</td><td>Medium</td><td>Monitor; different technology (foam-core, not film)</td></tr>
+          <tr><td>Saudi Rockwool / Kingspan</td><td>$6.50–25</td><td>Very high</td><td>Different category; potential laminate-supply partner</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:54px 0 0; color:var(--ink);">Five structural gaps the incumbents leave open</h3>
+    <div class="cards">
+      <div class="card"><div class="roman">I.</div><div class="ttl">No approved, affordable brand</div><div class="txt">The $1.50–4.00/m² value-approved corridor is empty — between cheap-but-unapproved imports and approved-but-expensive Hira.</div></div>
+      <div class="card"><div class="roman">II.</div><div class="ttl">No spec campaign</div><div class="txt">No manufacturer has invested in consultant education or assembly-level R-value documentation for reflective insulation.</div></div>
+      <div class="card"><div class="roman">III.</div><div class="ttl">No SBC 601 path data</div><div class="txt">No reflective manufacturer has produced ASTM C1363 hot-box data for the Saudi performance path. First mover unlocks the channel.</div></div>
+      <div class="card"><div class="roman">IV.</div><div class="ttl">No film foil-alternative</div><div class="txt">The $30–80M construction-foil pool is served entirely by aluminum foil. Celplast's metallized film is purpose-built to substitute it.</div></div>
+      <div class="card"><div class="roman">V.</div><div class="ttl">No retrofit-optimized product</div><div class="txt">Tarshid &amp; Etihad ESCO run large retrofit programs; no reflective product is designed for minimal-disruption, no-PPE retrofit install.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT COMPARISON -->
+<section class="block" id="product">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> Celplast vs. GCC Insulation Incumbents</div>
+    <h2>A different physics — which is why single-metric comparison <em>misleads</em>.</h2>
+    <p class="lead">Mass insulation resists conductive heat (25–35% of gain). Celplast reflects radiant heat (50–60% of gain) — the dominant mode in peak GCC cooling. The product wins on five axes and is honest about where it cannot compete alone.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Property</th><th>Celplast RB</th><th>Glass wool</th><th>Mineral wool</th><th>XPS</th><th>PIR</th></tr></thead>
+        <tbody>
+          <tr><td>Weight (kg/m²)</td><td><strong>0.03</strong></td><td>1.2–4.8</td><td>4.0–12.0</td><td>1.1–2.8</td><td>1.5–2.5</td></tr>
+          <tr><td>Radiant heat blocked</td><td><strong>96%</strong></td><td>5–10%</td><td>5–10%</td><td>5–10%</td><td>5–10%*</td></tr>
+          <tr><td>ASTM E84 class</td><td><strong>Class A (FSI 0)</strong></td><td>Class A</td><td>Class A</td><td>Class B–C</td><td>Class A–B</td></tr>
+          <tr><td>Install speed (m²/man-day)</td><td><strong>200–300+</strong></td><td>100–150</td><td>80–120</td><td>120–180</td><td>100–160</td></tr>
+          <tr><td>Storage / 100 m²</td><td><strong>~0.01 m³</strong></td><td>~0.5 m³</td><td>~0.5 m³</td><td>~5.0 m³</td><td>~5.0 m³</td></tr>
+          <tr class="row-em"><td><strong>Installed cost $/m²</strong></td><td><strong>$2.00–3.80</strong></td><td>$3.50–5.30</td><td>$8.00–11.00</td><td>$7.00–9.50</td><td>$18–25</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">*PIR with factory foil facing reaches ε~0.03–0.05 on the faced side, but the foil is a facing, not the core mechanism. On a 10,000 m² PEB roof, Celplast needs ~35–50 man-days vs 65–125 for mineral wool, with delivery weight of 300 kg vs 60,000 kg.</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Where Celplast wins</div>
+          <p>Installation speed (2–3× faster, no PPE), weight and logistics (95% lighter), fire safety (FSI=0 beats all foam), installed cost ($2–4/m² vs $7–25 for boards), and radiant heat blocking (96% vs 5–10%).</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Where it cannot compete alone</div>
+          <p>Standalone conductive R-value (negligible without an air-space assembly), non-combustibility classification (mineral wool owns A1), cavity wall (supplementary only), and high-rise façade (mineral wool mandated post-Grenfell).</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label move">The optimal positioning</div>
+          <p>Direct foil replacement in PEB roofing and HVAC facing; standalone radiant barrier for villa roofs, data centers, cold storage and retrofit; hybrid assemblies (RB + reduced-thickness board) that beat thicker board at lower cost; and the "second insulation layer" argument for consultants.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure">15–25<span class="accent">°C</span></div>
+          <div class="dc-caption">Peak roof-deck temperature reduction from the radiant barrier — versus "minimal" for unfaced mass insulation.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure"><span class="accent">60–70%</span></div>
+          <div class="dc-caption">of the installed cost of 50 mm XPS — for a Celplast RB + 25 mm XPS hybrid that matches its thermal performance.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="block" id="pricing">
+  <div class="container">
+    <div class="section-label"><span class="num">07</span> Pricing, Landed Cost &amp; Commercial Corridors</div>
+    <h2>From Toronto factory gate to a Gulf rooftop — the math holds.</h2>
+    <p class="lead">Celplast can land product in the UAE under $1.60/m², sell through distribution at $1.55–2.90/m² delivered, hold 30–40% entity margin and 25–35% distributor margin, and still undercut aluminum foil by 30–58%. Routing KSA supply via Jebel Ali adds a 6–9% cost edge over direct import.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 3 — Delivered-site price corridors ($/m²)</div>
+      <svg viewBox="0 0 760 250" role="img" aria-label="Price corridor comparison bars">
+        <!-- scale: 0 to 7 maps to x 200..740 -->
+        <!-- helper gridlines -->
+        <g font-family="IBM Plex Mono,monospace" font-size="9" fill="#8A95A0">
+          <line x1="200" y1="30" x2="200" y2="210" stroke="#E8E2D5"></line><text x="200" y="226" text-anchor="middle">$0</text>
+          <line x1="354" y1="30" x2="354" y2="210" stroke="#E8E2D5"></line><text x="354" y="226" text-anchor="middle">$2</text>
+          <line x1="508" y1="30" x2="508" y2="210" stroke="#E8E2D5"></line><text x="508" y="226" text-anchor="middle">$4</text>
+          <line x1="662" y1="30" x2="662" y2="210" stroke="#E8E2D5"></line><text x="662" y="226" text-anchor="middle">$6</text>
+        </g>
+        <!-- bars: x = 200 + val*77 -->
+        <g font-family="IBM Plex Sans" font-size="11.5">
+          <text x="190" y="50" text-anchor="end" fill="#52606B">Chinese foil</text>
+          <rect x="277" y="40" width="77" height="16" fill="#8A95A0"></rect>
+          <text x="190" y="82" text-anchor="end" fill="#A8480E" font-weight="600">Celplast</text>
+          <rect x="315" y="72" width="116" height="16" fill="#D9682A"></rect>
+          <text x="190" y="114" text-anchor="end" fill="#52606B">Aluminum foil RB</text>
+          <rect x="416" y="104" width="108" height="16" fill="#3E647F"></rect>
+          <text x="190" y="146" text-anchor="end" fill="#52606B">Hira AeroReflect</text>
+          <rect x="508" y="136" width="193" height="16" fill="#27485F"></rect>
+          <text x="190" y="178" text-anchor="end" fill="#52606B">Glass wool 50mm</text>
+          <rect x="392" y="168" width="100" height="16" fill="#7FA0B5"></rect>
+        </g>
+        <text x="380" y="16" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="#A8480E" letter-spacing="1">CELPLAST SITS IN THE EMPTY CORRIDOR ABOVE COMMODITY, BELOW FOIL</text>
+      </svg>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">The Jebel Ali arbitrage</div>
+          <p>Under the GCC Customs Union, containers cleared at Jebel Ali at 5% can be trucked to KSA without additional tariff. Direct import at Jeddah or Dammam triggers 12–15%. The transit route saves <strong>6–9% of landed cost ($0.07–0.14/m²)</strong> — $35–70K/year at Year 3 volumes — and argues for a single UAE warehouse hub from Day 1.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Channel policy that prevents commoditization</div>
+          <p>A MAP floor ($1.50/m² solid, $1.80/m² breathable), project-registration with first-mover protection, Celplast-retained discount authority, and clear territory/vertical rules. These controls protect against the price erosion that destroys most new building-material brands in the GCC within 18 months.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Warehousing</div>
+          <p>The roll format is the advantage — 100 m² occupies ~0.01 m³ vs 5.0 m³ for boards. Recommended: 50–100 m² of shared JAFZA 3PL at ~$6,000–13,000/year, holding 500K–1M m² with duty-deferred re-export to KSA.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">UAE landed warehouse cost</div><div class="figure"><span class="accent">$0.98–1.55</span></div><div class="caption">Toronto → Jebel Ali, incl. 5% duty &amp; handling.</div></div>
+        <div class="data-row"><div class="label">Delivered site (UAE)</div><div class="figure">$1.55–2.90</div><div class="caption">≈ 0.55–0.70× the aluminum foil index.</div></div>
+        <div class="data-row"><div class="label">Distributor margin target</div><div class="figure">25–35%</div><div class="caption">Niche-specified product norm.</div></div>
+        <div class="data-row"><div class="label">FOB-to-installed markup</div><div class="figure"><span class="steel">~110–150%</span></div><div class="caption">Standard for imported niche building materials.</div></div>
+      </aside>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">Installed-cost sensitivity</div>
+      <p>The advantage is resilient. Against glass wool foil-faced (the PEB standard), Celplast delivers 30–54% savings at FOB up to $1.50/m², narrowing to 9–40% at $2.00. Even in a worst-case productivity scenario, total installed cost of <strong>$2.20–4.50/m² still beats XPS, mineral wool, and PIR at virtually any FOB price.</strong> All Celplast installed-cost figures remain preliminary pending confirmed FOB pricing, fastener system, and roll specs — finalizable within 48 hours of those inputs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="block" id="applications">
+  <div class="container">
+    <div class="section-label"><span class="num">08</span> Application Prioritization</div>
+    <h2>Where to play first, second, third — and where <em>not</em> to play.</h2>
+    <p class="lead">Each application is scored on market size, access ease, margin potential, regulatory friction, and growth — then gated by a hard rule: any use-case requiring a wall installation method is parked until that method is finalized. Roofing is confirmed; walls are under development.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Application</th><th>Score</th><th>Install ready?</th><th>Decision</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PEB / metal building roof</strong></td><td>4.9</td><td>Yes</td><td><span class="pill go">GO · #1 beachhead</span></td><td>Top score on every dimension; fewest decision-makers; direct foil replacement</td></tr>
+          <tr><td>Building retrofit (roof)</td><td>3.9</td><td>Yes</td><td><span class="pill go">GO · #3</span></td><td>Fastest cycle, no spec phase; ESCO programs; uniquely non-disruptive</td></tr>
+          <tr><td>Villa / residential roof</td><td>3.8</td><td>Yes</td><td><span class="pill go">GO · #2</span></td><td>2,400+ UAE projects, ROSHN in KSA; large unshaded roof = peak RB value</td></tr>
+          <tr><td>Data center roof</td><td>3.5</td><td>Yes</td><td><span class="pill go">GO · #4</span></td><td>18–20% CAGR; metal-deck (same as PEB); huge investment pipeline</td></tr>
+          <tr><td>Cold storage roof</td><td>3.5</td><td>Yes (roof)</td><td><span class="pill go">GO · #5</span></td><td>21% CAGR; vapor + radiant barrier; wall component deferred</td></tr>
+          <tr><td>HVAC duct external wrap</td><td>4.0</td><td>TBC</td><td><span class="pill park">PARK → GO</span></td><td>2nd-highest score; unlocks immediately if roofing method extends to duct wrap</td></tr>
+          <tr><td>Building retrofit (wall)</td><td>3.4</td><td>No</td><td><span class="pill park">PARK</span></td><td>Awaits wall methodology</td></tr>
+          <tr><td>Cavity wall (supplementary)</td><td>3.0</td><td>No</td><td><span class="pill park">PARK</span></td><td>Awaits wall methodology</td></tr>
+          <tr><td>High-rise façade / cladding</td><td>1.5</td><td>No</td><td><span class="pill nogo">NO-GO</span></td><td>Non-combustible mineral wool mandated post-Grenfell; fire barrier insurmountable</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">#1 PEB roofing — the structural advantage</div>
+          <p>Celplast can enter as a <strong>raw-material component supplier</strong> — metallized film to blanket manufacturers — without building a direct sales force in Year 1. PEB fabricators (Zamil, Mammut, Kirby) control 70–80% of GCC volume with a 2–4 week spec cycle. One AFICO supply agreement could generate more volume than dozens of project sales.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">#3 Retrofit — a genuinely unique position</div>
+          <p>Celplast is the only insulation product that can be retrofit-installed under an occupied roof without removing existing materials, requiring specialist labor, or disrupting operations. It wins on economics <em>and</em> speed simultaneously — the lowest-friction sale in the portfolio.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure">Roof → <span class="accent">Duct → Wall</span></div>
+          <div class="dc-caption">The methodology sequence. Each confirmation releases a pool of parked applications into GO. Fast-track duct-wrap validation within 60 days.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">$12–30<span class="accent">M</span></div>
+          <div class="dc-caption">SAM currently parked behind wall methodology — upside, not requirement. Roofing-only entry is viable and profitable on its own.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNEL -->
+<section class="block" id="channel">
+  <div class="container">
+    <div class="section-label"><span class="num">09</span> Route-to-Market &amp; Channel Strategy</div>
+    <h2>One brand, two channels, three sales motions — running in parallel.</h2>
+    <p class="lead">The operating model is a dual structure: a UAE branch office as GCC HQ that owns the control points (pricing, brand, approvals, consultant engagement, pilot governance, inventory), and a KSA local partnership that executes but never owns strategy.</p>
+
+    <div class="cards">
+      <div class="card"><div class="roman">A.</div><div class="ttl">Component supply</div><div class="txt">Film sold directly to PEB fabricators and blanket makers (AFICO, KIMMCO, Knauf, TSSC) as a facing layer replacing aluminum foil. No distributor. High-volume, low-touch — could be 3–5× Channel B within 2–3 years.</div></div>
+      <div class="card"><div class="roman">B.</div><div class="ttl">Distributed product</div><div class="txt">Finished rolls sold through appointed distributors to contractors, installers, and end-users. Lower-volume, high-touch, brand-driven — builds the specification position and long-term defensibility.</div></div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:54px 0 0; color:var(--ink);">Three concurrent sales motions</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Motion</th><th>Cycle time</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Spec-in</strong> (consultant-driven)</td><td>12–18 months</td><td>Highest long-term value — the moat. Named-manufacturer status on master specs.</td></tr>
+          <tr><td><strong>Value engineering</strong> (contractor-driven)</td><td>4–6 weeks</td><td>Fastest revenue — pays the bills while the spec engine builds.</td></tr>
+          <tr><td><strong>Fabricator</strong> (component supply)</td><td>9–12 months</td><td>Highest volume leverage — once qualified, volume scales with the fabricator's entire output.</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Each motion feeds the others: consultant specs create pull that helps distributors sell; distributor projects create reference cases that win specs; fabricator volume builds the market presence that grows brand recognition.</p>
+    </div>
+
+    <div class="callout steel">
+      <div class="ttl">The three failure modes the channel design prevents</div>
+      <p><strong>Price erosion</strong> (MAP + retained discount authority), <strong>channel conflict</strong> (territory + vertical segmentation, project registration), and <strong>specification hollowing</strong> (Celplast keeps consultant engagement in-house; distributor KPIs include spec activity, not just volume). Every element of the strategy is built around these three preventions.</p>
+    </div>
+
+    <div class="split" style="margin-top:48px;">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Priority consultant targets (spec-writers)</div>
+          <p>The building-physics specialists who actually write the insulation clause — <strong>Buro Happold, AESG, Arup, Cundall, WME/Egis</strong> — are Tier 1. Lead-design firms (AECOM, AtkinsRéalis, WSP, Dar Al-Handasah) set frameworks and are Tier 2. Engage Tier 1 in Months 1–6 with CPD sessions and pre-written spec clauses.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Supply architecture</div>
+          <p>Stock model for pilots, urgent demand, VE substitutions and retrofit (3–6 months buffer in JAFZA); back-to-back for large planned projects and fabricator contracts. Year 1 working capital for supply: ~$110,000–315,000.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">AFICO glass wool output</div><div class="figure"><span class="accent">24,000 MT/yr</span></div><div class="caption">Replacing foil on 20% of foil-faced production ≈ 1–2M m²/yr of Celplast demand from one relationship.</div></div>
+        <div class="data-row"><div class="label">Named stakeholder targets</div><div class="figure">82</div><div class="caption">Across 7 categories &amp; 2 markets — 27 to engage in the first 90 days.</div></div>
+        <div class="data-row"><div class="label">Channel A volume potential</div><div class="figure"><span class="steel">3–5×</span></div><div class="caption">vs Channel B within 2–3 years.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- STAKEHOLDERS -->
+<section class="block" id="stakeholders">
+  <div class="container">
+    <div class="section-label"><span class="num">10</span> Stakeholder Target Lists</div>
+    <h2>Named entities, tier-ranked — 27 to engage in the <em>first 90 days</em>.</h2>
+    <p class="lead">Derived from 7,610 tracked projects, MEED intelligence, and competitive analysis. Tier 1 (engage within 90 days) are the highest-leverage relationships where a single connection opens multiple projects or channels.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Category</th><th>Tier 1 priority targets</th><th>Why they matter</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Developers</strong></td><td>Emaar, Aldar, Sobha (UAE); ROSHN, MODON, Diriyah (KSA)</td><td>Emaar's AVL opens 90+ projects; ROSHN is VE-open at 400K homes; MODON is the largest PEB aggregator</td></tr>
+          <tr><td><strong>Consultants (spec-writers)</strong></td><td>Buro Happold, AESG, Arup, Cundall, WME/Egis</td><td>They write the actual thermal-envelope clause — named-manufacturer status here is the highest-leverage action</td></tr>
+          <tr><td><strong>Contractors</strong></td><td>ALEC, ASGC, Group AMANA, Trojan (UAE); Nesma, Thabat (KSA)</td><td>VE-motion entry points; Group AMANA's 1,500+ industrial facilities are a perfect PEB fit</td></tr>
+          <tr><td><strong>PEB fabricators (Channel A)</strong></td><td>AFICO (Zamil), Mammut, TSSC</td><td>Highest-leverage of all — one supply agreement can outproduce dozens of project sales</td></tr>
+          <tr><td><strong>Distributors / IOR</strong></td><td>Modern Seal, Unigulf (UAE); Zamil ecosystem (KSA)</td><td>Existing insulation portfolios, complementary (non-competing) reflective lines</td></tr>
+          <tr><td><strong>ESCO / retrofit</strong></td><td>Etihad ESCO (UAE), Tarshid (KSA)</td><td>Program-level adoption as a qualifying energy-conservation measure unlocks scale demand</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">82 named stakeholders total; the full CRM-ready Excel (contact details, project linkages, priority scores, next-step fields) is delivered as a companion workbook.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section class="block" id="risk">
+  <div class="container">
+    <div class="section-label"><span class="num">11</span> Risk Register &amp; Market Entry Barriers</div>
+    <h2>22 risks catalogued. Two are <em>critical</em>. Both are addressable.</h2>
+    <p class="lead">Risks are rated on likelihood × impact across regulatory, commercial, competitive, operational, reputational, and macro dimensions. The two critical risks plus the three highest HIGH risks are covered by the top-5 mitigation priorities — for less than 10% of projected Year 1–3 revenue.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Risk</th><th>Rating</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr class="row-em"><td>R2</td><td><strong>SBC 601 prescriptive path excludes radiant barrier from Saudi code compliance</strong></td><td><span class="pill crit">Critical</span></td><td>Commission ASTM C1363 hot-box testing; prepare §1.2.5 performance-path docs; engage SBC National Committee</td></tr>
+          <tr class="row-em"><td>C1</td><td><strong>Price erosion / commoditization — distributor drops price to chase volume</strong></td><td><span class="pill crit">Critical</span></td><td>Enforce MAP from Day 1; retain discount authority; partner scorecard ties margin to pricing discipline</td></tr>
+          <tr><td>R1</td><td>ECAS / DCL certification delays from classification ambiguity</td><td><span class="pill high">High</span></td><td>Pre-engage MoIAT &amp; DCL on HS code before applying; use regional CB (TÜV SÜD ME)</td></tr>
+          <tr><td>X6</td><td>PEB fabricators resist switching from proven foil supply</td><td><span class="pill high">High</span></td><td>Offer a zero-risk, no-cost trial batch with full QA — remove the switching-cost barrier entirely</td></tr>
+          <tr><td>O1</td><td>Supply-chain disruption (Red Sea, port congestion, production)</td><td><span class="pill high">High</span></td><td>Maintain 3–6 month JAFZA buffer; route via Cape; order back-to-back 12+ weeks ahead</td></tr>
+          <tr><td>O3</td><td>First pilot installation fails, damaging consultant confidence</td><td><span class="pill high">High</span></td><td>Celplast supervises ALL first installs; pre-qualify candidates; do not scale from a failed pilot</td></tr>
+          <tr><td>P1</td><td>Overclaiming on R-value / energy / code compliance</td><td><span class="pill high">High</span></td><td>Enforce claims-governance framework; HQ approves all marketing; distributor sales training</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">Top-5 mitigation investment — ~$122,000–350,000</div>
+      <p>(1) ASTM C1363 hot-box testing, $15–30K — the single highest-impact action, unlocking the entire KSA spec channel. (2) MAP &amp; pricing discipline, $0 — prevention is the only cure once prices drop. (3) On-site supervision for all first installs, $2–5K/pilot. (4) 3–6 month buffer stock, $100–300K — a competitive weapon, not a cost. (5) Zero-risk trial batch for the first fabricator, $5–15K — removes the biggest Channel A obstacle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GTM -->
+<section class="block" id="gtm">
+  <div class="container">
+    <div class="section-label"><span class="num">12</span> Recommendations &amp; GTM Sequencing</div>
+    <h2>Four moves. All start on <em>Day 1</em>. None is sequential.</h2>
+
+    <div class="moves">
+      <div class="move"><div class="mnum">1.</div><div><div class="mttl">Capture the customs arbitrage</div><div class="mtxt">Clear all containers at Jebel Ali at 5% duty; truck KSA supply across the border. Saves 7–10 points on KSA landed cost — $35–70K/year at Year 3 volumes.</div></div></div>
+      <div class="move"><div class="mnum">2.</div><div><div class="mttl">Win the PEB beachhead</div><div class="mtxt">Approach AFICO, Mammut, and TSSC as a laminate component supplier. Metallized film replaces aluminum foil on glass-wool blankets and sandwich-panel facings. A single agreement dwarfs all other channel volumes.</div></div></div>
+      <div class="move"><div class="mnum">3.</div><div><div class="mttl">Build the spec engine</div><div class="mtxt">Engage Buro Happold, AESG, Arup, Cundall, WME with CPD sessions and spec-clause drafts. Target named-manufacturer status on 2–3 master specs within 18 months. This is the long-term moat.</div></div></div>
+      <div class="move"><div class="mnum">4.</div><div><div class="mttl">Close the certification stack</div><div class="mtxt">ECAS + DCL + Civil Defence + SABER in parallel; commission ASTM C1363 and EN 13501-1. Total $42–104K over 3–6 months. Every day without approvals is a day competitors hold the market.</div></div></div>
+    </div>
+
+    <div class="phases">
+      <div class="phase"><div class="pk">Months 1–3</div><div class="pt">Foundation</div><ul><li>Incorporate JAFZA entity</li><li>Ship first container</li><li>Submit ECAS + DCL</li><li>Approach Mammut/AFICO</li><li>Commission ASTM C1363</li><li>First CPD: Buro Happold</li></ul></div>
+      <div class="phase"><div class="pk">Months 4–6</div><div class="pt">First Revenue</div><ul><li>ECAS CoC obtained</li><li>First distributor appointed</li><li>First PEB + villa pilots</li><li>C1363 results → SBC docs</li><li>Civil Defence CoC</li><li>Publish first case study</li></ul></div>
+      <div class="phase"><div class="pk">Months 7–12</div><div class="pt">Scale UAE + Enter KSA</div><ul><li>SABER PCoC obtained</li><li>KSA partner appointed</li><li>Fabricator trial batch</li><li>ROSHN pilot proposal</li><li>UAE channel to 3–5 territories</li><li>Emaar + Aldar AVL filed</li></ul></div>
+      <div class="phase"><div class="pk">Months 13–24</div><div class="pt">Multi-App Scaling</div><ul><li>Fabricator production volumes</li><li>2+ master-spec inclusions</li><li>ROSHN reference project</li><li>Tarshid program adoption</li><li>Wall methodology pilots</li><li>500K+ m² annual run-rate</li></ul></div>
+    </div>
+
+    <div class="split" style="margin-top:52px;">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">12-month KPI targets</div>
+          <p>Month 6: 25–50K m², $50–100K, 2–4 projects, 2–3 pilots, ECAS+DCL+CD+SABER. Month 12: 100–200K m², $200–400K, 8–15 projects, 1–2 master-spec inclusions, first production fabricator agreement. Month 24: 500K–1.2M m², $1–2.4M, named on 2–3 master specs.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Year 1 budget</div>
+          <p>Total $281,800–644,000 (cash investment excluding inventory: $201,800–404,000). Minimum ~$150K needed to start. Largest lines: personnel/branch manager ($95–150K), certification stack ($42–104K), buffer inventory ($80–240K).</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">Month 12 volume</div><div class="figure"><span class="accent">100–200K m²</span></div><div class="caption">$200–400K revenue, 8–15 active projects.</div></div>
+        <div class="data-row"><div class="label">Year 1 cash investment</div><div class="figure">$202–404K</div><div class="caption">Excluding inventory; min $150K to begin.</div></div>
+        <div class="data-row"><div class="label">Competitive window</div><div class="figure"><span class="steel">18–24 mo</span></div><div class="caption">The time to move is now.</div></div>
+      </aside>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:56px 0 0; color:var(--ink);">Eight decisions required from Celplast</h3>
+    <div class="decisions">
+      <div class="decision"><div class="dtxt"><strong>Confirm FOB transfer pricing by SKU</strong> — installed-cost models stay preliminary until set.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Confirm HVAC duct-wrap methodology</strong> — does the roofing method extend? $10–25M SAM stays parked otherwise.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Approve ASTM C1363 budget ($15–30K)</strong> — the #1 critical-risk mitigation; KSA spec channel is blocked without it.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Select UAE entity structure</strong> (JAFZA recommended) — all certifications need a local entity.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Authorize GCC Branch Manager</strong> (full-time vs consulting) — no on-ground presence, no execution.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Confirm wall methodology timeline</strong> — target Month 12 pilot-ready, or $12–30M SAM stays parked.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Approve Year 1 budget ($282–644K)</strong> — full or phased; minimum $150K to start.</div></div>
+      <div class="decision"><div class="dtxt"><strong>Confirm GCC packaging specs</strong> — roll width, length, palletization — to finalize freight and wastage.</div></div>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">Closing</div>
+      <p>This study analyzed 7,610 GCC projects worth USD 1.41 trillion, profiled 13 competitors, mapped 82 stakeholders, modeled landed costs across two markets, scored 9 applications, and catalogued 22 risks. The radiant-barrier market is <strong>real, growing, underpenetrated, and structurally open</strong>. The next step is a single meeting: leadership reviews the eight decisions, confirms the inputs, and sets a go-live date for Month 1.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ADDENDUM -->
+<section class="block" id="partners">
+  <div class="container">
+    <div class="section-label"><span class="num">+</span> Study Addendum · Partnership Governance</div>
+    <h2>Exclusivity is <em>earned</em>, not given — and three partners are ready to be introduced.</h2>
+    <p class="lead">A two-phase model protects Celplast from premature commitment. Year 1 grants a non-exclusive <strong>Preferred Partner of Record</strong> status with right-of-first-refusal and deal registration; Year 2+ exclusivity is unlocked only by partners who hit agreed KPI thresholds (50K+ m², $100K+, 10+ registered deals, ≥20% conversion, zero MAP violations). Zenith& commits to introducing three established GCC building-materials groups.</p>
+
+    <div class="partner">
+      <div class="pmeta">UAE · Easa Saleh Al Gurg Group (ESAG)</div>
+      <h3>Mac Al Gurg + Al Semsam Building Materials</h3>
+      <div class="psub">27+ company conglomerate · founded 1960 · 370+ international brand partnerships (Siemens, 3M, Fosroc, AkzoNobel)</div>
+      <div class="pfit">ESAG's passive fire-protection portfolio makes them uniquely positioned to sell a Class A (FSI=0) radiant barrier alongside fire-rated products. ECAS and DCL certified. Mac Al Gurg's value-engineering consultancy aligns with the VE motion, and the group's Tier-1 contractor relationships (Burj Khalifa, Dubai Metro, Dubai Opera) provide direct site access.</div>
+      <div class="pscope"><strong>Recommended scope:</strong> UAE distribution, all emirates · evaluate as exclusive UAE partner after Year 1 KPI performance.</div>
+    </div>
+
+    <div class="partner">
+      <div class="pmeta">KSA West · Isam Khairi Kabbani Group (IKK)</div>
+      <h3>Unitech for Building &amp; Construction Materials</h3>
+      <div class="psub">One of KSA's largest conglomerates · Jeddah HQ · 46 branches in KSA · SFSP manufacturing in Dubai &amp; KSA</div>
+      <div class="pfit">Unitech's core strength is building-envelope products and MEP solutions — the exact ecosystem where radiant barriers are specified and installed. Its 46-branch KSA network gives unmatched territorial coverage, SFSP could support local value-added processing, and the IKK contractor arm provides a built-in pilot installation channel.</div>
+      <div class="pscope"><strong>Recommended scope:</strong> KSA Western Province (Jeddah, Makkah, Madinah, Jizan) · full distribution + IOR capability.</div>
+    </div>
+
+    <div class="partner">
+      <div class="pmeta">KSA Central + East · Al Fozan Group</div>
+      <h3>Madar Building Materials</h3>
+      <div class="psub">Al Khobar HQ · founded 1959 · ~$446M revenue · 70+ retail outlets across KSA, Bahrain, UAE, Qatar</div>
+      <div class="pfit">Madar already trades insulation as a core category — not a new product line for them. 70+ outlets provide ready-made KSA distribution; the Retal Development connection gives direct developer access for villa roofing; Arnon Plastic Industries offers potential converting capability; and the Eastern Province HQ positions them ideally for the Dammam / AFICO / Zamil Steel ecosystem.</div>
+      <div class="pscope"><strong>Recommended scope:</strong> KSA Central + Eastern Provinces (Riyadh, Dammam, Al Khobar) · complementary to Unitech by region.</div>
+    </div>
+
+    <div class="callout steel" style="margin-top:38px;">
+      <div class="ttl">Channel A stays direct</div>
+      <p>PEB fabricator supply (AFICO, Mammut, TSSC, KIMMCO) remains a <strong>Celplast-direct relationship</strong>, never routed through distribution partners — protecting the highest-volume, most strategic channel from margin dilution and keeping Celplast's engineers in direct contact with fabricator teams. The KSA West/East split is deliberate: the country is too large and regionally fragmented for a single distributor to cover effectively.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">Celplast <span class="dot">×</span> Zenith&amp;</div>
+        <p>GCC Thermal Insulation &amp; Radiant Barrier — Phase 2 Market Entry Study.</p>
+        <p>Predecessor: GCC Entry Blueprint (Phase 1), Q4 2025.</p>
+      </div>
+      <div>
+        <h4>Client</h4>
+        <p>Celplast Metallized Products</p>
+        <p>Toronto, Canada</p>
+        <p>Dante Ferrari, President</p>
+      </div>
+      <div>
+        <h4>Study Partner</h4>
+        <p>Zenith&amp; · Sharjah, UAE</p>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · Zenith&amp; for Celplast Metallized Products · 15 workstreams · 82 deliverable items</span>
+      <span class="conf">Confidential · Under NDA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal = (entries) => { entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('reveal'); observer.unobserve(e.target); } }); };
+  const observer = new IntersectionObserver(reveal, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.block, .hero').forEach(el => observer.observe(el));
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  const onScroll = () => {
+    const y = window.scrollY + 120;
+    sections.forEach(sec => {
+      const top = sec.offsetTop, bottom = top + sec.offsetHeight;
+      const id = sec.getAttribute('id');
+      const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if (link){ link.style.color = (y >= top && y < bottom) ? 'var(--solar)' : ''; }
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>

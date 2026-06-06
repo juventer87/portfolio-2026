@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCC Sealants &amp; Construction Chemicals — A Strategic Read for Anchor Allied</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    /* ANCHOR ALLIED PALETTE — green & blue (from anchorallied.com) on dark grey */
+    --green: #1f9d57;
+    --green-deep: #14743f;
+    --green-soft: #5fc08a;
+    --blue: #1668a7;
+    --blue-deep: #0f4d7d;
+    --blue-soft: #5a9bcb;
+    --grey: #2b2f34;
+    --grey-deep: #1c2024;
+    --grey-mid: #6b7280;
+    --paper: #f6f8f7;
+    --paper-deep: #ecefec;
+    --surface: #ffffff;
+    --ink: #1f2428;
+    --ink-soft: #4c545c;
+    --muted: #79818b;
+    --border: #e4e7e3;
+    --border-strong: #ccd1cb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .display, h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--grey-deep);
+  }
+
+  /* ============ HEADER ============ */
+  .masthead {
+    background: var(--grey-deep);
+    color: var(--paper);
+    padding: 2.5rem 3rem 1.75rem;
+    border-bottom: 4px solid var(--green);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 38%;
+    background: none;
+    pointer-events: none;
+  }
+  .masthead-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+  .masthead-meta {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--green-soft); margin-bottom: 1rem;
+  }
+  .masthead-meta::before { content: ''; width: 28px; height: 1px; background: var(--green-soft); }
+  .masthead-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 500; color: var(--paper);
+    line-height: 1.06; letter-spacing: -0.03em;
+    max-width: 24ch;
+  }
+  .masthead-title em { font-style: normal; color: var(--green-soft); font-weight: 400; }
+  .masthead-subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.02rem; font-weight: 300;
+    color: rgba(246, 248, 247, 0.78);
+    margin-top: 0.9rem; max-width: 68ch; line-height: 1.55;
+  }
+  .masthead-deck {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    margin-top: 1.6rem; padding-top: 1.4rem;
+    border-top: 1px solid rgba(31, 157, 87, 0.32);
+    font-size: 0.78rem; color: rgba(246, 248, 247, 0.65);
+  }
+  .masthead-deck div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .masthead-deck strong {
+    color: var(--green-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;
+  }
+  .masthead-deck span { color: rgba(246, 248, 247, 0.92); font-size: 0.86rem; }
+
+  /* ============ TAB NAV ============ */
+  .tabnav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 1px 0 rgba(28, 32, 36, 0.04);
+  }
+  .tabnav-inner { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; overflow-x: auto; scrollbar-width: none; }
+  .tabnav-inner::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none; border: none;
+    padding: 0.9rem 1.05rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.74rem; font-weight: 500; color: var(--ink-soft);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.18s ease;
+    white-space: nowrap; letter-spacing: 0.04em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.55rem; position: relative;
+  }
+  .tab-btn .tab-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--green); font-weight: 400; }
+  .tab-btn:hover { color: var(--grey); background: var(--paper-deep); }
+  .tab-btn.active { color: var(--grey-deep); border-bottom-color: var(--green); font-weight: 600; }
+
+  /* ============ MAIN ============ */
+  main { max-width: 1240px; margin: 0 auto; padding: 0 3rem; }
+  .tab-pane { display: none; padding: 3rem 0 4rem; animation: fadeIn 0.4s ease; }
+  .tab-pane.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--green); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 100px; }
+  .section-title {
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 500; margin-bottom: 1.2rem; max-width: 30ch;
+    letter-spacing: -0.025em;
+  }
+  .section-title em { font-style: normal; color: var(--green); font-weight: 400; }
+  .section-lede {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.16rem; line-height: 1.6;
+    color: var(--ink-soft); max-width: 66ch; margin-bottom: 2.5rem; font-weight: 300;
+  }
+
+  p { margin-bottom: 1.1rem; color: var(--ink); max-width: 72ch; }
+  p.wide { max-width: 80ch; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2.5rem 0; }
+  .stat-row.four { grid-template-columns: repeat(4, 1fr); }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    padding: 1.6rem 1.5rem; position: relative;
+  }
+  .stat-card .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); margin-bottom: 0.6rem;
+  }
+  .stat-card .value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.1rem; font-weight: 500;
+    color: var(--grey-deep);
+    line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.03em;
+  }
+  .stat-card .desc { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.45; }
+  .stat-card.urgent { border-top-color: var(--grey-mid); }
+  .stat-card.urgent .value { color: var(--grey); }
+  .stat-card.deep { border-top-color: var(--blue); }
+  .stat-card.deep .value { color: var(--blue-deep); }
+  .stat-card .cite { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--green); vertical-align: super; }
+
+  .insight-box {
+    background: var(--paper-deep);
+    border-left: 3px solid var(--blue);
+    padding: 1.5rem 1.8rem; margin: 2rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 350;
+    line-height: 1.55; color: var(--grey-deep);
+    max-width: 72ch;
+  }
+  .insight-box strong { font-weight: 600; color: var(--grey-deep); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2rem 0; }
+  .threecol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+
+  h3.subhead {
+    font-size: 1.32rem; font-weight: 600;
+    color: var(--grey-deep);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.02em;
+  }
+
+  h4.minor {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em;
+    font-weight: 600; color: var(--green);
+    margin: 1.5rem 0 0.7rem;
+  }
+
+  ul { margin: 1rem 0 1.2rem 0; padding-left: 1.2rem; }
+  ul li { margin-bottom: 0.55rem; color: var(--ink); max-width: 74ch; }
+  ul li::marker { color: var(--green); }
+
+  /* ============ TABLES ============ */
+  .ref-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .ref-table th {
+    text-align: left; padding: 0.8rem 1rem;
+    background: var(--grey-deep); color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500;
+  }
+  .ref-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ref-table tr:nth-child(even) td { background: var(--paper); }
+  .ref-table .country {
+    font-weight: 600; color: var(--green);
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .ref-table .num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--grey-deep); font-weight: 500;
+  }
+
+  /* ============ CHART ============ */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem; margin: 1.5rem 0;
+    position: relative;
+  }
+  .chart-wrap .chart-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); margin-bottom: 0.3rem;
+  }
+  .chart-wrap .chart-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.12rem; color: var(--grey-deep);
+    margin-bottom: 1.2rem; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .chart-canvas { height: 340px; position: relative; }
+  .chart-canvas.short { height: 280px; }
+
+  /* ============ PULL QUOTE ============ */
+  .pullquote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.35; color: var(--grey-deep);
+    max-width: 34ch;
+    padding: 2rem 0 2rem 2rem;
+    border-left: 3px solid var(--green);
+    margin: 2.5rem 0;
+    font-weight: 400; position: relative; letter-spacing: -0.02em;
+  }
+  .pullquote::before {
+    content: '"';
+    position: absolute; left: 0.5rem; top: 1rem;
+    font-size: 3rem; color: var(--green); line-height: 0.8; font-weight: 500;
+  }
+  .pullquote em { font-style: normal; color: var(--green); }
+  .pullquote .attribution {
+    display: block; margin-top: 1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--muted); font-weight: 500;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--grey-deep);
+    color: rgba(246, 248, 247, 0.7);
+    padding: 2.5rem 3rem; margin-top: 4rem;
+    font-size: 0.82rem;
+  }
+  footer .footer-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem;
+  }
+  footer h5 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--green-soft); margin-bottom: 0.8rem; font-weight: 500;
+  }
+  footer p, footer a {
+    color: rgba(246, 248, 247, 0.78);
+    font-size: 0.82rem; line-height: 1.55; text-decoration: none;
+  }
+  footer a:hover { color: var(--green-soft); }
+  .footer-meta {
+    max-width: 1240px; margin: 2rem auto 0; padding-top: 1.5rem;
+    border-top: 1px solid rgba(31, 157, 87, 0.18);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; color: rgba(246, 248, 247, 0.45);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ============ SOURCE / CITATIONS ============ */
+  .source-note {
+    font-size: 0.78rem; color: var(--muted);
+    font-style: italic; margin-top: 0.5rem;
+    line-height: 1.5; max-width: 74ch;
+  }
+  .cite-marker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; color: var(--green);
+    vertical-align: super; font-weight: 500;
+  }
+
+  /* ============ THESIS GRID ============ */
+  .thesis-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; margin: 2.5rem 0 3rem; align-items: start;
+  }
+  .thesis-grid .lead-para {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.06rem; line-height: 1.65;
+    color: var(--ink); font-weight: 400;
+  }
+  .thesis-grid .lead-para strong { color: var(--grey-deep); font-weight: 600; }
+  .thesis-grid .key-points {
+    background: var(--surface); border: 1px solid var(--border); padding: 1.8rem;
+  }
+  .key-points h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--green); margin-bottom: 1rem;
+  }
+  .key-points .point { padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; line-height: 1.5; }
+  .key-points .point:last-child { border-bottom: 0; padding-bottom: 0; }
+  .key-points .point strong {
+    color: var(--grey-deep); font-weight: 600;
+    display: block; margin-bottom: 0.2rem; font-size: 0.88rem;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+
+  /* ============ COMPETITIVE MATRIX ============ */
+  .matrix { overflow-x: auto; margin: 1.5rem 0; }
+  .matrix table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 760px; }
+  .matrix th, .matrix td { padding: 0.75rem 0.9rem; text-align: left; vertical-align: top; }
+  .matrix thead th {
+    background: var(--grey-deep); color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500;
+  }
+  .matrix tbody tr { border-bottom: 1px solid var(--border); }
+  .matrix tbody tr:hover { background: var(--paper); }
+  .matrix .brand-cell { font-weight: 600; color: var(--grey-deep); font-family: 'Space Grotesk', sans-serif; }
+  .matrix .brand-cell .tier { display: block; font-weight: 400; font-size: 0.72rem; color: var(--muted); font-style: italic; margin-top: 0.15rem; font-family: 'IBM Plex Sans', sans-serif; }
+  .matrix .aa-row { background: rgba(31, 157, 87, 0.07); }
+  .matrix .aa-row:hover { background: rgba(31, 157, 87, 0.11); }
+
+  /* ============ TIER BADGE ============ */
+  .tier-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    border-radius: 2px; font-weight: 500;
+  }
+  .tier-badge.premium { background: rgba(22, 104, 167, 0.1); color: var(--blue); border: 1px solid rgba(22, 104, 167, 0.28); }
+  .tier-badge.disruptor { background: rgba(107, 114, 128, 0.1); color: var(--grey-mid); border: 1px solid rgba(107, 114, 128, 0.30); }
+  .tier-badge.hybrid { background: rgba(31, 157, 87, 0.1); color: var(--green); border: 1px solid rgba(31, 157, 87, 0.3); }
+
+  /* ============ OPEN QUESTIONS ============ */
+  .questions-block {
+    background: linear-gradient(135deg, var(--grey-deep) 0%, var(--grey) 100%);
+    color: var(--paper);
+    padding: 2.5rem 3rem; margin: 3rem 0 1rem;
+    position: relative; overflow: hidden;
+  }
+  .questions-block::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(31, 157, 87, 0.22), transparent 65%);
+  }
+  .questions-block h3 {
+    color: var(--green-soft); font-size: 0.78rem;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    margin-bottom: 1.5rem; position: relative;
+  }
+  .questions-block ol {
+    list-style: none; padding: 0; counter-reset: q-counter;
+    max-width: 68ch; position: relative;
+  }
+  .questions-block ol li {
+    counter-increment: q-counter;
+    padding: 1rem 0; padding-left: 3rem;
+    position: relative; color: rgba(246, 248, 247, 0.92);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.14rem; line-height: 1.5;
+    font-weight: 350; letter-spacing: -0.01em;
+    border-bottom: 1px solid rgba(31, 157, 87, 0.18);
+  }
+  .questions-block ol li:last-child { border-bottom: 0; }
+  .questions-block ol li::before {
+    content: counter(q-counter, decimal-leading-zero);
+    position: absolute; left: 0; top: 1.1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem; color: var(--green-soft);
+    letter-spacing: 0.08em; font-weight: 500;
+  }
+  .questions-block .closing {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.88rem; color: rgba(246, 248, 247, 0.7);
+    margin-top: 2rem; max-width: 62ch;
+    line-height: 1.5; font-weight: 300;
+    position: relative;
+  }
+
+  /* ============ VERTICAL BLOCKS ============ */
+  .vertical-block {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 1.6rem 1.8rem; margin-bottom: 1rem; position: relative;
+  }
+  .vertical-block::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--green);
+  }
+  .vertical-block.deep::before { background: var(--blue); }
+  .vertical-block h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.18rem; color: var(--grey-deep);
+    font-weight: 600; margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .vertical-block .vmeta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--green); margin-bottom: 0.7rem;
+  }
+  .vertical-block p { margin-bottom: 0.6rem; font-size: 0.93rem; line-height: 1.55; }
+  .vertical-block p:last-child { margin-bottom: 0; }
+
+  /* ============ FEATURE LIST ============ */
+  .feature-list { list-style: none; padding: 0; counter-reset: f-counter; margin: 1.2rem 0; }
+  .feature-list li {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.25rem 0.8rem; align-items: start;
+    max-width: 80ch;
+  }
+  .feature-list li::before {
+    content: counter(f-counter, decimal-leading-zero);
+    counter-increment: f-counter;
+    grid-column: 1; grid-row: 1;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem; color: var(--green); letter-spacing: 0.05em;
+  }
+  .feature-list strong {
+    grid-column: 2; grid-row: 1;
+    font-weight: 600; color: var(--grey-deep);
+    display: block; margin-bottom: 0.15rem;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.01em;
+  }
+  .feature-list span { grid-column: 2; grid-row: 2; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
+
+  /* ============ SOURCES TAB ============ */
+  .sources-list {
+    list-style: none; padding: 0;
+    columns: 2; column-gap: 2.5rem;
+    counter-reset: s-counter;
+  }
+  .sources-list li {
+    break-inside: avoid;
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.78rem; line-height: 1.5;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .sources-list li::before {
+    content: counter(s-counter);
+    counter-increment: s-counter;
+    position: absolute; left: 0; top: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem; color: var(--green); font-weight: 500;
+  }
+  .sources-list li strong { color: var(--grey-deep); font-weight: 600; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    main { padding: 0 1.5rem; }
+    .masthead { padding: 2rem 1.5rem 1.5rem; }
+    .stat-row, .stat-row.four, .twocol, .threecol { grid-template-columns: 1fr; }
+    .thesis-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .masthead-deck { flex-direction: column; gap: 1rem; }
+    .questions-block { padding: 2rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    footer .footer-inner { grid-template-columns: 1fr; }
+    .sources-list { columns: 1; }
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    .tabnav { display: none; }
+    .tab-pane { display: block !important; page-break-after: always; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-meta">Strategic Intelligence Read · Confidential</div>
+    <h1 class="masthead-title">GCC Sealants &amp; Construction Chemicals<br>&mdash; a strategic <em>read</em> for Anchor Allied</h1>
+    <p class="masthead-subtitle">
+      A consultative regional note for Mr. Ahmed Ali Nalwala, Founder &amp; Managing Director, Anchor Allied Factory (ASMACO) &mdash; on where the real growth runway sits for a regional volume leader as the GCC construction-chemicals market premiumises: the market architecture, the squeeze between global premium and Chinese commodity, the specification gap at the heart of margin, the under-built brand engine, the private-label expansion for the regional trade, and the strategic vectors shaping the decade ahead.
+    </p>
+    <div class="masthead-deck">
+      <div><strong>Author</strong><span>Mohammed Vaseeuddin</span></div>
+      <div><strong>Location</strong><span>Dubai, UAE</span></div>
+      <div><strong>Sector</strong><span>Sealants, Adhesives &amp; Construction Chemicals</span></div>
+      <div><strong>Scope</strong><span>GCC · MENA</span></div>
+      <div><strong>Date</strong><span>June 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TAB NAV ============ -->
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <button class="tab-btn active" data-tab="read"><span class="tab-num">01</span>The Read</button>
+    <button class="tab-btn" data-tab="market"><span class="tab-num">02</span>Market Architecture</button>
+    <button class="tab-btn" data-tab="squeeze"><span class="tab-num">03</span>The Squeeze</button>
+    <button class="tab-btn" data-tab="specification"><span class="tab-num">04</span>The Specification Gap</button>
+    <button class="tab-btn" data-tab="engine"><span class="tab-num">05</span>The Brand Engine</button>
+    <button class="tab-btn" data-tab="privatelabel"><span class="tab-num">06</span>Private Label</button>
+    <button class="tab-btn" data-tab="alliances"><span class="tab-num">07</span>Channel &amp; Alliances</button>
+    <button class="tab-btn" data-tab="ksapath"><span class="tab-num">08</span>KSA Pathway</button>
+    <button class="tab-btn" data-tab="vectors"><span class="tab-num">09</span>Strategic Vectors</button>
+    <button class="tab-btn" data-tab="sources"><span class="tab-num">10</span>Sources &amp; Method</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ TAB 1: THE READ ============ -->
+<section class="tab-pane active" id="read">
+  <div class="section-label">01 &mdash; The Read</div>
+  <h2 class="section-title">The hardest battle is already <em>won</em>. The next one is about where margin lives.</h2>
+  <p class="section-lede">
+    Anchor Allied spent three decades doing the difficult thing &mdash; building a regional manufacturing base, the ASMACO brand, and distribution into 80-plus countries from a standing start in 1995. The value of the next decade will not come from more volume or more SKUs. It will come from following where the margin is migrating in this market: toward specified, performance-graded, regulation-pulled construction chemistry &mdash; and from monetising the factory itself more fully. That is precisely where a volume leader has the most to gain, and the most to lose if it stays still.
+  </p>
+
+  <div class="insight-box" style="border-left:3px solid var(--blue);">
+    <strong>What the meeting confirmed (June 2026):</strong> The direction in this read is no longer a hypothesis. The owner confirmed an appetite to grow <em>specified and contractor</em> sales and to widen ASMACO's alliance base in Saudi Arabia and the region. Two facts reframe the plan. First, ASMACO already manufactures and supplies through partners &mdash; <strong>Unitech (IKK Group)</strong> &mdash; which already carries ASMACO's <strong>Poly&nbsp;Ti</strong> sealant line &mdash; and <strong>Masdar</strong> (the Al&nbsp;Muhaidib Group's Kingdom-wide building-materials distributor) are live offtake relationships, the base to build on. Second, and decisive: <strong>ASMACO's firestop products are UL&nbsp;Listed</strong> &mdash; the single credential that turns a trade brand into a specifiable one, and the key that unlocks KSA Civil Defense specification and the Saudi Aramco vendor pathway. Two new sections build the read in that direction: <em>Channel &amp; Alliances</em> (Tab&nbsp;07) and <em>The KSA Pathway</em> (Tab&nbsp;08).
+  </div>
+
+  <div class="thesis-grid">
+    <div class="lead-para">
+      <p>The first force is <strong>scale, concentrated in Saudi Arabia</strong>. The GCC construction adhesives &amp; sealants market sat at roughly USD 416.65M in 2024 and is tracked to USD 709.93M by 2033 at a 5.70% CAGR<span class="cite-marker">[3]</span>; the broader MEA construction-chemicals market is moving from USD 5.75B in 2025 toward USD 8.13B by 2031<span class="cite-marker">[1]</span>. Saudi Arabia alone generated roughly <strong>34% of regional adhesives &amp; sealants revenue</strong> in 2025<span class="cite-marker">[2]</span>, carried by a ~USD 1.25 trillion Vision 2030 project pipeline &mdash; NEOM, the Red Sea, King Salman Park<span class="cite-marker">[1]</span>. This is not forecast demand; it is committed capital, and it specifies high-performance silicones, polyurethanes and fire-rated systems.</p>
+
+      <p>The second force is a <strong>market splitting in two</strong>. At the top, global premium houses &mdash; Sika, Bostik, Soudal, Den&nbsp;Braven, Mapei, Fosroc &mdash; capture specification and the margin that travels with it. At the bottom, low-cost Chinese hybrid (MS&nbsp;polymer) sealants and PU foams are compressing the value tier on price. A regional volume leader sits in the contested middle. The middle is the most expensive place to defend and the least defensible over time &mdash; unless the leader chooses a direction.</p>
+
+      <p>The third force is that <strong>value is migrating to specification &mdash; and to capacity</strong>. Demand is increasingly pulled by fire ratings, structural-glazing approvals, VOC ceilings and warranted systems<span class="cite-marker">[4][2]</span>; this is where margin and defensibility live, and where ASMACO's manufacturing strength is currently <em>under-monetised</em>. The same factory that should climb into specification can also be sold a second time &mdash; as a private-label platform for the regional trade. Both moves convert manufacturing credibility into earnings the company is not yet fully capturing.</p>
+    </div>
+
+    <aside class="key-points">
+      <h4>Three Anchors</h4>
+      <div class="point">
+        <strong>The market is growing &mdash; and it is a KSA story</strong>
+        GCC adhesives &amp; sealants: USD 416.65M → USD 709.93M by 2033, 5.70% CAGR. KSA ≈ 34% of regional revenue, on a ~USD 1.25T Vision 2030 pipeline.<span class="cite-marker">[1][2][3]</span>
+      </div>
+      <div class="point">
+        <strong>The market is bifurcating</strong>
+        Global premium pulls specification value up; Chinese commodity imports push price down. ASMACO's volume leadership sits in the squeezed middle &mdash; the section on this (Tab 03) is the crux of the read.
+      </div>
+      <div class="point">
+        <strong>The runway is to climb &mdash; and to monetise the plant twice</strong>
+        Defensible margin sits in specified, regulation-pulled categories ASMACO already makes; and spare manufacturing capacity can be monetised again through private label for the regional trade.
+      </div>
+    </aside>
+  </div>
+
+  <div class="stat-row four">
+    <div class="stat-card deep">
+      <div class="label">GCC Adhesives &amp; Sealants SAM</div>
+      <div class="value">$710M</div>
+      <div class="desc">Projected by 2033, from USD 416.65M in 2024. CAGR 5.70%.<span class="cite-marker">[3]</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">KSA Share of Regional Revenue</div>
+      <div class="value">~34%</div>
+      <div class="desc">KSA share of MEA adhesives &amp; sealants revenue, 2025 &mdash; the single largest market.<span class="cite-marker">[2]</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Fastest-Growing Resin</div>
+      <div class="value">6.24%</div>
+      <div class="desc">PU adhesives CAGR &mdash; the quickest-growing chemistry, led by structural glazing &amp; bonding.<span class="cite-marker">[2]</span></div>
+    </div>
+    <div class="stat-card urgent">
+      <div class="label">The ASMACO Base</div>
+      <div class="value">30 yrs</div>
+      <div class="desc">Regional manufacturing leadership, ASMACO brand, exports to 80+ countries since 1995.<span class="cite-marker">[6]</span></div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>The read in one sentence:</strong> Anchor Allied has already built the asset that is hardest to build &mdash; a trusted, three-decade regional manufacturing brand &mdash; and the strategic question is no longer whether the market opportunity is there, but how to convert volume leadership into <em>specified</em> leadership, and idle capacity into private-label earnings, before the middle of the market gets squeezed from both ends.
+  </div>
+
+  <div class="questions-block">
+    <h3>Open Questions for Anchor Allied's Reflection</h3>
+    <ol>
+      <li>How does ASMACO's portfolio map against the premium-versus-commodity split now visible in the GCC &mdash; and which lines are most exposed to Chinese price compression today?</li>
+      <li>Of the KSA Vision 2030 specification pipeline, how much is ASMACO currently converting at the consultant and contractor level &mdash; and what would meaningfully raise that conversion?</li>
+      <li>What would climbing the value ladder actually require &mdash; test approvals and certifications, technical marketing, project references, or a deeper in-Kingdom footprint?</li>
+      <li>How is the threat from low-cost hybrid and foam imports best met &mdash; on price, or by locking specified demand that a commodity import cannot substitute?</li>
+      <li>Where could a disciplined private-label program for regional traders monetise spare capacity &mdash; and how should it be segmented to protect the ASMACO master brand?</li>
+      <li>If the brand and demand engine were rebuilt to match the strength of the factory, what would that unlock in pull-demand and margin?</li>
+    </ol>
+    <p class="closing">These questions are offered for reflection, not for response. The sections that follow lay out the regional picture from a practitioner's vantage point &mdash; the market architecture, the squeeze in the middle, the specification gap, the brand engine, the private-label expansion, and the strategic vectors for the decade ahead.</p>
+  </div>
+</section>
+
+<!-- ============ TAB 2: MARKET ARCHITECTURE ============ -->
+<section class="tab-pane" id="market">
+  <div class="section-label">02 &mdash; Market Architecture</div>
+  <h2 class="section-title">A hierarchical view: TAM, SAM, SOM &mdash; and the segments where margin sits</h2>
+  <p class="section-lede">
+    To size the opportunity without distortion, the market reads at three concentric levels &mdash; the MEA construction-chemicals TAM that sets the ceiling, the GCC adhesives &amp; sealants SAM that is ASMACO's core battleground, and the country and chemistry SOMs where capture decisions are actually made.
+  </p>
+
+  <h3 class="subhead">The Market Trajectory</h3>
+  <div class="chart-wrap">
+    <div class="chart-title">GCC Construction Adhesives &amp; Sealants &mdash; 2024 to 2033</div>
+    <div class="chart-headline">The GCC adhesives &amp; sealants market is on track to grow ~70% over the decade &mdash; from USD 416.65M to USD 709.93M.</div>
+    <div class="chart-canvas"><canvas id="marketChart"></canvas></div>
+  </div>
+  <p class="source-note">Source: IMARC Group, GCC Construction Adhesives &amp; Sealants Chemical Market<span class="cite-marker">[3]</span>. Endpoints are published (2024 base USD 416.65M; 2033 USD 709.93M at 5.70% CAGR); intermediate years are smoothed interpolations for illustration.</p>
+
+  <h3 class="subhead">The Hierarchical Read &mdash; TAM / SAM / SOM</h3>
+  <table class="ref-table">
+    <thead>
+      <tr>
+        <th style="width: 110px;">Layer</th>
+        <th>Scope</th>
+        <th>Base</th>
+        <th>Projected</th>
+        <th>CAGR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="country">TAM</td>
+        <td>MEA Construction Chemicals</td>
+        <td class="num">USD 5.75B (2025)</td>
+        <td class="num">USD 8.13B (2031)</td>
+        <td class="num">5.94%</td>
+      </tr>
+      <tr>
+        <td class="country">SAM</td>
+        <td>GCC Construction Adhesives &amp; Sealants</td>
+        <td class="num">USD 416.65M (2024)</td>
+        <td class="num">USD 709.93M (2033)</td>
+        <td class="num">5.70%</td>
+      </tr>
+      <tr>
+        <td class="country">SOM &mdash; KSA</td>
+        <td>Saudi Arabia (share of MEA A&amp;S revenue)</td>
+        <td class="num">~34% (2025)</td>
+        <td class="num">Largest single market</td>
+        <td class="num">Vision 2030-led</td>
+      </tr>
+      <tr>
+        <td class="country">SOM Niche</td>
+        <td>PU Adhesives (fastest chemistry)</td>
+        <td class="num">&mdash;</td>
+        <td class="num">Lead growth segment</td>
+        <td class="num">6.24%</td>
+      </tr>
+      <tr>
+        <td class="country">SOM Niche</td>
+        <td>Silicone Sealants &mdash; Building &amp; Construction</td>
+        <td class="num">57.8% of silicone demand (2026)</td>
+        <td class="num">Neutral-cure 31.6%</td>
+        <td class="num">Durability-led</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="source-note">Sources: Mordor Intelligence MEA Construction Chemicals<span class="cite-marker">[1]</span>; IMARC GCC Adhesives &amp; Sealants<span class="cite-marker">[3]</span>; Mordor MEA Adhesives &amp; Sealants<span class="cite-marker">[2]</span>; Coherent Market Insights KSA/UAE/Kuwait Silicone Sealants<span class="cite-marker">[4]</span>.</p>
+
+  <h3 class="subhead">Where the Growth Concentrates</h3>
+  <div class="twocol">
+    <div>
+      <p class="wide">The regional opportunity is concentrated, not diffuse. <strong>Saudi Arabia generated roughly 34% of MEA adhesives &amp; sealants revenue in 2025</strong><span class="cite-marker">[2]</span>, anchored by the Vision 2030 build-out: NEOM's linear-city curtain-wall glazing specifying UV-stable structural silicones; the Red Sea Development's marine villas requiring salt-fog-resistant polyurethanes; King Salman Park adding 12,000 residential units<span class="cite-marker">[1][2]</span>.</p>
+      <p class="wide">That concentration is a feature, not a constraint. It means a manufacturer can win disproportionately by focusing commercial and specification effort on two or three markets &mdash; KSA above all &mdash; rather than spreading thinly across 80 export countries. Depth of specification in KSA will out-earn breadth of distribution everywhere else.</p>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Regional Revenue Concentration &mdash; MEA Adhesives &amp; Sealants</div>
+      <div class="chart-headline">KSA is the single largest market; the GCC core dominates the addressable revenue.</div>
+      <div class="chart-canvas short"><canvas id="countryChart"></canvas></div>
+    </div>
+  </div>
+  <p class="source-note">Source: Mordor Intelligence MEA Adhesives &amp; Sealants &mdash; KSA at 34.48% of 2025 revenue is the cited figure<span class="cite-marker">[2]</span>. UAE, rest-of-GCC and rest-of-MEA splits are the author's indicative estimates for illustration, not published shares.</p>
+
+  <h3 class="subhead">The Demand Drivers Worth Naming</h3>
+  <p class="wide">Three structural drivers will shape specification through the decade: <strong>fire and life-safety regulation</strong> converging toward NFPA-referenced codes across the GCC; <strong>VOC ceilings and green-building certification</strong> (UAE's LEED-registered project base, Abu Dhabi's Estidama Pearl, KSA's carbon-neutrality targets) pushing demand toward low-VOC, water-borne and reactive chemistries<span class="cite-marker">[5]</span>; and <strong>durability specification</strong> on giga-projects &mdash; UV, salt-fog and movement-cycle performance written into the spec itself<span class="cite-marker">[2]</span>. Each of these rewards a manufacturer that can certify and document, and penalises one that competes on price alone.</p>
+
+  <div class="insight-box">
+    <strong>The market-structure read:</strong> The opportunity is concentrated in KSA, growing at ~6%, and increasingly gated by certification and performance documentation. A volume leader's natural advantage &mdash; in-house R&amp;D, a real factory, and three decades of formulation &mdash; is exactly the advantage that specification-led demand rewards. The constraint is not capability; it is conversion.
+  </div>
+</section>
+
+<!-- ============ TAB 3: THE SQUEEZE ============ -->
+<section class="tab-pane" id="squeeze">
+  <div class="section-label">03 &mdash; The Squeeze</div>
+  <h2 class="section-title">Caught in the middle: premium pulls value up, commodity pushes price down</h2>
+  <p class="section-lede">
+    The GCC sealants and construction-chemicals market is splitting along a visible price-and-specification axis. Understanding where ASMACO sits on that axis &mdash; and which way to move &mdash; is the central commercial decision of the next cycle.
+  </p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Indicative Price Positioning &mdash; Sealant Cartridge</div>
+    <div class="chart-headline">A ~3–4&times; spread separates global premium from commodity imports. ASMACO sits in the contested middle.</div>
+    <div class="chart-canvas"><canvas id="squeezeChart"></canvas></div>
+  </div>
+  <p class="source-note">Indicative relative pricing for illustration of market structure, indexed to global-premium = 100; not absolute quoted prices. Positions reflect the author's market observation across GCC trade and project channels.</p>
+
+  <h3 class="subhead">The Competitive Field</h3>
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Tier</th>
+          <th>How they win</th>
+          <th>Where they're exposed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="brand-cell">Sika <span class="tier">Global premium</span></td>
+          <td><span class="tier-badge premium">Premium</span></td>
+          <td>Specification depth, full system selling, technical service, global approvals.</td>
+          <td>Price; agility on mid-market volume lines.</td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Bostik / Soudal / Den&nbsp;Braven <span class="tier">Global premium-value</span></td>
+          <td><span class="tier-badge premium">Premium</span></td>
+          <td>Brand, hybrid/MS leadership, some local production lowering landed cost.</td>
+          <td>Regional service depth vs. a domestic manufacturer.</td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Mapei / Fosroc (Al&nbsp;Gurg) <span class="tier">Premium regional</span></td>
+          <td><span class="tier-badge premium">Premium</span></td>
+          <td>Construction-chemical systems, contractor relationships, project references.</td>
+          <td>Narrower aerosol/consumer range; premium cost base.</td>
+        </tr>
+        <tr>
+          <td class="brand-cell">SAVETO / regional KSA makers <span class="tier">Value-premium, in-Kingdom</span></td>
+          <td><span class="tier-badge premium">Premium</span></td>
+          <td>Local KSA manufacturing, local-content preference, price-competitive spec.</td>
+          <td>Brand reach beyond KSA; breadth of range.</td>
+        </tr>
+        <tr class="aa-row">
+          <td class="brand-cell">ASMACO / Anchor Allied <span class="tier">Regional volume leader</span></td>
+          <td><span class="tier-badge hybrid">The Middle</span></td>
+          <td>Own manufacturing, broad range, 30-yr brand, deep distribution, sharp price-to-quality.</td>
+          <td>Under-specified at consultant level; brand &amp; technical-marketing engine thinner than the factory; squeezed between premium spec and commodity price.</td>
+        </tr>
+        <tr>
+          <td class="brand-cell">Chinese hybrid &amp; PU foam imports <span class="tier">Commodity</span></td>
+          <td><span class="tier-badge disruptor">Disruptor</span></td>
+          <td>Lowest landed price, aggressive volume into trade channels.</td>
+          <td>No specification, no approvals, no warranty, no local service or accountability.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pullquote">
+    The middle is the most expensive position to defend and the least defensible to hold. The escape is upward &mdash; into specified demand that a commodity import cannot touch.
+    <span class="attribution">— The strategic read</span>
+  </div>
+
+  <h3 class="subhead">Why the Middle Erodes</h3>
+  <p class="wide">A volume leader in the middle faces a structural pincer. Against global premium, it loses the specified, warranted, high-margin project work because it is not written into the consultant's specification. Against commodity imports, it is forced to defend trade volume on price, eroding the very margin that funds R&amp;D and brand. Holding the middle means fighting a two-front price-and-prestige war indefinitely. <strong>The resolution is not to pick a side of the existing axis &mdash; it is to climb out of it</strong>, by converting ASMACO's manufacturing credibility into specification authority in the categories where imports cannot follow and premium incumbents are beatable on landed cost and service.</p>
+
+  <div class="insight-box">
+    <strong>The competitive read:</strong> ASMACO's strongest asset &mdash; a real regional factory with in-house R&amp;D &mdash; is the one asset neither the premium importer nor the commodity importer can replicate locally. Premium players carry a premium cost base; commodity players carry no accountability. A domestic manufacturer that earns specification owns the defensible ground in between, with a structurally better cost position than the premium tier and a structurally better trust position than the commodity tier.
+  </div>
+</section>
+
+<!-- ============ TAB 4: THE SPECIFICATION GAP ============ -->
+<section class="tab-pane" id="specification">
+  <div class="section-label">04 &mdash; The Specification Gap</div>
+  <h2 class="section-title">The margin is in the spec &mdash; and the spec is where ASMACO is thinnest</h2>
+  <p class="section-lede">
+    In construction chemicals, the most profitable demand is created long before the purchase order &mdash; in the consultant's specification, the contractor's approved-products list, and the authority's compliance requirement. This is where ASMACO's capable product is currently under-represented relative to its manufacturing strength, and it is the clearest runway in the business.
+  </p>
+
+  <h3 class="subhead">How Specified Demand Is Created</h3>
+  <p class="wide">The specification chain runs: <strong>consultant writes the spec → authority sets the compliance bar → contractor builds an approved-products list → the product that is named, tested and warranted wins the project</strong> &mdash; often at a materially higher margin than the same chemistry sold as a trade commodity. A manufacturer breaks into this chain with test certifications, technical data sheets, system approvals, project reference case studies, and consultants who know the brand. Product capability is necessary but not sufficient; the documentation and the relationships are what convert capability into specified revenue.</p>
+
+  <h3 class="subhead">The Four Categories Where ASMACO Should Climb</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Vector A · Passive Fire Protection</div>
+    <h4>Firestop sealants &amp; fire-rated systems</h4>
+    <p>GCC fire and life-safety codes are converging toward NFPA-referenced standards, and passive fire protection is increasingly enforced at the authority level. Firestop is a specification-gated, warranty-backed, audit-trail category &mdash; precisely the kind of demand a commodity import cannot serve. ASMACO already manufactures firestop sealants and fire-retardant foam; the gap is tested-and-approved systems, documentation, and specification presence.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Vector B · Façade &amp; Structural Glazing</div>
+    <h4>High-performance structural &amp; weather-seal silicones</h4>
+    <p>Giga-project curtain walls specify UV-stable structural silicones with documented movement and durability performance<span class="cite-marker">[2]</span>. Building &amp; construction already accounts for ~58% of regional silicone-sealant demand<span class="cite-marker">[4]</span>. This is a high-value, approvals-led niche where a domestic manufacturer with R&amp;D can compete on landed cost against premium imports &mdash; once the performance is certified and specified.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Vector C · Warranted Waterproofing &amp; Flooring</div>
+    <h4>Coatings, epoxy flooring &amp; repair systems sold with warranty</h4>
+    <p>ASMACO's portfolio already spans waterproof coatings, self-levelling epoxy flooring, repair mortars and 2K systems<span class="cite-marker">[6]</span>. Sold as <em>warranted systems</em> rather than tins of product, these move from commodity pricing to project pricing &mdash; with the manufacturer's warranty as the moat against cheaper substitutes.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Vector D · Hybrids &amp; Low-VOC</div>
+    <h4>MS-polymer hybrids and green-building-compliant chemistries</h4>
+    <p>Hybrid (MS polymer) is among the fastest-moving chemistries and the front line against Chinese imports. Tightening VOC ceilings and green-building certification (LEED, Estidama, KSA 2050 targets) reward low-VOC, water-borne and reactive formulations<span class="cite-marker">[5]</span>. Owning the certified, green-compliant hybrid position is how the value tier is defended without a price war.</p>
+  </div>
+
+  <div class="insight-box">
+    <strong>The specification read:</strong> Every one of these four categories is a product ASMACO can already make. The missing layer is the specification infrastructure &mdash; approvals, technical documentation, project references and consultant engagement &mdash; that turns a capable cartridge into a specified, warranted, defensible line. Closing that gap is a marketing-and-technical build, not a manufacturing build, which is why it is achievable inside a single planning cycle.
+  </div>
+
+  <div class="pullquote">
+    ASMACO does not need to make new products to climb. It needs to get the products it already makes <em>specified</em>.
+    <span class="attribution">— The strategic read</span>
+  </div>
+</section>
+
+<!-- ============ TAB 5: THE BRAND ENGINE ============ -->
+<section class="tab-pane" id="engine">
+  <div class="section-label">05 &mdash; The Brand Engine</div>
+  <h2 class="section-title">A 30-year brand with a demand engine that hasn't caught up to the factory</h2>
+  <p class="section-lede">
+    ASMACO's manufacturing and distribution have scaled for three decades. The brand and demand-generation engine &mdash; the system that creates pull, supports specification, and lets a manufacturer charge for trust &mdash; is the part of the business with the most untapped leverage. Closing that gap is the fastest, lowest-capital lever available.
+  </p>
+
+  <h3 class="subhead">The Under-Monetised Asset</h3>
+  <p class="wide">A three-decade regional manufacturer represented by a generic, placeholder-stage web presence is leaving pull-demand on the table. For a trade-volume business this was survivable; for a business climbing into specification, it is the binding constraint. Consultants, contractors and specifiers research before they specify &mdash; and they specify what they can find, trust and document. The brand engine is no longer a cost centre; it is the mechanism that converts manufacturing credibility into specified revenue and price premium.</p>
+
+  <h3 class="subhead">What an Integrated Engine Looks Like</h3>
+  <ul>
+    <li><strong>Brand architecture that separates the two businesses.</strong> The professional/construction-chemical line and the consumer/retail line (home care, body sprays, lighter gas) serve different buyers and should not dilute each other. A clean architecture lets the pro line carry a specification-grade identity while the consumer line competes on shelf.</li>
+    <li><strong>A technical-marketing &amp; approvals library.</strong> Test certificates, system approvals, technical data sheets, method statements and warranties &mdash; organised, current, and easy for a specifier to find and cite. This is the raw material of specification.</li>
+    <li><strong>Project reference &amp; case-study program.</strong> Documented, named projects build the credibility that wins the next specification. Real references replace the placeholder testimonials.</li>
+    <li><strong>Consultant &amp; specifier engagement.</strong> CPD sessions, spec assets, BIM/library objects and direct technical relationships that get ASMACO written into the spec at source.</li>
+    <li><strong>Digital demand generation.</strong> A specification-grade website, search presence, and B2B lead capture &mdash; the inbound channel that a 30-year brand should already dominate regionally.</li>
+    <li><strong>Distributor &amp; sales enablement.</strong> Training, tools and content that lift distributor engagement and conversion across the channel.</li>
+  </ul>
+
+  <div class="insight-box">
+    <strong>The engine read:</strong> This is the highest-return, lowest-capital build in the business. It does not require a new plant or a new product &mdash; it requires turning the existing manufacturing strength into specified, pull-driven, premium-priced demand. It is also the discipline that most directly defends the value tier against commodity imports: a specified, documented, warranted brand cannot be swapped for an unbranded cartridge on price alone.
+  </div>
+</section>
+
+<!-- ============ TAB 6: PRIVATE LABEL ============ -->
+<section class="tab-pane" id="privatelabel">
+  <div class="section-label">06 &mdash; Private Label</div>
+  <h2 class="section-title">A factory is a platform: <em>private label</em> for the regional trade</h2>
+  <p class="section-lede">
+    ASMACO's manufacturing, R&amp;D and quality systems are an asset that can be sold twice &mdash; once as the ASMACO brand, and again as a private-label and contract-manufacturing platform for the many regional traders, distributors and project suppliers who want their own house brand without owning a plant. It is the rare growth lever that fills capacity, defends regional share, and funds the premium climb at the same time.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card deep">
+      <div class="label">Monetise The Plant</div>
+      <div class="value">2&times;</div>
+      <div class="desc">Sell the same lines twice &mdash; as ASMACO, and as private-label volume that absorbs fixed overhead and lowers unit cost.</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Convert The Threat</div>
+      <div class="value">Imports → Customers</div>
+      <div class="desc">The trader who would otherwise import Chinese commodity instead buys a locally-made, certified house brand from ASMACO.</div>
+    </div>
+    <div class="stat-card urgent">
+      <div class="label">Channel Lock-In</div>
+      <div class="value">Sticky</div>
+      <div class="desc">A house brand built on ASMACO formulations and packaging is held by switching cost &mdash; reformulation, re-approval, continuity.</div>
+    </div>
+  </div>
+
+  <h3 class="subhead">Why It Fits ASMACO Specifically</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Rationale 01 · Capacity</div>
+    <h4>It monetises capacity and the formulation library twice</h4>
+    <p>A manufacturer's least-monetised assets are spare line-time and a proven formulation library. Private-label volume runs on the same equipment, improves overhead absorption, and lowers unit cost across the whole plant &mdash; ASMACO and house brands alike &mdash; without new brand-building spend.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Rationale 02 · Defence</div>
+    <h4>It converts a competitive threat into captive volume</h4>
+    <p>Today, many regional traders private-label imported Chinese commodity to chase margin. A locally-made, certified, consistent ASMACO-produced house brand gives them a better story &mdash; lead times, documentation, accountability &mdash; and occupies the shelf either way. ASMACO defends regional share whether the buyer wants the ASMACO badge or their own.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Rationale 03 · Annuity</div>
+    <h4>It creates sticky, annuity-style volume</h4>
+    <p>Once a trader builds a house brand on ASMACO's formulations, packaging and documentation, the relationship is held by switching cost. Re-sourcing means reformulation, re-testing and re-approval &mdash; friction that turns a transactional buyer into a recurring manufacturing customer.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Rationale 04 · Reach</div>
+    <h4>It extends reach and market intelligence at the partner's cost</h4>
+    <p>Every private-label partner carries ASMACO chemistry into channels and territories the brand may not reach directly, and feeds back a live read on regional demand &mdash; distribution and intelligence funded by the partner, not the plant.</p>
+  </div>
+
+  <h3 class="subhead">How The Program Works</h3>
+  <ol class="feature-list">
+    <li><strong>Formulate to spec or off-shelf</strong><span>Standard ASMACO grades for speed, or tailored formulations to a trader's performance and price target.</span></li>
+    <li><strong>Fill &amp; package in the partner's brand</strong><span>The trader's identity on cartridge, can, label and carton &mdash; their brand, ASMACO's chemistry and QC behind it.</span></li>
+    <li><strong>Supply the documentation</strong><span>Technical data sheets, safety data sheets, test and compliance documentation &mdash; so even a house brand can be sold credibly and, where relevant, specified.</span></li>
+    <li><strong>Tiered MOQs &amp; territory terms</strong><span>Minimum-order tiers that scale from regional distributor to large trader, with optional territory or category exclusivity.</span></li>
+  </ol>
+
+  <h3 class="subhead">The Guardrails That Make It Safe</h3>
+  <ul>
+    <li><strong>Segmentation that protects the master brand.</strong> Private label serves the value and captive-trade tier; ASMACO remains the specified, premium, warranted brand. The two are kept in distinct lanes so the house brands never cannibalise ASMACO's specified project work.</li>
+    <li><strong>Margin floors.</strong> Private-label pricing is governed by contribution-margin floors and capacity-priority rules, so it fills the plant without competing the ASMACO brand down on price.</li>
+    <li><strong>IP &amp; formulation discipline.</strong> Proprietary premium and specification-grade formulations stay in-house; private label is offered on standard and tailored grades, protecting the crown-jewel chemistry.</li>
+    <li><strong>Channel-conflict rules.</strong> Territory, segment and account rules prevent a partner's house brand from colliding with ASMACO's own distribution or specified projects.</li>
+  </ul>
+
+  <div class="insight-box">
+    <strong>The private-label read:</strong> A manufacturer's spare capacity and formulation library are among its least-monetised assets. A disciplined private-label program turns regional traders from competitors-by-proxy &mdash; importing commodity &mdash; into customers; it is the rare lever that simultaneously fills the plant, defends regional share against imports, and funds the premium brand's climb. The whole game is in the guardrails: segment it cleanly, floor the margin, protect the formulations, and it strengthens ASMACO rather than diluting it.
+  </div>
+
+  <div class="pullquote">
+    Sell the brand to the market, and sell the factory to the trade. <em>Both</em> run on the same lines.
+    <span class="attribution">— The strategic read</span>
+  </div>
+</section>
+
+<!-- ============ TAB 7: CHANNEL & ALLIANCES ============ -->
+<section class="tab-pane" id="alliances">
+  <div class="section-label">07 &mdash; Channel &amp; Alliances</div>
+  <h2 class="section-title">The factory has a front door: <em>widen the alliance base</em> that carries it into KSA</h2>
+  <p class="section-lede">
+    ASMACO already proves the model &mdash; it manufactures and supplies through partners rather than selling alone. The meeting confirmed an appetite to widen that base, especially in Saudi Arabia, and to tilt it toward <em>specified, contractor-facing</em> partners rather than pure trade volume. This section maps the footprint today and the partners worth bringing into the fold, split by the two distinct jobs an alliance can do: carry <strong>specified / contractor</strong> demand, or carry <strong>captive private-label</strong> volume.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat-card deep">
+      <div class="label">The Base Today</div>
+      <div class="value">2 anchors</div>
+      <div class="desc">Unitech (IKK Group) and Masdar (Al&nbsp;Muhaidib) &mdash; live offtake relationships in the Kingdom to build the wider base on.</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Where The Prize Is</div>
+      <div class="value">KSA ~34%</div>
+      <div class="desc">Saudi Arabia is ~34% of regional adhesives &amp; sealants revenue<span class="cite-marker">[2]</span> &mdash; the market that should anchor the alliance push.</div>
+    </div>
+    <div class="stat-card urgent">
+      <div class="label">The Tilt</div>
+      <div class="value">Trader &rarr; Contractor</div>
+      <div class="desc">Recruit and incentivise partners for specified, contractor-facing pull &mdash; not only trade resale.</div>
+    </div>
+  </div>
+
+  <h3 class="subhead">The Footprint Today</h3>
+  <div class="twocol">
+    <div>
+      <h4 class="minor">Unitech &mdash; IKK Group</h4>
+      <p>Established contractor channels across KSA and a precedent for captive in-house brands (FEROX, PIXEL, NEXUS, CUBIX, UNIDUCT). A partner that already takes manufactured product to the contractor without intermediation &mdash; and the warmest relationship in the Kingdom to deepen first.</p>
+    </div>
+    <div>
+      <h4 class="minor">Masdar &mdash; Al&nbsp;Muhaidib Group</h4>
+      <p>Founded 1971; one of Saudi Arabia's leading building-materials distributors, an Al&nbsp;Muhaidib Group affiliate with the Public Investment Fund holding a ~30% stake. A network of 105 branches across 29 cities and 80,000+ SKUs &mdash; including construction chemicals and adhesives. A genuine Kingdom-wide volume backbone to build specified pull on top of.</p>
+    </div>
+  </div>
+
+  <h3 class="subhead">Inside Unitech Today &mdash; The &ldquo;Poly&nbsp;Ti&rdquo; Line</h3>
+  <p class="wide">The relationship is not abstract. ASMACO already sits inside Unitech's portfolio under the <strong>Poly&nbsp;Ti</strong> brand &mdash; a sealant &amp; adhesive line carried as trade volume. Its five-year record inside that channel tells the whole strategic story in miniature.</p>
+
+  <div style="display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;margin:1.6rem 0 0.6rem;">
+    <div style="display:flex;gap:1rem;align-items:flex-end;height:130px;padding:0 0.2rem;">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.64rem;color:var(--grey-mid);margin-bottom:0.3rem;">1.43</div>
+        <div style="width:38px;height:84px;background:var(--green);border-radius:2px 2px 0 0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.4rem;">2019</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.64rem;color:var(--grey-mid);margin-bottom:0.3rem;">1.54</div>
+        <div style="width:38px;height:90px;background:var(--green);border-radius:2px 2px 0 0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.4rem;">2020</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.64rem;color:var(--grey-mid);margin-bottom:0.3rem;">1.50</div>
+        <div style="width:38px;height:88px;background:var(--green);border-radius:2px 2px 0 0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.4rem;">2021</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.64rem;color:var(--grey-mid);margin-bottom:0.3rem;">1.13</div>
+        <div style="width:38px;height:66px;background:var(--grey-mid);border-radius:2px 2px 0 0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.4rem;">2022</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.64rem;color:var(--grey-mid);margin-bottom:0.3rem;">1.35</div>
+        <div style="width:38px;height:79px;background:var(--green);border-radius:2px 2px 0 0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.4rem;">2023</div>
+      </div>
+      <div style="align-self:flex-end;font-family:'IBM Plex Mono',monospace;font-size:0.58rem;color:var(--muted);padding-bottom:1.35rem;">SAR&nbsp;M</div>
+    </div>
+    <div style="flex:1;min-width:300px;font-size:0.95rem;line-height:1.6;color:var(--ink);">
+      At roughly <strong>SAR 1.1&ndash;1.5M a year &mdash; flat, and drifting down</strong>: from SAR 1.43M in 2019 to a low of 1.13M in 2022, recovering only to 1.35M in 2023. Poly&nbsp;Ti is a textbook <em>trader-column</em> line &mdash; a capable ASMACO product sold as undifferentiated volume, with no specification pull to grow it. The same product, carried by a contractor-facing partner and backed by ASMACO's UL-listed credibility, belongs in the <em>contractor column</em> &mdash; where it would grow rather than erode, at a better margin.
+    </div>
+  </div>
+  <p style="font-size:0.8rem;color:var(--muted);margin:0.2rem 0 0;">Poly&nbsp;Ti sell-through within the Unitech channel (SAR): 2019 &mdash; 1,429,524 &middot; 2020 &mdash; 1,538,794 &middot; 2021 &mdash; 1,498,325 &middot; 2022 &mdash; 1,130,041 &middot; 2023 &mdash; 1,350,326. Source: practitioner channel records.</p>
+
+  <div class="insight-box" style="border-left:3px solid var(--green);">
+    <strong>Why this one line matters:</strong> Poly&nbsp;Ti is both the <em>proof</em> that the ASMACO&ndash;Unitech relationship already works and the clearest single example of the upside left on the table. A line that has been flat-to-declining for five years in the trader column is exactly what specification, the UL-listed firestop credential and a contractor-facing push are built to turn around &mdash; and it is the most concrete place to demonstrate the model before scaling it across the wider alliance base.
+  </div>
+
+  <h3 class="subhead">Two Jobs An Alliance Does</h3>
+  <div class="vertical-block">
+    <div class="vmeta">Pillar A &middot; Specified / contractor distribution</div>
+    <h4>Partners who sell into contractors and consultants, not just shelves</h4>
+    <p>Embedded, technically-capable distributors who carry ASMACO's specified range &mdash; firestop, fa&ccedil;ade and structural sealants, warranted waterproofing &mdash; to procurement teams, MEP contractors and the consultants who specify. This is the channel that grows the contractor column.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Pillar B &middot; Captive private-label volume</div>
+    <h4>Master traders who want their own house brand on ASMACO chemistry</h4>
+    <p>Large Saudi trading houses with project arms and captive in-house brands who will commit to multi-year offtake under their own label. This fills the plant and converts would-be commodity importers into customers &mdash; the lever detailed in Tab&nbsp;06.</p>
+  </div>
+
+  <h3 class="subhead">Alliance Targets &mdash; KSA &amp; Region</h3>
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr><th>Partner</th><th>Region / Role</th><th>What They Bring</th><th>Fit</th></tr>
+      </thead>
+      <tbody>
+        <tr class="aa-row"><td class="brand-cell">Unitech &mdash; IKK Group<span class="tier">Current partner</span></td><td>KSA-wide &middot; contractor channel</td><td>Live offtake; contractor relationships; captive-brand precedent. Deepen into specified firestop &amp; sealants.</td><td><span class="tier-badge hybrid">Confirmed</span></td></tr>
+        <tr class="aa-row"><td class="brand-cell">Masdar &mdash; Al&nbsp;Muhaidib / PIF<span class="tier">Current partner</span></td><td>KSA-wide &middot; trade + project</td><td>105 branches in 29 cities, 80,000+ SKUs incl. construction chemicals; PIF-backed. The volume backbone to layer specified pull onto.</td><td><span class="tier-badge hybrid">Confirmed</span></td></tr>
+        <tr><td class="brand-cell">Chemtrade (Reza Group)<span class="tier">Saudi Co. of Chemical Trading, est. 1979</span></td><td>Central &amp; Western &middot; distribution</td><td>Institutional credibility; chemicals-distribution model without a competing finished-brand principal; multi-region reach.</td><td><span class="tier-badge premium">Distribution</span></td></tr>
+        <tr><td class="brand-cell">Star Links<span class="tier">Dammam-anchored</span></td><td>Eastern &middot; distribution</td><td>Explicit silicone-sealants positioning; mid-tier focus; Jubail capacity for industrial expansion.</td><td><span class="tier-badge premium">Distribution</span></td></tr>
+        <tr><td class="brand-cell">Fouz Chemical<span class="tier">Riyadh</span></td><td>Central &middot; distribution (alt.)</td><td>Riyadh-based alternative for the central region.</td><td><span class="tier-badge premium">Distribution</span></td></tr>
+        <tr><td class="brand-cell">Nassguard<span class="tier">Dammam / Jubail</span></td><td>Eastern &middot; distribution (alt.)</td><td>Industrial / Eastern-region alternative with Jubail reach.</td><td><span class="tier-badge premium">Distribution</span></td></tr>
+        <tr><td class="brand-cell">Juffali Building Materials<span class="tier">Juffali &amp; Brothers, est. 1946</span></td><td>KSA-wide &middot; private label</td><td>75+ years of contractor relationships; institutional credibility for a serious captive-brand line.</td><td><span class="tier-badge disruptor">Private Label</span></td></tr>
+        <tr><td class="brand-cell">Olayan industrial portfolio<span class="tier">Olayan Financing</span></td><td>KSA-wide &middot; private label</td><td>Scale and capital for captive-brand programmes; slower cycle, highest ceiling.</td><td><span class="tier-badge disruptor">Private Label</span></td></tr>
+        <tr><td class="brand-cell">Bin Zagr / Abdullatif Jameel<span class="tier">Diversified family groups</span></td><td>KSA-wide &middot; private label</td><td>Captive-brand culture and building-materials adjacency (Jameel via JIB construction).</td><td><span class="tier-badge disruptor">Private Label</span></td></tr>
+        <tr><td class="brand-cell">Tier-1 contractor house brands<span class="tier">Binladin, Al&nbsp;Rajhi, Nesma, El-Seif, Almabani</span></td><td>Giga-project consumption</td><td>Captive consumables brands for Vision 2030 sites &mdash; typically a Year-2 conversation once a KSA track record is visible.</td><td><span class="tier-badge disruptor">Year 2</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:-0.3rem;">Candidate partners for evaluation, drawn from regional channel intelligence; principal-conflict and exclusivity checks needed before approach. Unitech and Masdar are confirmed current relationships.</p>
+
+  <h3 class="subhead">Region &amp; Sub-Trader Map</h3>
+  <p class="wide">Beneath each master distributor sits a sub-trader layer &mdash; typically 15&ndash;25 per region &mdash; recruited from established hardware-trader concentrations: in Riyadh, the Sulay industrial district, Khurais Road and Sitteen Street; in Jeddah, Industrial City and Sari Street; in the Eastern Region, King Fahd Industrial City Jubail and Saihat. Qassim (Buraidah), Tabuk (NEOM-adjacent) and Madinah are natural Year-2 expansion fronts. Standard terms that hold a trade base: insured 60&ndash;90 day credit, a 2&ndash;5% volume-rebate ladder, loyalty bonuses for top performers, and a samples-and-fitter incentive programme.</p>
+
+  <div class="insight-box">
+    <strong>The alliance read:</strong> ASMACO does not need to build a direct salesforce across the Kingdom to grow specified sales &mdash; it needs the <em>right</em> partners doing two different jobs. Unitech and Masdar are the proven base. The expansion is a deliberate tilt: recruit specified, contractor-facing distributors to grow the contractor column, and open private-label conversations with the big trading houses to fill the plant. Sequence it warmest-first &mdash; deepen Unitech and Masdar, add one contractor-distribution partner per region, and start the long-cycle private-label talks in parallel.
+  </div>
+</section>
+
+<!-- ============ TAB 8: THE KSA PATHWAY ============ -->
+<section class="tab-pane" id="ksapath">
+  <div class="section-label">08 &mdash; The KSA Pathway</div>
+  <h2 class="section-title">UL-Listed changes the game: <em>the path to specified, Civil Defense and Aramco</em></h2>
+  <p class="section-lede">
+    The meeting surfaced the most valuable fact in this whole read: <strong>ASMACO's firestop products are UL&nbsp;Listed.</strong> In the GCC &mdash; and especially in Saudi Arabia's tightening regime &mdash; a UL-tested system library is the credential that separates a <em>specifiable manufacturer</em> from a trade brand. It reframes ASMACO's firestop from "the cheap disruptor" into a product a consultant can write into a spec by name. This section lays out what UL-listed unlocks, and the concrete path to three prizes: consultant <strong>specification</strong>, KSA <strong>Civil Defense</strong> recognition, and a place on the <strong>Saudi Aramco</strong> Approved Vendor List.
+  </p>
+
+  <div class="stat-row four">
+    <div class="stat-card deep">
+      <div class="label">The Credential</div>
+      <div class="value">UL Listed</div>
+      <div class="desc">A tested-system library &mdash; the basis on which GCC consultants build firestop specifications.</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">The Regime</div>
+      <div class="value">SBC 801</div>
+      <div class="desc">Saudi Building Code fire requirements, enforced by the General Administration of Civil Defense.<span class="cite-marker">[7]</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">The Import Gate</div>
+      <div class="value">SABER / SASO</div>
+      <div class="desc">Product conformity registration &mdash; the binding constraint on importing and specifying in KSA.<span class="cite-marker">[8]</span></div>
+    </div>
+    <div class="stat-card urgent">
+      <div class="label">The Institutional Prize</div>
+      <div class="value">Aramco AVL</div>
+      <div class="desc">A 9COM listing opens direct RFQs &mdash; typically a 3&ndash;6 month qualification.<span class="cite-marker">[9][10]</span></div>
+    </div>
+  </div>
+
+  <h3 class="subhead">Why UL-Listed Is The Unlock</h3>
+  <p class="wide">Saudi Arabia's <strong>SBC&nbsp;801</strong> fire-protection requirements are modelled on the International Fire Code and reference NFPA standards<span class="cite-marker">[7]</span>. Tier-one consultants &mdash; Dar&nbsp;Al-Handasah, KEO, AECOM, WSP, Arup &mdash; build their firestop specifications from <strong>UL (and EN) tested-system libraries</strong>, and the General Administration of Civil Defense and SASO enforce the documentation behind them. A manufacturer with a genuine UL system library can therefore be <em>specified by name</em>, not merely substituted on price after the fact. For ASMACO this is decisive: the same firestop that competes today as a low-cost cartridge can, on the strength of its UL listings, enter the specification itself &mdash; the highest-margin, most defensible position in the building, and the credential that makes every subsequent specified category (fa&ccedil;ade, waterproofing, hybrids) easier to win.</p>
+
+  <h3 class="subhead">Path 1 &mdash; Get Specified (The Consultant Route)</h3>
+  <p class="wide">Specification flows from the Fire &amp; Life Safety strategy through the architect and MEP consultant to the FLS consultant &mdash; the technical arbiter &mdash; and is then defended through the contractor's value-engineering and "Approved&nbsp;Equal" submittals<span class="cite-marker">[7]</span>. Winning it requires the toolkit, not just the product:</p>
+  <ol class="feature-list">
+    <li><strong>Build a Firestop Engineering Manual</strong><span>UL system drawings mapped to common GCC penetration and joint configurations, CAD/Revit details, EPD/VOC and acoustic data, MSDS &mdash; matching the depth of a Hilti or STI submittal, not a three-page data sheet.</span></li>
+    <li><strong>Get onto master specifications as "Approved&nbsp;Equal"</strong><span>Targeted CPD sessions and technical engagement with FLS leads to secure inclusion alongside the global incumbents.</span></li>
+    <li><strong>Stand up a rapid Engineering-Judgment (EJ) capability</strong><span>A 72-hour EJ service, validated through a recognised House of Expertise, so site deviations don't force a switch back to the incumbent.</span></li>
+    <li><strong>Launch a certified-installer programme</strong><span>FM&nbsp;4991 / UL-Qualified installer credentials &mdash; the GCC is converging on installer competency, not just product approval.</span></li>
+  </ol>
+
+  <h3 class="subhead">Path 2 &mdash; KSA Civil Defense &amp; SBC 801</h3>
+  <p class="wide">The General Administration of Civil Defense is the enforcing authority for passive fire protection across the Kingdom under SBC&nbsp;801<span class="cite-marker">[7]</span>. The practical, sequenced steps:</p>
+  <ol class="feature-list">
+    <li><strong>Register products on SABER / SASO</strong><span>A Saudi Certificate of Conformity, requested through the importer of record, via a SASO-notified body (e.g. Intertek, T&Uuml;V&nbsp;S&Uuml;D, SGS, Bureau&nbsp;Veritas). This is the binding constraint on every downstream specification and sale.<span class="cite-marker">[8]</span></span></li>
+    <li><strong>Align documentation to SBC 801</strong><span>Map the UL test data to SBC requirements and upload to SABER for frictionless import and specification.</span></li>
+    <li><strong>Secure project-level Civil Defense acceptance</strong><span>Supported by SASO-certified third-party inspection on named projects &mdash; building the approval-and-reference trail.</span></li>
+    <li><strong>Use the duty advantage</strong><span>UAE-manufactured goods enter KSA at 0% customs duty under the GCC Customs Union with a GCC Certificate of Origin; 15% VAT applies at destination and Arabic labelling is mandatory.<span class="cite-marker">[11]</span></span></li>
+  </ol>
+
+  <h3 class="subhead">Path 3 &mdash; The Saudi Aramco Approved Vendor List (9COM)</h3>
+  <p class="wide">For state-scale industrial, energy and infrastructure work, the gate is the <strong>Aramco Approved Vendor List</strong>. Without a listing, a supplier is effectively invisible to Aramco procurement; with one, it receives direct requests for quotation<span class="cite-marker">[9][10]</span>. The path:</p>
+  <ol class="feature-list">
+    <li><strong>Register on the Aramco e-Marketplace Platform</strong><span>The SAP&nbsp;Ariba-based supplier portal; in-Kingdom companies register through Aramco's Dhahran office &mdash; which implies an in-Kingdom entity or importer of record.<span class="cite-marker">[9]</span></span></li>
+    <li><strong>Select the applicable 9COM / 9CAT codes</strong><span>In the registration questionnaire's product catalogue, choose the commodity codes for firestop and sealant materials. A 9COM classifies a commodity class; a 9CAT is a specific catalogued item.<span class="cite-marker">[10]</span></span></li>
+    <li><strong>Pass supplier-relations review and qualification</strong><span>Aramco reviews technical and commercial capability and compliance with its specifications &mdash; in most cases including a technical-readiness audit and a physical inspection of the manufacturing facility.<span class="cite-marker">[10]</span></span></li>
+    <li><strong>Receive the 9COM number and AVL listing</strong><span>On approval, a 9COM number is issued (a six-digit commodity code plus a four-digit supplier code) and the company appears on the AVL, eligible for direct RFQs. The full process typically runs 3&ndash;6 months.<span class="cite-marker">[10]</span></span></li>
+  </ol>
+  <p class="wide" style="margin-top:1rem;">9COM approval connects directly to Aramco's <strong>IKTVA</strong> (In-Kingdom Total Value Add) programme &mdash; suppliers with strong local-content scores and a Saudi manufacturing presence are prioritised<span class="cite-marker">[10]</span>. An existing vendor code still requires a separate 9COM for commodity procurement, and the most common delays come from incomplete or expired certificates, the wrong 9CAT codes, weak quality-management documentation, and poor site-inspection preparation.</p>
+
+  <h3 class="subhead">Sequencing The Three Paths</h3>
+  <div class="vertical-block">
+    <div class="vmeta">First &middot; the binding constraint</div>
+    <h4>SABER / SASO registration</h4>
+    <p>Nothing imports or specifies in KSA until products are SABER-registered. It is the lowest-cost, highest-optionality first move &mdash; do it for the priority firestop and sealant SKUs before anything else.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">In parallel &middot; the credential at work</div>
+    <h4>Engineering Manual + EJ capability + Aramco e-Marketplace</h4>
+    <p>Convert the UL listings into a consultant-grade Engineering Manual and a rapid-EJ service to win specifications, while registering on the Aramco e-Marketplace and selecting 9COM codes &mdash; the 3&ndash;6 month qualification clock runs alongside the specification push.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Then &middot; the optionality multiplier</div>
+    <h4>A deeper in-Kingdom footprint</h4>
+    <p>Warehousing, blending or local manufacturing strengthens both Civil Defense acceptance and Aramco IKTVA scoring &mdash; worth scoping against the size of the specified KSA prize, exactly as flagged in Vector&nbsp;06.</p>
+  </div>
+
+  <div class="insight-box">
+    <strong>The pathway read:</strong> UL-listed firestop is the key that turns the specification thesis from aspiration into a concrete registration plan. Firestop is the right product to lead with precisely because the credential is the hardest in the building to earn and the most defensible once held &mdash; clearing the life-safety bar certifies ASMACO as a serious specified manufacturer, and the same UL credibility, SABER registration and Aramco listing then carry across fa&ccedil;ade, waterproofing and hybrids. The work is sequenced and largely administrative: register, document, qualify &mdash; then let the credential do the selling.
+  </div>
+
+  <div class="pullquote">
+    A UL listing nobody is using is the most valuable asset on the shelf. The pathway is simply turning it on.
+    <span class="attribution">&mdash; The strategic read</span>
+  </div>
+</section>
+
+<!-- ============ TAB 9: STRATEGIC VECTORS ============ -->
+<section class="tab-pane" id="vectors">
+  <div class="section-label">09 &mdash; Strategic Vectors</div>
+  <h2 class="section-title">Six vectors for the decade ahead</h2>
+  <p class="section-lede">
+    Drawing the threads together: where a regional volume leader concentrates effort to convert scale into specified, defensible, higher-margin growth. These are offered as a coherent direction, not a prescription &mdash; the sequencing and weighting are a conversation worth having.
+  </p>
+
+  <div class="vertical-block">
+    <div class="vmeta">Vector 01 · The biggest ramp</div>
+    <h4>Win KSA specification, anchored on Vision 2030</h4>
+    <p>KSA is ~34% of regional revenue<span class="cite-marker">[2]</span> on a ~USD 1.25T project pipeline<span class="cite-marker">[1]</span>, increasingly spec-driven and increasingly local-content-preferenced. Concentrate specification effort &mdash; approvals, consultant engagement, project references, and a deeper in-Kingdom commercial presence &mdash; on the single market that will out-earn every other. Depth in KSA beats breadth across 80 export countries.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Vector 02 · Climb the value ladder</div>
+    <h4>Reposition the spec-grade range from trade brand to specified brand</h4>
+    <p>Move firestop, façade/structural glazing, warranted waterproofing and certified hybrids from commodity pricing into specified, warranted, project pricing. Same factory, same chemistries &mdash; higher margin and a structural moat, because each is gated by approvals and accountability a commodity import cannot meet.</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Vector 03 · Defend the value tier</div>
+    <h4>Meet Chinese imports with specification lock-in, not a price war</h4>
+    <p>Defend hybrids and foams by getting them specified and warranted &mdash; so the substitution decision leaves the buyer's hands &mdash; while segmenting the range: a disciplined fighter offer to hold trade volume, and a protected, certified premium line that never competes on price. Defend on terms ASMACO can win.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Vector 04 · Monetise the plant twice</div>
+    <h4>Build a disciplined private-label platform for the regional trade</h4>
+    <p>Offer ASMACO's manufacturing, R&amp;D and documentation as a private-label and contract-manufacturing service to regional traders and distributors. It fills capacity, converts would-be commodity importers into captive customers, and creates sticky annuity volume &mdash; segmented and margin-floored so it never touches the ASMACO specified premium. (Detailed in Tab 06.)</p>
+  </div>
+  <div class="vertical-block">
+    <div class="vmeta">Vector 05 · Build the engine</div>
+    <h4>Rebuild the brand &amp; demand system to match the factory</h4>
+    <p>Brand architecture separating pro from consumer; an approvals and technical-marketing library; a project reference program; consultant engagement; digital demand generation; distributor enablement. The lowest-capital, highest-return lever &mdash; and the one that makes every other vector work.</p>
+  </div>
+  <div class="vertical-block deep">
+    <div class="vmeta">Vector 06 · Optionality</div>
+    <h4>Localise where the giga-projects demand it</h4>
+    <p>As KSA local-content preference hardens around Vision 2030 procurement, a deeper in-Kingdom footprint &mdash; warehousing, blending or manufacturing &mdash; becomes a specification advantage as much as a logistics one. Worth scoping against the size of the specified KSA prize.</p>
+  </div>
+
+  <div class="insight-box">
+    <strong>The synthesis:</strong> The through-line is a single move &mdash; from <em>volume leadership</em> to <em>specified leadership</em>, with the factory monetised twice along the way. Every vector serves it: KSA is where specified demand concentrates, the value ladder is what specification unlocks, private label is how spare capacity is monetised and regional share defended, the engine is how specification is created and protected, and localisation is how it is secured on the largest prize. None of it requires abandoning what Anchor Allied built; all of it compounds on top of it.
+  </div>
+
+  <div class="pullquote">
+    You have already built the factory and the brand. The next decade is about getting paid for the trust they represent.
+    <span class="attribution">— The strategic read</span>
+  </div>
+</section>
+
+<!-- ============ TAB 10: SOURCES & METHOD ============ -->
+<section class="tab-pane" id="sources">
+  <div class="section-label">10 &mdash; Sources &amp; Method</div>
+  <h2 class="section-title">Sources, figures &amp; method</h2>
+  <p class="section-lede">
+    This read combines published market research, Anchor Allied's own corporate and public information, and the author's direct operating experience in the GCC and MENA building-materials and construction-chemicals markets. Figures are cited to their sources; strategic synthesis is the author's own.
+  </p>
+
+  <ol class="sources-list">
+    <li>Mordor Intelligence &mdash; Middle East &amp; Africa Construction Chemicals Market (2026): TAM USD 5.75B (2025) → USD 8.13B (2031), 5.94% CAGR; Vision 2030 pipeline, King Salman Park, Gulf rail figures.</li>
+    <li>Mordor Intelligence &mdash; Middle East &amp; Africa Adhesives &amp; Sealants Market (2026): USD 1.43B (2025) → USD 2.03B (2031), 5.98% CAGR; KSA 34.48% of 2025 revenue; PU adhesives fastest at 6.24% CAGR; NEOM / Red Sea durability specs.</li>
+    <li>IMARC Group &mdash; GCC Construction Adhesives &amp; Sealants Chemical Market: USD 416.65M (2024) → USD 709.93M (2033), 5.70% CAGR.</li>
+    <li>Coherent Market Insights &mdash; Kuwait, Saudi Arabia &amp; UAE Silicone Sealants Market (2026–2033): building &amp; construction 57.8% share (2026); neutral-cure silicone 31.6%.</li>
+    <li>GCC green-building &amp; VOC drivers &mdash; regional construction-chemicals/flooring market commentary: LEED-registered project base, Abu Dhabi Estidama Pearl, KSA carbon-neutrality targets pushing low-VOC chemistries.</li>
+    <li>Anchor Allied Factory LLC / ASMACO &mdash; corporate website (anchorallied.com) and public directory profiles: founded 1995, Sharjah; ASMACO brand; ISO 9001:2015; in-house R&amp;D; exports to 80+ countries; regional offices in KSA, Egypt, Ukraine, India, Latin America, USA; portfolio across sealants, adhesives, aerosols, PU foams, waterproofing &amp; floor coatings, tapes, portable gas, home care.</li>
+    <li><strong>KSA fire regulation</strong> &mdash; Saudi Building Code SBC 801 (Fire Protection Requirements), modelled on the International Fire Code with NFPA references; General Administration of Civil Defense as enforcing authority; SASO and the Saudi Building Code National Committee. Synthesised with project firestop-market intelligence (GCC Firestop Market Intelligence Strategy; MENA Fire-Stopping Market Analysis).</li>
+    <li><strong>KSA product conformity &amp; trade</strong> &mdash; SASO / SABER registration and the Saudi Certificate of Conformity via the importer of record; SASO-notified certification bodies (Intertek, T&Uuml;V&nbsp;S&Uuml;D, SGS, Bureau Veritas). GCC Customs Union 0% duty on UAE-manufactured goods with a GCC Certificate of Origin; 15% Saudi VAT; mandatory Arabic labelling.</li>
+    <li><strong>Saudi Aramco supplier registration</strong> &mdash; Aramco "Become a Supplier" and "Existing Suppliers," e-Marketplace Platform (SAP Ariba); In-Kingdom registration via the Dhahran office (aramco.com/en/what-we-do/suppliers).</li>
+    <li><strong>Aramco 9COM / AVL process</strong> &mdash; 9COM / 9CAT material classification; supplier-relations review, technical-readiness audit and facility inspection; 9COM number issuance and AVL listing; typical 3&ndash;6 month timeline; IKTVA local-content linkage (Aramco e-Marketplace Supplier Reference Guide; industry 9COM registration guidance, 2026).</li>
+    <li><strong>KSA channel &amp; alliance intelligence</strong> &mdash; regional master-distributor and master-trader landscape (Reza Group / Chemtrade, Star Links, Fouz Chemical, Nassguard; Juffali, Olayan, Bin Zagr, Abdullatif Jameel; tier-1 contractor house brands) and sub-trader concentrations, synthesised from project KSA strategic intelligence. Candidate targets for evaluation; current ASMACO partners (Unitech; Masdar &mdash; Al Muhaidib Group / PIF) per the June 2026 meeting. ASMACO supplies Unitech under the <strong>Poly Ti</strong> brand; the five-year sell-through figures (2019&ndash;2023) are drawn from practitioner channel records.</li>
+  </ol>
+
+  <h3 class="subhead">Method &amp; caveats</h3>
+  <ul>
+    <li><strong>Market figures</strong> are drawn from the named third-party research houses and are cited at point of use. Where a chart interpolates between published endpoints, this is stated in the source note beneath it.</li>
+    <li><strong>The price-positioning and regional-share charts</strong> are indicative illustrations of market structure, not published price lists or share tables; cited figures (e.g. KSA's ~34% revenue share) are marked as such, and estimates are flagged.</li>
+    <li><strong>The private-label program design</strong> is the author's strategic proposal, framed on standard contract-manufacturing practice; it is not a description of any existing Anchor Allied offering.</li>
+    <li><strong>Channel and specification mechanics</strong> are sourced from the author's direct experience in the GCC and MENA building-materials markets from 2009 to 2025 &mdash; including thirteen years across the IKK Group's Unitech division, with product development and KSA market-entry work spanning sealants, adhesives, fixing and firestop systems.</li>
+    <li><strong>Strategic synthesis</strong> represents the author's own analysis and is offered for reflection rather than as definitive guidance.</li>
+  </ul>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h5>Document</h5>
+      <p>This strategic intelligence read is prepared as a peer-to-peer consultative note for Mr. Ahmed Ali Nalwala, Founder &amp; Managing Director, Anchor Allied Factory (ASMACO), ahead of an in-person conversation. It is shared in confidence and is not for redistribution.</p>
+    </div>
+    <div>
+      <h5>Author</h5>
+      <p>Mohammed Vaseeuddin<br>
+      Dubai, UAE<br>
+      <a href="mailto:juventer1987@gmail.com">juventer1987@gmail.com</a><br>
+      +971 52 585 9425</p>
+    </div>
+    <div>
+      <h5>Disclosure</h5>
+      <p>This report does not comment on Anchor Allied's internal commercial structure, financials or operating model. It is intended strictly as market intelligence from a regional practitioner's vantage point.</p>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Strategic Intelligence Read &middot; June 2026 &middot; Prepared in Dubai &middot; Confidential
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // Tab switching
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      window.scrollTo({ top: document.querySelector('.tabnav').offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Chart.js defaults
+  if (window.Chart) {
+    Chart.defaults.font.family = "'IBM Plex Sans', system-ui, sans-serif";
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = '#4c545c';
+
+    const tooltipStyle = {
+      backgroundColor: '#1c2024',
+      titleColor: '#5fc08a',
+      bodyColor: '#f6f8f7',
+      titleFont: { family: "'IBM Plex Mono', monospace", size: 11, weight: '500' },
+      bodyFont: { family: "'IBM Plex Sans', sans-serif", size: 13 },
+      padding: 12,
+      cornerRadius: 0,
+      displayColors: false
+    };
+
+    // CHART 1: GCC Adhesives & Sealants trajectory
+    const marketCtx = document.getElementById('marketChart');
+    if (marketCtx) {
+      new Chart(marketCtx.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: ['2024', '2026', '2028', '2030', '2031', '2033'],
+          datasets: [{
+            label: 'GCC Adhesives & Sealants (USD M)',
+            data: [416.65, 466, 521, 583, 617, 709.93],
+            borderColor: '#1f9d57',
+            backgroundColor: 'rgba(31, 157, 87, 0.10)',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#1668a7',
+            pointBorderColor: '#1f9d57',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => '$' + c.parsed.y.toFixed(1) + 'M' } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 } } },
+            y: { beginAtZero: true, grid: { color: '#e4e7e3' }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: v => '$' + v + 'M' } }
+          }
+        }
+      });
+    }
+
+    // CHART 2: Regional revenue concentration
+    const countryCtx = document.getElementById('countryChart');
+    if (countryCtx) {
+      new Chart(countryCtx.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Saudi Arabia (cited)', 'UAE (est.)', 'Rest of GCC (est.)', 'Rest of MEA (est.)'],
+          datasets: [{
+            data: [34.5, 19, 21, 25.5],
+            backgroundColor: ['#1f9d57', '#1668a7', '#6b7280', '#ccd1cb'],
+            borderColor: '#f6f8f7',
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          cutout: '55%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { font: { family: "'IBM Plex Sans', sans-serif", size: 11 }, padding: 10, boxWidth: 12 }
+            },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => c.label + ': ' + c.parsed.toFixed(1) + '%' } }
+          }
+        }
+      });
+    }
+
+    // CHART 3: The squeeze - indicative price positioning
+    const squeezeCtx = document.getElementById('squeezeChart');
+    if (squeezeCtx) {
+      new Chart(squeezeCtx.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Global premium (Sika)', 'Premium-value (Soudal/Bostik)', 'Premium regional (Mapei/Fosroc)', 'ASMACO / regional volume', 'Chinese commodity import'],
+          datasets: [{
+            label: 'Relative price index (premium = 100)',
+            data: [100, 78, 72, 42, 28],
+            backgroundColor: [
+              '#0f4d7d',
+              '#1668a7',
+              '#5a9bcb',
+              '#1f9d57',
+              '#6b7280'
+            ],
+            borderRadius: 2,
+            maxBarThickness: 46
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { ...tooltipStyle, callbacks: { label: c => 'Index ' + c.parsed.x + ' (premium = 100)' } }
+          },
+          scales: {
+            x: { beginAtZero: true, grid: { color: '#e4e7e3' }, ticks: { font: { family: "'IBM Plex Mono', monospace", size: 11 } } },
+            y: { grid: { display: false }, ticks: { font: { family: "'IBM Plex Sans', sans-serif", size: 11.5, weight: '500' } } }
+          }
+        }
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trajectory & Approach — Zenith& Creatives</title>
+<meta name="description" content="Sixteen years across the GCC and beyond — the trajectory of the work and the method underneath it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f0e7;
+    --ink:#1c1b18;
+    --ink-soft:#56524a;
+    --ink-faint:#8d887c;
+    --rule:#d8d3c4;
+    --ghost:#e7e2d4;
+
+    --branding:#b5532a;   /* amber — creative */
+    --strategy:#1f6f6a;   /* teal — analytic */
+
+    --display:"Bricolage Grotesque",sans-serif;
+    --body:"Newsreader",Georgia,serif;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:18px;line-height:1.5;
+    background-image:radial-gradient(circle at 1px 1px, rgba(28,27,24,.022) 1px, transparent 0);
+    background-size:4px 4px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* top bar */
+  .topbar{display:flex;justify-content:space-between;align-items:baseline;
+    padding:34px 0 0;font-family:var(--display)}
+  .brand{font-weight:700;letter-spacing:-.02em;font-size:18px}
+  .brand .amp{color:var(--branding)}
+  .topbar .meta{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:500}
+  .topbar .meta a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+  .topbar .meta a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+  /* section */
+  .sec{position:relative;padding:104px 0 30px}
+  .sec + .sec{border-top:1px solid var(--rule)}
+  .ghost-num{
+    position:absolute;top:60px;right:-8px;font-family:var(--display);font-weight:700;
+    font-size:clamp(140px,26vw,300px);line-height:.8;color:var(--ghost);
+    letter-spacing:-.05em;z-index:0;pointer-events:none;user-select:none;
+  }
+  .index-label{
+    position:relative;z-index:1;font-family:var(--display);font-size:12.5px;
+    font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;align-items:center;gap:10px;margin-bottom:26px;
+  }
+  .index-label .chev{letter-spacing:-.1em}
+  .sec.s-traj .index-label .chev{color:var(--strategy)}
+  .sec.s-appr .index-label .chev{color:var(--branding)}
+
+  h1.title{position:relative;z-index:1;font-family:var(--display);font-weight:700;
+    font-size:clamp(54px,11vw,128px);line-height:.86;letter-spacing:-.045em}
+  .sec.s-traj h1 .dot{color:var(--strategy)}
+  .sec.s-appr h1 .dot{color:var(--branding)}
+
+  .lede{position:relative;z-index:1;font-family:var(--body);font-style:italic;
+    font-size:clamp(18px,2.1vw,21px);color:var(--ink-soft);margin-top:24px;max-width:54ch}
+
+  /* movements: margin kicker + prose */
+  .moves{position:relative;z-index:1;margin-top:44px}
+  .move{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:26px 0;
+    border-top:1px solid var(--rule)}
+  .move:last-child{border-bottom:1px solid var(--rule)}
+  .kicker{font-family:var(--display);font-size:12px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+    padding-top:5px;display:flex;gap:9px;align-items:baseline}
+  .kicker .n{font-variant-numeric:tabular-nums}
+  .sec.s-traj .kicker .n{color:var(--strategy)}
+  .sec.s-appr .kicker .n{color:var(--branding)}
+  .move p{font-family:var(--body);font-size:19px;line-height:1.55;color:var(--ink);
+    max-width:62ch}
+  .move p em{font-style:italic;color:var(--ink-soft)}
+  .move p .hot{font-style:normal;color:var(--ink)}
+  .sec.s-traj .move p .hot{color:var(--strategy)}
+  .sec.s-appr .move p .hot{color:var(--branding)}
+
+  /* footer */
+  footer{border-top:1px solid var(--rule);padding:48px 0 70px;margin-top:50px}
+  .foot-line{font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.04em;
+    color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;
+    gap:14px;align-items:baseline}
+  .foot-line .thesis{color:var(--ink)}
+  .foot-line .thesis .amp{color:var(--branding)}
+  .foot-sub{font-family:var(--body);font-style:italic;font-size:14px;color:var(--ink-faint);margin-top:10px}
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}
+
+  @media(max-width:640px){
+    body{font-size:17px}
+    .ghost-num{font-size:110px;top:54px}
+    .move{grid-template-columns:1fr;gap:8px}
+    .kicker{padding-top:0}
+    .move p{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">Zenith<span class="amp">&amp;</span> Creatives</div>
+    <div class="meta"><a href="#">Work</a> · <a href="#">Margins</a> · <a href="#">Contact</a></div>
+  </div>
+
+  <!-- 04 / Career — Trajectory -->
+  <section class="sec s-traj">
+    <span class="ghost-num">04</span>
+    <div class="index-label reveal" style="animation-delay:.05s"><span class="chev">»</span> 04 / Career</div>
+    <h1 class="title reveal" style="animation-delay:.12s">Trajectory<span class="dot">.</span></h1>
+    <p class="lede reveal" style="animation-delay:.2s">Read this part as the résumé. Sixteen years, one hub, and a brief that reset with every market it reached.</p>
+
+    <div class="moves reveal" style="animation-delay:.28s">
+      <div class="move">
+        <div class="kicker"><span class="n">i.</span> Geography</div>
+        <p>The hub never moved — Dubai, for the better part of sixteen years — but the work did. It reached into Saudi Arabia, the United Kingdom, Pakistan, India, and the United States. What reads as premium in Riyadh, what clears procurement in Sharjah, and what a diaspora audience trusts in Karachi or Houston are not the same problem wearing different clothes. <span class="hot">Each market reset the brief.</span> Each one sharpened a different muscle.</p>
+      </div>
+      <div class="move">
+        <div class="kicker"><span class="n">ii.</span> Sectors</div>
+        <p>The industries shifted as deliberately as the geography. Industrial building materials and fasteners, passive fire protection, LED and media-façade technology, cosmetics, hospitality and specialty food, organic consumer goods, sport, and independent publishing. Different regulations, different buyers, different rituals — the same discipline underneath. Build the brand and the business case end to end, and <span class="hot">carry the complexity so the client never has to.</span></p>
+      </div>
+      <div class="move">
+        <div class="kicker"><span class="n">iii.</span> Rooms</div>
+        <p>The rooms varied just as widely. Founder-led consumer brands where the strategist also names the product and sets the palette. Family conglomerates and diversified groups where a single decision moves through three generations before it ships. Manufacturers and distributors crossing a border for the first time, staking a year of margin on a market they have never sold into. Moving across that range — <em>creative one week, the financial model the next</em> — is the part that compounds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 / Method — Approach -->
+  <section class="sec s-appr">
+    <span class="ghost-num">05</span>
+    <div class="index-label reveal" style="animation-delay:.05s"><span class="chev">»</span> 05 / Method</div>
+    <h1 class="title reveal" style="animation-delay:.12s">Approach<span class="dot">.</span></h1>
+    <p class="lede reveal" style="animation-delay:.2s">The work answers to two masters and refuses to choose between them.</p>
+
+    <div class="moves reveal" style="animation-delay:.28s">
+      <div class="move">
+        <div class="kicker"><span class="n">i.</span> The thesis</div>
+        <p>Nothing ships on taste alone; nothing ships on data alone. A brand has to survive the spreadsheet, and a strategy has to survive first contact with how people actually feel. <span class="hot">The point where the two break even is where the work is allowed to leave the studio</span> — reason and resonance, costed and earned in the same decision.</p>
+      </div>
+      <div class="move">
+        <div class="kicker"><span class="n">ii.</span> The method</div>
+        <p>The brief gets interrogated before it gets answered. Every choice — a colour, a price, a channel — carries a reason it can defend out loud. Feedback is treated as a guardrail, not a verdict, and jargon stays at the door, because a strategy nobody in the room can repeat is a strategy nobody will fund. The method stays elastic enough to break its own rules when the market says something better, and <span class="hot">consistent enough to get somewhere worth arriving at.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-line">
+      <span class="thesis">Zenith<span class="amp">&amp;</span> — where science &amp; art break even.</span>
+      <span>MMXXI–MMXXVI</span>
+    </div>
+    <div class="foot-sub">Written from inside the work. Made in Dubai.</div>
+  </footer>
+
+</div>
+</body>
+</html>

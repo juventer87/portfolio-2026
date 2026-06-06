@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAC Al Gurg — Product Expansion Intelligence &amp; Financial Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  /* AL GURG BRAND PALETTE — charcoal primary, gold accent (drawn from algurg.com) */
+  --bg:#FAF8F4; --bg-alt:#F2EFE8; --bg-card:#FFFFFF;
+  --ink:#1A1A1A; --ink-mid:#3A3A3A; --ink-light:#5A5A5A; --ink-faint:#9B9B9B;
+  --rule:#E5E2DC; --rule-light:#EFEDE7;
+  --gold:#C8A256; --gold-deep:#A88336; --gold-light:#F0E2C0;
+  --accent:#C8A256;  /* === Al Gurg gold === the primary accent */
+  --red:#C8A256;     /* re-aliased: was crimson, now gold */
+  --red-deep:#A88336;
+  --red-light:#F0E2C0;
+  --navy:#1A1A1A;    /* re-aliased: charcoal */
+  --navy-mid:#3A3A3A;
+  --orange:#C8A256;
+  --teal:#2D6B7C;
+  --shadow-sm:0 1px 2px rgba(26,26,26,.06); --shadow:0 2px 10px rgba(26,26,26,.08); --shadow-lg:0 16px 48px rgba(26,26,26,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:140px}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:15px;font-feature-settings:"kern","ss01";-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:700;line-height:1.12;letter-spacing:-0.025em}
+.mono{font-family:'IBM Plex Mono',monospace}
+.accent{color:var(--red)}
+.container{max-width:1180px;margin:0 auto;padding:0 32px}
+@media(max-width:768px){.container{padding:0 18px}}
+
+/* MASTHEAD */
+.masthead{background:var(--navy);color:var(--bg);position:sticky;top:0;z-index:100;border-bottom:3px solid var(--red)}
+.masthead-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.02em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:9px;height:9px;background:var(--red);border-radius:50%;display:inline-block}
+.brand .accent{color:var(--red);font-weight:300}
+.masthead-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:rgba(250,248,244,.6);text-align:right;text-transform:uppercase}
+@media(max-width:640px){.masthead-meta{display:none}}
+
+/* TITLE BLOCK */
+.title-block{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%);padding:60px 0 44px;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+.title-block::after{content:"";position:absolute;top:-120px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(200,16,46,.07) 0%,transparent 70%);pointer-events:none}
+.title-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--red);font-weight:600;margin-bottom:18px}
+.title{font-size:clamp(30px,5vw,52px);line-height:1.05;max-width:960px;margin-bottom:20px}
+.title-deck{font-size:17px;color:var(--ink-light);max-width:760px;line-height:1.55}
+.title-byline{display:flex;gap:36px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid var(--rule)}
+.title-byline>div{display:flex;flex-direction:column;gap:3px}
+.title-byline .label{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-faint)}
+.title-byline .value{font-size:13px;font-weight:600;color:var(--ink-mid)}
+
+/* TABS */
+.tabs-wrap{background:var(--bg-card);border-bottom:1px solid var(--rule);position:sticky;top:51px;z-index:90;box-shadow:var(--shadow-sm)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink-light);padding:16px 18px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:7px}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--red);border-bottom-color:var(--red)}
+.tab .num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint)}
+.tab.active .num{color:var(--red)}
+
+/* SECTIONS */
+.section{display:none;padding:54px 0 90px;min-height:60vh;animation:fadeIn .4s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-header{margin-bottom:40px;max-width:840px}
+.section-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--red);font-weight:600;margin-bottom:14px}
+.section-title{font-size:clamp(26px,3.6vw,38px);margin-bottom:16px}
+.section-deck{font-size:16px;color:var(--ink-light);line-height:1.6}
+
+/* GRID + CARDS */
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+.card{background:var(--bg-card);border:1px solid var(--rule);padding:24px;border-radius:4px;position:relative;box-shadow:var(--shadow-sm)}
+.card-corner{position:absolute;top:14px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint)}
+.card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-light);margin-bottom:12px}
+.card-value{font-family:'Manrope',sans-serif;font-size:38px;font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--ink)}
+.card-value .small{font-size:18px;font-weight:600;color:var(--ink-light)}
+.card-sub{font-size:12px;color:var(--ink-light);margin-top:12px;line-height:1.5}
+.card.accent{background:linear-gradient(135deg,var(--red) 0%,var(--red-deep) 100%);color:var(--bg);border:none}
+.card.accent .card-label,.card.accent .card-corner{color:rgba(250,248,244,.7)}
+.card.accent .card-value{color:var(--bg)}
+.card.accent .card-value .small{color:rgba(250,248,244,.8)}
+.card.accent .card-sub{color:rgba(250,248,244,.85)}
+
+.thesis{font-family:'Manrope',sans-serif;font-size:clamp(18px,2.2vw,24px);font-weight:500;line-height:1.4;color:var(--ink);padding:32px 0 32px 28px;border-left:4px solid var(--red);margin:8px 0;letter-spacing:-0.01em}
+.prose{font-size:15px;color:var(--ink-mid);line-height:1.7}
+.prose p{margin-bottom:16px}
+.prose h3{font-size:19px;margin:24px 0 10px;color:var(--ink)}
+.prose strong{color:var(--ink);font-weight:600}
+.rule{height:1px;background:var(--rule);margin:48px 0}
+.callout{background:var(--bg-alt);border:1px solid var(--rule);border-left:3px solid var(--red);padding:20px 22px;border-radius:0 4px 4px 0}
+.callout.gold{border-left-color:var(--gold)}
+.callout.teal{border-left-color:var(--teal)}
+.callout-label{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-light);margin-bottom:10px;font-weight:600}
+.callout ul{margin:0;padding-left:18px}
+.callout li{margin-bottom:6px;font-size:14px;color:var(--ink-mid)}
+
+/* CHART CARDS */
+.chart-card{background:var(--bg-card);border:1px solid var(--rule);padding:24px;border-radius:4px;box-shadow:var(--shadow-sm)}
+.chart-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;letter-spacing:-0.01em}
+.chart-deck{font-size:12px;color:var(--ink-light);margin-bottom:18px;line-height:1.5}
+.chart-source{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--rule-light);padding-top:10px}
+.chart-canvas{position:relative;height:300px}
+.chart-canvas.tall{height:400px}
+.chart-canvas.short{height:240px}
+
+/* ===== THE INTERACTIVE MODEL TOOL ===== */
+.tool{background:var(--navy);color:var(--bg);padding:40px;border-radius:6px;margin:8px 0 32px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.tool::before{content:"";position:absolute;top:0;left:0;width:120px;height:4px;background:var(--red)}
+.tool-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:20px;border-bottom:1px solid rgba(250,248,244,.15);padding-bottom:22px}
+.tool-title{font-family:'Manrope',sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.02em}
+.tool-deck{font-size:13px;color:rgba(250,248,244,.7);margin-top:6px;max-width:620px;line-height:1.5}
+.toggle-row{display:flex;gap:8px;flex-wrap:wrap}
+.toggle{background:rgba(255,255,255,.06);border:1px solid rgba(250,248,244,.18);color:rgba(250,248,244,.8);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:9px 16px;border-radius:3px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.toggle:hover{background:rgba(255,255,255,.12)}
+.toggle.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* big result readouts */
+.tool-results{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
+@media(max-width:820px){.tool-results{grid-template-columns:repeat(2,1fr)}}
+.result{background:rgba(255,255,255,.04);border:1px solid rgba(250,248,244,.12);padding:20px;border-radius:4px}
+.result-label{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(250,248,244,.55);margin-bottom:8px}
+.result-value{font-family:'Manrope',sans-serif;font-size:34px;font-weight:800;line-height:1;letter-spacing:-0.03em;color:var(--bg)}
+.result-value .unit{font-size:15px;font-weight:600;color:rgba(250,248,244,.6)}
+.result-sub{font-size:11px;color:rgba(250,248,244,.5);margin-top:8px;font-family:'IBM Plex Mono',monospace}
+.result.hero{background:linear-gradient(135deg,rgba(200,16,46,.25),rgba(140,10,30,.15));border-color:var(--red)}
+
+.tool-chartwrap{background:rgba(255,255,255,.03);border:1px solid rgba(250,248,244,.1);border-radius:4px;padding:20px;margin-bottom:28px}
+.tool-chartwrap .chart-canvas{height:300px}
+
+/* slider grid */
+.sliders{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px}
+@media(max-width:768px){.sliders{grid-template-columns:1fr}}
+.slider-row{display:flex;flex-direction:column;gap:7px}
+.slider-label{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:rgba(250,248,244,.6)}
+.slider-label .nm{display:flex;align-items:center;gap:8px}
+.slider-label .v{color:var(--red-light);font-weight:700;font-size:12px}
+.lock-pip{font-size:8px;letter-spacing:0.05em;padding:2px 6px;border-radius:8px;background:rgba(250,248,244,.1);color:rgba(250,248,244,.6)}
+input[type=range]{-webkit-appearance:none;width:100%;height:2px;background:rgba(250,248,244,.2);outline:none;border-radius:1px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;background:var(--red);cursor:pointer;border:3px solid var(--navy);box-shadow:0 0 0 1px var(--red)}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--red);cursor:pointer;border:3px solid var(--navy)}
+.tool-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-top:26px;padding-top:22px;border-top:1px solid rgba(250,248,244,.12)}
+.scenario-btns{display:flex;gap:8px;flex-wrap:wrap}
+.scn{background:rgba(255,255,255,.06);border:1px solid rgba(250,248,244,.18);color:rgba(250,248,244,.85);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.06em;padding:8px 14px;border-radius:3px;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.scn:hover{background:rgba(255,255,255,.13)}
+.scn.active{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.tool-note{font-size:11px;color:rgba(250,248,244,.45);font-family:'IBM Plex Mono',monospace;max-width:420px}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--bg-card)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:880px}
+th{background:var(--navy);color:var(--bg);font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.07em;font-weight:600;padding:12px 14px;text-align:left;white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-light);color:var(--ink-mid);vertical-align:top}
+tr:hover td{background:var(--bg-alt)}
+td.num{font-family:'IBM Plex Mono',monospace;text-align:right;white-space:nowrap;color:var(--ink)}
+.cat-pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;color:#fff;letter-spacing:0.05em}
+.lock{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-light)}
+.pl-tag{display:inline-block;font-size:8px;font-family:'IBM Plex Mono',monospace;background:var(--gold);color:var(--navy);padding:1px 5px;border-radius:6px;margin-left:6px;font-weight:700;letter-spacing:0.04em;vertical-align:middle}
+
+/* PIPELINE / ROADMAP */
+.pipe-stage{display:grid;grid-template-columns:48px 1fr;gap:18px;margin-bottom:4px;position:relative}
+.pipe-rail{display:flex;flex-direction:column;align-items:center}
+.pipe-dot{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;flex-shrink:0;z-index:2}
+.pipe-stage:nth-child(odd) .pipe-dot{background:var(--red)}
+.pipe-line{width:2px;flex:1;background:var(--rule);margin:2px 0}
+.pipe-stage:last-child .pipe-line{display:none}
+.pipe-body{padding-bottom:26px}
+.pipe-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;margin-bottom:3px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pipe-dur{font-family:'IBM Plex Mono',monospace;font-size:9px;background:var(--bg-alt);border:1px solid var(--rule);color:var(--ink-light);padding:2px 8px;border-radius:8px;text-transform:uppercase;letter-spacing:0.06em}
+.pipe-desc{font-size:13px;color:var(--ink-light);line-height:1.55}
+
+/* product dev selector */
+.pd-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.pd-btn{background:var(--bg-card);border:1px solid var(--rule);color:var(--ink-mid);font-size:12px;font-weight:600;padding:8px 13px;border-radius:20px;cursor:pointer;transition:all .2s}
+.pd-btn:hover{border-color:var(--red);color:var(--red)}
+.pd-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.src-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+@media(max-width:780px){.src-grid{grid-template-columns:1fr}}
+.src{background:var(--bg-card);border:1px solid var(--rule);border-top:3px solid var(--teal);padding:16px 18px;border-radius:0 0 4px 4px}
+.src.intl{border-top-color:var(--navy-mid)}
+.src.local{border-top-color:var(--gold)}
+.src-type{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);margin-bottom:6px}
+.src-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:4px}
+.src-note{font-size:12px;color:var(--ink-light);line-height:1.5}
+
+.footer{background:var(--navy);color:rgba(250,248,244,.6);padding:36px 0;font-size:12px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em}
+.footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.disclaimer{font-size:11px;color:var(--ink-faint);line-height:1.6;margin-top:10px}
+
+@media print{.tabs-wrap,.masthead{position:static}.section{display:block!important;page-break-before:always}.tool{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container masthead-inner">
+    <div class="brand"><span class="dot"></span>MAC AL GURG <span class="accent">/</span> PRODUCT EXPANSION INTELLIGENCE</div>
+    <div class="masthead-meta">PART OF THE AL GURG GROUP &nbsp;|&nbsp; UAE · KSA &nbsp;|&nbsp; AED &nbsp;|&nbsp; v2.0</div>
+  </div>
+</header>
+
+<div class="title-block">
+  <div class="container">
+    <div class="title-eyebrow">Market · Business · Financial Analysis — 36 new product lines, 5 categories</div>
+    <h1 class="title">Thirty-six new lines. <span class="accent">One five-year path</span> to a materially bigger basket.</h1>
+    <p class="title-deck">A study of 36 proposed additions to Mac Al Gurg's trading basket across the UAE and Kingdom of Saudi Arabia. The model phases launches over five years — commodity first, certified wedges last. Three cases (Worst / Base / Best) come from the actual launch trajectories and budget-vs-actual variance of a comparable GCC building-materials trader. KSA contribution is deferred in Years 1–2 because the Saudi team is being built from scratch. Drag the sliders. Toggle the markets. Watch the bottom line build, year by year.</p>
+    <div class="title-byline">
+      <div><span class="label">Prepared by</span><span class="value" style="color:var(--gold-deep);font-weight:700">Mohammed Vaseeuddin</span></div>
+      <div><span class="label">For</span><span class="value">MAC Al Gurg · ESAG Building Materials</span></div>
+      <div><span class="label">Scope</span><span class="value">UAE &amp; KSA · 5-year horizon</span></div>
+      <div><span class="label">Currency</span><span class="value">AED (USD peg 3.6725)</span></div>
+      <div><span class="label">Basis</span><span class="value">Gross profit · evidence-calibrated</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="container">
+    <nav class="tabs">
+      <button class="tab active" data-target="exec"><span class="num">01</span>Executive</button>
+      <button class="tab" data-target="model"><span class="num">02</span>Live Model</button>
+      <button class="tab" data-target="landscape"><span class="num">03</span>Opportunity Map</button>
+      <button class="tab" data-target="categories"><span class="num">04</span>The Five Baskets</button>
+      <button class="tab" data-target="channels"><span class="num">05</span>Channel Split</button>
+      <button class="tab" data-target="data"><span class="num">06</span>Market Data</button>
+      <button class="tab" data-target="benchmarks"><span class="num">07</span>Calibration &amp; Benchmarks</button>
+      <button class="tab" data-target="proddev"><span class="num">08</span>Product Development</button>
+      <button class="tab" data-target="roadmap"><span class="num">09</span>Roadmap</button>
+    </nav>
+  </div>
+</div>
+
+<main class="container">
+<!-- 01 EXECUTIVE -->
+<section class="section active" id="exec">
+  <div class="section-header">
+    <div class="section-eyebrow">01 — Executive Summary</div>
+    <h2 class="section-title">A bigger basket, sold through the <span class="accent">channel that already exists</span>.</h2>
+    <p class="section-deck">Mac Al Gurg has sold sanitaryware, drainage, pipe & fittings, and passive fire protection into the UAE construction market since 1974. The 36 lines in this study extend that basket. Same sales engineers. Same architects and MEP consultants on the customer side. Same trade channel. Plus the Al Gurg Fosroc joint venture for the anchoring and chemical lines. Where I quote a margin or a ramp curve, it comes from a comparable GCC building-materials trader's actual five-year results — not from a market report's headline figure.</p>
+  </div>
+
+  <div class="grid grid-4" style="margin-bottom:44px">
+    <div class="card"><div class="card-corner">01</div><div class="card-label">Combined SAM (UAE + KSA)</div><div class="card-value" id="kpi-tam">—</div><div class="card-sub">Serviceable addressable market across the 36 proposed lines, both markets, latest reported year.</div></div>
+    <div class="card"><div class="card-corner">02</div><div class="card-label">Yr-5 Revenue @ Base case</div><div class="card-value" id="kpi-rev5">—</div><div class="card-sub">Modelled Year-5 annual revenue once the full phased basket is live. Adjustable on the Live Model tab.</div></div>
+    <div class="card"><div class="card-corner">03</div><div class="card-label">Yr-5 Gross Profit @ Base</div><div class="card-value" id="kpi-gp5">—</div><div class="card-sub">Year-5 gross profit at blended category margins (20–48% by line). Opex layered separately in a later pass.</div></div>
+    <div class="card accent"><div class="card-corner">04</div><div class="card-label">Cumulative 5-Yr Gross Profit</div><div class="card-value" id="kpi-gpcum">—</div><div class="card-sub">The headline. Base case <strong>~AED 45M</strong>, built progressively. Small in Year 1 (UAE only, KSA team not yet built). Compounds from Year 3 once both markets are operational.</div></div>
+  </div>
+
+  <div class="thesis">"The volume comes from the commodity lines, sold through the established route. The margin comes from the certified wedges, won at the spec stage. The pricing comes from the private-label sealants — owned, not distributed. Run all three over five years and the basket pays its way."</div>
+
+  <div class="grid grid-2" style="margin-top:44px">
+    <div class="prose">
+      <h3>Why this is the right moment</h3>
+      <p>The GCC has shifted from a volume-build market to a specification-driven one. Vision 2030, "We the UAE 2031" and the Dubai D33 agenda all push developers and consultants to write certified, engineered systems into tender documents at design stage. Long before a contractor procures.</p>
+      <p>MAC's existing sales engineers already sit inside those design conversations. Adding expansion joints, smoke seals, access panels, hygienic panels, anchors, hand tools and a full PPE range lets the same team write more lines into the same Bill of Quantities. The customer acquisition cost is a fraction of what a new entrant would carry.</p>
+      <div class="callout">
+        <div class="callout-label">Three structural moves</div>
+        <ul>
+          <li><strong>Complementary commodity</strong> — sealants, cable ties, hand tools, PPE, harnesses, cones. MAC's existing UAE route already serves these buyers. Year-1 ramp is meaningful, not zero.</li>
+          <li><strong>Specified wedges</strong> — steel doors, smoke and acoustic seals, fire barriers, anchors, hygienic systems. Slow to qualify (Civil Defence, UL, ETA, SABER, GREENGUARD) and sticky once specified.</li>
+          <li><strong>Private-label sealants</strong> — Universal Silicone, Neutral, Acrylic, PU Foam. Converts distribution margin into manufacturing margin via local contract production (AMI / Dolphin / ASMACO). Firestop is excluded — Al Gurg Fosroc already covers that.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose">
+      <h3>How this report is built</h3>
+      <p>Every figure has a source. Gross margins are a 60/40 blend of a comparable competitor's five years of actual results and the GCC distribution norms from the original Cat A–E market reports. Capture ramps are tier-based. Worst and Best cases come from the P25 and P75 of that competitor's actual:budget gross-profit achievement.</p>
+      <p>The Base case lands at ~AED 45M cumulative 5-year gross profit. Not a stretch number. Not a fantasy. The realistic landing zone the data supports.</p>
+      <div class="callout gold">
+        <div class="callout-label">How to read it</div>
+        <ul>
+          <li><strong>Live Model</strong> — drag any line's mature-capture slider. Toggle UAE / KSA / Combined. Switch Worst / Base / Best.</li>
+          <li><strong>Channel Split</strong> — which of MAC's two routes carries which lines. <strong>Benchmarks</strong> — the competitor data behind every calibration. <strong>Product Development</strong> — three sources per line, including the Portwest vs in-house brand structure for PPE. <strong>Roadmap</strong> — the sequenced five-year build.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="grid grid-3">
+    <div class="card"><div class="card-label">The Volume Engines</div><div class="prose" style="font-size:13px">Cable ties, lightweight fixings, hand tools, entrance matting, stair nosings, architectural profiles, the full PPE Range. Fast turn, minimal cert work, dual-brand on PPE. They fund overhead and put MAC on every project site in Year 1.</div></div>
+    <div class="card"><div class="card-label">The Margin Wedges</div><div class="prose" style="font-size:13px">Steel doors, fire barriers, smoke seals, expansion joints, chemical and mechanical anchors, raised access flooring. Protected by ETA / UL / Civil Defence. Built over Years 2–5 behind their cert gates.</div></div>
+    <div class="card"><div class="card-label">The Private-Label Play</div><div class="prose" style="font-size:13px">Four PL sealants at 33–35% blended GM. A real premium over a distributor's 25%. Below the original 45–50% the market reports suggested, which the competitor data showed was unrealistic.</div></div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="callout teal" style="margin-top:24px">
+    <div class="callout-label">A note on this study</div>
+    <p style="margin-top:6px;font-size:14px;color:var(--ink-mid)">This is an outsider's study. It draws on published market data, a comparable GCC competitor's five years of actual results, and 16 years of selling into the building and construction trade in the region. It assumes no access to MAC's internal product pipeline, supplier list, certification roadmap or current development work. Once I'm inside the business the numbers will move. Some of the lines proposed here may already be live in development. Some sources may already be locked. Some markets I've sized one way may look different in MAC's real customer mix. Read this as the start of a conversation, not the final answer. The model is built to evolve.</p>
+    <p style="margin-top:6px;font-size:13px;color:var(--ink-light)">— Mohammed Vaseeuddin</p>
+  </div>
+</section>
+
+<!-- 02 LIVE MODEL -->
+<section class="section" id="model">
+  <div class="section-header">
+    <div class="section-eyebrow">02 — The Live Financial Model</div>
+    <h2 class="section-title">Set the capture share. <span class="accent">Watch the bottom line.</span></h2>
+    <p class="section-deck">A gross-profit model built on the reported addressable markets and the reality that products launch in phases. Commodity goes live first. Certified wedges last. Each line earns from its launch year, then ramps share over the years it has been live. The ramp shape depends on certification difficulty (Tier 1 commodity ramps fast, Tier 5 cert-gated ramps slow). KSA is deferred in Years 1–2 because there is no Saudi team yet. The Base case targets ~AED 45M cumulative gross profit. Change anything — it recalculates live.</p>
+  </div>
+
+  <div class="tool">
+    <div class="tool-header">
+      <div>
+        <div class="tool-title">5-Year Gross-Profit Engine</div>
+        <div class="tool-deck">36 lines launched in phases. Markets compound at each line's CAGR; capture ramps from launch year toward the mature target you set below. The gold dashed line is cumulative gross profit. KSA contribution sits at zero in Year 1, runs at 40% of UAE pace in Year 2 (commodity pilots while the KSA team is being built), and joins UAE at full equivalence from Year 3.</div>
+      </div>
+      <div class="toggle-row" id="mkt-toggle">
+        <button class="toggle active" data-mkt="BOTH">UAE + KSA</button>
+        <button class="toggle" data-mkt="UAE">UAE</button>
+        <button class="toggle" data-mkt="KSA">KSA</button>
+      </div>
+    </div>
+
+    <div class="tool-results">
+      <div class="result"><div class="result-label">Yr-5 Revenue</div><div class="result-value" id="r-rev"><span class="unit">AED</span> —</div><div class="result-sub" id="r-rev-sub">—</div></div>
+      <div class="result"><div class="result-label">Yr-5 Gross Profit</div><div class="result-value" id="r-gp"><span class="unit">AED</span> —</div><div class="result-sub" id="r-gp-sub">blended GM —</div></div>
+      <div class="result hero"><div class="result-label">Cumulative 5-Yr Gross Profit</div><div class="result-value" id="r-cum"><span class="unit">AED</span> —</div><div class="result-sub" id="r-cum-sub">base case · sum Yrs 1–5</div></div>
+      <div class="result"><div class="result-label">Yr-5 Capture of SAM</div><div class="result-value" id="r-pen"><span class="unit"></span>—</div><div class="result-sub">weighted avg across basket</div></div>
+    </div>
+
+    <div class="tool-chartwrap">
+      <div class="chart-canvas"><canvas id="chart-build"></canvas></div>
+    </div>
+
+    <div class="tool-foot" style="margin-top:0;border-top:none;padding-top:0;margin-bottom:22px">
+      <div class="scenario-btns" id="case-btns">
+        <button class="scn" data-case="worst">Worst Case</button>
+        <button class="scn active" data-case="base">Base Case</button>
+        <button class="scn" data-case="best">Best Case</button>
+        <button class="scn" data-case="reset" style="background:transparent;border-color:rgba(250,248,244,.3)">Reset sliders</button>
+      </div>
+      <div class="tool-note">Sliders set each line's <strong>mature</strong> capture share (% of its market once fully established). The lock pip shows launch year and certification tier (Y# · T1 commodity → T5 heavy cert). PL = private label. DUAL = dual-brand (Portwest premium + MAC in-house brand). Worst / Base / Best apply the P25 / P50 / P75 of competitor budget-vs-actual GP achievement.</div>
+    </div>
+
+    <div class="sliders" id="slider-host"><!-- sliders injected --></div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:28px">
+    <div class="chart-title">Three Cases — Cumulative Gross Profit Build</div>
+    <div class="chart-deck">Worst, Base and Best cumulative gross profit across five years at your current slider settings. Base is anchored at ~AED 45M over the period. The curve is flat in Year 1 (UAE only, just starting), steepens through Years 2–3 (KSA team active, PL launch), and reaches full slope by Year 5.</div>
+    <div class="chart-canvas"><canvas id="chart-cases"></canvas></div>
+    <div class="chart-source">Live · AED · cumulative · current slider settings</div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="chart-card">
+      <div class="chart-title">Year-5 Gross Profit by Category</div>
+      <div class="chart-deck">Where the profit concentrates at your current settings. Recomputes with every slider move and market toggle.</div>
+      <div class="chart-canvas"><canvas id="chart-cat"></canvas></div>
+      <div class="chart-source">Live · AED · current scenario</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Revenue vs Gross Profit — Year 5</div>
+      <div class="chart-deck">The gap between the bars is the cost of goods. Wider gross-profit share signals the margin-rich lines pulling their weight.</div>
+      <div class="chart-canvas"><canvas id="chart-revgp"></canvas></div>
+      <div class="chart-source">Live · AED · current scenario</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OPPORTUNITY MAP -->
+<section class="section" id="landscape">
+  <div class="section-header">
+    <div class="section-eyebrow">03 — The Opportunity Map</div>
+    <h2 class="section-title">Every line, plotted by <span class="accent">size, margin and difficulty</span>.</h2>
+    <p class="section-deck">Bubble position = market size (x) against blended gross margin (y). Bubble size = combined UAE+KSA SAM. Colour = category. The top-right quadrant — big market, high margin — is where the strategy should lean. The bubbles low and to the left are the volume engines that fund it.</p>
+  </div>
+  <div class="chart-card" style="margin-bottom:28px">
+    <div class="chart-title">Market Size × Gross Margin × Addressable Value</div>
+    <div class="chart-deck">Hover any bubble for the line, its SAM, blended margin, certification tier and launch year.</div>
+    <div class="chart-canvas tall"><canvas id="chart-bubble"></canvas></div>
+    <div class="chart-source">Combined UAE + KSA SAM · AED · blended GM%</div>
+  </div>
+  <div class="grid grid-2">
+    <div class="chart-card">
+      <div class="chart-title">Market Growth (CAGR) by Line</div>
+      <div class="chart-deck">Hygienic systems lead the basket at 10–12%. Flame-resistant workwear and hi-vis follow on the back of KSA mega-project demand.</div>
+      <div class="chart-canvas tall"><canvas id="chart-cagr"></canvas></div>
+      <div class="chart-source">Forecast CAGR per line</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Addressable Market — UAE vs KSA</div>
+      <div class="chart-deck">KSA is the larger market on almost every line, driven by Vision 2030 giga-project volume. UAE leads on retrofit-driven and premium-finish lines.</div>
+      <div class="chart-canvas tall"><canvas id="chart-uaeksa"></canvas></div>
+      <div class="chart-source">SAM · AED millions</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CATEGORIES -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <div class="section-eyebrow">04 — The Five Baskets</div>
+    <h2 class="section-title">What each category is, and <span class="accent">why it fits MAC</span>.</h2>
+    <p class="section-deck">Five categories, each mapped to a route MAC already runs or one that can be built next to the existing motion. The strategic logic for each, plus the margin reality from the competitor data.</p>
+  </div>
+  <div id="cat-host"><!-- category blocks injected --></div>
+</section>
+
+<!-- 05 CHANNEL SPLIT -->
+<section class="section" id="channels">
+  <div class="section-header">
+    <div class="section-eyebrow">05 — Channel Split</div>
+    <h2 class="section-title">Two routes to market. <span class="accent">87 / 13.</span></h2>
+    <p class="section-deck">Look at what a comparable GCC competitor actually sold over their last reported year. The contractor / spec route delivered 87% of GP in KSA, 93% in UAE. The trader route (retail, distributor, hardware) picked up the rest. This isn't either/or — both routes are needed. But certification, spec inclusion and project-route relationships are the dominant motion, not retail.</p>
+  </div>
+
+  <div class="grid grid-2" style="margin-bottom:32px">
+    <div class="chart-card">
+      <div class="chart-title">Channel Split by Region</div>
+      <div class="chart-deck">Sales-weighted across all product categories. UAE skews even more contractor-led than KSA — the UAE market has fewer pure trader channels.</div>
+      <div class="chart-canvas"><canvas id="chart-channelsplit"></canvas></div>
+      <div class="chart-source">Comparable GCC trader, sales-weighted, latest reported half-year</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">MAC Year-5 GP by Channel — Live</div>
+      <div class="chart-deck">Year-5 gross profit from the live model, split by which channel each MAC line lives in. Recomputes when you change sliders or the market toggle on the Live Model tab.</div>
+      <div class="chart-canvas"><canvas id="chart-channelgp"></canvas></div>
+      <div class="chart-source">Live · AED · current scenario</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:28px">
+    <div class="chart-title">MAC Lines by Channel — Where Each Product Sells</div>
+    <div class="chart-deck">All 36 proposed lines classified by their dominant channel. Contractor-route lines run through spec, projects and BOQs. Trader-route lines move through distributor networks, hardware retail and tool merchants.</div>
+    <div class="chart-canvas tall"><canvas id="chart-channellines"></canvas></div>
+    <div class="chart-source">Combined UAE + KSA SAM · AED</div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="callout">
+      <div class="callout-label">Contractor route — the dominant motion</div>
+      <ul>
+        <li><strong>Steel doors, fire barriers, smoke and acoustic seals</strong> — Civil Defence specified, written into BOQs by MEP consultants at design stage. Slow to qualify, sticky once won.</li>
+        <li><strong>Expansion joints, tile joints, architectural profiles, stair nosings, entrance matting, impact protection, RAF, access panels</strong> — architect-specified. Same channel MAC uses today for sanitaryware.</li>
+        <li><strong>Hygienic wall and ceiling, garbage and linen chutes</strong> — MEP consultants in healthcare and hospitality. Bundles with MAC sanitaryware.</li>
+        <li><strong>Safety helmets, gloves, hi-vis, eye / hearing / respiratory protection, harness, flame-resistant workwear, cones</strong> — site safety procurement, contractor-direct.</li>
+        <li><strong>Mechanical and chemical anchors</strong> — structural-engineer spec; Fosroc JV pull-through.</li>
+      </ul>
+    </div>
+    <div class="callout gold">
+      <div class="callout-label">Trader route — the velocity layer</div>
+      <ul>
+        <li><strong>Cable ties and lightweight fixings</strong> — distributor networks, electrical wholesalers, MEP trader counters.</li>
+        <li><strong>Hand tools</strong> — hardware retail, tool merchants, jobsite walk-in. Volume play.</li>
+        <li><strong>Safety shoes</strong> — PPE distributors and safety-supply retail.</li>
+        <li><strong>The four PL sealants</strong> — universal silicone, neutral, acrylic, PU foam — sold mainly through architectural fit-out distributors and trade counters.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 06 DATA -->
+<section class="section" id="data">
+  <div class="section-header">
+    <div class="section-eyebrow">06 — Market Data</div>
+    <h2 class="section-title">The full sourced table.</h2>
+    <p class="section-deck">Every line, both markets. SAM (AED), CAGR, blended gross margin, certification gatekeepers, incumbent suppliers, primary channel. "(est.)" marks reasoned estimates from broader regional datasets where country-level figures weren't isolatable.</p>
+  </div>
+  <div class="table-wrap">
+    <table id="data-table">
+      <thead><tr>
+        <th>Cat</th><th>Product Line</th><th>Launch</th><th>Mkt</th><th>SAM (AED)</th><th>CAGR</th><th>GM%</th><th>Tier</th><th>Gatekeepers</th><th>Channel</th>
+      </tr></thead>
+      <tbody id="data-body"></tbody>
+    </table>
+  </div>
+  <p class="disclaimer" id="data-disclaimer"></p>
+</section>
+
+<!-- 07 BENCHMARKS -->
+<section class="section" id="benchmarks">
+  <div class="section-header">
+    <div class="section-eyebrow">07 — Calibration &amp; Benchmarks</div>
+    <h2 class="section-title">Grounded in <span class="accent">competitor data</span>, not assumed.</h2>
+    <p class="section-deck">The realistic-Base-case anchor (~AED 45M cumulative GP) is not a guess. It's calibrated against the actual results of a comparable GCC building-materials trader: nine new-product launches tracked from 2021 through 2023, and several years of budget-vs-actual gross-profit observations across 14 branches. Below is what the data told us, and how it changed the assumptions.</p>
+  </div>
+
+  <div class="grid grid-3" style="margin-bottom:32px">
+    <div class="card"><div class="card-corner">A</div><div class="card-label">Years of data analysed</div><div class="card-value">5</div><div class="card-sub">2019 through 2023H1 — sales, gross profit and channel split per product category across 14 branches.</div></div>
+    <div class="card"><div class="card-corner">B</div><div class="card-label">Median Actual / Budget GP</div><div class="card-value">74<span class="small">%</span></div><div class="card-sub">The reality check. Half of all category-budget pairs under-deliver by 26% or more. Budgets in this segment are systematically optimistic.</div></div>
+    <div class="card accent"><div class="card-corner">C</div><div class="card-label">UAE vs KSA growth, 2019→2022</div><div class="card-value">−5 / +7<span class="small">%</span></div><div class="card-sub">UAE basket sales contracted 5% CAGR. KSA basket grew 7% CAGR over the same period. Vision 2030 was the engine.</div></div>
+  </div>
+
+  <div class="grid grid-2" style="margin-bottom:32px">
+    <div class="chart-card">
+      <div class="chart-title">Tier-Based Ramp Curves</div>
+      <div class="chart-deck">Capture-share ramp by certification difficulty. Tier 1 commodity rides MAC's existing trade channel and gains share fast. Tier 5 heavy-cert lines (steel doors, fire barriers, smoke seals) face the qualification gate and ramp slowly. All five curves derived from competitor launch trajectories.</div>
+      <div class="chart-canvas"><canvas id="chart-rampbench"></canvas></div>
+      <div class="chart-source">Competitor data, 2021–2023, tier-classified launches</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Actual / Budget GP — The Variance Distribution</div>
+      <div class="chart-deck">How often the competitor's actuals hit their budget. The P25 / P50 / P75 of this distribution drive Worst / Base / Best multipliers (0.51 / 1.00 / 1.29). An evidence-based spread, tighter than a guessed 0.6 / 1.6.</div>
+      <div class="chart-canvas"><canvas id="chart-varbench"></canvas></div>
+      <div class="chart-source">Competitor data, two recent fiscal years, 14 branches</div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-bottom:32px">
+    <div class="card"><div class="card-label">What changed in the gross-margin assumptions</div>
+      <div class="prose" style="font-size:13px;margin-top:8px">
+        <p>The original "GCC typical" GMs from the market reports were materially optimistic. Of 26 mapped lines, 19 had GMs above what the competitor actually achieved by 3 percentage points or more. The largest gaps:</p>
+        <ul style="margin-left:14px;color:var(--ink-mid)">
+          <li><strong>Safety shoes</strong> — model 40% / actual 3% (outlier, adjusted to 18% blended)</li>
+          <li><strong>Harness</strong> — model 45% / actual 20%</li>
+          <li><strong>4 PL sealants</strong> — model 45–50% / actual 25% (distributed) → blended 33–35%</li>
+          <li><strong>Access panels</strong> — model 40% / actual 18%</li>
+          <li><strong>Hand tools</strong> — model 35% / actual 19%</li>
+          <li><strong>Steel doors</strong> — model 25% / actual 16%</li>
+        </ul>
+        <p style="margin-top:8px">Final GMs are a 60/40 blend of competitor-actual and the original norms. MAC's brand, Fosroc JV and spec channel justify some uplift over a pure trader. Not 25 points of it.</p>
+      </div>
+    </div>
+    <div class="card"><div class="card-label">Channel split — where the GP comes from</div>
+      <div class="card-value" style="font-size:18px;margin-top:8px"><span style="color:var(--ink)">87% Contractors</span> · <span style="color:var(--gold-deep)">13% Traders</span></div>
+      <div class="prose" style="font-size:13px;margin-top:14px">
+        <p>Sales-weighted channel mix from the competitor's KSA operations. UAE is even more contractor-led at 93%. The vast majority of GP is generated through project-route / contractor sales.</p>
+        <p>For MAC this means certification and BIM / spec inclusion are not optional for the high-margin lines. They're how 87% of the addressable revenue flows. The trader-route lines sit alongside as fast-velocity, lower-margin volume.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Notes on confidence</div>
+    <ul>
+      <li><strong>Cumulative 5-yr GP anchor.</strong> Four anchor options were tested and the 60/40 blend with a realistic Base of ~AED 45M was the one the GM evidence supported. The original AED 60M target couldn't survive contact with the actuals.</li>
+      <li><strong>UAE vs KSA growth velocity</strong> in the competitor data: +7% CAGR in KSA, −5% in UAE, 2019→2022. Vision 2030 versus UAE pipeline softness. The strategic implication is left to the reader.</li>
+      <li><strong>Helmets, harness, cones, gloves, hi-vis, eye / hearing / respiratory / flame-resistant.</strong> The competitor's data on Personal Protective Equipment is thinly tracked. These lines lean on the published SAM and CAGR figures and on Portwest's catalogue depth, not on a calibrated competitor ramp.</li>
+      <li><strong>Hygienic wall panels and smoke seals</strong> have no direct competitor analogue. Tier-default ramps applied.</li>
+      <li><strong>Five of nine competitor launches</strong> in the long-term cohort either declined by Year 3 or never reached scale. Product attrition is real. The Worst case carries this risk explicitly.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 08 PRODUCT DEVELOPMENT -->
+<section class="section" id="proddev">
+  <div class="section-header">
+    <div class="section-eyebrow">08 — Product Development</div>
+    <h2 class="section-title">From <span class="accent">source to shelf</span>, line by line.</h2>
+    <p class="section-deck">Pick a product to see three candidate sources and the staged development pipeline. Certification is the critical path — it's a gate, not a step. For the 10 PPE lines, sources are structured as the dual-brand: Portwest at the premium / spec end, MAC's in-house brand sourced from a panel of specialised Chinese OEMs (BayMRO, Anbu Safety, Sinomox, Dur Safety) for the trader / commodity end.</p>
+  </div>
+  <div class="pd-select" id="pd-select"></div>
+  <div class="grid grid-2" style="align-items:start;gap:32px">
+    <div>
+      <h3 style="font-family:'Manrope';font-size:18px;margin-bottom:6px" id="pd-title">—</h3>
+      <p class="prose" style="font-size:13px;margin-bottom:4px" id="pd-context">—</p>
+      <div class="src-grid" id="pd-sources"></div>
+    </div>
+    <div>
+      <div class="chart-title" style="margin-bottom:18px">Development Pipeline</div>
+      <div id="pd-pipeline"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="section-header">
+    <div class="section-eyebrow">09 — Sequenced Roadmap</div>
+    <h2 class="section-title">The order of operations across <span class="accent">five years</span>.</h2>
+    <p class="section-deck">Front-loaded by design. Everything that doesn't need new certification work goes in Year 1, sold through MAC's existing UAE team. Private label and the spec-driven lines build through Years 2–4. The heavy cert wedges go last because they take longest to qualify and stick longest once won. KSA team builds during Years 1–2.</p>
+  </div>
+  <div id="roadmap-host"></div>
+  <div class="rule"></div>
+  <div class="callout teal">
+    <div class="callout-label">Layered in a later pass</div>
+    <ul>
+      <li><strong>Operating costs and net margin.</strong> Sales-engineer headcount (UAE + KSA build-out), certification CapEx (UL / Civil Defence / SABER / GREENGUARD / ETA), and working-capital carry. The model exposes a placeholder block so net is one step from gross.</li>
+      <li><strong>Supplier shortlisting.</strong> Converting the three candidate sources per line into a ranked target list with indicative agency terms.</li>
+      <li><strong>The marketing and pricing layer.</strong> Psychology-led positioning, the Contractor-route spec wedge, and tiered private-label pricing.</li>
+      <li><strong>KSA team build-out.</strong> Hiring sequence, regional setup (Jeddah / Riyadh / Dammam), and the Year-2 commodity pilot list.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">
+  <div class="container">
+    <div>MAC AL GURG · PART OF THE AL GURG GROUP · BUILDING MATERIALS DIVISION · INTERNAL STRATEGY DOCUMENT</div>
+    <div>PREPARED BY <span style="color:var(--gold)">MOHAMMED VASEEUDDIN</span></div>
+  </div>
+  <div class="container" style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(250,248,244,.1);font-style:italic;color:rgba(250,248,244,.45);font-family:'Manrope',sans-serif;font-size:14px;letter-spacing:0">
+    <div>"A diver thinking of sharks will never get pearls." — Easa Saleh Al Gurg, Founder</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px">UAE + KSA · 5-YEAR · AED</div>
+  </div>
+</div>
+
+<script>
+/* ============================================================================
+   MAC AL GURG — PRODUCT EXPANSION FINANCIAL MODEL — v5
+   By Mohammed Vaseeuddin · Currency: AED · USD→AED peg = 3.6725
+
+   This iteration locks in five things on top of the prior calibration:
+
+   1. The basket grows to 36 lines. Personal Protective Equipment is now a
+      basket of its own (10 lines, dual-brand: Portwest at the premium end,
+      MAC's in-house brand sourced from a panel of Chinese OEMs for the
+      trader-route volume).
+
+   2. Two new architectural lines added — Architectural Profiles (Nexus wall
+      trims, corner guards, transition profiles) and Impact Protection (wall
+      guards, crash rails, bumper rails). Both ride MAC's existing fit-out
+      and consultant channel.
+
+   3. MAC has no Saudi team today; one will be built. KSA_DEFER reflects this:
+      Year 1 contributes nothing in KSA, Year 2 runs at 40% of UAE pace
+      (commodity pilots only), Year 3 onward runs at full equivalence.
+
+   4. Launch years are now explicit per product (Y1 = 19 lines, Y2 = 10,
+      Y3 = 4, Y4 = 2, Y5 = 1) rather than computed from a tier-sort.
+
+   5. Firestop sealant remains out (Fosroc JV overlap). Smoke & acoustic
+      door seals stays in Y5 to bundle with the steel doors that launched
+      Y4.
+
+   Gross margins are the 60/40 blend of competitor actuals and the GCC
+   distribution norms. The Base case lands at ~AED 45M cumulative 5-year
+   gross profit. Worst (P25) and Best (P75) come from the actual:budget
+   GP distribution in the competitor's two most recent fiscal years.
+============================================================================ */
+
+const FX = 3.6725;
+const A = (usdAbs) => Math.round(usdAbs * FX);
+
+/* ---- CALIBRATION CONSTANTS (LOCKED) ---- */
+const MATURE_TARGET = { 1:6.0, 2:4.5, 3:3.0, 4:2.0, 5:1.2 };
+
+/* Ramp by years-live, indexed [0..5] where index 0 is unused and
+   index n is the n-th year after launch. Steeper for low-tier
+   commodity (rides existing channel), gentler for cert-gated wedges. */
+const LIVE_RAMP_BY_TIER = {
+  1: [0, 0.35, 0.60, 0.80, 0.95, 1.00],
+  2: [0, 0.30, 0.55, 0.78, 0.92, 1.00],
+  3: [0, 0.15, 0.40, 0.65, 0.88, 1.00],
+  4: [0, 0.08, 0.25, 0.55, 0.82, 1.00],
+  5: [0, 0.03, 0.12, 0.42, 0.75, 1.00]
+};
+const LIVE_RAMP = LIVE_RAMP_BY_TIER[3]; // legacy alias
+
+const CALIB = 0.1154; // re-solved for 36 products with KSA deferral
+
+const CASES = { worst:0.51, base:1.00, best:1.29 };
+
+/* KSA team is built during the first two years. */
+const KSA_DEFER = { 1:0.00, 2:0.40, 3:1.00, 4:1.00, 5:1.00 };
+
+const LAUNCH_PLAN = [19, 10, 4, 2, 1];  // products per year
+
+const CHANNEL_BENCHMARK = {
+  KSA: { contractor:86, trader:14 },
+  UAE: { contractor:93, trader: 7 }
+};
+
+const RAMP = LIVE_RAMP_BY_TIER; // legacy alias
+
+/* ============================================================================
+   PRODUCT LINES — 36
+   ============================================================================ */
+const PRODUCTS = [
+  /* ---- CATEGORY A: Architectural Finishing & Access (13 lines) ---- */
+  { id:'entmat', cat:'A', name:'Entrance Matting', specLock:2, gm:38,
+    gm_unitech:33, gm_original:45, launch:1,
+    tam:{ UAE:A(15000000), KSA:A(20000000) }, cagr:5.7, est:true,
+    channel:'Contractor',
+    drivers:'Sand abrasion control, premium hospitality, logo mats',
+    cert:'Interior designers, facility managers',
+    incumbents:'3M, Forbo, Construction Specialties, Nexus' },
+
+  { id:'stairnose', cat:'A', name:'Stair Nosings', specLock:2, gm:48,
+    gm_unitech:46, gm_original:50, launch:1,
+    tam:{ UAE:A(10000000), KSA:A(15000000) }, cagr:5.8, est:true,
+    channel:'Contractor',
+    drivers:'Slip-and-fall liability, ADA compliance, stone edge protection',
+    cert:'Safety consultants, interior architects',
+    incumbents:'Genesis, Quantum, Walmay' },
+
+  { id:'archprof', cat:'A', name:'Architectural Profiles', specLock:2, gm:42,
+    gm_unitech:46, gm_original:38, launch:1, est:true,
+    tam:{ UAE:A(12000000), KSA:A(18000000) }, cagr:5.5,
+    channel:'Contractor',
+    drivers:'Wall corner guards, decorative trims, transition profiles for fit-out',
+    cert:'Interior architects, fit-out consultants',
+    incumbents:'Genesis, Schluter, Nexus, Profilpas' },
+
+  { id:'tilejoint', cat:'A', name:'Tile Movement Joints', specLock:3, gm:48,
+    gm_unitech:50, gm_original:45, launch:1,
+    tam:{ UAE:A(12000000), KSA:A(18000000) }, cagr:4.5, est:true,
+    channel:'Contractor',
+    drivers:'Large-format ceramics, tile pop-out prevention, fit-out volume',
+    cert:'Interior designers, fit-out contractors',
+    incumbents:'Genesis, Schluter, Nexus' },
+
+  { id:'impact', cat:'A', name:'Impact Protection', specLock:3, gm:40,
+    gm_unitech:42, gm_original:38, launch:1, est:true,
+    tam:{ UAE:A(18000000), KSA:A(25000000) }, cagr:6.0,
+    channel:'Contractor',
+    drivers:'Wall guards, crash rails, bumper rails for healthcare, hospitality, schools',
+    cert:'Healthcare consultants, hospitality designers, building managers',
+    incumbents:'Construction Specialties (Acrovyn), Inpro IPC, McCue, Yeoman Shield' },
+
+  { id:'expjoint', cat:'A', name:'Expansion Joint Covers', specLock:4, gm:46,
+    gm_unitech:50, gm_original:40, launch:1,
+    tam:{ UAE:A(28000000), KSA:A(35000000) }, cagr:5.1, est:true,
+    channel:'Contractor',
+    drivers:'Thermal movement, seismic compliance, luxury floor continuity',
+    cert:'Structural Eng. spec, Seismic Codes, SBC',
+    incumbents:'Migua, Emseal (Sika), Construction Specialties, Genotek, Nexus' },
+
+  { id:'locker', cat:'A', name:'Lockers (incl. Smart)', specLock:3, gm:32,
+    gm_unitech:27, gm_original:40, launch:2,
+    tam:{ UAE:A(15000000), KSA:A(25000000) }, cagr:5.4, est:true,
+    channel:'Contractor',
+    drivers:'Smart locker / last-mile boom, premium fitness & spa, rust-proof shift',
+    cert:'Fit-out consultants, logistics providers',
+    incumbents:'DISI LLC, Solera, ASSA ABLOY, InPost, Cleveron' },
+
+  { id:'cubicle', cat:'A', name:'Toilet Cubicles / Phenolic Partitions', specLock:3, gm:30,
+    gm_unitech:27, gm_original:35, launch:2,
+    tam:{ UAE:A(25000000), KSA:A(40000000) }, cagr:6.5, est:true,
+    channel:'Contractor',
+    drivers:'Blockwork→modular HPL shift, hospitality upgrades, hygiene & durability',
+    cert:'Interior architects, hygiene standards',
+    incumbents:'Venesta, Bobrick, Solera, DISI LLC, MDCC' },
+
+  { id:'raf', cat:'A', name:'Raised Access Flooring', specLock:4, gm:28,
+    gm_unitech:27, gm_original:30, launch:2,
+    tam:{ UAE:A(50000000), KSA:A(65000000) }, cagr:7.4, est:true,
+    channel:'Contractor',
+    drivers:'Hyperscale data centres, Grade-A smart offices, MEP underfloor',
+    cert:'IT consultants, MEP engineers, data-centre spec',
+    incumbents:'Kingspan, Lindner, Huilian, ASP Access Floors, Topfloor' },
+
+  { id:'accesspanel', cat:'A', name:'Access Panels & Roof Hatches', specLock:4, gm:27,
+    gm_unitech:18, gm_original:40, launch:3,
+    tam:{ UAE:A(33000000), KSA:A(47000000) }, cagr:4.0, est:true,
+    channel:'Contractor',
+    drivers:'Concealed MEP maintenance, fire-rated ceiling integrity, aesthetics',
+    cert:'MEP consultants, Civil Defence (fire-rated), SBC',
+    incumbents:'Nystrom, Rema, Shunshi, Bilco' },
+
+  { id:'steeldoor', cat:'A', name:'Steel Doors (incl. Fire-Rated)', specLock:5, gm:20,
+    gm_unitech:16, gm_original:25, launch:4,
+    tam:{ UAE:A(125240000), KSA:A(160310000) }, cagr:4.5, est:false,
+    channel:'Contractor',
+    drivers:'Civil Defence fire egress, high-rise projects, infra & defence builds',
+    cert:'Civil Defence, UL, NFPA 80, SBC, SASO',
+    incumbents:'NAFFCO, SFFECO, Al Kuhaimi, Hormann, Riyadh Metal Ind.' },
+
+  { id:'firebarrier', cat:'A', name:'Fire Barriers (Passive PFP)', specLock:5, gm:29,
+    gm_unitech:22, gm_original:40, launch:4,
+    tam:{ UAE:A(15000000), KSA:A(43200000) }, cagr:5.8, est:false,
+    channel:'Contractor',
+    drivers:'Civil Defence retrofitting, cladding remediation, compartmentation',
+    cert:'UAE Civil Defence (DCD/ADCD), SBC, UL, FM Global',
+    incumbents:'Promat, Hilti, Fosroc, Sherwin-Williams' },
+
+  { id:'smokeseal', cat:'A', name:'Smoke & Acoustic Door Seals', specLock:5, gm:44,
+    gm_unitech:null, gm_original:50, launch:5,
+    tam:{ UAE:A(12000000), KSA:A(18000000) }, cagr:5.5, est:true,
+    channel:'Contractor',
+    drivers:'Fire-door compliance, acoustic separation in hotels & hospitals',
+    cert:'DCD, NFPA 80, UL, ASTM E283 / 90, SBC',
+    incumbents:'Lorient, Sealmaster, Pemko, Athmer, Norton/STC' },
+
+  /* ---- CATEGORY B: Hygienic / Cleanroom & Waste (4 lines) ---- */
+  { id:'hygwall', cat:'B', name:'Hygienic Wall Panels', specLock:3, gm:31,
+    gm_unitech:null, gm_original:40, launch:2,
+    tam:{ UAE:A(65000000), KSA:A(100000000) }, cagr:10.3, est:true,
+    channel:'Contractor',
+    drivers:'Hospitals, food processing & cold storage, IAQ regulation',
+    cert:'DCD, Estidama / DM GR6, GREENGUARD, FDA/FSIS, ISO 14644, SBC, MOSTADAM',
+    incumbents:'TSSC, Bioclad (Vishal), Crane (Varietex), Altro, Lamilux' },
+
+  { id:'hygceil', cat:'B', name:'Hygienic Ceiling Systems', specLock:4, gm:26,
+    gm_unitech:20, gm_original:35, launch:3,
+    tam:{ UAE:A(8000000), KSA:A(12000000) }, cagr:11.4, est:true,
+    channel:'Contractor',
+    drivers:'Clinical / biotech cleanrooms, premium hospitality, HEPA / FFU integration',
+    cert:'ISO 14644 (Class 1–10,000), GMP, SBC',
+    incumbents:'ATG, Crane Composites, Jansen Cleanrooms, Zonsteel' },
+
+  { id:'garbchute', cat:'B', name:'Garbage Chutes', specLock:4, gm:31,
+    gm_unitech:32, gm_original:30, launch:3,
+    tam:{ UAE:A(15000000), KSA:A(20000000) }, cagr:5.5, est:true,
+    channel:'Contractor',
+    drivers:'High-rise residential, multi-stream sorters, fire safety',
+    cert:'Civil Defence, NFPA 82, UL 10B doors, SBC',
+    incumbents:'Pearl Industries, KAISAB, Ecotech, Ostermeier, MEWDS' },
+
+  { id:'linenchute', cat:'B', name:'Linen Chutes', specLock:4, gm:31,
+    gm_unitech:32, gm_original:30, launch:3,
+    tam:{ UAE:A(18000000), KSA:A(25000000) }, cagr:5.5, est:true,
+    channel:'Contractor',
+    drivers:'Hospitality expansion, hospital infection control, laundry automation',
+    cert:'Civil Defence, NFPA 82, UL 10B doors, SBC',
+    incumbents:'Pearl Industries, Ecotech, KAISAB' },
+
+  /* ---- CATEGORY C: Personal Protective Equipment & Hand Tools (11 lines) ---- */
+  { id:'handtools', cat:'C', name:'Hand Tools', specLock:2, gm:25,
+    gm_unitech:19, gm_original:35, launch:1,
+    tam:{ UAE:A(155800000), KSA:A(256300000) }, cagr:3.5, est:false,
+    channel:'Trader',
+    drivers:'Facilities maintenance, premiumisation, Vision 2030 industrial uplift',
+    cert:'MoIAT (ECAS) / SASO (SABER), ISO',
+    incumbents:'TTI, Stanley B&D, Snap-on, King Tony, Channellock' },
+
+  { id:'cones', cat:'C', name:'Traffic / Safety Cones', specLock:1, gm:22, dualBrand:true,
+    gm_unitech:20, gm_original:25, launch:1,
+    tam:{ UAE:A(15000000), KSA:A(35000000) }, cagr:8.8, est:true,
+    channel:'Contractor',
+    drivers:'Active site mandates, ITS / smart-city, highway & urban planning',
+    cert:'RTA / Ministry of Transport, municipal, SASO',
+    incumbents:'3M, Misar, Biri Group, Nassguard, Lifeline-Safety' },
+
+  { id:'eyeprot', cat:'C', name:'Eye Protection', specLock:2, gm:30, dualBrand:true,
+    gm_unitech:null, gm_original:35, launch:1, est:true,
+    tam:{ UAE:A(25000000), KSA:A(40000000) }, cagr:7.0,
+    channel:'Contractor',
+    drivers:'Site safety mandates, KSA OSH Law, industrial automation safety',
+    cert:'MoIAT/ECAS, SASO TR/SABER, EN 166, ANSI Z87.1',
+    incumbents:'3M, Honeywell, Uvex, Bollé Safety, MSA' },
+
+  { id:'hearing', cat:'C', name:'Hearing Protection', specLock:2, gm:32, dualBrand:true,
+    gm_unitech:null, gm_original:35, launch:1, est:true,
+    tam:{ UAE:A(15000000), KSA:A(25000000) }, cagr:6.5,
+    channel:'Contractor',
+    drivers:'Noise-exposure regulation, industrial / O&G sites, mega-projects',
+    cert:'MoIAT/ECAS, SASO/SABER, EN 352, ANSI S3.19',
+    incumbents:'3M Peltor, Honeywell Howard Leight, Moldex, Uvex' },
+
+  { id:'safetyshoes', cat:'C', name:'Safety Shoes', specLock:3, gm:27, dualBrand:true,
+    gm_unitech:18, gm_original:40, launch:1,
+    tam:{ UAE:A(232700000), KSA:A(354200000) }, cagr:6.4, est:true,
+    channel:'Trader',
+    drivers:'Construction safety mandates, 2023 KSA OSH Law, Oil & Gas & mega-projects',
+    cert:'MoIAT/ECAS, SASO TR/SABER, EN ISO 20345, ASTM F2413',
+    incumbents:'Honeywell, Uvex, Puma Safety, Wolverine, Cofra, VF Corp' },
+
+  { id:'helmets', cat:'C', name:'Safety Helmets', specLock:3, gm:30, dualBrand:true,
+    gm_unitech:20, gm_original:38, launch:1,
+    tam:{ UAE:A(99200000), KSA:A(152600000) }, cagr:7.9, est:false,
+    channel:'Contractor',
+    drivers:'High-rise construction, OSH enforcement, smart-helmet transition',
+    cert:'MoIAT/ECAS, SASO/SABER/PCOC, ANSI Z89.1, EN 397',
+    incumbents:'MSA Safety, 3M, Honeywell, Centurion' },
+
+  { id:'gloves', cat:'C', name:'Safety Gloves', specLock:3, gm:28, dualBrand:true,
+    gm_unitech:null, gm_original:32, launch:1, est:true,
+    tam:{ UAE:A(70000000), KSA:A(110000000) }, cagr:7.5,
+    channel:'Contractor',
+    drivers:'Cut-resistance, chemical, impact, disposable; healthcare and industrial demand',
+    cert:'MoIAT/ECAS, SASO/SABER, EN 388, EN 374',
+    incumbents:'Ansell, Honeywell, MAPA, Mechanix Wear, Showa' },
+
+  { id:'hivis', cat:'C', name:'Hi-Vis Workwear', specLock:3, gm:30, dualBrand:true,
+    gm_unitech:null, gm_original:36, launch:1, est:true,
+    tam:{ UAE:A(60000000), KSA:A(100000000) }, cagr:8.5,
+    channel:'Contractor',
+    drivers:'Road & infrastructure projects, mega-project visibility mandates, night-work',
+    cert:'MoIAT/ECAS, SASO/SABER, EN ISO 20471, ANSI/ISEA 107',
+    incumbents:'Portwest, 3M, Bulwark, Carhartt, Honeywell' },
+
+  { id:'respirat', cat:'C', name:'Respiratory Protection', specLock:3, gm:32, dualBrand:true,
+    gm_unitech:null, gm_original:38, launch:1, est:true,
+    tam:{ UAE:A(35000000), KSA:A(55000000) }, cagr:7.5,
+    channel:'Contractor',
+    drivers:'Industrial dust & fume control, healthcare baseline demand, FFP2/FFP3',
+    cert:'MoIAT/ECAS, SASO/SABER, EN 149, NIOSH N95',
+    incumbents:'3M, Honeywell, Moldex, MSA, Dräger' },
+
+  { id:'harness', cat:'C', name:'Safety Harnesses & Fall Protection', specLock:4, gm:30, dualBrand:true,
+    gm_unitech:20, gm_original:45, launch:1,
+    tam:{ UAE:A(68200000), KSA:A(111300000) }, cagr:8.1, est:true,
+    channel:'Contractor',
+    drivers:'High-rise maintenance, energy & telecom, heavy industry, smart-fall systems',
+    cert:'MoIAT/ECAS, SASO TR/SABER, EN 361, ANSI Z359',
+    incumbents:'FallTech, Petzl, Skylotec, 3M, MSA, KeeSafety' },
+
+  { id:'firefr', cat:'C', name:'Flame-Resistant Workwear', specLock:4, gm:35, dualBrand:true,
+    gm_unitech:null, gm_original:42, launch:1, est:true,
+    tam:{ UAE:A(40000000), KSA:A(80000000) }, cagr:9.0,
+    channel:'Contractor',
+    drivers:'KSA Oil & Gas mega-projects, NEOM industrial sites, ARAMCO contractor spec',
+    cert:'MoIAT/ECAS, SASO/SABER, NFPA 2112, EN ISO 11612, ARAMCO Approved Vendor',
+    incumbents:'Portwest IFR, Bulwark, Westex, Carhartt FR, National Safety Apparel' },
+
+  /* ---- CATEGORY D: Anchoring & Fastening (4 lines) ---- */
+  { id:'cableties', cat:'D', name:'Cable Ties (Nylon & Specialty)', specLock:1, gm:28,
+    gm_unitech:28, gm_original:28, launch:1,
+    tam:{ UAE:A(36740000), KSA:A(34550000) }, cagr:2.2, est:false,
+    channel:'Trader',
+    drivers:'High-volume electrical / telecom, solar / utility (UV variants), HVAC',
+    cert:'UL Listings, ISO, Civil Defence (fire-rated zones), UV / heat certs',
+    incumbents:'HellermannTyton, Panduit, Thomas&Betts, 3M, Hua Wei, Changhong' },
+
+  { id:'lightfix', cat:'D', name:'Lightweight Fixings', specLock:1, gm:29,
+    gm_unitech:28, gm_original:30, launch:1,
+    tam:{ UAE:A(2400000), KSA:A(4200000) }, cagr:5.0, est:true,
+    channel:'Trader',
+    drivers:'Rapid residential fit-outs, MEP / conduit suspension, drywall shift',
+    cert:'Supplier Self-Declaration (SABER), ISO',
+    incumbents:'Rawlplug, Fischer, Trutek, Asian OEM' },
+
+  { id:'mechanchor', cat:'D', name:'Mechanical Anchors', specLock:4, gm:34,
+    gm_unitech:30, gm_original:40, launch:2,
+    tam:{ UAE:A(10700000), KSA:A(20700000) }, cagr:4.4, est:true,
+    channel:'Contractor',
+    drivers:'Premium high-rise frameworks, transit / aviation infra, coastal retrofit',
+    cert:'ETA Option 1 (cracked concrete), Civil Defence, SABER/SASO, SBC',
+    incumbents:'Hilti, Fischer, DeWalt (SB&D), Wurth, Simpson Strong-Tie' },
+
+  { id:'chemanchor', cat:'D', name:'Chemical Anchoring', specLock:4, gm:39,
+    gm_unitech:32, gm_original:50, launch:2,
+    tam:{ UAE:A(9600000), KSA:A(18100000) }, cagr:4.4, est:true,
+    channel:'Contractor',
+    drivers:'Close-edge structural fixings, deep rebar connections, seismic / vibratory',
+    cert:'ETA approvals, seismic ratings, SABER/SASO, SBC',
+    incumbents:'Hilti, Fosroc, Sika, Fischer, Henkel, BASF' },
+
+  /* ---- CATEGORY E: Sealants — Private Label (4 lines) ---- */
+  { id:'acrylic', cat:'E', name:'Acrylic Sealant (PL)', specLock:2, gm:33, pl:true,
+    gm_unitech:25, gm_original:45, launch:2,
+    tam:{ UAE:A(38500000), KSA:A(10000000) }, cagr:6.0, est:true,
+    channel:'Trader',
+    drivers:'Indoor air-quality regs, paintable interior joints, baseboard / molding',
+    cert:'GREENGUARD, Estidama VOC < 30–50 g/L, SASO, SBC',
+    incumbents:'Sika, Bostik, DAP, Al Muqarram, Anchor Allied',
+    moq:'10,000 units (volume-driven)' },
+
+  { id:'univsil', cat:'E', name:'Universal Silicone (PL)', specLock:2, gm:35, pl:true,
+    gm_unitech:25, gm_original:50, launch:2,
+    tam:{ UAE:A(41800000), KSA:A(77700000) }, cagr:6.6, est:true,
+    channel:'Trader',
+    drivers:'High-rise façade glazing, residential interior reno, sanitary / wet-room',
+    cert:'Estidama / Pearl, Dubai Municipality, SBC, SASO',
+    incumbents:'Al Muqarram (Dolphin), Anchor Allied (ASMACO), Dow, Sika, Wacker',
+    moq:'10,000 units (1 × 20ft)' },
+
+  { id:'pufoam', cat:'E', name:'PU Foam (PL)', specLock:2, gm:35, pl:true,
+    gm_unitech:25, gm_original:50, launch:2,
+    tam:{ UAE:A(22500000), KSA:A(40000000) }, cagr:6.9, est:true,
+    channel:'Trader',
+    drivers:'Thermal bridging prevention, door / window install, cold-chain / HVAC',
+    cert:'Estidama, Civil Defence (fire-rated variants), SBC, SASO',
+    incumbents:'Henkel, Soudal, BASF, Al Muqarram, Anchor Allied',
+    moq:'10,000 cans (1 × 20ft)' },
+
+  { id:'neutsil', cat:'E', name:'Neutral Silicone (PL)', specLock:3, gm:35, pl:true,
+    gm_unitech:25, gm_original:50, launch:2,
+    tam:{ UAE:A(23700000), KSA:A(24500000) }, cagr:6.6, est:true,
+    channel:'Trader',
+    drivers:'Non-corrosive metal bonding, structural curtain walls, weatherproofing',
+    cert:'Estidama Low-VOC (< 50 g/L), SASO, SBC',
+    incumbents:'Sika, Dow, Wacker, Al Muqarram',
+    moq:'5,000 units / custom batches' }
+];
+
+const CATEGORY_META = {
+  A:{ name:'Architectural Finishing & Access', color:'#1A1A1A',
+      note:'Specification-driven; sells through the same architect and consultant network MAC already serves with sanitaryware and drainage. The highest blended margins in the basket sit here — expansion joints, tile joints, stair nosings and architectural profiles run at 42–48%. The cert wedges (steel doors, fire barriers, smoke seals) come last and stick once specified.' },
+  B:{ name:'Hygienic / Cleanroom & Waste', color:'#2D6B7C',
+      note:'Highest-growth basket (10–12% CAGR). A high-barrier niche almost no regional trader covers well. Bundles floor-to-ceiling with MAC sanitaryware in healthcare and hospitality projects.' },
+  C:{ name:'Personal Protective Equipment & Hand Tools', color:'#C8A256',
+      note:'Volume and compliance. The 2023 KSA OSH Law and MoIAT/SABER frameworks create a moat for compliant distributors. Dual-brand strategy across all PPE lines: Portwest at the premium/spec end, MAC in-house brand (sourced from a Chinese OEM panel — BayMRO, Anbu Safety, Sinomox, Dur Safety) for the trader / commodity end. Hand Tools sits alongside as the related trader-route line in the same basket.' },
+  D:{ name:'Anchoring & Fastening', color:'#8C0A1E',
+      note:'Adjacent to the Al Gurg Fosroc joint venture. Commodity fixings (28–29% GM) fund the overhead; ETA-certified structural anchors and chemical resins carry 34–39% margins behind certification moats. The Fosroc relationship is a real local-supply advantage versus Hilti and Fischer.' },
+  E:{ name:'Sealants — Private Label', color:'#D4A340',
+      note:'Own the brand, own the margin. Localised contract manufacturing (AMI/Dolphin/ASMACO) compresses lead times. Distributed sealants in the trader benchmark ran at 25% GM; private-label contract manufacturing realistically lands at 33–35% — a meaningful premium, but well below the 45–50% the original market reports implied. Firestop is excluded — it overlaps the Al Gurg Fosroc joint venture.' }
+};
+
+window.MODEL = { FX, RAMP, PRODUCTS, CATEGORY_META,
+  MATURE_TARGET, LIVE_RAMP, LIVE_RAMP_BY_TIER, CALIB, CASES,
+  LAUNCH_PLAN, CHANNEL_BENCHMARK, KSA_DEFER };
+
+</script>
+<script>/* ============================================================================
+   MAC AL GURG — APP ENGINE v5
+   Reads p.launch directly. Applies KSA_DEFER per model-year.
+   Dual-brand support for PPE lines.
+============================================================================ */
+
+const MODEL = window.MODEL;
+const P = MODEL.PRODUCTS, CM = MODEL.CATEGORY_META;
+const MT = MODEL.MATURE_TARGET, LR = MODEL.LIVE_RAMP_BY_TIER;
+const CB = MODEL.CALIB, CS = MODEL.CASES;
+const CHBM = MODEL.CHANNEL_BENCHMARK;
+const KSADEF = MODEL.KSA_DEFER;
+
+const fmtAED = v => {
+  if (v >= 1e9) return (v/1e9).toFixed(2)+'B';
+  if (v >= 1e6) return (v/1e6).toFixed(1)+'M';
+  if (v >= 1e3) return (v/1e3).toFixed(0)+'K';
+  return Math.round(v).toString();
+};
+const catColor = c => CM[c].color;
+const samFor = (p, mkt) => mkt==='BOTH' ? ((p.tam.UAE||0)+(p.tam.KSA||0)) : (p.tam[mkt]||0);
+
+/* ---- STATE ---- */
+let market = 'BOTH';
+let caseKey = 'base';
+let mature = {};
+P.forEach(p => mature[p.id] = MT[p.specLock]);
+function resetMature(){ P.forEach(p => mature[p.id] = MT[p.specLock]); }
+
+/* ---- CORE MATH ---- */
+function captureForLine(p, y){
+  const ly = p.launch;
+  if (y < ly) return 0;
+  const yearsLive = Math.min(y - ly + 1, 5);
+  return mature[p.id] * LR[p.specLock][yearsLive] * CB * CS[caseKey];
+}
+function lineSeries(p, mkt){
+  const uaeSam = p.tam.UAE || 0;
+  const ksaSam = p.tam.KSA || 0;
+  const g = 1 + p.cagr/100;
+  const rev=[], gp=[], cap=[];
+  for(let y=1;y<=5;y++){
+    const cYear = captureForLine(p, y);
+    const ksaMul = KSADEF[y];
+    let r;
+    if (mkt === 'UAE') {
+      r = uaeSam * Math.pow(g, y-1) * cYear/100;
+    } else if (mkt === 'KSA') {
+      r = ksaSam * Math.pow(g, y-1) * cYear/100 * ksaMul;
+    } else { // BOTH
+      const rU = uaeSam * Math.pow(g, y-1) * cYear/100;
+      const rK = ksaSam * Math.pow(g, y-1) * cYear/100 * ksaMul;
+      r = rU + rK;
+    }
+    rev.push(r); gp.push(r * p.gm/100); cap.push(cYear);
+  }
+  return { rev, gp, cap };
+}
+function aggregate(mkt){
+  const rev=[0,0,0,0,0], gp=[0,0,0,0,0];
+  const byCat = {};
+  Object.keys(CM).forEach(c => byCat[c] = { rev:[0,0,0,0,0], gp:[0,0,0,0,0] });
+  let samTotal = 0;
+  let samLiveY5 = 0, capWY5 = 0;
+  P.forEach(p => {
+    const s = lineSeries(p, mkt);
+    for(let y=0;y<5;y++){
+      rev[y] += s.rev[y]; gp[y] += s.gp[y];
+      byCat[p.cat].rev[y] += s.rev[y]; byCat[p.cat].gp[y] += s.gp[y];
+    }
+    const sam = samFor(p, mkt); samTotal += sam;
+    if (s.cap[4] > 0 && p.launch <= 5) { samLiveY5 += sam; capWY5 += sam * s.cap[4]; }
+  });
+  return { rev, gp, byCat, samTotal, wtCaptureY5: samLiveY5 ? capWY5/samLiveY5 : 0 };
+}
+function cumGP(a){ return a.gp.reduce((x,y)=>x+y, 0); }
+function liveCountByYear(){
+  const c = [0,0,0,0,0];
+  for(let y=1;y<=5;y++) P.forEach(p => { if (p.launch <= y) c[y-1]++; });
+  return c;
+}
+
+/* ====================== CHARTS ====================== */
+let charts = {};
+const GRID='rgba(120,130,150,.12)', TICK='#5A5A5A';
+const AXIS_DARK='rgba(250,248,244,.5)', GRID_DARK='rgba(250,248,244,.08)';
+Chart.defaults.font.family="'IBM Plex Sans',sans-serif";
+Chart.defaults.font.size=11;
+function destroy(id){ if(charts[id]){charts[id].destroy(); delete charts[id];} }
+
+function drawBuild(){
+  const a = aggregate(market);
+  const live = liveCountByYear();
+  destroy('build');
+  charts.build = new Chart(document.getElementById('chart-build'), {
+    type:'bar',
+    data:{ labels:['Year 1','Year 2','Year 3','Year 4','Year 5'], datasets:[
+      { label:'Annual Revenue', data:a.rev, backgroundColor:'rgba(250,248,244,.16)', borderColor:'rgba(250,248,244,.4)', borderWidth:1, order:3, borderRadius:3 },
+      { label:'Annual Gross Profit', type:'line', data:a.gp, borderColor:'#C8A256', backgroundColor:'rgba(200,162,86,.12)', borderWidth:3, fill:true, tension:.35, pointBackgroundColor:'#C8A256', pointRadius:4, order:2 },
+      { label:'Cumulative GP', type:'line', data:a.gp.map((_,i)=>a.gp.slice(0,i+1).reduce((x,y)=>x+y,0)), borderColor:'#F0E2C0', borderWidth:2, borderDash:[5,4], fill:false, tension:.3, pointBackgroundColor:'#F0E2C0', pointRadius:3, order:1 }
+    ]},
+    options:{ maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:AXIS_DARK, boxWidth:12, font:{size:11}}},
+      tooltip:{callbacks:{
+        title:items => items[0].label + '  ·  ' + live[items[0].dataIndex] + ' lines live',
+        label:c => c.dataset.label + ': AED ' + fmtAED(c.raw)
+      }}
+    }, scales:{
+      y:{grid:{color:GRID_DARK}, ticks:{color:AXIS_DARK, callback:v=>'AED '+fmtAED(v)}},
+      x:{grid:{display:false}, ticks:{color:AXIS_DARK}}
+    }}
+  });
+}
+function drawCat(){
+  const a = aggregate(market);
+  const cats = Object.keys(CM);
+  destroy('cat');
+  charts.cat = new Chart(document.getElementById('chart-cat'), {
+    type:'doughnut',
+    data:{ labels:cats.map(c=>'Cat '+c+' — '+CM[c].name),
+      datasets:[{data:cats.map(c=>a.byCat[c].gp[4]), backgroundColor:cats.map(catColor), borderColor:'#fff', borderWidth:2}]},
+    options:{maintainAspectRatio:false, cutout:'58%', plugins:{
+      legend:{position:'bottom', labels:{boxWidth:11, font:{size:10}, color:TICK, padding:8}},
+      tooltip:{callbacks:{label:c => c.label.split('—')[0] + ': AED ' + fmtAED(c.raw)}}
+    }}
+  });
+}
+function drawRevGp(){
+  const a = aggregate(market);
+  const cats = Object.keys(CM);
+  destroy('revgp');
+  charts.revgp = new Chart(document.getElementById('chart-revgp'), {
+    type:'bar',
+    data:{labels:cats.map(c=>'Cat '+c), datasets:[
+      {label:'Revenue (Yr5)', data:cats.map(c=>a.byCat[c].rev[4]), backgroundColor:'rgba(26,26,26,.22)', borderColor:'#1A1A1A', borderWidth:1, borderRadius:3},
+      {label:'Gross Profit (Yr5)', data:cats.map(c=>a.byCat[c].gp[4]), backgroundColor:'#C8A256', borderRadius:3}
+    ]},
+    options:{maintainAspectRatio:false, plugins:{
+      legend:{labels:{boxWidth:12, color:TICK}},
+      tooltip:{callbacks:{label:c => c.dataset.label + ': AED ' + fmtAED(c.raw)}}
+    }, scales:{
+      y:{grid:{color:GRID}, ticks:{color:TICK, callback:v=>fmtAED(v)}},
+      x:{grid:{display:false}, ticks:{color:TICK}}
+    }}
+  });
+}
+function drawCases(){
+  destroy('cases');
+  const keep = caseKey;
+  const series = {};
+  ['worst','base','best'].forEach(k => {
+    caseKey = k;
+    const a = aggregate(market);
+    series[k] = a.gp.map((_,i) => a.gp.slice(0,i+1).reduce((x,y)=>x+y, 0));
+  });
+  caseKey = keep;
+  charts.cases = new Chart(document.getElementById('chart-cases'), {
+    type:'line',
+    data:{labels:['Year 1','Year 2','Year 3','Year 4','Year 5'], datasets:[
+      {label:'Best', data:series.best, borderColor:'#2D6B7C', backgroundColor:'rgba(45,107,124,.08)', borderWidth:2, fill:false, tension:.3, pointRadius:3},
+      {label:'Base', data:series.base, borderColor:'#C8A256', backgroundColor:'rgba(200,162,86,.12)', borderWidth:3, fill:true, tension:.3, pointRadius:4},
+      {label:'Worst', data:series.worst, borderColor:'#9B9B9B', borderWidth:2, borderDash:[5,4], fill:false, tension:.3, pointRadius:3}
+    ]},
+    options:{maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:12}},
+      tooltip:{callbacks:{label:c => c.dataset.label + ': AED ' + fmtAED(c.raw) + ' cumulative'}}
+    }, scales:{
+      y:{grid:{color:GRID}, ticks:{color:TICK, callback:v=>'AED '+fmtAED(v)}},
+      x:{grid:{display:false}, ticks:{color:TICK}}
+    }}
+  });
+}
+function drawBubble(){
+  destroy('bubble');
+  const ds = Object.keys(CM).map(c => ({
+    label:'Cat '+c,
+    data:P.filter(p=>p.cat===c).map(p => {
+      const sam = samFor(p,'BOTH');
+      return { x:sam/1e6, y:p.gm, r:Math.max(6, Math.sqrt(sam/1e6)*2.4), nm:p.name, lock:p.specLock, sam, ly:p.launch };
+    }),
+    backgroundColor:catColor(c)+'cc', borderColor:catColor(c), borderWidth:1
+  }));
+  charts.bubble = new Chart(document.getElementById('chart-bubble'), {
+    type:'bubble', data:{datasets:ds},
+    options:{maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:11}},
+      tooltip:{callbacks:{label:c => { const d=c.raw; return [d.nm, 'SAM: AED '+fmtAED(d.sam), 'Margin: '+d.y+'%', 'Cert tier: '+d.lock+'/5', 'Launches: Year '+d.ly]; }}}
+    }, scales:{
+      x:{title:{display:true, text:'Combined SAM (AED) — log scale', color:TICK}, type:'logarithmic', grid:{color:GRID}, ticks:{color:TICK, callback:v=>fmtAED(v*1e6)}},
+      y:{title:{display:true, text:'Gross Margin %', color:TICK}, grid:{color:GRID}, ticks:{color:TICK, callback:v=>v+'%'}, min:15, max:55}
+    }}
+  });
+}
+function drawCagr(){
+  destroy('cagr');
+  const sorted = [...P].sort((a,b)=>b.cagr-a.cagr);
+  charts.cagr = new Chart(document.getElementById('chart-cagr'), {
+    type:'bar',
+    data:{labels:sorted.map(p=>p.name), datasets:[{data:sorted.map(p=>p.cagr), backgroundColor:sorted.map(p=>catColor(p.cat)), borderRadius:2}]},
+    options:{indexAxis:'y', maintainAspectRatio:false, plugins:{
+      legend:{display:false}, tooltip:{callbacks:{label:c=>c.raw+'% CAGR'}}
+    }, scales:{
+      x:{grid:{color:GRID}, ticks:{color:TICK, callback:v=>v+'%'}},
+      y:{grid:{display:false}, ticks:{color:TICK, font:{size:9}}}
+    }}
+  });
+}
+function drawUaeKsa(){
+  destroy('uaeksa');
+  const sorted = [...P].sort((a,b)=>samFor(b,'BOTH')-samFor(a,'BOTH'));
+  charts.uaeksa = new Chart(document.getElementById('chart-uaeksa'), {
+    type:'bar',
+    data:{labels:sorted.map(p=>p.name), datasets:[
+      {label:'UAE', data:sorted.map(p=>(p.tam.UAE||0)/1e6), backgroundColor:'#1A1A1A', borderRadius:2, stack:'s'},
+      {label:'KSA', data:sorted.map(p=>(p.tam.KSA||0)/1e6), backgroundColor:'#C8A256', borderRadius:2, stack:'s'}
+    ]},
+    options:{indexAxis:'y', maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:12}},
+      tooltip:{callbacks:{label:c => c.dataset.label+': AED '+fmtAED(c.raw*1e6)}}
+    }, scales:{
+      x:{stacked:true, grid:{color:GRID}, ticks:{color:TICK, callback:v=>fmtAED(v*1e6)}},
+      y:{stacked:true, grid:{display:false}, ticks:{color:TICK, font:{size:9}}}
+    }}
+  });
+}
+
+/* ---- BENCHMARK CHARTS ---- */
+function drawRampBench(){
+  destroy('rampbench');
+  const t = MODEL.LIVE_RAMP_BY_TIER;
+  const pct = arr => arr.map(v => v*100);
+  charts.rampbench = new Chart(document.getElementById('chart-rampbench'), {
+    type:'line',
+    data:{labels:['Launch','Y1','Y2','Y3','Y4','Y5+'], datasets:[
+      {label:'Tier 1 — Commodity', data:pct(t[1]), borderColor:'#C8A256', borderWidth:3, pointRadius:4, fill:false, tension:.25},
+      {label:'Tier 2 — Trade & distribution', data:pct(t[2]), borderColor:'#D4A340', borderWidth:2, pointRadius:3, fill:false, tension:.25},
+      {label:'Tier 3 — Semi-spec', data:pct(t[3]), borderColor:'#2D6B7C', borderWidth:2, pointRadius:3, fill:false, tension:.25},
+      {label:'Tier 4 — Spec-locked', data:pct(t[4]), borderColor:'#3A3A3A', borderWidth:2, pointRadius:3, fill:false, tension:.25},
+      {label:'Tier 5 — Heavy certification', data:pct(t[5]), borderColor:'#8C0A1E', borderWidth:3, borderDash:[5,4], pointRadius:4, fill:false, tension:.25}
+    ]},
+    options:{maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:11, font:{size:10}, padding:6}},
+      tooltip:{callbacks:{label:c => c.dataset.label + ': ' + c.raw.toFixed(0) + '% of mature'}}
+    }, scales:{
+      y:{grid:{color:GRID}, ticks:{color:TICK, callback:v=>v+'%'}, min:0, max:110, title:{display:true, text:'% of mature capture', color:TICK}},
+      x:{grid:{display:false}, ticks:{color:TICK}}
+    }}
+  });
+}
+function drawVarBench(){
+  destroy('varbench');
+  const bins = [
+    {label:'P10\nfar miss', val:0.21},
+    {label:'P25\nWORST', val:0.38},
+    {label:'P50\nBASE', val:0.74},
+    {label:'P75\nBEST', val:0.95},
+    {label:'P90\nbeat plan', val:1.41}
+  ];
+  charts.varbench = new Chart(document.getElementById('chart-varbench'), {
+    type:'bar',
+    data:{labels:bins.map(b=>b.label), datasets:[{data:bins.map(b=>b.val), backgroundColor:['#9B9B9B','#5A5A5A','#C8A256','#2D6B7C','#D4A340'], borderRadius:3}]},
+    options:{maintainAspectRatio:false, plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c => 'Actual / Budget GP = ' + (c.raw*100).toFixed(0) + '%'}}
+    }, scales:{
+      y:{grid:{color:GRID}, ticks:{color:TICK, callback:v=>(v*100).toFixed(0)+'%'}, title:{display:true, text:'Actual GP ÷ Budget GP', color:TICK}},
+      x:{grid:{display:false}, ticks:{color:TICK, font:{size:10}}}
+    }}
+  });
+}
+
+/* ---- CHANNEL CHARTS ---- */
+function drawChannelSplit(){
+  destroy('channelsplit');
+  charts.channelsplit = new Chart(document.getElementById('chart-channelsplit'), {
+    type:'bar',
+    data:{labels:['KSA','UAE'], datasets:[
+      {label:'Contractor route', data:[CHBM.KSA.contractor, CHBM.UAE.contractor], backgroundColor:'#1A1A1A', borderRadius:3, stack:'s'},
+      {label:'Trader route', data:[CHBM.KSA.trader, CHBM.UAE.trader], backgroundColor:'#C8A256', borderRadius:3, stack:'s'}
+    ]},
+    options:{indexAxis:'y', maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:12}},
+      tooltip:{callbacks:{label:c => c.dataset.label + ': ' + c.raw + '% of sales'}}
+    }, scales:{
+      x:{stacked:true, grid:{color:GRID}, ticks:{color:TICK, callback:v=>v+'%'}, max:100},
+      y:{stacked:true, grid:{display:false}, ticks:{color:TICK}}
+    }}
+  });
+}
+function drawChannelGP(){
+  destroy('channelgp');
+  const byChannel = { Contractor:0, Trader:0 };
+  P.forEach(p => {
+    const s = lineSeries(p, market);
+    const ch = p.channel || 'Contractor';
+    byChannel[ch] = (byChannel[ch]||0) + s.gp[4];
+  });
+  charts.channelgp = new Chart(document.getElementById('chart-channelgp'), {
+    type:'doughnut',
+    data:{labels:['Contractor route (project / spec)','Trader route (retail / distribution)'],
+      datasets:[{data:[byChannel.Contractor, byChannel.Trader], backgroundColor:['#1A1A1A','#C8A256'], borderColor:'#fff', borderWidth:2}]},
+    options:{maintainAspectRatio:false, cutout:'58%', plugins:{
+      legend:{position:'bottom', labels:{color:TICK, boxWidth:12, font:{size:11}, padding:10}},
+      tooltip:{callbacks:{label:c => c.label.split('(')[0].trim() + ': AED ' + fmtAED(c.raw)}}
+    }}
+  });
+}
+function drawChannelLines(){
+  destroy('channellines');
+  const contractorLines = P.filter(p=>p.channel==='Contractor').sort((a,b)=>samFor(b,'BOTH')-samFor(a,'BOTH'));
+  const traderLines = P.filter(p=>p.channel==='Trader').sort((a,b)=>samFor(b,'BOTH')-samFor(a,'BOTH'));
+  const all = [...contractorLines, ...traderLines];
+  charts.channellines = new Chart(document.getElementById('chart-channellines'), {
+    type:'bar',
+    data:{labels:all.map(p=>p.name), datasets:[
+      {label:'Contractor', data:all.map(p => p.channel==='Contractor' ? samFor(p,'BOTH')/1e6 : 0), backgroundColor:'#1A1A1A', borderRadius:2, stack:'s'},
+      {label:'Trader', data:all.map(p => p.channel==='Trader' ? samFor(p,'BOTH')/1e6 : 0), backgroundColor:'#C8A256', borderRadius:2, stack:'s'}
+    ]},
+    options:{indexAxis:'y', maintainAspectRatio:false, plugins:{
+      legend:{labels:{color:TICK, boxWidth:12}},
+      tooltip:{callbacks:{label:c => c.dataset.label + ': AED ' + fmtAED(c.raw*1e6)}}
+    }, scales:{
+      x:{stacked:true, grid:{color:GRID}, ticks:{color:TICK, callback:v=>fmtAED(v*1e6)}},
+      y:{stacked:true, grid:{display:false}, ticks:{color:TICK, font:{size:9}}}
+    }}
+  });
+}
+
+/* ====================== UI BUILDERS ====================== */
+function buildSliders(){
+  const host = document.getElementById('slider-host'); host.innerHTML='';
+  const ordered = [...P].sort((a,b) => a.launch - b.launch || a.specLock - b.specLock);
+  ordered.forEach(p => {
+    const row = document.createElement('div'); row.className='slider-row';
+    const plBadge = p.pl ? '<span class="pl-tag">PL</span>' : '';
+    const dualBadge = p.dualBrand ? '<span class="pl-tag" style="background:var(--ink);color:var(--bg)">DUAL</span>' : '';
+    row.innerHTML = `<div class="slider-label">
+        <span class="nm"><span class="lock-pip">Y${p.launch}·T${p.specLock}</span>${p.name}${plBadge}${dualBadge}</span>
+        <span class="v" id="v-${p.id}">${mature[p.id].toFixed(1)}%</span></div>
+        <input type="range" min="0" max="12" step="0.25" value="${mature[p.id]}" id="s-${p.id}">`;
+    host.appendChild(row);
+    row.querySelector('input').addEventListener('input', e => {
+      mature[p.id] = parseFloat(e.target.value);
+      document.getElementById('v-'+p.id).textContent = mature[p.id].toFixed(1)+'%';
+      recompute();
+    });
+  });
+}
+function syncSliders(){
+  P.forEach(p => {
+    const s = document.getElementById('s-'+p.id);
+    if (s) { s.value = mature[p.id]; document.getElementById('v-'+p.id).textContent = mature[p.id].toFixed(1)+'%'; }
+  });
+}
+function recompute(){
+  const a = aggregate(market);
+  const sub = market==='BOTH' ? 'UAE + KSA' : market;
+  const cum = cumGP(a);
+  document.getElementById('r-rev').innerHTML = '<span class="unit">AED</span> ' + fmtAED(a.rev[4]);
+  document.getElementById('r-rev-sub').textContent = sub + ' · Year 5';
+  document.getElementById('r-gp').innerHTML = '<span class="unit">AED</span> ' + fmtAED(a.gp[4]);
+  const blended = a.rev[4] ? (a.gp[4]/a.rev[4]*100) : 0;
+  document.getElementById('r-gp-sub').textContent = 'blended GM ' + blended.toFixed(0) + '%';
+  document.getElementById('r-cum').innerHTML = '<span class="unit">AED</span> ' + fmtAED(cum);
+  document.getElementById('r-cum-sub').textContent = caseKey.toUpperCase() + ' case · sum Yrs 1–5';
+  document.getElementById('r-pen').innerHTML = a.wtCaptureY5.toFixed(2) + '<span class="unit">%</span>';
+  document.getElementById('kpi-tam').innerHTML = fmtAED(a.samTotal);
+  document.getElementById('kpi-rev5').innerHTML = fmtAED(a.rev[4]);
+  document.getElementById('kpi-gp5').innerHTML = fmtAED(a.gp[4]);
+  document.getElementById('kpi-gpcum').innerHTML = fmtAED(cum);
+  drawBuild(); drawCat(); drawRevGp(); drawCases();
+  if (charts.channelgp) drawChannelGP();
+}
+
+/* ---- CATEGORIES TAB ---- */
+function buildCategories(){
+  const host = document.getElementById('cat-host'); host.innerHTML='';
+  Object.keys(CM).forEach(c => {
+    const lines = P.filter(p => p.cat === c);
+    const samBoth = lines.reduce((s,p) => s + samFor(p,'BOTH'), 0);
+    const avgGm = Math.round(lines.reduce((s,p) => s + p.gm, 0) / lines.length);
+    const avgCagr = (lines.reduce((s,p) => s + p.cagr, 0) / lines.length).toFixed(1);
+    const block = document.createElement('div'); block.style.marginBottom='40px';
+    block.innerHTML = `
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap">
+        <span class="cat-pill" style="background:${catColor(c)};font-size:11px;padding:4px 10px">CATEGORY ${c}</span>
+        <h3 style="font-family:'Manrope';font-size:22px">${CM[c].name}</h3>
+      </div>
+      <div class="grid grid-4" style="margin-bottom:18px">
+        <div class="card"><div class="card-label">Combined SAM</div><div class="card-value" style="font-size:26px">${fmtAED(samBoth)}</div></div>
+        <div class="card"><div class="card-label">Avg Gross Margin</div><div class="card-value" style="font-size:26px">${avgGm}%</div></div>
+        <div class="card"><div class="card-label">Avg Market CAGR</div><div class="card-value" style="font-size:26px">${avgCagr}%</div></div>
+        <div class="card"><div class="card-label">Lines</div><div class="card-value" style="font-size:26px">${lines.length}</div></div>
+      </div>
+      <div class="callout" style="border-left-color:${catColor(c)};margin-bottom:14px"><div class="callout-label">Strategic fit</div><div style="font-size:14px;color:var(--ink-mid)">${CM[c].note}</div></div>
+      <div class="table-wrap"><table><thead><tr><th>Line</th><th>Launch</th><th>SAM (AED)</th><th>GM%</th><th>CAGR</th><th>Tier</th><th>Channel</th><th>Key incumbents</th></tr></thead>
+        <tbody>${lines.map(p => `<tr><td><strong>${p.name}</strong>${p.pl?'<span class="pl-tag">PL</span>':''}${p.dualBrand?'<span class="pl-tag" style="background:var(--ink);color:var(--bg)">DUAL</span>':''}</td><td class="mono" style="font-size:11px">Year ${p.launch}</td><td class="num">${fmtAED(samFor(p,'BOTH'))}</td><td class="num">${p.gm}%</td><td class="num">${p.cagr}%</td><td class="lock">T${p.specLock}/5</td><td style="font-size:11px">${p.channel}</td><td style="font-size:11px">${p.incumbents}</td></tr>`).join('')}</tbody></table></div>`;
+    host.appendChild(block);
+  });
+}
+
+/* ---- DATA TABLE ---- */
+function buildTable(){
+  const body = document.getElementById('data-body'); body.innerHTML='';
+  P.forEach(p => {
+    ['UAE','KSA'].forEach((mk,i) => {
+      const tr = document.createElement('tr');
+      const estFlag = p.est ? '<span style="color:var(--ink-faint);font-size:9px"> (est.)</span>' : '';
+      const tagBlock = (p.pl?'<span class="pl-tag">PL</span>':'') + (p.dualBrand?'<span class="pl-tag" style="background:var(--ink);color:var(--bg)">DUAL</span>':'');
+      tr.innerHTML = `
+        ${i===0?`<td rowspan="2"><span class="cat-pill" style="background:${catColor(p.cat)}">${p.cat}</span></td>`:''}
+        ${i===0?`<td rowspan="2"><strong>${p.name}</strong>${tagBlock}</td>`:''}
+        ${i===0?`<td rowspan="2" class="mono" style="font-size:11px">Yr ${p.launch}</td>`:''}
+        <td class="mono" style="font-size:11px">${mk}</td>
+        <td class="num">${fmtAED(p.tam[mk]||0)}${estFlag}</td>
+        ${i===0?`<td class="num" rowspan="2">${p.cagr}%</td>`:''}
+        ${i===0?`<td class="num" rowspan="2">${p.gm}%</td>`:''}
+        ${i===0?`<td rowspan="2" class="lock">T${p.specLock}/5</td>`:''}
+        ${i===0?`<td rowspan="2" style="font-size:11px">${p.cert}</td>`:''}
+        ${i===0?`<td rowspan="2" style="font-size:11px">${p.channel}</td>`:''}`;
+      body.appendChild(tr);
+    });
+  });
+  document.getElementById('data-disclaimer').textContent = 'A note on the data: top-level national markets for the major lines (steel doors, raised access flooring, cable ties, anchors, hand tools, safety footwear, helmets, harness) are robustly tracked. Niche lines (tile joints, access panels, lightweight fixings, the four PL sealant chemistries, the new PPE sub-categories) are reasoned estimates from broader regional datasets, marked "(est.)". Gross margins are a 60/40 blend of a comparable competitor\'s five years of actuals and the original GCC distribution norms. Capture ramps are tier-based. The Base case lands at ~AED 45M cumulative 5-year gross profit, with Worst and Best from the P25 / P75 of the competitor\'s actual:budget GP achievement.';
+}
+
+/* ---- PRODUCT DEVELOPMENT ---- */
+const SOURCES = {
+  /* Cat A */
+  entmat:[
+    ['intl','Forbo (Switzerland)','Coral / Nuway architectural matting.'],
+    ['intl','3M (USA)','Nomad matting, broad brand recognition.'],
+    ['local','Construction Specialties / Nexus (UAE)','Aluminium recessed systems, local fabrication for fast-track jobs.']
+  ],
+  stairnose:[
+    ['intl','Genesis (UK)','Carborundum & grooved nosings to BS codes.'],
+    ['intl','Quantum (UK)','Architectural stair edging range.'],
+    ['local','Walmay (regional)','Tactile + nosing, municipal-compliant ranges.']
+  ],
+  archprof:[
+    ['intl','Genesis (UK)','Industry standard for wall trims, corner guards, transition profiles.'],
+    ['intl','Schluter (Germany)','Premium architectural profiles for designer-spec fit-outs.'],
+    ['local','Nexus / SFSP (UAE/KSA)','Local manufacture, broad range, short lead-times. Same supplier as expansion joints — single onboarding push.']
+  ],
+  tilejoint:[
+    ['intl','Schluter Systems (Germany)','Category-defining trims; strong designer pull.'],
+    ['intl','Genesis (UK)','Broad profile range, competitive volume pricing.'],
+    ['local','Nexus (UAE)','Local stock & custom profiles for fast-track fit-outs.']
+  ],
+  impact:[
+    ['intl','Construction Specialties (USA)','Acrovyn wall and corner guard range — healthcare industry standard.'],
+    ['intl','Inpro IPC (USA)','Broad impact protection range, hospitality and commercial.'],
+    ['local','Local UAE fabricator','Custom bumper rails, crash rails, regional spec adaptation.']
+  ],
+  expjoint:[
+    ['intl','Migua (Germany)','Premium seismic & architectural profiles, consultant-preferred in GCC.'],
+    ['intl','Construction Specialties (USA)','Full architectural EJC range, global certifications.'],
+    ['local','Nexus / SFSP (UAE/KSA)','Regional manufacture, shorter lead-times. Already has UAE Civil Defence approvals.']
+  ],
+  locker:[
+    ['intl','ASSA ABLOY (Sweden)','Smart locking & access control technology.'],
+    ['intl','InPost / Cleveron','Last-mile parcel locker platforms.'],
+    ['local','DISI LLC / Solera (UAE)','Regional HPL lockers + RFID / PIN integration.']
+  ],
+  cubicle:[
+    ['intl','Venesta (UK)','Premium washroom systems, hospitality spec.'],
+    ['intl','Bobrick (USA)','Phenolic partitions & washroom accessories.'],
+    ['local','Solera / DISI LLC (UAE)','Regional HPL cubicles with smart locker integration.']
+  ],
+  raf:[
+    ['intl','Kingspan (Ireland)','Premium RAF, data-centre grade.'],
+    ['intl','Huilian (China)','Cost-competitive, internationally certified panels & pedestals.'],
+    ['local','ASP Access Floors (regional)','Regional stockholding for fast office fit-outs.']
+  ],
+  accesspanel:[
+    ['intl','Nystrom (USA)','Fire-rated panels & roof hatches, full certification.'],
+    ['intl','Bilco (USA)','Roof hatch specialist, thermal-break units for GCC heat.'],
+    ['local','Regional OEM','Middle-East-spec OEM panels for cost-competitive supply.']
+  ],
+  steeldoor:[
+    ['intl','Hormann (Germany)','Certified hollow-metal & fire doorsets.'],
+    ['local','NAFFCO / SFFECO (UAE)','Local certified fabrication, Civil Defence approved, fast bespoke.'],
+    ['local','Al Kuhaimi Metal (KSA)','KSA fabrication scale, SBC / SASO compliant.']
+  ],
+  firebarrier:[
+    ['intl','Promat / Etex (Belgium)','Certified ablative boards & cavity barriers; tunnel & structural.'],
+    ['intl','Hilti (Liechtenstein)','Firestop systems with BIM spec embedding.'],
+    ['local','Al Gurg Fosroc (UAE — JV)','Existing JV; intumescent sealants & local Civil Defence approvals.']
+  ],
+  smokeseal:[
+    ['intl','Lorient Polyproducts (UK)','Specification leader for intumescent & acoustic door seals; consultant-spec preferred.'],
+    ['intl','Pemko / Athmer (USA / Germany)','Premium architectural door seals, full UL / EN compliance. Bundles with the Steel Doors line.'],
+    ['local','Sealmaster regional','Regional stockholding for fast-track fit-outs, Civil Defence cleared variants.']
+  ],
+
+  /* Cat B */
+  hygwall:[
+    ['intl','Crane Composites (USA)','Varietex / Glasbord FRP, healthcare-spec.'],
+    ['intl','Bioclad (UK)','Silver-ion antimicrobial PVC, premium clinical.'],
+    ['local','TSSC (UAE) / Kaden distribution (KSA)','Regional panels + established distribution.']
+  ],
+  hygceil:[
+    ['intl','Lindner / ATG','Walkable cleanroom ceiling grids, HEPA integration.'],
+    ['intl','Jansen Cleanrooms','Pharma / biotech turnkey ceiling systems.'],
+    ['local','Zonsteel (regional)','Regional cleanroom panel fabrication.']
+  ],
+  garbchute:[
+    ['intl','Wilkinson Hi-Rise (USA)','NFPA 82 chute systems, UL doors.'],
+    ['local','Pearl Industries (UAE — Sharjah)','In-house fabrication + powder coat, established UAE record.'],
+    ['local','KAISAB / Ecotech (UAE/KSA)','Regional fabrication, multi-stream sorters.']
+  ],
+  linenchute:[
+    ['intl','American Chute Systems','Hospitality / healthcare linen systems.'],
+    ['local','Regional steel fabricator','UL side-hung doors, regional support and local stock.'],
+    ['local','Ecotech / Pearl (UAE)','Regional fabrication & interlock panels.']
+  ],
+
+  /* Cat C — PPE + Hand Tools (dual-brand) */
+  handtools:[
+    ['intl','Stanley Black & Decker (USA)','DeWalt / Stanley — premium pro brand.'],
+    ['intl','King Tony (Taiwan)','Strong value-tier professional tools.'],
+    ['local','Regional distribution','Established GCC distribution network for hardware retail and trade counters.']
+  ],
+  cones:[
+    ['intl','3M (USA)','Reflective films & premium cones — municipal spec.'],
+    ['inhouse','MAC In-House Brand','Sourced from BayMRO / Dur Safety (China). Volume PVC cones, large-batch capacity for site supply.'],
+    ['local','Biri Group / Misar (UAE)','Regional alternative, fast turnaround on bulk site orders.']
+  ],
+  eyeprot:[
+    ['intl','Portwest — premium spec end','Safety spectacles and goggles, EN 166 / ANSI Z87.1 certified. Project-spec range.'],
+    ['inhouse','MAC In-House Brand','Sourced from BayMRO (China). Broad eye protection catalogue at trader-route pricing.'],
+    ['intl','3M alternative','Incumbent benchmark for laser / high-spec applications.']
+  ],
+  hearing:[
+    ['intl','Portwest — premium spec end','Ear plugs and ear muffs, EN 352 / ANSI S3.19 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from BayMRO (China). Volume ear plug capacity for site-wide supply.'],
+    ['intl','3M Peltor benchmark','Premium reference for noise-mapping projects.']
+  ],
+  safetyshoes:[
+    ['intl','Portwest BASE / FORTREX / i4 / KAPTIV','Premium ranges for spec projects, EN ISO 20345 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from Dur Safety (China). SABER-cleared site footwear at trader-route pricing.'],
+    ['intl','Cofra / Honeywell benchmark','Premium regional alternative for Oil & Gas spec.']
+  ],
+  helmets:[
+    ['intl','Portwest — premium spec end','Full helmet range, EN 397 / ANSI Z89.1, project spec.'],
+    ['inhouse','MAC In-House Brand','Sourced from Anbu Safety (China), head protection specialist. SABER / ECAS cleared.'],
+    ['intl','3M / MSA benchmark','Premium reference for smart-helmet and high-spec sites.']
+  ],
+  gloves:[
+    ['intl','Portwest — 12 glove categories','Cut-resistant, chemical, impact, disposable. EN 388 / EN 374 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from Sinomox (China), work-glove specialist. Broad SKU range.'],
+    ['inhouse','BayMRO alternate','Second-source capacity for chemical and disposable lines.']
+  ],
+  hivis:[
+    ['intl','Portwest — broad hi-vis range','Coats, coveralls, vests. EN ISO 20471 / ANSI 107 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from Dur Safety (China), hi-vis specialist. Large-batch capacity.'],
+    ['local','Local UAE sewing partner','Site-branded orders, custom logos, regional-spec adaptation.']
+  ],
+  respirat:[
+    ['intl','Portwest — FFP2 / FFP3 range','Disposable respirators, EN 149 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from BayMRO (China). Large-volume disposable lines.'],
+    ['intl','3M / Dräger benchmark','Premium reusable masks and fit-testing service for industrial spec.']
+  ],
+  harness:[
+    ['intl','Portwest — fall protection range','EN 361 / ANSI Z359 certified, BizTex range.'],
+    ['inhouse','MAC In-House Brand','Sourced from Anbu Safety (China), fall protection specialist.'],
+    ['intl','Petzl / FallTech benchmark','Premium international for vertical-access and rope-access spec jobs.']
+  ],
+  firefr:[
+    ['intl','Portwest IFR range','Full IFR clothing range, NFPA 2112 / EN ISO 11612 certified.'],
+    ['inhouse','MAC In-House Brand','Sourced from Dur Safety (China). FR garments for KSA Oil & Gas spec.'],
+    ['intl','Bulwark / Westex benchmark','Incumbent premium for ARAMCO-spec Oil & Gas contracts.']
+  ],
+
+  /* Cat D */
+  mechanchor:[
+    ['intl','Fischer (Germany)','ETA Option 1 anchors, design software.'],
+    ['intl','Mungo / MKT (Germany)','Certified equivalents, agency-available, better landed cost.'],
+    ['local','Al Gurg Fosroc (UAE — JV)','Local blending and support, pull-out testing service.']
+  ],
+  chemanchor:[
+    ['intl','Fischer / Henkel (Germany)','Epoxy & vinylester resins, ETA-approved.'],
+    ['intl','BASF / MBCC','High-load structural adhesives.'],
+    ['local','Al Gurg Fosroc (UAE — JV)','Lokfix / Conbextra family. Local temp-controlled supply edge.']
+  ],
+  lightfix:[
+    ['intl','Rawlplug (Poland)','Branded nylon fixings, retail-ready kits.'],
+    ['intl','Fischer (Germany)','Premium PA6 nylon plugs.'],
+    ['local','Certified Asian OEM','Volume self-declared SABER lines for trade and retail kit assembly.']
+  ],
+  cableties:[
+    ['intl','HellermannTyton (Germany)','UL-listed, fire-rated & specialty ties.'],
+    ['intl','Panduit (USA)','Premium utility / data-centre ties.'],
+    ['local','Hua Wei / Changhong (China)','Volume UV-stabilised ties, cost base for trade.']
+  ],
+
+  /* Cat E — PL Sealants */
+  acrylic:[
+    ['local','Al Muqarram / Dolphin (UAE)','Low-VOC water-based; GREENGUARD path, lowest unit cost.'],
+    ['local','Anchor Allied / ASMACO (UAE)','Volume acrylic OEM.'],
+    ['intl','Certified Chinese OEM','FOB cost benchmark for landed-cost modelling.']
+  ],
+  univsil:[
+    ['local','Al Muqarram / Dolphin (UAE)','Local contract mfr — zero / low MOQ, lead-time edge. Core PL partner.'],
+    ['local','Anchor Allied / ASMACO (UAE)','Alternative local OEM, deep inventory.'],
+    ['intl','Certified Chinese OEM','FOB benchmark for landed-cost modelling.']
+  ],
+  pufoam:[
+    ['local','Anchor Allied / ASMACO (UAE)','Dedicated aerosol / PU filling lines, DG logistics handled locally.'],
+    ['local','Al Muqarram / Dolphin (UAE)','Local PU foam capacity.'],
+    ['intl','Soudal / Henkel (Belgium / Germany)','Premium reference, fire-rated variants.']
+  ],
+  neutsil:[
+    ['local','Al Muqarram / Dolphin (UAE)','Low-VOC neutral cure; structural glazing testing path.'],
+    ['intl','Wacker (Germany)','Structural-grade neutral silicone for spec reference.'],
+    ['local','Anchor Allied / ASMACO (UAE)','Regional alternative OEM.']
+  ]
+};
+
+const PIPELINE = [
+  ['1','Source Identification','Shortlist three candidates per line (local + international). Validate certifications, capacity, MOQ and landed-cost versus the incumbent benchmark.','2–4 wks'],
+  ['2','Sampling & Technical Evaluation','Pull samples; in-house test against the spec and the GCC environment (heat, salinity, UV). Confirm the product behaves the way it\'s certified to.','3–6 wks'],
+  ['3','Commercial Negotiation','Agree pricing, agency / exclusivity scope, payment terms, MOQ and rebate structure. Protect margin against the landed-cost model.','3–8 wks'],
+  ['4','Agreement & Onboarding','Sign distribution / agency / private-label agreement. Register supplier, set up SKUs, master data and logistics lanes.','2–4 wks'],
+  ['5','Certification & Approval — the gate','UL / Civil Defence / ETA / SABER / GREENGUARD / EQM where each line requires it. This is the critical path, not a formality. Amortise CapEx over 36–48 months.','6–24 wks'],
+  ['6','Stocking & Working Capital','Position local stock of standard sizes; size working capital against the segment\'s 108–110 day receivables. Heavy / bulky lines (RAF, doors, foam) need freight optimisation.','2–6 wks'],
+  ['7','Launch & Sales Enablement','Train spec sales engineers, issue submittal packs and technical data, load into BIM / spec libraries. Brief the existing architect and MEP-consultant network.','2–4 wks'],
+  ['8','Specification & Spec-in','Get the brand named in tender BOQs at design stage — the near-monopoly position. Then bundle adjacent lines onto the same project.','Ongoing']
+];
+
+function buildProdDev(){
+  const sel = document.getElementById('pd-select'); sel.innerHTML='';
+  const ordered = [...P].sort((a,b)=>a.launch - b.launch || a.specLock - b.specLock);
+  ordered.forEach((p,idx) => {
+    const b = document.createElement('button');
+    b.className = 'pd-btn' + (idx===0?' active':'');
+    b.textContent = p.name; b.dataset.id = p.id;
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.pd-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      renderProdDev(p.id);
+    });
+    sel.appendChild(b);
+  });
+  renderProdDev(ordered[0].id);
+  document.getElementById('pd-pipeline').innerHTML = PIPELINE.map(s => `<div class="pipe-stage"><div class="pipe-rail"><div class="pipe-dot">${s[0]}</div><div class="pipe-line"></div></div><div class="pipe-body"><div class="pipe-name">${s[1]}<span class="pipe-dur">${s[3]}</span></div><div class="pipe-desc">${s[2]}</div></div></div>`).join('');
+}
+function renderProdDev(id){
+  const p = P.find(x=>x.id===id);
+  const tagBlock = (p.pl?' <span class="pl-tag">PRIVATE LABEL</span>':'') + (p.dualBrand?' <span class="pl-tag" style="background:var(--ink);color:var(--bg)">DUAL-BRAND</span>':'');
+  document.getElementById('pd-title').innerHTML = p.name + tagBlock + ` <span class="pipe-dur" style="vertical-align:middle">Launches Year ${p.launch}</span>`;
+  const moqBit = p.moq ? ' · <strong>MOQ:</strong> ' + p.moq : '';
+  document.getElementById('pd-context').innerHTML = `<strong>SAM (UAE+KSA):</strong> AED ${fmtAED(samFor(p,'BOTH'))} · <strong>GM:</strong> ${p.gm}% · <strong>CAGR:</strong> ${p.cagr}% · <strong>Cert tier:</strong> ${p.specLock}/5${moqBit}<br><span style="color:var(--ink-light)">Gatekeepers: ${p.cert}</span>`;
+  const srcs = SOURCES[id] || [];
+  document.getElementById('pd-sources').innerHTML = srcs.map(s => {
+    const typeLabel = s[0]==='local' ? 'Local / Regional' : s[0]==='intl' ? 'International' : s[0]==='inhouse' ? 'In-House Brand' : 'Source';
+    return `<div class="src ${s[0]}"><div class="src-type">${typeLabel}</div><div class="src-name">${s[1]}</div><div class="src-note">${s[2]}</div></div>`;
+  }).join('');
+}
+
+/* ---- ROADMAP ---- */
+const ROADMAP_NOTES = [
+  'A big Year 1 — but every line in it can ship through MAC\'s existing UAE team without new certifications gating the sale. Cable ties, lightweight fixings, hand tools, the full PPE Range (10 lines, dual-brand: Portwest at the premium end, MAC in-house for the trader route), entrance matting, stair nosings, architectural profiles, tile joints, impact protection, expansion joints. KSA team is being built — no KSA revenue in Year 1.',
+  'The private-label launch is the centrepiece of Year 2. Universal silicone, neutral silicone, acrylic, PU foam — four PL chemistries, sourced through AMI / Dolphin / ASMACO. Alongside: lockers, cubicles, hygienic wall panels, raised access flooring, mechanical and chemical anchors (Fosroc JV pull-through). KSA team in place for commodity pilots at ~40% of UAE pace.',
+  'Year 3 fills out the architectural / hygienic basket — access panels, hygienic ceiling systems, garbage and linen chutes. KSA running at full pace. Earlier lines now in their 2nd–3rd year live, gaining share.',
+  'The first heavy cert wedges go live in Year 4 — steel doors and fire barriers. Slow to qualify, but every sale is a year of cert work made permanent. The basket starts bundling on projects: steel doors and fire barriers on the same Civil Defence package as the access panels and expansion joints from earlier years.',
+  'Smoke and acoustic door seals launch in Year 5 — bundles with the steel doors that went live the year before. By now the basket is mature: 36 lines, all five categories live in both markets. The cumulative Base-case gross profit lands at ~AED 45M.'
+];
+function buildRoadmap(){
+  const host = document.getElementById('roadmap-host'); let html='';
+  for(let y=1;y<=5;y++){
+    const launched = P.filter(p => p.launch === y);
+    const chips = launched.map(p => `<span class="pipe-dur" style="background:${catColor(p.cat)};color:#fff;border:none">${p.name}</span>`).join(' ');
+    html += `<div class="pipe-stage"><div class="pipe-rail"><div class="pipe-dot">${y}</div><div class="pipe-line"></div></div>
+      <div class="pipe-body"><div class="pipe-name">Year ${y} — ${launched.length} new line${launched.length===1?'':'s'}</div>
+      <div class="pipe-desc" style="margin-bottom:10px">${ROADMAP_NOTES[y-1]}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${chips}</div></div></div>`;
+  }
+  host.innerHTML = html;
+}
+
+/* ====================== TABS ====================== */
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(t.dataset.target).classList.add('active');
+      setTimeout(() => {
+        if (!charts.bubble && document.getElementById('landscape').classList.contains('active')) { drawBubble(); drawCagr(); drawUaeKsa(); }
+        if (!charts.rampbench && document.getElementById('benchmarks').classList.contains('active')) { drawRampBench(); drawVarBench(); }
+        if (!charts.channelsplit && document.getElementById('channels').classList.contains('active')) { drawChannelSplit(); drawChannelGP(); drawChannelLines(); }
+        recompute();
+      }, 30);
+      try { window.scrollTo({top:0, behavior:'smooth'}); } catch(e){}
+    });
+  });
+}
+
+/* ====================== INIT ====================== */
+function init(){
+  initTabs();
+  document.querySelectorAll('#mkt-toggle .toggle').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#mkt-toggle .toggle').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); market = b.dataset.mkt; recompute();
+  }));
+  document.querySelectorAll('#case-btns .scn').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.case === 'reset') { resetMature(); syncSliders(); recompute(); return; }
+    document.querySelectorAll('#case-btns .scn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); caseKey = b.dataset.case; recompute();
+  }));
+  buildSliders(); buildCategories(); buildTable(); buildProdDev(); buildRoadmap();
+  recompute();
+  drawBubble(); drawCagr(); drawUaeKsa();
+  drawRampBench(); drawVarBench();
+  drawChannelSplit(); drawChannelGP(); drawChannelLines();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
+</body>
+</html>

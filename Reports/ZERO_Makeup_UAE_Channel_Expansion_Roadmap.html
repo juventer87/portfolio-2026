@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ZERO Makeup — UAE Channel Expansion &amp; Regulatory Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ZERO MAKEUP — warm bone paper + terracotta/clay accent + muted slate (clean beauty for olive/brown skin) */
+    --ink:#2F2823; --ink-soft:#4E443C; --ink-light:#7A6E63; --ink-faint:#A99B8B;
+    --paper:#F4EEE4; --paper-warm:#ECE3D4; --paper-deep:#E3D7C5;
+    --rule:#DCCFBD; --rule-light:#E8DECF; --muted:#8A7B6B;
+    --clay:#BC5B38; --clay-deep:#9E4326; --clay-light:#F0DACD;
+    --slate:#5F6E78; --slate-deep:#46535C; --slate-soft:#C6CFD4;
+    --surface:#FFFFFF;
+    --green:#6E8A52; --amber:#C68A2E; --red:#BC4A33;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'IBM Plex Sans',-apple-system,sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; font-weight:400; font-size:17px; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 15% 16%, rgba(188,91,56,0.035) 0%, transparent 52%), radial-gradient(circle at 86% 70%, rgba(95,110,120,0.03) 0%, transparent 55%); background-attachment:fixed;}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.4;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+  .nav{position:sticky; top:0; z-index:100; background:rgba(244,238,228,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--clay); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--clay-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:16px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--clay);}
+  @media(max-width:1180px){ .nav-links{display:none;} }
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--clay);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.0; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--clay); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:820px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); gap:28px; padding-top:34px; border-top:1px solid var(--rule); max-width:1000px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:80px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.05; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:960px;}
+  .block h2 em{font-style:italic; color:var(--clay);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:810px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;} strong{color:var(--ink); font-weight:600;} em{font-style:italic;}
+  h3.sub-h{font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:52px 0 0; color:var(--ink); letter-spacing:-0.01em;}
+  .scope{background:linear-gradient(180deg, transparent 0%, rgba(236,227,212,0.5) 100%);}
+  .snap-grid{display:grid; grid-template-columns:1.45fr 1fr; gap:64px; margin-top:8px;}
+  @media(max-width:880px){ .snap-grid{grid-template-columns:1fr; gap:42px;} }
+  .snap-body p{font-size:17.5px; line-height:1.68; color:var(--ink-soft);}
+  .data-stack{display:flex; flex-direction:column; gap:18px; padding:32px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .data-stack::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--clay); border-left:3px solid var(--clay);}
+  .data-row{padding-bottom:16px; border-bottom:1px solid var(--rule);}
+  .data-row:last-child{border-bottom:none; padding-bottom:0;}
+  .data-row .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;}
+  .data-row .figure{font-family:'Fraunces',serif; font-size:25px; font-weight:500; color:var(--ink); letter-spacing:-0.02em; line-height:1.1;}
+  .data-row .figure .accent{color:var(--clay);} .data-row .figure .slate{color:var(--slate-deep);}
+  .data-row .caption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45;}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  @media(max-width:900px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .stat-grid{grid-template-columns:1fr;} }
+  .stat{padding:28px 24px 32px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .stat .big{font-family:'Fraunces',serif; font-size:34px; font-weight:500; color:var(--ink); letter-spacing:-0.03em; line-height:1; margin-bottom:10px;}
+  .stat .big .u{font-size:18px; color:var(--clay);}
+  .stat .desc{font-size:13px; line-height:1.5; color:var(--muted);}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:30px 26px 36px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-warm);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:30px; color:var(--clay); line-height:1; margin-bottom:16px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:19px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:11px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+  .card .txt strong{color:var(--ink-soft);}
+  .split{display:grid; grid-template-columns:1.5fr 1fr; gap:64px; margin-top:36px;}
+  .split.even{grid-template-columns:1fr 1fr; gap:48px;}
+  @media(max-width:880px){ .split,.split.even{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:26px;} .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:11px; font-weight:600;}
+  .sub-label.slate{color:var(--slate-deep);}
+  .sub-block p{font-size:16px; line-height:1.6; color:var(--ink-soft);}
+  .sub-block ul{list-style:none; padding:0; margin:10px 0 0;}
+  .sub-block li{font-size:15px; line-height:1.5; color:var(--ink-soft); padding:8px 0 8px 18px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .sub-block li:last-child{border-bottom:none;}
+  .sub-block li::before{content:""; position:absolute; left:0; top:15px; width:6px; height:6px; background:var(--clay); border-radius:50%;}
+  .sub-block.s li::before{background:var(--slate);}
+  .data-card{padding:26px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:20px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(26px,3.2vw,36px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.08; margin-bottom:11px;}
+  .data-card .dc-figure .accent{color:#E08A5E;} .data-card .dc-figure .slate{color:var(--slate-soft);}
+  .data-card .dc-caption{font-size:13.5px; line-height:1.55; color:rgba(244,238,228,0.82); font-style:italic;}
+  .tbl-wrap{margin-top:32px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:580px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; font-weight:500; text-align:left; padding:12px 15px; vertical-align:bottom;}
+  tbody td{padding:11px 15px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(236,227,212,0.4);}
+  tbody td strong{color:var(--ink);}
+  .row-em td{background:var(--clay-light)!important;} .row-em td strong{color:var(--clay-deep);}
+  td .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:3px; font-weight:600; white-space:nowrap;}
+  .pill.now{background:var(--clay); color:#fff;} .pill.next{background:var(--clay-light); color:var(--clay-deep);}
+  .pill.later{background:var(--paper-deep); color:var(--ink-soft);} .pill.opt{background:rgba(110,138,82,0.2); color:#4d6238;}
+  .pill.hi{background:rgba(110,138,82,0.18); color:#4d6238;} .pill.med{background:rgba(198,138,46,0.2); color:#8a5e16;}
+  .pill.vhi{background:var(--clay); color:#fff;} .pill.lo{background:var(--paper-deep); color:var(--ink-soft);}
+  .pill.crit{background:var(--red); color:#fff;}
+  .pill.strike{text-decoration:line-through; color:var(--muted); background:none; font-family:inherit; font-size:13px; letter-spacing:0;}
+  .tbl-note{font-size:12.5px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+  .callout{margin-top:32px; padding:26px 30px; background:var(--clay-light); border-left:4px solid var(--clay);}
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--clay-deep);}
+  .callout.slate{background:rgba(95,110,120,0.1); border-left-color:var(--slate);}
+  .callout.slate .ttl{color:var(--slate-deep);} .callout.slate p strong{color:var(--slate-deep);}
+  .callout.warn{background:rgba(188,74,51,0.1); border-left-color:var(--red);}
+  .callout.warn .ttl{color:#9a3526;} .callout.warn p strong{color:#9a3526;}
+  /* TSOM clean rectangle funnel */
+  .chart-wrap{margin-top:38px; background:var(--surface); border:1px solid var(--rule); padding:34px 30px;}
+  .chart-wrap .chart-title{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;}
+  .tsom{display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .tsom .tier{width:100%; padding:26px 30px; text-align:center; color:#fff;}
+  .tsom .tier .tm{font-family:'Fraunces',serif; font-size:clamp(22px,3vw,30px); font-weight:500; letter-spacing:-0.02em; line-height:1.08;}
+  .tsom .tier .ts{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; opacity:0.9; line-height:1.45;}
+  .tsom .t1{background:var(--ink);} .tsom .t2{background:var(--slate); max-width:74%;} .tsom .t3{background:var(--clay); max-width:50%;}
+  @media(max-width:620px){ .tsom .tier{max-width:100%;} }
+  /* chain / flow */
+  .chain{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .chain .node{font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; background:var(--surface); border:1px solid var(--rule); color:var(--ink); padding:9px 14px; border-radius:5px;}
+  .chain .node.start{background:var(--slate-deep); color:#fff; border-color:var(--slate-deep);}
+  .chain .node.end{background:var(--clay); color:#fff; border-color:var(--clay);}
+  .chain .arr{color:var(--clay); font-weight:700;}
+  /* equation */
+  .equation{margin-top:38px; display:flex; flex-wrap:wrap; gap:12px 8px; align-items:center; justify-content:center; padding:30px; background:var(--surface); border:1px solid var(--rule);}
+  .equation .term{font-family:'Fraunces',serif; font-size:clamp(17px,2.2vw,23px); font-weight:500; color:var(--ink); letter-spacing:-0.01em;}
+  .equation .op{font-family:'Fraunces',serif; font-size:20px; color:var(--clay); font-weight:400;}
+  .equation .res{font-family:'Fraunces',serif; font-size:clamp(19px,2.4vw,26px); font-style:italic; color:var(--clay); font-weight:500;}
+  /* allocation bars */
+  .alloc{margin-top:34px; display:flex; flex-direction:column; gap:2px;}
+  .alloc-row{display:grid; grid-template-columns:200px 1fr 96px; gap:16px; align-items:center; padding:9px 0; border-bottom:1px solid var(--rule-light);}
+  @media(max-width:680px){ .alloc-row{grid-template-columns:1fr; gap:4px;} }
+  .alloc-row .al{font-size:14.5px; color:var(--ink); font-weight:500;}
+  .alloc-row .bar{height:14px; background:var(--paper-deep); border-radius:2px; overflow:hidden;}
+  .alloc-row .bar span{display:block; height:100%; background:var(--clay);}
+  .alloc-row .bar span.s{background:var(--slate);}
+  .alloc-row .av{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); text-align:right;}
+  @media(max-width:680px){ .alloc-row .av{text-align:left;} }
+  /* positioning 2x2 */
+  .posmap{margin-top:40px;}
+  .posmap .axis-top,.posmap .axis-bot{text-align:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); padding:8px 0;}
+  .posmap .grid2{display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--rule);}
+  .posmap .q{padding:30px 26px; min-height:150px; border:1px solid var(--rule); background:var(--surface); position:relative;}
+  .posmap .q.zero{background:var(--clay-light); border-color:var(--clay);}
+  .posmap .q .qn{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;}
+  .posmap .q .brand{font-family:'Fraunces',serif; font-size:18px; color:var(--ink-soft); line-height:1.5;}
+  .posmap .q.zero .brand{color:var(--clay-deep); font-weight:600; font-size:22px;}
+  .posmap .axis-side{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); padding:8px 2px;}
+  /* phases */
+  .phases{margin-top:42px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:860px){ .phases{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .phases{grid-template-columns:1fr;} }
+  .phase{padding:26px 22px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .phase .pk{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.13em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:6px;}
+  .phase .pt{font-family:'Fraunces',serif; font-size:19px; font-weight:500; color:var(--ink); margin-bottom:12px; line-height:1.1;}
+  .phase ul{list-style:none; padding:0; margin:0;}
+  .phase li{font-size:13px; line-height:1.42; color:var(--muted); padding:7px 0 7px 15px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .phase li:last-child{border-bottom:none;}
+  .phase li::before{content:""; position:absolute; left:0; top:13px; width:5px; height:5px; background:var(--clay); border-radius:50%;}
+  /* checklist */
+  .checklist{margin-top:34px; border-top:1px solid var(--rule);}
+  .ci{display:flex; gap:18px; padding:15px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+  .ci .cmark{color:var(--clay); font-weight:700; font-size:15px; min-width:18px; font-family:'IBM Plex Mono',monospace;}
+  .ci .ctxt{font-size:16px; color:var(--ink-soft); line-height:1.5;}
+  .ci .ctxt strong{color:var(--ink);}
+  /* thesis band */
+  .thesis-band{background:var(--ink); color:var(--paper); padding:74px 0; position:relative; overflow:hidden;}
+  .thesis-band::after{content:""; position:absolute; right:-80px; top:-80px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(188,91,56,0.3) 0%, transparent 70%);}
+  .thesis-band .big{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.16; letter-spacing:-0.02em; max-width:940px; position:relative;}
+  .thesis-band .big em{font-style:italic; color:#E08A5E;}
+  .thesis-band .tn{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--clay-light); margin-top:26px; position:relative;}
+  /* closing */
+  .closing{background:var(--ink); color:var(--paper); border:none;}
+  .closing h2{color:var(--paper);} .closing h2 em{color:#E08A5E;}
+  .closing .lead{color:rgba(244,238,228,0.85);} .closing .lead strong{color:var(--paper);}
+  .sig{margin-top:38px; padding-top:26px; border-top:1px solid rgba(244,238,228,0.18); display:flex; flex-wrap:wrap; gap:6px 28px; align-items:baseline;}
+  .sig .name{font-family:'Fraunces',serif; font-size:23px; font-weight:500; color:var(--paper); letter-spacing:-0.01em;}
+  .sig .role{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#E08A5E; font-weight:600;}
+  .sig .contact-line{width:100%; font-size:13.5px; color:rgba(244,238,228,0.7); margin-top:8px; font-family:'IBM Plex Mono',monospace;}
+  .footer{background:#241D18; color:rgba(244,238,228,0.72); padding:54px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--clay);}
+  .footer .small{font-size:11.5px; color:rgba(244,238,228,0.5); padding-top:24px; border-top:1px solid rgba(244,238,228,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--clay-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>ZERO Makeup<span class="sub">UAE Channel Expansion</span></div>
+    <ul class="nav-links">
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#sizing">Sizing</a></li>
+      <li><a href="#today">Today</a></li>
+      <li><a href="#channels">Channels</a></li>
+      <li><a href="#marketplaces">Marketplaces</a></li>
+      <li><a href="#influencer">Influencer</a></li>
+      <li><a href="#regulatory">Regulatory</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">Strategic Brief · Beyond Shopify · May 2026</div>
+    <h1>One channel is a ceiling. The prize is the <em>full GCC beauty ecosystem</em>.</h1>
+    <p class="hero-sub">ZERO Makeup already has the foundation most foreign brands spend years building — a UAE entity, a warehouse, and a live Shopify store. This brief lays out the channel landscape, the influencer engine, and the regulatory roadmap to multiply current revenue 3–5× within 24 months.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Prepared for</div><div class="value">ZERO Makeup</div></div>
+      <div class="hero-meta-item"><div class="label">Prepared by</div><div class="value">Mohammed Vaseeuddin · Lead Analyst</div></div>
+      <div class="hero-meta-item"><div class="label">Practice</div><div class="value">Channel Activation · GCC Beauty Sector</div></div>
+      <div class="hero-meta-item"><div class="label">Date</div><div class="value">May 2026 · Confidential</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="block scope" id="summary">
+  <div class="container">
+    <div class="section-label"><span class="num">00</span> Executive Summary</div>
+    <h2>The foundation is in place. The opportunity is <em>now</em> — and it is multi-channel.</h2>
+    <div class="snap-grid">
+      <div class="snap-body">
+        <p>ZERO Makeup is one of a small handful of GCC beauty brands engineered specifically for South Asian and olive skin tones — manufactured under ISO-grade conditions in Turkey, certified under the Freedom Seal, and already operating with a UAE entity, warehouse, and live Shopify storefront.</p>
+        <p>Three realities define the next 24 months. <strong>Shopify alone is a ceiling, not a strategy</strong> — UAE buyers research on Instagram and TikTok, validate on Noon and Amazon, and convert wherever there's COD, BNPL, or 12-minute fulfillment; a single-channel brand misses 60–70% of in-market intent. <strong>Amazon and Noon are necessary but not sufficient</strong> — every comparable premium brand runs 5–8 channels. And <strong>regulatory continuity is non-negotiable</strong> — with the previous consultant no longer active, every unregistered SKU is both a compliance liability and a marketplace blocker against the December 2026 allergen deadline.</p>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">24-month revenue goal</div><div class="figure"><span class="accent">3–5×</span> Shopify</div><div class="caption">Multiply current single-channel revenue while protecting brand equity.</div></div>
+        <div class="data-row"><div class="label">In-market intent missed today</div><div class="figure">60–70%</div><div class="caption">Lost by operating on Shopify alone.</div></div>
+        <div class="data-row"><div class="label">Channels run by peers</div><div class="figure"><span class="slate">5–8</span></div><div class="caption">Huda, Hindash, Asteri, Kiko — ZERO runs one.</div></div>
+        <div class="data-row"><div class="label">Hard deadline</div><div class="figure">Dec 2026</div><div class="caption">GSO 1943:2024 — 80-allergen labeling for new SKUs.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SIZING -->
+<section class="block" id="sizing">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> Market Opportunity · TAM / SAM / SOM</div>
+    <h2>Size against the <em>addressable</em> category — not the USD 3.49B headline that overstates the prize 5×.</h2>
+    <p class="lead">The UAE color-cosmetics market reached ~USD 645M in 2026, on track to USD 880M by 2030 at 8.1% CAGR. Disciplined filtering produces a credible, defensible serviceable market where ZERO has a genuine right-to-win.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 1 — Opportunity funnel (focused, clean-beauty scenario)</div>
+      <div class="tsom">
+        <div class="tier t1"><div class="tm">TAM · USD 645M</div><div class="ts">UAE color cosmetics, 2026 · → USD 880M by 2030 @ 8.1% CAGR</div></div>
+        <div class="tier t2"><div class="tm">SAM · USD 54M</div><div class="ts">Premium/masstige × South Asian/olive × clean beauty</div></div>
+        <div class="tier t3"><div class="tm">SOM · USD 1.4–2.1M</div><div class="ts">24-month cumulative · ~2–3% capture of focused SAM</div></div>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">How the SAM filters compound</div>
+          <p>From the USD 645M TAM: <strong>× premium + masstige (40%)</strong> → USD 258M; <strong>× South Asian + olive demographic (60%)</strong> → USD 155M (the <em>broad</em> SAM, if ZERO adds lip/eye within 18 months); <strong>× clean / ethical intersection (35%)</strong> → USD 54M (the <em>focused</em> SAM — the high-conviction segment where Freedom Seal, hypoallergenic formulation, and ethical manufacturing become the deciding purchase drivers).</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Why the filter strategy matters</div>
+          <p>Leading with the largest possible TAM is a strategic mistake — sophisticated retail buyers and partners discount inflated TAMs immediately and lose confidence in the rest of the analysis. The disciplined USD 54M focused SAM, with a clear path to USD 1.4–2.1M attributable revenue over 24 months, is the prize this brief is built around. Capture is back-loaded: Year 1 is registration, marketplace ramp, and influencer seeding; Year 2 is when compounding begins.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">Clean / ethical beauty CAGR</div><div class="figure"><span class="accent">16.2%</span></div><div class="caption">Fastest-growing UAE beauty segment → USD 272M by 2033.</div></div>
+        <div class="data-row"><div class="label">Expatriate population</div><div class="figure">90%</div><div class="caption">South Asians alone are 62%+ — historically underserved by Western shade ranges.</div></div>
+        <div class="data-row"><div class="label">South Asian cohort</div><div class="figure"><span class="slate">~7M</span></div><div class="caption">4.39M Indian · 1.94M Pakistani · 0.85M Bangladeshi.</div></div>
+        <div class="data-row"><div class="label">Broad SAM (with category expansion)</div><div class="figure">USD 4.0–6.2M</div><div class="caption">24-month cumulative if lip/eye added by Q4 2027.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY -->
+<section class="block" id="today">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> Where ZERO Stands Today</div>
+    <h2>The foundation is solid — but ZERO is visible through <em>one channel only</em>.</h2>
+    <p class="lead">ZERO has cleared the 12-week setup gauntlet that defeats most entrants: trade license, warehouse, banking, and a localized Shopify store. The brand fundamentals align unusually well with the UAE buyer.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:42%;">Brand asset</th><th>Strategic value in the UAE</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Founder Nabila</strong> — household name in Pakistani beauty</td><td>Built-in authority with the South Asian market and 35 years of artistry credibility</td></tr>
+          <tr><td><strong>Six-tier shade range</strong> for South Asian / olive complexions</td><td>Directly addresses the 62%+ of UAE residents underserved by Western shade ranges</td></tr>
+          <tr><td><strong>Freedom Seal</strong> — zero-tolerance supply-chain ethics</td><td>Aligns with the clean & ethical segment growing at 16.2% CAGR</td></tr>
+          <tr><td><strong>ISO 22716 GMP</strong> manufacturing in Turkey</td><td>Easier GSO 1943:2024 compliance than lower-regulation origins</td></tr>
+          <tr><td>Minimalist all-in-one palette · ~AED 75–100</td><td>Skinimalism-aligned; masstige sweet spot — premium perception at accessible economics</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">The gap — peers run many touchpoints, ZERO runs one</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Brand</th><th>Active UAE channels</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Huda Beauty</strong></td><td>Sephora, Faces, Boots, Amazon.ae, Noon, Ounass, DTC, influencer affiliate, Dubai Duty Free</td></tr>
+          <tr><td><strong>Hindash</strong></td><td>DTC, Sephora, Faces, Noon, Amazon.ae, Mumzworld, influencer-led</td></tr>
+          <tr><td><strong>Asteri Beauty</strong></td><td>DTC, Faces, BasharaCare, Noon, salon partnerships, corporate gifting</td></tr>
+          <tr><td><strong>Kiko Milano UAE</strong></td><td>Standalone stores, Faces, Noon, Amazon.ae, BasharaCare, mall pop-ups</td></tr>
+          <tr class="row-em"><td><strong>ZERO Makeup</strong></td><td><strong>Shopify only</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Every additional channel compounds discoverability, social proof, and convertibility — without diluting the brand if sequenced correctly.</p>
+    </div>
+
+    <h3 class="sub-h">Competitive positioning — win where no one else plays</h3>
+    <div class="cards">
+      <div class="card"><div class="roman">—</div><div class="ttl">Asteri Beauty</div><div class="txt"><strong>Desert-proof, barrier repair, Arab beauty.</strong> Hero: skincare-infused cosmetics &amp; face kits. Premium ($110–122 kits). Value driver: extreme climate endurance.</div></div>
+      <div class="card"><div class="roman">—</div><div class="ttl">Hindash Cosmetics</div><div class="txt"><strong>Professional artistry, high-pigment, vegan.</strong> Hero: Beautopsy gradient multi-use palette. Premium artistry ($71). Value driver: customization, dramatic outcomes.</div></div>
+      <div class="card" style="background:var(--clay-light);"><div class="roman">★</div><div class="ttl">ZERO Makeup</div><div class="txt"><strong>Minimalist, quick, South Asian skin tones.</strong> Hero: all-in-one perfecting palette. Accessible masstige (~$17–25). Value driver: speed, simplicity, multi-purpose.</div></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">The positioning wedge</div>
+      <p>ZERO avoids head-to-head battles over dramatic pigmentation or heavy desert-proofing. <strong>It wins on ultra-efficient demographic calibration for the fast-paced UAE expatriate lifestyle</strong> — the clean, quick, olive/brown-skin quadrant the market leaves unclaimed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="block" id="channels">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> The Full UAE Beauty Channel Landscape</div>
+    <h2>Twelve channels. Most premium brands run <em>five to eight</em>. ZERO should sequence, not sprint.</h2>
+    <p class="lead">Shopify stays the brand HQ — the only channel with 100% margin and 100% customer data. Everything else is sequenced by fit, effort, and priority around it.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Channel category</th><th>Examples</th><th>Fit</th><th>Effort</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td>1. Direct-to-Consumer</td><td>Shopify (active), brand app</td><td>High</td><td>Live</td><td><span class="pill opt">Optimize</span></td></tr>
+          <tr><td>2. General marketplaces</td><td>Amazon.ae, Noon.com</td><td>High</td><td>Medium</td><td><span class="pill now">Now</span></td></tr>
+          <tr><td>3. Beauty specialty retail</td><td>Sephora ME, Faces, Boots, Ounass, BasharaCare</td><td>High</td><td>High</td><td><span class="pill next">Next</span></td></tr>
+          <tr><td>4. Niche / vertical marketplaces</td><td>6thStreet, Namshi, Mumzworld, Brands For Less</td><td>Medium</td><td>Low</td><td><span class="pill next">Next</span></td></tr>
+          <tr><td>5. Quick commerce</td><td>Noon Minutes, Careem Quik, Talabat</td><td>Medium</td><td>Low (via Noon)</td><td><span class="pill next">Next</span></td></tr>
+          <tr><td>6. Pharmacy</td><td>Aster, Life Pharmacy, BinSina</td><td>Medium</td><td>Medium</td><td><span class="pill later">Later</span></td></tr>
+          <tr><td>7. Social commerce</td><td>TikTok Shop, Instagram Shopping, Snapchat</td><td>High</td><td>Medium</td><td><span class="pill now">Now</span></td></tr>
+          <tr class="row-em"><td><strong>8. Influencer / KOL</strong></td><td>Macro, micro, diaspora creators</td><td><strong>Very high</strong></td><td>Medium</td><td><span class="pill now">Now</span></td></tr>
+          <tr><td>9. Bridal &amp; wedding</td><td>Bridal artists, wedding planners, mehndi events</td><td>Very high</td><td>Medium</td><td><span class="pill next">Next</span></td></tr>
+          <tr><td>10. Travel retail / duty-free</td><td>Dubai Duty Free, Sharjah Duty Free, in-flight</td><td>High</td><td>Very high</td><td><span class="pill later">Later</span></td></tr>
+          <tr><td>11. Corporate gifting</td><td>Diwali / Eid / Mother's Day programs</td><td>Medium</td><td>Low</td><td><span class="pill next">Next</span></td></tr>
+          <tr><td>12. B2B / salon / pro</td><td>Salon distribution, academies, master classes</td><td>High</td><td>Medium</td><td><span class="pill next">Next</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Now = 0–3 months · Next = 3–9 months · Later = 9–18 months. Bridal is ZERO's most under-leveraged opportunity — South Asian wedding artists charge AED 1,500–8,000 per booking and recommend products brides then buy directly, and no incumbent owns the diaspora bridal space.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACES -->
+<section class="block" id="marketplaces">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> Amazon vs Noon · The Volume Engines</div>
+    <h2>Two marketplaces, two roles — <em>sequence, don't overlap</em>.</h2>
+    <div class="split even">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Amazon.ae — the trust beachhead</div>
+          <ul>
+            <li><strong>Account:</strong> foreign entities accepted directly — zero local trade-license friction</li>
+            <li><strong>Fulfillment:</strong> FBA, flawless next-day for Prime; high long-term storage fees</li>
+            <li><strong>Economics:</strong> 15% referral on color cosmetics &gt; AED 36; AED 184/mo subscription</li>
+            <li><strong>Catalyst:</strong> Prime Day (mid-July) — captures summer digital cash flow</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="sub-block s">
+          <div class="sub-label slate">Noon.com — the cultural amplifier</div>
+          <ul>
+            <li><strong>Account:</strong> strictly requires a local UAE trade license — a walled garden</li>
+            <li><strong>Fulfillment:</strong> FBN; massive dominance in Cash-on-Delivery</li>
+            <li><strong>Economics:</strong> 14% referral &gt; AED 50; zero monthly subscription</li>
+            <li><strong>Catalyst:</strong> Yellow Friday (late Nov) — targets the GCC gifting season</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="ttl">Strategic sequencing</div>
+      <p>Launch <strong>Amazon.ae soft in Month 1–2</strong> for foreign-entity ease; activate <strong>Noon in Month 3–4</strong> once initial Amazon reviews establish social proof that translates across platforms — and to capture the massive local COD market.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUENCER -->
+<section class="block" id="influencer">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> Influencer &amp; Social Commerce Playbook</div>
+    <h2>For a brand with limited paid budget, influencer-led commerce isn't a tactic — it's <em>the channel</em>.</h2>
+    <p class="lead">Over 70% of UAE female beauty buyers say a creator was material to their last purchase. The program runs on three coordinated tiers, each with distinct economics and a single rule: only revenue counts.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Tier</th><th>Profile</th><th>Volume</th><th>Cost / activation</th><th>Objective</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tier 1 — Founder &amp; Macro</strong></td><td>Nabila + macro creators (500K+)</td><td>1–4 / quarter</td><td>AED 25,000–80,000+</td><td>Brand authority, halo, earned media</td></tr>
+          <tr><td><strong>Tier 2 — Mid-tier Diaspora</strong></td><td>Pakistani, Indian, Emirati (50K–500K)</td><td>8–15 / quarter</td><td>AED 5,000–20,000</td><td>Targeted demographic resonance — <strong>primary revenue driver</strong></td></tr>
+          <tr><td><strong>Tier 3 — Micro &amp; Nano</strong></td><td>Engaged creators under 50K</td><td>30–60 / quarter</td><td>AED 0–2,000 (often gifted)</td><td>Authentic UGC, conversion volume at lowest CAC</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Tier 1 — leverage what's already yours</div>
+          <p>The founder-as-creator format is underleveraged in the UAE: a 12-week TikTok/Reels series of shade-matching demos across the six-tier palette, a "GRWM in 50°C" wear-test format, and bridal partnership content with a recognized GCC artist. Zero direct creator fee, evergreen assets that anchor the rest of the program.</p>
+        </div>
+        <div class="sub-block s">
+          <div class="sub-label slate">Tier 2 — structural advantage</div>
+          <p>The Pakistani and Indian creator communities in Dubai are tight, accessible, and underserved by brands that default to Arabic-language Emirati creators. ZERO's founder alignment and diaspora identity resonance can't be replicated by international brands.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">Platform priority</div><div class="figure"><span class="accent">TikTok + IG</span></div><div class="caption">Primary. Snapchat secondary (under-indexed by global brands, native to GCC female buyers).</div></div>
+        <div class="data-row"><div class="label">Re-allocation rule</div><div class="figure">1.5× ROAS</div><div class="caption">Below 1.5× after two paid campaigns → gifting-only or dropped.</div></div>
+        <div class="data-row"><div class="label">12-month program spend</div><div class="figure"><span class="slate">AED 340–850K</span></div><div class="caption">150–260 activations.</div></div>
+        <div class="data-row"><div class="label">Targeted attributable revenue</div><div class="figure">AED 2.5–5M</div><div class="caption">Tracked by unique code + UTM per creator.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY -->
+<section class="block" id="regulatory">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> Regulatory Continuity for New SKUs</div>
+    <h2>Every unregistered SKU is a compliance liability <em>and</em> a marketplace blocker.</h2>
+    <p class="lead">Marketplaces and specialty retailers now cross-reference government registration databases at catalog ingestion. Every cosmetic SKU must pass two independent, mandatory gates — clearing one without the other does not legalize sale.</p>
+
+    <div class="callout warn">
+      <div class="ttl">The 2026 deadline you cannot miss</div>
+      <p>GSO 1943:2024 expands mandatory fragrance-allergen labeling from 24 to 80 allergens. MoIAT has set <strong>31 December 2026</strong> as the compliance deadline for all new cosmetic products on the UAE market (existing products: Dec 2028). Any new SKU registered after with legacy 24-allergen labels is rejected — artwork printed now should already reflect the 80-allergen schedule.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:24%;">Element</th><th>Montaji · Dubai Municipality</th><th>ECAS · Federal (MoIAT)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Function</strong></td><td>Permits sale &amp; distribution within the emirate</td><td>Permits import, customs clearance, federal market access</td></tr>
+          <tr><td><strong>Application surface</strong></td><td>Per-SKU (each variant individually)</td><td>Per product family / shipment</td></tr>
+          <tr><td><strong>Validity</strong></td><td>5 years</td><td>1 year (annual renewal)</td></tr>
+          <tr><td><strong>Issuing channel</strong></td><td>Dubai Municipality Montaji portal</td><td>Approved Notified Body (Intertek, TÜV Rheinland, SGS, TÜV SÜD)</td></tr>
+          <tr><td><strong>Gov. fees / SKU</strong></td><td>AED 130–250</td><td>AED 1,120+ base (plus Notified Body fees)</td></tr>
+          <tr><td><strong>Timeline</strong></td><td>~17 working days if documentation is clean</td><td>3–6 weeks including lab review</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">All-in cost per new SKU typically runs AED 8,000–22,000 — lower per-SKU when registering multiple variants of one formula family in a single cycle, since shared documentation amortizes across SKUs.</p>
+    </div>
+
+    <h3 class="sub-h">Failure modes — preventable with preparation</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Failure mode</th><th>How to prevent</th></tr></thead>
+        <tbody>
+          <tr><td>Label non-compliance (Arabic, INCI, allergens)</td><td>Pre-flight label review by a regulatory specialist before submission</td></tr>
+          <tr><td>Free Sale Certificate delays (Turkey legalization)</td><td>Begin FSC legalization 4 weeks ahead — never treat as a paperwork formality</td></tr>
+          <tr><td>Ingredient declaration errors (%, CAS, prohibited)</td><td>Manufacturer-signed declaration cross-checked against the GSO 1943:2024 list</td></tr>
+          <tr><td>Stale Certificate of Analysis (&gt;12 months)</td><td>Request a fresh CoA immediately before submission</td></tr>
+          <tr><td>Trade-license activity mismatch</td><td>Verify the license explicitly authorizes cosmetic trading; amend if needed</td></tr>
+          <tr><td>Marketing-claim violations (cures, treats, anti-aging)</td><td>Strip all therapeutic/medical claims under GSO 2528 from packaging and listings</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">The thermal challenge — an unbroken cold chain</h3>
+    <div class="split">
+      <div class="snap-body">
+        <p>Dubai summers peak at <strong>+50°C ambient</strong>. Extreme thermal stress initiates phase separation — emulsions collapse and waxes melt, irreversibly altering texture and permanently damaging brand equity. Makeup fulfilment cannot be treated like apparel.</p>
+        <p>The fix is a designed-in cold chain from Turkey manufacturing to the Dubai doorstep: CRT 3PL warehousing at 15–25°C, active refrigerated fleets with mandated SLAs, and insulated last-mile with phase-change materials in rigid packaging.</p>
+      </div>
+      <aside>
+        <div class="data-card"><div class="dc-figure"><span class="accent">+50°C</span> peaks</div><div class="dc-caption">The hazard zone. Temperature-controlled fulfilment is an absolute requirement — the single highest-impact, highest-likelihood operational risk.</div></div>
+        <div class="data-card"><div class="dc-figure">3-step chain</div><div class="dc-caption">CRT 3PL (AED 120/CBM) → active reefers → insulated micro-fulfilment + PCM last-mile. Validate with a 100-delivery thermal audit.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="block" id="roadmap">
+  <div class="container">
+    <div class="section-label"><span class="num">07</span> The 18-Month Execution Roadmap</div>
+    <h2>Sequenced for revenue impact — phases overlap; this is <em>not</em> a strict waterfall.</h2>
+    <div class="phases">
+      <div class="phase"><div class="pk">Months 0–3</div><div class="pt">Stabilize &amp; Soft Launch</div><ul><li>SKU registration audit; Montaji + ECAS sprint for all unregistered SKUs</li><li>File UAE trademark (Amazon Brand Registry)</li><li>Launch Amazon.ae with 3–5 hero SKUs via FBA</li><li>Optimize Shopify: Tabby/Tamara, Arabic pages, abandoned-cart automation</li><li>Begin Tier 3 creator seeding — 30 creators</li></ul></div>
+      <div class="phase"><div class="pk">Months 3–6</div><div class="pt">Cultural Activation</div><ul><li>Launch Noon.com with Premium Brand Page + FBN</li><li>Activate Tier 1 founder-led content series</li><li>Begin Tier 2 mid-tier diaspora partnerships — 8–10 creators</li><li>Pitch Faces &amp; BasharaCare for Q4 buyer meetings</li><li>First Yellow Friday campaign on Noon (late Nov)</li></ul></div>
+      <div class="phase"><div class="pk">Months 6–12</div><div class="pt">Retail &amp; Vertical</div><ul><li>Onboard Faces and/or BasharaCare after successful pitches</li><li>Launch bridal program: artists, wedding fairs, mehndi activations</li><li>Activate corporate gifting for Diwali, Christmas, Eid</li><li>Pitch Sephora ME with marketplace + retail proof points</li><li>Begin pharmacy channel exploration</li></ul></div>
+      <div class="phase"><div class="pk">Months 12–18</div><div class="pt">Premium &amp; Travel</div><ul><li>Sephora ME activation if prior phases proved out</li><li>Pharmacy channel listings (hypoallergenic claim)</li><li>Travel retail pitch — Dubai Duty Free (needs 2-yr revenue history)</li><li>Launch B2B salon &amp; academy master-class series</li><li>KSA expansion prep — leveraging existing Noon traction</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="block closing" id="close">
+  <div class="container">
+    <div class="section-label" style="color:#E08A5E;"><span class="num" style="color:var(--paper);">→</span> The Prize</div>
+    <h2>From single-channel entrant to a <em>defended, multi-channel</em> beauty ecosystem.</h2>
+    <p class="lead">Properly executed, this brief positions ZERO Makeup to multiply current Shopify revenue 3–5× within 24 months while protecting the brand equity that makes ZERO defensible — a credible path to <strong>USD 1.4–2.1M in attributable revenue</strong> in the focused clean-beauty segment, with category expansion taking the ceiling higher. The foundation is built; the work ahead is sequenced channel activation, regulatory continuity, and an influencer engine measured only on revenue.</p>
+    <div class="sig">
+      <span class="name">Mohammed Vaseeuddin</span>
+      <span class="role">Technical / Business Consultant &amp; Lead Analyst</span>
+      <span class="contact-line">Channel Activation &amp; Market Enhancement · GCC Beauty Sector</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">ZERO <span class="dot">·</span> Makeup</div>
+        <p>UAE Channel Expansion &amp; Regulatory Continuity Roadmap.</p>
+        <p>Beyond Shopify: Activating the Full GCC Beauty Ecosystem.</p>
+      </div>
+      <div>
+        <h4>Prepared for</h4>
+        <p>ZERO Makeup</p>
+        <p>GCC Beauty Sector</p>
+      </div>
+      <div>
+        <h4>Prepared by</h4>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · May 2026 · Sizing anchored to UAE color-cosmetics (focused clean-beauty SAM)</span>
+      <span class="conf">Confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal=(es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('reveal');observer.unobserve(e.target);}});};
+  const observer=new IntersectionObserver(reveal,{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.block, .hero').forEach(el=>observer.observe(el));
+  const sections=document.querySelectorAll('section[id]');
+  window.addEventListener('scroll',()=>{const y=window.scrollY+120;sections.forEach(s=>{const l=document.querySelector('.nav-links a[href="#'+s.getAttribute('id')+'"]');if(l){l.style.color=(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)?'var(--clay)':'';}});},{passive:true});
+</script>
+</body>
+</html>

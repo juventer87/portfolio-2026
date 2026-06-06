@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GCC Entry Blueprint — Dessert39 × Zenith&amp;</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* DESSERT39 PALETTE — deep plum + raspberry/rose accent + sage wellness on warm cream */
+    --ink:#3A1E2D; --ink-soft:#593847; --ink-light:#7A5C68; --ink-faint:#A8929B;
+    --paper:#FAF6F0; --paper-warm:#F3EADF; --paper-deep:#ECDCCE;
+    --rule:#E4D6C7; --rule-light:#EFE5D8; --muted:#8A7468;
+    --rose:#C23B5E; --rose-deep:#94264180; --rose-deepc:#972843; --rose-light:#F5D9E1;
+    --sage:#6E9166; --sage-deep:#4E6E48; --sage-soft:#B3C7AA;
+    --surface:#FFFFFF;
+    --green:#5E8B50; --amber:#CF9A36; --red:#CB5340;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    background:var(--paper); color:var(--ink);
+    line-height:1.6; font-weight:400; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 16% 18%, rgba(194,59,94,0.03) 0%, transparent 52%), radial-gradient(circle at 86% 72%, rgba(110,145,102,0.035) 0%, transparent 55%);
+    background-attachment:fixed;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.4;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.12 0 0 0 0 0.18 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+
+  /* NAV */
+  .nav{position:sticky; top:0; z-index:100; background:rgba(250,246,240,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--rose); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--rose-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:18px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.11em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--rose);}
+  @media(max-width:1080px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--rose-deepc); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--rose);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(42px,6.4vw,80px); line-height:0.99; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--rose); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:800px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:30px; padding-top:34px; border-top:1px solid var(--rule); max-width:1000px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+
+  /* SECTION SCAFFOLD */
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--rose-deepc); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:84px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(31px,4.2vw,50px); line-height:1.05; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:950px;}
+  .block h2 em{font-style:italic; color:var(--rose);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:780px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;}
+  strong{color:var(--ink); font-weight:600;}
+  em{font-style:italic;}
+  h3.sub-h{font-family:'Fraunces',serif; font-weight:500; font-size:23px; margin:54px 0 0; color:var(--ink); letter-spacing:-0.01em;}
+
+  /* SCOPE BAND (about / deliverables) */
+  .scope{background:linear-gradient(180deg, transparent 0%, rgba(243,234,223,0.55) 100%);}
+  .scope-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:68px; margin-top:8px;}
+  @media(max-width:880px){ .scope-grid{grid-template-columns:1fr; gap:42px;} }
+  .scope-body p{font-size:18px; line-height:1.7; color:var(--ink-soft);}
+  .deliver-card{padding:34px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .deliver-card::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--rose); border-left:3px solid var(--rose);}
+  .deliver-card .dc-h{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--rose-deepc); font-weight:600; margin-bottom:18px;}
+  .deliver-card ul{list-style:none; padding:0; margin:0;}
+  .deliver-card li{font-size:15px; line-height:1.5; color:var(--ink-soft); padding:11px 0 11px 22px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .deliver-card li:last-child{border-bottom:none;}
+  .deliver-card li::before{content:""; position:absolute; left:0; top:18px; width:7px; height:7px; background:var(--rose); border-radius:50%;}
+
+  /* STAT GRID */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:44px;}
+  @media(max-width:900px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .stat-grid{grid-template-columns:1fr;} }
+  .stat{padding:30px 26px 34px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .stat .big{font-family:'Fraunces',serif; font-size:38px; font-weight:500; color:var(--ink); letter-spacing:-0.03em; line-height:1; margin-bottom:10px;}
+  .stat .big .u{font-size:20px; color:var(--rose);}
+  .stat .desc{font-size:13.5px; line-height:1.5; color:var(--muted);}
+
+  /* CARD GRID */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:32px 28px 38px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-warm);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:32px; color:var(--rose); line-height:1; margin-bottom:18px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:20px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+
+  /* SPLIT editorial + aside */
+  .split{display:grid; grid-template-columns:1.5fr 1fr; gap:72px; margin-top:36px;}
+  @media(max-width:880px){ .split{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:30px;}
+  .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-deepc); margin-bottom:11px; font-weight:600;}
+  .sub-block p{font-size:16.5px; line-height:1.62; color:var(--ink-soft);}
+  .data-card{padding:28px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:22px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(28px,3.4vw,40px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.05; margin-bottom:12px;}
+  .data-card .dc-figure .accent{color:var(--rose);}
+  .data-card .dc-figure .sage{color:var(--sage-soft);}
+  .data-card .dc-caption{font-size:14px; line-height:1.55; color:rgba(250,246,240,0.82); font-style:italic;}
+
+  /* RAG READINESS */
+  .rag{margin-top:42px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:760px){ .rag{grid-template-columns:1fr;} }
+  .rag-item{padding:30px 28px 34px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative;}
+  .rag-item .dot{display:inline-flex; align-items:center; gap:9px; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600; margin-bottom:14px;}
+  .rag-item .dot::before{content:""; width:11px; height:11px; border-radius:50%;}
+  .rag-item.g .dot{color:var(--sage-deep);} .rag-item.g .dot::before{background:var(--green); box-shadow:0 0 0 3px rgba(94,139,80,0.18);}
+  .rag-item.y .dot{color:#9a6f18;} .rag-item.y .dot::before{background:var(--amber); box-shadow:0 0 0 3px rgba(207,154,54,0.2);}
+  .rag-item.r .dot{color:#9a3526;} .rag-item.r .dot::before{background:var(--red); box-shadow:0 0 0 3px rgba(203,83,64,0.2);}
+  .rag-item .rt{font-family:'Fraunces',serif; font-size:20px; font-weight:500; color:var(--ink); margin-bottom:10px; letter-spacing:-0.01em;}
+  .rag-item .rd{font-size:14px; line-height:1.52; color:var(--muted);}
+
+  /* TABLES */
+  .tbl-wrap{margin-top:34px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14.5px; min-width:540px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; text-align:left; padding:13px 16px; vertical-align:bottom;}
+  tbody td{padding:12px 16px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(243,234,223,0.45);}
+  tbody td strong{color:var(--ink);}
+  .tbl-note{font-size:13px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+
+  /* CALLOUT */
+  .callout{margin-top:34px; padding:28px 32px; background:var(--rose-light); border-left:4px solid var(--rose);}
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--rose-deepc); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:16px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--rose-deepc);}
+  .callout.sage{background:rgba(110,145,102,0.12); border-left-color:var(--sage);}
+  .callout.sage .ttl{color:var(--sage-deep);}
+  .callout.sage p strong{color:var(--sage-deep);}
+
+  /* NUMBERED FUNNEL STEPS */
+  .steps{margin-top:42px; border-top:1px solid var(--rule);}
+  .step{display:grid; grid-template-columns:90px 1fr; gap:28px; padding:26px 0; border-bottom:1px solid var(--rule); align-items:start;}
+  @media(max-width:620px){ .step{grid-template-columns:1fr; gap:8px;} }
+  .step .snum{font-family:'Fraunces',serif; font-style:italic; font-size:46px; line-height:0.85; color:var(--rose); font-weight:400;}
+  .step .stt{font-family:'Fraunces',serif; font-size:21px; font-weight:500; color:var(--ink); margin-bottom:7px; letter-spacing:-0.01em;}
+  .step .sd{font-size:15.5px; line-height:1.55; color:var(--ink-soft);}
+  .step .sd .priv{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; background:var(--paper-deep); color:var(--ink-soft); padding:2px 8px; border-radius:3px; margin-left:6px;}
+
+  /* TIMELINE phases (months) */
+  .phases{margin-top:42px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:860px){ .phases{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .phases{grid-template-columns:1fr;} }
+  .phase{padding:26px 22px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .phase .pk{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rose-deepc); font-weight:600; margin-bottom:6px;}
+  .phase .pt{font-family:'Fraunces',serif; font-size:19px; font-weight:500; color:var(--ink); margin-bottom:7px; line-height:1.08;}
+  .phase .pgoal{font-size:12.5px; line-height:1.45; color:var(--muted); font-style:italic; padding-bottom:12px; margin-bottom:8px; border-bottom:1px solid var(--rule-light);}
+  .phase ul{list-style:none; padding:0; margin:0;}
+  .phase li{font-size:13px; line-height:1.4; color:var(--ink-soft); padding:6px 0 6px 15px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .phase li:last-child{border-bottom:none;}
+  .phase li::before{content:""; position:absolute; left:0; top:12px; width:5px; height:5px; background:var(--rose); border-radius:50%;}
+  .phase li b{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage-deep); display:block; margin-bottom:2px; font-weight:600;}
+
+  /* CHECKLIST / decisions */
+  .checklist{margin-top:34px; border-top:1px solid var(--rule);}
+  .ci{display:flex; gap:20px; padding:16px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+  .ci .cmark{color:var(--rose); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px; min-width:18px;}
+  .ci .ctxt{font-size:16px; color:var(--ink-soft); line-height:1.5;}
+  .ci .ctxt strong{color:var(--ink);}
+
+  /* CONTACT / next step */
+  .contact{background:var(--ink); color:var(--paper); border:none;}
+  .contact h2{color:var(--paper);}
+  .contact h2 em{color:var(--rose);}
+  .contact .lead{color:rgba(250,246,240,0.85);}
+  .contact .lead strong{color:var(--paper);}
+  .sig{margin-top:40px; padding-top:28px; border-top:1px solid rgba(250,246,240,0.18); display:flex; flex-wrap:wrap; gap:6px 30px; align-items:baseline;}
+  .sig .name{font-family:'Fraunces',serif; font-size:24px; font-weight:500; color:var(--paper); letter-spacing:-0.01em;}
+  .sig .role{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--rose); font-weight:600;}
+  .sig .contact-line{width:100%; font-size:14px; color:rgba(250,246,240,0.7); margin-top:8px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.02em;}
+
+  /* FOOTER */
+  .footer{background:#2C1622; color:rgba(250,246,240,0.72); padding:54px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--rose);}
+  .footer .small{font-size:11.5px; color:rgba(250,246,240,0.5); padding-top:24px; border-top:1px solid rgba(250,246,240,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--rose-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+
+  /* reveal */
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Dessert39 × Zenith&amp;<span class="sub">GCC Entry · Phase 1</span></div>
+    <ul class="nav-links">
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#package">Package</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#plan">Plan</a></li>
+      <li><a href="#progress">Progress</a></li>
+      <li><a href="#next">Next Step</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">Phase 1 · Pre-Engagement · Directional</div>
+    <h1>A Korean dessert built for <em>sugar-free pleasure</em> — entering the Gulf, partner by partner.</h1>
+    <p class="hero-sub">How we see Dessert39's opportunity in the Gulf, who your best Master Franchise and Area Developer partners would be, and how we'd guide you to a signed agreement inside four months — UAE first for speed, Saudi Arabia for scale.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Prepared for</div><div class="value">Dessert39 · SMC International Co., Ltd. · Seoul</div></div>
+      <div class="hero-meta-item"><div class="label">Prepared by</div><div class="value">Zenith&amp; · Sharjah</div></div>
+      <div class="hero-meta-item"><div class="label">Role</div><div class="value">GCC Master Franchise Sourcing &amp; Introduction Partner</div></div>
+      <div class="hero-meta-item"><div class="label">Territory</div><div class="value">GCC · UAE &amp; KSA</div></div>
+      <div class="hero-meta-item"><div class="label">Version · Date</div><div class="value">v0.1 · 02 May 2026</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- SCOPE / ABOUT -->
+<section class="block scope" id="about">
+  <div class="container">
+    <div class="section-label"><span class="num">00</span> About this Blueprint</div>
+    <h2>A working plan, kept deliberately high-level — the named detail comes <em>once we move forward</em>.</h2>
+    <div class="scope-grid">
+      <div class="scope-body">
+        <p>This document explains how we read Dessert39's opportunity in the Gulf and how we'd run the introductions that lead to a signed Master Franchise or Area Developer agreement.</p>
+        <p>Two notes before we begin. First, this is a <strong>working plan, not a legal opinion</strong> — when the partnership progresses, your lawyers and our local advisors work through contracts, halal certificates, and registrations together. Second, we've kept things high-level on purpose; once we move forward formally, we get into named partner shortlists, contract-negotiation support, and the specific paperwork.</p>
+        <p>Inside: why the Gulf fits Dessert39 and why now; what's already strong and what we'd fix before meeting partners; the kinds of partners we'd approach; the four-month plan, week by week; and how we'd report progress to your team in Seoul.</p>
+      </div>
+      <aside class="deliver-card">
+        <div class="dc-h">What we'd deliver, working together</div>
+        <ul>
+          <li>A real shortlist of named partners Dessert39 should meet</li>
+          <li>Confidentiality agreements signed with each one before your name is shared</li>
+          <li>Setup and support for the first calls between Seoul and the partners</li>
+          <li>Help adapting the franchise package — halal pathway, Arabic brand work, store economics in local terms</li>
+          <li>Support all the way through to a signed Master Franchise or Area Developer agreement</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="block" id="opportunity">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> The Opportunity</div>
+    <h2>One of the best markets in the world for a dessert you can enjoy <em>without the sugar regret</em>.</h2>
+    <p class="lead">The Gulf lines up behind Dessert39 on demand, policy, and culture at the same time — a rare alignment, and one almost no imported dessert brand has moved to own.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="big">~17<span class="u">%</span></div><div class="desc">of UAE adults live with diabetes — among the highest rates in the world; many more are pre-diabetic or weight-managing.</div></div>
+      <div class="stat"><div class="big">~18<span class="u">%</span></div><div class="desc">of Saudi adults live with diabetes. Dessert39's whole story speaks directly to this group — a space no one owns.</div></div>
+      <div class="stat"><div class="big">12<span class="u">mo</span></div><div class="desc">frozen preservation on a –40°C cold-chain, no pastry chef required — operator economics most café concepts can't match.</div></div>
+      <div class="stat"><div class="big">4</div><div class="desc">addressable formats — cafés, kiosks, mall stands, and retail SKUs — widening the kind of partner who can work with you.</div></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Wellness is national policy in both countries</div>
+          <p>The UAE runs a <strong>Wellbeing 2031</strong> strategy; Saudi Arabia has the <strong>Quality of Life Program</strong> inside Vision 2030. Brands aligned with these health goals land softer — easier mall conversations, faster consumer acceptance, goodwill from authorities.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The Korean halo is real, and ready-made</div>
+          <p>K-pop, K-dramas, and K-beauty all sell strongly across the Gulf, especially with people under 35. Dessert39 walks into that affection — you don't have to teach the market who Korean brands are.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The operating model is a gift to operators</div>
+          <p>The cold-chain frozen system and no-pastry-chef setup are exactly what Gulf F&amp;B operators want, where labour is expensive and skilled pastry talent is scarce. The economics work for store partners in a way most café concepts don't.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure"><span class="accent">UAE first</span>, then KSA</div>
+          <div class="dc-caption">Move on both in parallel. UAE decisions happen fast and open the door; those first stores become the proof that opens Saudi conversations.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">Two partners, <span class="sage">not one</span></div>
+          <div class="dc-caption">A UAE Master Franchise partner and a separate KSA Area Developer — less risk if one underperforms, and each market gets a partner suited to it.</div>
+        </div>
+      </aside>
+    </div>
+
+    <h3 class="sub-h">Where you stand today — ready, in progress, or to be built</h3>
+    <div class="rag">
+      <div class="rag-item y"><div class="dot">Mostly there</div><div class="rt">Franchise package</div><div class="rd">Brand and product are export-ready, but the document is built for Korea. We'd adapt it — halal pathway, Arabic identity, and store economics in Gulf rents and salaries.</div></div>
+      <div class="rag-item y"><div class="dot">Mostly there</div><div class="rt">Regulatory pathway</div><div class="rd">The market wants what you sell. Partners will ask "how do we get this approved?" — halal, food-safety, franchise registration. We'd assemble that answer for both markets.</div></div>
+      <div class="rag-item r"><div class="dot">To be built</div><div class="rt">Partner pipeline</div><div class="rd">No qualified partners are in conversation yet. This is the engine we'd build for you — and the heart of the engagement.</div></div>
+    </div>
+
+    <h3 class="sub-h">Four ways Dessert39 wins here</h3>
+    <div class="cards">
+      <div class="card"><div class="roman">i.</div><div class="ttl">The healthy-dessert wedge</div><div class="txt">The first credible imported dessert brand to own this claim. With disciplined claims and solid halal credentials, it's a differentiator no competitor can copy quickly.</div></div>
+      <div class="card"><div class="roman">ii.</div><div class="ttl">Store economics</div><div class="txt">Lower running costs (no pastry chefs) and faster ROI (the central kitchen does the hard work). This matters to every operator we'd talk to.</div></div>
+      <div class="card"><div class="roman">iii.</div><div class="ttl">The Korean halo</div><div class="txt">Gen-Z and Millennials in the Gulf already love Korean brands. The affinity is pre-built — you arrive recognised.</div></div>
+      <div class="card"><div class="roman">iv.</div><div class="ttl">Multiple formats</div><div class="txt">Cafés, kiosks, retail SKUs. Operators can start small or go big — which widens the pool of partners who can work with you.</div></div>
+    </div>
+
+    <div class="callout sage">
+      <div class="ttl">What we'd close before meeting partners</div>
+      <p>Adapt the franchise package for the Gulf (store economics in local terms); build a <strong>halal certification plan, recipe by recipe</strong> (gelatine sources, alcohol traces in flavourings, sweeteners); adapt the brand for Arabic (logo lockup, menu, signage, packaging); and define the partner profile and the criteria they must pass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section class="block" id="package">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> Readying the Franchise Package</div>
+    <h2>What partners read before they decide to meet you — it must feel <em>made for them</em>, not translated from Korea.</h2>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">The franchise document itself</div>
+          <p>A serious operator wants answers in Gulf terms: what it costs to become Master Franchise or Area Developer (initial fee, royalty, marketing fund); which territory and for how long; the store-opening schedule; the cost to open one store using <strong>real Gulf rents and salaries — not Korean numbers</strong>; and the realistic payback on a single store.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The brand &amp; operating manual</div>
+          <p>Partners are buying a system, not a logo: the store playbook (kitchen setup, training, staffing); the brand book with allowed Arabic versions of menu, signage and packaging; which dishes are mandatory versus locally flexible; and how the cold-chain works — whether the Korean factory serves the Gulf directly or a regional kitchen is needed eventually.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">The must-do adaptation list</div>
+          <p>A recipe-by-recipe halal plan; Arabic brand adaptation; menu calibration (sweetness, portion size, beverage strength — small adjustments that suit Gulf tastes without breaking the Korean brand); and a confirmed cold-chain handover from Korean shipping to local Gulf logistics.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure">UAE</div>
+          <div class="dc-caption">The franchise agreement is governed by UAE commercial law. Registration with the Department of Economy is practice, not a legal requirement — the contract governs the relationship.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">Saudi <span class="accent">Arabia</span></div>
+          <div class="dc-caption">Registered with the Ministry of Investment under the 2019 Saudi Franchise Law. The disclosure document must be filed at least 14 days before any agreement is signed.</div>
+        </div>
+      </aside>
+    </div>
+    <div class="callout">
+      <div class="ttl">We don't replace your lawyers</div>
+      <p>We coordinate with your counsel and our local advisors so nothing is missed — contract structure, halal certificates, and government registrations move forward together, not in isolation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="block" id="market">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> Knowing the Market</div>
+    <h2>Operators won't expect the paperwork done — but they will expect a <em>confident, sequenced plan</em>.</h2>
+    <p class="lead">Vagueness loses deals. Our job is to make sure you walk in with the right answers for both markets: who approves what, in what order, and on roughly what timeline.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:24%;">Requirement</th><th>UAE pathway</th><th>Saudi Arabia pathway</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Trade license</strong></td><td>Department of Economy, in the relevant emirate</td><td>Relevant municipality — Riyadh, Jeddah, Dammam</td></tr>
+          <tr><td><strong>Food safety</strong></td><td>Dubai Municipality (Dubai) or ADAFSA (Abu Dhabi)</td><td>Saudi Food &amp; Drug Authority (SFDA) — import, factory, retail</td></tr>
+          <tr><td><strong>Halal certification</strong></td><td>ESMA-recognized body; recipes reviewed one by one</td><td>Mandatory and audited; SFDA-recognized body</td></tr>
+          <tr><td><strong>Retail-packaged SKUs</strong></td><td>ECAS or Emirates Quality Mark approval</td><td>SASO / SABER conformity for supermarket sale</td></tr>
+          <tr><td><strong>Franchise contract</strong></td><td>No separate franchise law — the contract governs</td><td>Ministry of Investment registration; disclosure filed 14 days before signing (2019 Franchise Law)</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Saudi Founding Day (22 February) and Saudi National Day (23 September) are strong launch windows for a new brand entering the Kingdom.</p>
+    </div>
+
+    <div class="callout sage">
+      <div class="ttl">Why the Gulf consumer is your customer</div>
+      <p>Diabetes is widespread (~17% UAE, ~18% KSA) and few imported dessert brands address it honestly. Both governments actively push wellness through national strategies. Korean lifestyle brands carry a strong halo, especially under 35. And <strong>nobody has anchored "low-sugar dessert café" at scale in the region</strong> — the category is open for you to take.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="block" id="partners">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> Finding Your Partners</div>
+    <h2>The heart of the engagement — everything else exists to support <em>this</em>.</h2>
+    <p class="lead">Partners come in four shapes. We'd talk to all four and screen them against one consistent set of criteria, then move them through a disciplined funnel where your name stays private until the right moment.</p>
+
+    <div class="cards">
+      <div class="card"><div class="roman">i.</div><div class="ttl">Big F&amp;B holding groups</div><div class="txt">Run several international restaurant or café brands. Capital, real-estate access, operational depth. Best fit if you ever wanted one partner for the whole Gulf.</div></div>
+      <div class="card"><div class="roman">ii.</div><div class="ttl">Café &amp; dessert specialists</div><div class="txt">Operators running 20–100 stores in one concept. Deep café expertise — a strong fit for a single-market Area Developer, the kind Saudi Arabia rewards.</div></div>
+      <div class="card"><div class="roman">iii.</div><div class="ttl">Retail &amp; lifestyle groups</div><div class="txt">Luxury retailers and mall developers with F&amp;B arms. Strong if you want premium locations and retail SKUs sold inside their existing stores.</div></div>
+      <div class="card"><div class="roman">iv.</div><div class="ttl">Family offices &amp; investment groups</div><div class="txt">Passive capital, often paired with an operating partner. Useful where a smaller operator has the talent but not enough money behind them.</div></div>
+    </div>
+
+    <h3 class="sub-h">What every partner has to pass</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:26%;">Criterion</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cold-chain experience</strong></td><td>Your supply system runs at –40°C; the partner must be able to handle it</td></tr>
+          <tr><td><strong>Money to commit</strong></td><td>The initial fee plus a multi-year build-out fund</td></tr>
+          <tr><td><strong>Real-estate access</strong></td><td>Able to secure good locations in good malls</td></tr>
+          <tr><td><strong>Bandwidth</strong></td><td>Not already running ten other concepts and stretched thin</td></tr>
+          <tr><td><strong>Reputation</strong></td><td>No serious legal or compliance issues — your brand has to be safe with them</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">A track record with Asian or Korean concepts is a bonus, not a requirement.</p>
+    </div>
+
+    <h3 class="sub-h">How we move them through the funnel</h3>
+    <div class="steps">
+      <div class="step"><div class="snum">1.</div><div><div class="stt">Long list — 50–80 names</div><div class="sd">Every operator in the UAE and Saudi Arabia who could plausibly do this.</div></div></div>
+      <div class="step"><div class="snum">2.</div><div><div class="stt">Shortlist — 15–20 names</div><div class="sd">Those who pass the criteria. From here we identify the strongest "anchor candidate" per market.</div></div></div>
+      <div class="step"><div class="snum">3.</div><div><div class="stt">First contact</div><div class="sd">Carefully, by warm introduction or direct outreach — describing a "Korean premium dessert café concept" without naming Dessert39.<span class="priv">Name private</span></div></div></div>
+      <div class="step"><div class="snum">4.</div><div><div class="stt">Confidentiality &amp; disclosure</div><div class="sd">An NDA goes to operators who respond seriously. Once signed, we share your name and the full franchise package, and they begin internal review.</div></div></div>
+      <div class="step"><div class="snum">5.</div><div><div class="stt">Meeting &amp; MOU</div><div class="sd">The strongest candidates meet your Seoul team on calls; the strongest of those moves to an MOU, and contract drafting begins.</div></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">The rules we don't break</div>
+      <p>We don't blast the market — outreach is quiet and sequenced. <strong>Your name stays private until step four.</strong> We work two or three candidates in parallel per market, but no candidate knows about the others. We pick one anchor candidate per market to set the terms others must match. And every deal stays between you and the partner — we facilitate, you sign.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="block" id="plan">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> The Four-Month Plan</div>
+    <h2>From a Korean franchise pack to a sign-ready UAE MOU — <em>sixteen weeks</em>, week by week.</h2>
+    <p class="lead">What's happening, what we deliver, and what counts as "done." Each month closes on a clear, checkable outcome.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="pk">Month 1 · Weeks 1–4</div>
+        <div class="pt">Setting up</div>
+        <div class="pgoal">Package adapting, regulatory plan documented, first long list ready.</div>
+        <ul>
+          <li><b>Week 1 · Kickoff</b>Confirm UAE / Saudi / both; agree structure; set up shared folder; receive your franchise pack</li>
+          <li><b>Week 2 · Package</b>Review pack vs Gulf expectations; map gaps; begin recipe-by-recipe halal plan</li>
+          <li><b>Week 3 · Regulatory</b>Document UAE &amp; Saudi pathways; confirm authorities and timelines</li>
+          <li><b>Week 4 · Long list</b>Build 50–80 partners; sort by type; confirm qualifying criteria</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="pk">Month 2 · Weeks 5–8</div>
+        <div class="pt">Reaching out</div>
+        <div class="pgoal">First contact made; first NDAs being signed.</div>
+        <ul>
+          <li><b>Week 5 · Outreach starts</b>Approach holding groups &amp; specialists; name not disclosed; track every reply</li>
+          <li><b>Week 6 · Disclosure</b>Send NDAs to responders; share name &amp; package; internal review begins</li>
+          <li><b>Week 7 · Widen</b>Approach retail/lifestyle &amp; family offices; refine the brief on early feedback</li>
+          <li><b>Week 8 · Mid-funnel review</b>Review progress with Seoul; schedule first candidate calls</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="pk">Month 3 · Weeks 9–12</div>
+        <div class="pt">Narrowing down</div>
+        <div class="pgoal">A real shortlist; your team has met candidates; first MOU drafting.</div>
+        <ul>
+          <li><b>Week 9 · Shortlist</b>Confirm 4–6 strong candidates per market; name the anchor per market</li>
+          <li><b>Week 10 · Seoul calls</b>Your team meets the shortlist by call; capture every follow-up</li>
+          <li><b>Week 11 · UAE MOU</b>Begin drafting with the UAE anchor — territory, exclusivity, openings, fees</li>
+          <li><b>Week 12 · Saudi NDA round</b>Saudi candidates progress; frame the Vision 2030 wellness alignment</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="pk">Month 4 · Weeks 13–16</div>
+        <div class="pt">Closing in</div>
+        <div class="pgoal">Anchor met in person; UAE MOU final; next six months planned.</div>
+        <ul>
+          <li><b>Week 13 · Face-to-face</b>Anchor candidates meet your team — Seoul or the Gulf</li>
+          <li><b>Week 14 · UAE MOU final</b>Sign-ready UAE MOU; Saudi candidates progress to calls</li>
+          <li><b>Week 15 · Review</b>Refresh the green/yellow/red status; review pipeline and risks</li>
+          <li><b>Week 16 · Wrap-up</b>Summary of what changed since Week 1; propose the next six months</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-h">What we need from you to get going</h3>
+    <div class="checklist">
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">A decision on where to start — UAE, Saudi, or both. <strong>Our recommendation: both.</strong></div></div>
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">Whether to give the whole Gulf to one partner or split it. <strong>Our recommendation: split — one in the UAE, one in Saudi.</strong></div></div>
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">The terms you're comfortable with: <strong>territory, exclusivity, agreement length, stores per year.</strong></div></div>
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">Your current franchise package — even if only the Korean version. We adapt it from there.</div></div>
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">A note on which recipes are already halal-certified, and which need work.</div></div>
+      <div class="ci"><span class="cmark">›</span><div class="ctxt">Confirmation to start the engagement formally.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<section class="block" id="progress">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> How You'll Know It's Working</div>
+    <h2>No consulting jargon — just <em>real signs of progress</em>, reported on a steady rhythm.</h2>
+
+    <div class="cards">
+      <div class="card"><div class="roman">A.</div><div class="ttl">On the franchise package</div><div class="txt">Has the Gulf-adapted version been approved? Has the halal certification plan been signed off? Has the Arabic identity been delivered?</div></div>
+      <div class="card"><div class="roman">B.</div><div class="ttl">On the regulatory plan</div><div class="txt">Is the UAE pathway documented end-to-end? Is the Saudi pathway documented end-to-end? Do we know which authorities matter, and their timelines?</div></div>
+      <div class="card"><div class="roman">C.</div><div class="ttl">On the partner pipeline</div><div class="txt">How many on the long list, the qualified shortlist, with signed NDAs, who've met your team, with MOUs drafting, and face-to-face meetings held?</div></div>
+    </div>
+
+    <div class="callout">
+      <div class="ttl">How often we update you</div>
+      <p><strong>Every week</strong> — outreach update and pipeline movement. <strong>Every two weeks</strong> — who's progressing, who's stuck. <strong>Every month</strong> — a refreshed status of everything, with the green/yellow/red view. <strong>End of Month 4</strong> — a full summary and the next six-month plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEP / CONTACT -->
+<section class="block contact" id="next">
+  <div class="container">
+    <div class="section-label" style="color:var(--rose);"><span class="num" style="color:var(--paper);">→</span> Next Step</div>
+    <h2>If this plan looks right, the next step is a <em>30-minute call</em> — Seoul and Sharjah.</h2>
+    <p class="lead">We'd walk through the decisions in the four-month plan, agree on a starting territory and structure, and confirm the engagement scope and commercial terms. Sharjah is five hours behind Seoul — we'll find a time that works for your calendar.</p>
+    <div class="sig">
+      <span class="name">Mohammed Vaseeuddin</span>
+      <span class="role">Technical / Business Consultant &amp; Lead Analyst · Zenith&amp;</span>
+      <span class="contact-line">vasee@zenithand.com &nbsp;·&nbsp; +971 58 938 0820 &nbsp;·&nbsp; www.zenithand.com</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">Dessert39 <span class="dot">×</span> Zenith&amp;</div>
+        <p>GCC Entry Blueprint — Phase 1 · Pre-Engagement · Directional.</p>
+        <p>UGCC Master Franchise &amp; Area Developer Introduction Plan (UAE &amp; KSA).</p>
+      </div>
+      <div>
+        <h4>Prepared for</h4>
+        <p>Dessert39</p>
+        <p>SMC International Co., Ltd.</p>
+        <p>Seoul, Korea</p>
+      </div>
+      <div>
+        <h4>Prepared by</h4>
+        <p>Zenith&amp; · Sharjah, UAE</p>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · Zenith&amp; for Dessert39 (SMC International Co., Ltd.) · v0.1 · 02 May 2026</span>
+      <span class="conf">Confidential · Internal Evaluation Only</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal = (entries) => { entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('reveal'); observer.unobserve(e.target); } }); };
+  const observer = new IntersectionObserver(reveal, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.block, .hero').forEach(el => observer.observe(el));
+  const sections = document.querySelectorAll('section[id]');
+  const onScroll = () => {
+    const y = window.scrollY + 120;
+    sections.forEach(sec => {
+      const top = sec.offsetTop, bottom = top + sec.offsetHeight;
+      const id = sec.getAttribute('id');
+      const link = document.querySelector('.nav-links a[href="#' + id + '"]');
+      if (link){ link.style.color = (y >= top && y < bottom) ? 'var(--rose)' : ''; }
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margins — Zenith& Creatives</title>
+<meta name="description" content="Long-form notes from inside the work — branding, strategy, market intelligence, and the business of building demand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f0e7;
+    --paper-2:#efebe0;
+    --ink:#1c1b18;
+    --ink-soft:#56524a;
+    --ink-faint:#8d887c;
+    --rule:#d8d3c4;
+    --ghost:#e7e2d4;
+
+    /* discipline accents — echoing the portfolio's amber/teal coding */
+    --branding:#b5532a;
+    --strategy:#1f6f6a;
+    --marketing:#9a7d1e;
+    --bizdev:#7a2e2e;
+    --craft:#3a4a6b;
+
+    --display:"Bricolage Grotesque",sans-serif;
+    --body:"Newsreader",Georgia,serif;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.5;
+    /* subtle paper grain */
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(28,27,24,.022) 1px, transparent 0);
+    background-size:4px 4px;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---- top bar ---- */
+  .topbar{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:34px 0 0;font-family:var(--display);
+  }
+  .brand{font-weight:700;letter-spacing:-.02em;font-size:18px}
+  .brand .amp{color:var(--branding)}
+  .topbar .meta{
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:500;
+  }
+  .topbar .meta a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+  .topbar .meta a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+  /* ---- masthead ---- */
+  header.mast{padding:96px 0 14px;position:relative}
+  .index-label{
+    font-family:var(--display);font-size:12.5px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;align-items:center;gap:10px;margin-bottom:30px;
+  }
+  .index-label .chev{color:var(--branding);letter-spacing:-.1em}
+  h1.title{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(64px,13vw,150px);line-height:.86;letter-spacing:-.045em;
+  }
+  h1.title .dot{color:var(--branding)}
+  .standfirst{
+    font-family:var(--body);font-size:clamp(19px,2.4vw,23px);line-height:1.42;
+    color:var(--ink-soft);max-width:30ch;margin-top:30px;font-style:italic;
+  }
+
+  /* ---- filter rail ---- */
+  .filters{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    margin:46px 0 4px;padding-top:26px;border-top:1px solid var(--rule);
+  }
+  .filters .lede{
+    font-family:var(--display);font-size:11.5px;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);
+    margin-right:6px;
+  }
+  .pill{
+    font-family:var(--display);font-size:13px;font-weight:500;
+    letter-spacing:.01em;padding:6px 14px;border-radius:100px;
+    border:1px solid var(--rule);background:transparent;color:var(--ink-soft);
+    cursor:pointer;transition:.18s ease;display:inline-flex;align-items:center;gap:8px;
+  }
+  .pill .swatch{width:8px;height:8px;border-radius:50%;background:var(--ink-faint);transition:.18s}
+  .pill:hover{border-color:var(--ink);color:var(--ink)}
+  .pill.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .pill.active .swatch{background:var(--paper)}
+  .pill[data-topic="branding"] .swatch{background:var(--branding)}
+  .pill[data-topic="strategy"] .swatch{background:var(--strategy)}
+  .pill[data-topic="marketing"] .swatch{background:var(--marketing)}
+  .pill[data-topic="bizdev"] .swatch{background:var(--bizdev)}
+  .pill[data-topic="craft"] .swatch{background:var(--craft)}
+  .rss{margin-left:auto;font-family:var(--display);font-size:12px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+    text-decoration:none;border-bottom:1px solid transparent}
+  .rss:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+  /* ---- year groups ---- */
+  .years{padding:30px 0 60px}
+  .year-group{position:relative;padding:54px 0 6px}
+  .ghost-year{
+    position:absolute;top:18px;right:-6px;font-family:var(--display);
+    font-weight:700;font-size:clamp(90px,16vw,190px);line-height:1;
+    color:var(--ghost);letter-spacing:-.05em;z-index:0;pointer-events:none;
+    user-select:none;
+  }
+  .year-tag{
+    position:relative;z-index:1;font-family:var(--display);font-size:12px;
+    font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:14px;
+  }
+
+  .entry{
+    position:relative;z-index:1;display:block;text-decoration:none;color:inherit;
+    border-top:1px solid var(--rule);padding:22px 0 24px;
+    transition:padding .22s ease;
+  }
+  .year-group .entry:last-child{border-bottom:1px solid var(--rule)}
+  .entry .row1{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .entry .date{
+    font-family:var(--display);font-size:12.5px;font-weight:500;
+    letter-spacing:.04em;color:var(--ink-faint);min-width:96px;
+    font-variant-numeric:tabular-nums;
+  }
+  .entry h2{
+    font-family:var(--display);font-weight:600;font-size:clamp(21px,2.7vw,28px);
+    line-height:1.12;letter-spacing:-.02em;flex:1 1 360px;
+    transition:color .18s ease;
+  }
+  .entry .chevs{
+    font-family:var(--display);font-weight:700;color:var(--ink-faint);
+    opacity:0;transform:translateX(-6px);transition:.22s ease;font-size:20px;
+  }
+  .entry .topic{
+    font-family:var(--display);font-size:11.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;padding:3px 0;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .entry .topic .swatch{width:7px;height:7px;border-radius:50%}
+  .entry[data-topic="branding"] .topic{color:var(--branding)} .entry[data-topic="branding"] .topic .swatch{background:var(--branding)}
+  .entry[data-topic="strategy"] .topic{color:var(--strategy)} .entry[data-topic="strategy"] .topic .swatch{background:var(--strategy)}
+  .entry[data-topic="marketing"] .topic{color:var(--marketing)} .entry[data-topic="marketing"] .topic .swatch{background:var(--marketing)}
+  .entry[data-topic="bizdev"] .topic{color:var(--bizdev)} .entry[data-topic="bizdev"] .topic .swatch{background:var(--bizdev)}
+  .entry[data-topic="craft"] .topic{color:var(--craft)} .entry[data-topic="craft"] .topic .swatch{background:var(--craft)}
+  .entry .dek{
+    font-family:var(--body);font-style:italic;font-size:17.5px;line-height:1.4;
+    color:var(--ink-soft);margin-top:9px;max-width:62ch;
+    padding-left:112px;
+  }
+
+  .entry:hover{padding-left:14px}
+  .entry:hover h2{color:var(--branding)}
+  .entry[data-topic="strategy"]:hover h2{color:var(--strategy)}
+  .entry[data-topic="marketing"]:hover h2{color:var(--marketing)}
+  .entry[data-topic="bizdev"]:hover h2{color:var(--bizdev)}
+  .entry[data-topic="craft"]:hover h2{color:var(--craft)}
+  .entry:hover .chevs{opacity:1;transform:translateX(0)}
+
+  .entry.hide{display:none}
+  .year-group.empty{display:none}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--rule);padding:48px 0 70px;margin-top:30px}
+  .foot-line{
+    font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.04em;
+    color:var(--ink-soft);display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:14px;align-items:baseline;
+  }
+  .foot-line .thesis{font-style:normal;color:var(--ink)}
+  .foot-line .thesis .amp{color:var(--branding)}
+  .foot-sub{font-family:var(--body);font-style:italic;font-size:14px;
+    color:var(--ink-faint);margin-top:10px}
+
+  /* staggered load reveal */
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}
+
+  @media(max-width:640px){
+    body{font-size:17px}
+    .entry .date{min-width:auto}
+    .entry .dek{padding-left:0}
+    .topbar{flex-direction:column;gap:8px}
+    .ghost-year{font-size:74px;top:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">Zenith<span class="amp">&amp;</span> Creatives</div>
+    <div class="meta">
+      <a href="#">Work</a> · <a href="#">About</a> · <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <header class="mast">
+    <div class="index-label reveal" style="animation-delay:.05s">
+      <span class="chev">»</span> 07 / Margins
+    </div>
+    <h1 class="title reveal" style="animation-delay:.12s">Margins<span class="dot">.</span></h1>
+    <p class="standfirst reveal" style="animation-delay:.2s">
+      Long-form notes from inside the work — branding, strategy, market
+      intelligence, and the business of building demand.
+    </p>
+
+    <div class="filters reveal" style="animation-delay:.28s">
+      <span class="lede">Filter</span>
+      <button class="pill active" data-topic="all"><span class="swatch"></span>All</button>
+      <button class="pill" data-topic="branding"><span class="swatch"></span>Branding</button>
+      <button class="pill" data-topic="strategy"><span class="swatch"></span>Strategy</button>
+      <button class="pill" data-topic="marketing"><span class="swatch"></span>Marketing</button>
+      <button class="pill" data-topic="bizdev"><span class="swatch"></span>Bizdev</button>
+      <button class="pill" data-topic="craft"><span class="swatch"></span>Craft</button>
+      <a class="rss" href="#">RSS →</a>
+    </div>
+  </header>
+
+  <main class="years">
+
+    <!-- 2026 -->
+    <section class="year-group" data-year="2026">
+      <span class="ghost-year">2026</span>
+      <div class="year-tag">Year / 2026</div>
+
+      <a class="entry" href="#" data-topic="branding">
+        <div class="row1">
+          <span class="date">May 12, 2026</span>
+          <h2>Why Clients Credit Their Market And Not Your Brand Work</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Branding</span>
+        <p class="dek">The deepest equity a brand builds is the lift nobody attributes to it.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="craft">
+        <div class="row1">
+          <span class="date">Mar 15, 2026</span>
+          <h2>How AI Briefs Are Replacing Mood Boards In Identity Work</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Craft</span>
+        <p class="dek">When the deliverable shrinks from a board to a paragraph.</p>
+      </a>
+    </section>
+
+    <!-- 2025 -->
+    <section class="year-group" data-year="2025">
+      <span class="ghost-year">2025</span>
+      <div class="year-tag">Year / 2025</div>
+
+      <a class="entry" href="#" data-topic="strategy">
+        <div class="row1">
+          <span class="date">Nov 11, 2025</span>
+          <h2>Why Senior Brand Strategists Decline More Pitches</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Strategy</span>
+        <p class="dek">The quiet discipline that separates positioning from output.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="craft">
+        <div class="row1">
+          <span class="date">Jun 17, 2025</span>
+          <h2>How AI Summaries Are Flattening Brand Voice</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Craft</span>
+        <p class="dek">The copy that goes unread because the machine read first.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="marketing">
+        <div class="row1">
+          <span class="date">Feb 04, 2025</span>
+          <h2>Which Marketing Tactics Will Not Survive Zero-Click Search</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Marketing</span>
+        <p class="dek">The plays that age out when discovery stops being a click.</p>
+      </a>
+    </section>
+
+    <!-- 2024 -->
+    <section class="year-group" data-year="2024">
+      <span class="ghost-year">2024</span>
+      <div class="year-tag">Year / 2024</div>
+
+      <a class="entry" href="#" data-topic="strategy">
+        <div class="row1">
+          <span class="date">Oct 22, 2024</span>
+          <h2>How To Build A Brand When The Buyer Is A Procurement Algorithm</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Strategy</span>
+        <p class="dek">The identity that qualifies itself, written for two audiences.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="craft">
+        <div class="row1">
+          <span class="date">Jul 09, 2024</span>
+          <h2>AI In The Branding Workflow, One Year In</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Craft</span>
+        <p class="dek">The model in the loop, and the loop that did the changing.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="strategy">
+        <div class="row1">
+          <span class="date">Mar 19, 2024</span>
+          <h2>Why Brand Maturity Stalls At Stakeholder Alignment</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Strategy</span>
+        <p class="dek">The six stakeholders, and the two decisions that move the work.</p>
+      </a>
+    </section>
+
+    <!-- 2023 -->
+    <section class="year-group" data-year="2023">
+      <span class="ghost-year">2023</span>
+      <div class="year-tag">Year / 2023</div>
+
+      <a class="entry" href="#" data-topic="marketing">
+        <div class="row1">
+          <span class="date">Dec 12, 2023</span>
+          <h2>Why Go-To-Market Decks Fail Without A Channel Map</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Marketing</span>
+        <p class="dek">The strategy nobody can execute because nobody walked the channel.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="craft">
+        <div class="row1">
+          <span class="date">Sep 05, 2023</span>
+          <h2>The Modern Brand Studio's Tool Stack, Reconsidered</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Craft</span>
+        <p class="dek">The shrinking surface area between strategy and design.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="bizdev">
+        <div class="row1">
+          <span class="date">May 23, 2023</span>
+          <h2>Why Marketing Pipelines Turn Into Graveyards</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Bizdev</span>
+        <p class="dek">The pipeline as memorial, the forecast as wishful thinking.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="bizdev">
+        <div class="row1">
+          <span class="date">Feb 14, 2023</span>
+          <h2>Working With Founders Who Communicate In Logos</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Bizdev</span>
+        <p class="dek">The founder who thinks in marks, and the strategy underneath.</p>
+      </a>
+    </section>
+
+    <!-- 2022 -->
+    <section class="year-group" data-year="2022">
+      <span class="ghost-year">2022</span>
+      <div class="year-tag">Year / 2022</div>
+
+      <a class="entry" href="#" data-topic="branding">
+        <div class="row1">
+          <span class="date">Oct 11, 2022</span>
+          <h2>How To Run A Brand Audit Without Ceremony</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Branding</span>
+        <p class="dek">The quiet review a small team can run in an afternoon.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="bizdev">
+        <div class="row1">
+          <span class="date">Jun 28, 2022</span>
+          <h2>Why The Pitch Deck Still Runs Business Development</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Bizdev</span>
+        <p class="dek">The deck that refuses to die, and what it signals.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="branding">
+        <div class="row1">
+          <span class="date">Mar 22, 2022</span>
+          <h2>When A Rebrand Makes Things Worse</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Branding</span>
+        <p class="dek">The rebrand nobody asked for, and what it cost.</p>
+      </a>
+    </section>
+
+    <!-- 2021 -->
+    <section class="year-group" data-year="2021">
+      <span class="ghost-year">2021</span>
+      <div class="year-tag">Year / 2021</div>
+
+      <a class="entry" href="#" data-topic="strategy">
+        <div class="row1">
+          <span class="date">Dec 07, 2021</span>
+          <h2>Why Market Entry Fails At The Last Mile</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Strategy</span>
+        <p class="dek">The plan that ends exactly where the distributor begins.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="branding">
+        <div class="row1">
+          <span class="date">Sep 14, 2021</span>
+          <h2>Why Most Brand Guidelines Fail As Deliverables</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Branding</span>
+        <p class="dek">The style guide mistaken for a discipline.</p>
+      </a>
+
+      <a class="entry" href="#" data-topic="bizdev">
+        <div class="row1">
+          <span class="date">May 18, 2021</span>
+          <h2>How To Run Client Check-Ins That Actually Work</h2>
+          <span class="chevs">»</span>
+        </div>
+        <span class="topic"><span class="swatch"></span>Bizdev</span>
+        <p class="dek">The status call that left the room and got quieter.</p>
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="foot-line">
+      <span class="thesis">Zenith<span class="amp">&amp;</span> — where science &amp; art break even.</span>
+      <span>MMXXI–MMXXVI</span>
+    </div>
+    <div class="foot-sub">Written from inside the work. Made in Dubai.</div>
+  </footer>
+
+</div>
+
+<script>
+  const pills = document.querySelectorAll('.pill');
+  const entries = document.querySelectorAll('.entry');
+  const groups = document.querySelectorAll('.year-group');
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const topic = pill.dataset.topic;
+
+      entries.forEach(e => {
+        const match = (topic === 'all' || e.dataset.topic === topic);
+        e.classList.toggle('hide', !match);
+      });
+
+      // hide year groups that have no visible entries
+      groups.forEach(g => {
+        const visible = g.querySelectorAll('.entry:not(.hide)').length;
+        g.classList.toggle('empty', visible === 0);
+      });
+    });
+  });
+</script>
+</body>
+</html>

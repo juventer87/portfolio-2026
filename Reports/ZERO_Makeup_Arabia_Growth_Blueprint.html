@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ZERO Makeup Arabia — 24-Month Market-Share Growth Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ZERO MAKEUP — warm bone paper + terracotta/clay accent + muted slate (clean beauty for olive/brown skin) */
+    --ink:#2F2823; --ink-soft:#4E443C; --ink-light:#7A6E63; --ink-faint:#A99B8B;
+    --paper:#F4EEE4; --paper-warm:#ECE3D4; --paper-deep:#E3D7C5;
+    --rule:#DCCFBD; --rule-light:#E8DECF; --muted:#8A7B6B;
+    --clay:#BC5B38; --clay-deep:#9E4326; --clay-light:#F0DACD;
+    --slate:#5F6E78; --slate-deep:#46535C; --slate-soft:#C6CFD4;
+    --surface:#FFFFFF;
+    --green:#6E8A52; --amber:#C68A2E; --red:#BC4A33;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'IBM Plex Sans',-apple-system,sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; font-weight:400; font-size:17px; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 15% 16%, rgba(188,91,56,0.035) 0%, transparent 52%), radial-gradient(circle at 86% 70%, rgba(95,110,120,0.03) 0%, transparent 55%); background-attachment:fixed;}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.4;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+  .nav{position:sticky; top:0; z-index:100; background:rgba(244,238,228,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--clay); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--clay-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:16px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--clay);}
+  @media(max-width:1180px){ .nav-links{display:none;} }
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--clay);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.0; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--clay); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:820px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); gap:28px; padding-top:34px; border-top:1px solid var(--rule); max-width:1000px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:80px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.05; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:960px;}
+  .block h2 em{font-style:italic; color:var(--clay);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:810px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;} strong{color:var(--ink); font-weight:600;} em{font-style:italic;}
+  h3.sub-h{font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:52px 0 0; color:var(--ink); letter-spacing:-0.01em;}
+  .scope{background:linear-gradient(180deg, transparent 0%, rgba(236,227,212,0.5) 100%);}
+  .snap-grid{display:grid; grid-template-columns:1.45fr 1fr; gap:64px; margin-top:8px;}
+  @media(max-width:880px){ .snap-grid{grid-template-columns:1fr; gap:42px;} }
+  .snap-body p{font-size:17.5px; line-height:1.68; color:var(--ink-soft);}
+  .data-stack{display:flex; flex-direction:column; gap:18px; padding:32px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .data-stack::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--clay); border-left:3px solid var(--clay);}
+  .data-row{padding-bottom:16px; border-bottom:1px solid var(--rule);}
+  .data-row:last-child{border-bottom:none; padding-bottom:0;}
+  .data-row .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;}
+  .data-row .figure{font-family:'Fraunces',serif; font-size:25px; font-weight:500; color:var(--ink); letter-spacing:-0.02em; line-height:1.1;}
+  .data-row .figure .accent{color:var(--clay);} .data-row .figure .slate{color:var(--slate-deep);}
+  .data-row .caption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45;}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  @media(max-width:900px){ .stat-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .stat-grid{grid-template-columns:1fr;} }
+  .stat{padding:28px 24px 32px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .stat .big{font-family:'Fraunces',serif; font-size:34px; font-weight:500; color:var(--ink); letter-spacing:-0.03em; line-height:1; margin-bottom:10px;}
+  .stat .big .u{font-size:18px; color:var(--clay);}
+  .stat .desc{font-size:13px; line-height:1.5; color:var(--muted);}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:30px 26px 36px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-warm);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:30px; color:var(--clay); line-height:1; margin-bottom:16px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:19px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:11px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+  .card .txt strong{color:var(--ink-soft);}
+  .split{display:grid; grid-template-columns:1.5fr 1fr; gap:64px; margin-top:36px;}
+  .split.even{grid-template-columns:1fr 1fr; gap:48px;}
+  @media(max-width:880px){ .split,.split.even{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:26px;} .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:11px; font-weight:600;}
+  .sub-label.slate{color:var(--slate-deep);}
+  .sub-block p{font-size:16px; line-height:1.6; color:var(--ink-soft);}
+  .sub-block ul{list-style:none; padding:0; margin:10px 0 0;}
+  .sub-block li{font-size:15px; line-height:1.5; color:var(--ink-soft); padding:8px 0 8px 18px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .sub-block li:last-child{border-bottom:none;}
+  .sub-block li::before{content:""; position:absolute; left:0; top:15px; width:6px; height:6px; background:var(--clay); border-radius:50%;}
+  .sub-block.s li::before{background:var(--slate);}
+  .data-card{padding:26px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:20px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(26px,3.2vw,36px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.08; margin-bottom:11px;}
+  .data-card .dc-figure .accent{color:#E08A5E;} .data-card .dc-figure .slate{color:var(--slate-soft);}
+  .data-card .dc-caption{font-size:13.5px; line-height:1.55; color:rgba(244,238,228,0.82); font-style:italic;}
+  .tbl-wrap{margin-top:32px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:580px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; font-weight:500; text-align:left; padding:12px 15px; vertical-align:bottom;}
+  tbody td{padding:11px 15px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(236,227,212,0.4);}
+  tbody td strong{color:var(--ink);}
+  .row-em td{background:var(--clay-light)!important;} .row-em td strong{color:var(--clay-deep);}
+  td .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:3px; font-weight:600; white-space:nowrap;}
+  .pill.now{background:var(--clay); color:#fff;} .pill.next{background:var(--clay-light); color:var(--clay-deep);}
+  .pill.later{background:var(--paper-deep); color:var(--ink-soft);} .pill.opt{background:rgba(110,138,82,0.2); color:#4d6238;}
+  .pill.hi{background:rgba(110,138,82,0.18); color:#4d6238;} .pill.med{background:rgba(198,138,46,0.2); color:#8a5e16;}
+  .pill.vhi{background:var(--clay); color:#fff;} .pill.lo{background:var(--paper-deep); color:var(--ink-soft);}
+  .pill.crit{background:var(--red); color:#fff;}
+  .pill.strike{text-decoration:line-through; color:var(--muted); background:none; font-family:inherit; font-size:13px; letter-spacing:0;}
+  .tbl-note{font-size:12.5px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+  .callout{margin-top:32px; padding:26px 30px; background:var(--clay-light); border-left:4px solid var(--clay);}
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--clay-deep);}
+  .callout.slate{background:rgba(95,110,120,0.1); border-left-color:var(--slate);}
+  .callout.slate .ttl{color:var(--slate-deep);} .callout.slate p strong{color:var(--slate-deep);}
+  .callout.warn{background:rgba(188,74,51,0.1); border-left-color:var(--red);}
+  .callout.warn .ttl{color:#9a3526;} .callout.warn p strong{color:#9a3526;}
+  /* TSOM clean rectangle funnel */
+  .chart-wrap{margin-top:38px; background:var(--surface); border:1px solid var(--rule); padding:34px 30px;}
+  .chart-wrap .chart-title{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;}
+  .tsom{display:flex; flex-direction:column; align-items:center; gap:12px;}
+  .tsom .tier{width:100%; padding:26px 30px; text-align:center; color:#fff;}
+  .tsom .tier .tm{font-family:'Fraunces',serif; font-size:clamp(22px,3vw,30px); font-weight:500; letter-spacing:-0.02em; line-height:1.08;}
+  .tsom .tier .ts{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; opacity:0.9; line-height:1.45;}
+  .tsom .t1{background:var(--ink);} .tsom .t2{background:var(--slate); max-width:74%;} .tsom .t3{background:var(--clay); max-width:50%;}
+  @media(max-width:620px){ .tsom .tier{max-width:100%;} }
+  /* chain / flow */
+  .chain{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .chain .node{font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; background:var(--surface); border:1px solid var(--rule); color:var(--ink); padding:9px 14px; border-radius:5px;}
+  .chain .node.start{background:var(--slate-deep); color:#fff; border-color:var(--slate-deep);}
+  .chain .node.end{background:var(--clay); color:#fff; border-color:var(--clay);}
+  .chain .arr{color:var(--clay); font-weight:700;}
+  /* equation */
+  .equation{margin-top:38px; display:flex; flex-wrap:wrap; gap:12px 8px; align-items:center; justify-content:center; padding:30px; background:var(--surface); border:1px solid var(--rule);}
+  .equation .term{font-family:'Fraunces',serif; font-size:clamp(17px,2.2vw,23px); font-weight:500; color:var(--ink); letter-spacing:-0.01em;}
+  .equation .op{font-family:'Fraunces',serif; font-size:20px; color:var(--clay); font-weight:400;}
+  .equation .res{font-family:'Fraunces',serif; font-size:clamp(19px,2.4vw,26px); font-style:italic; color:var(--clay); font-weight:500;}
+  /* allocation bars */
+  .alloc{margin-top:34px; display:flex; flex-direction:column; gap:2px;}
+  .alloc-row{display:grid; grid-template-columns:200px 1fr 96px; gap:16px; align-items:center; padding:9px 0; border-bottom:1px solid var(--rule-light);}
+  @media(max-width:680px){ .alloc-row{grid-template-columns:1fr; gap:4px;} }
+  .alloc-row .al{font-size:14.5px; color:var(--ink); font-weight:500;}
+  .alloc-row .bar{height:14px; background:var(--paper-deep); border-radius:2px; overflow:hidden;}
+  .alloc-row .bar span{display:block; height:100%; background:var(--clay);}
+  .alloc-row .bar span.s{background:var(--slate);}
+  .alloc-row .av{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); text-align:right;}
+  @media(max-width:680px){ .alloc-row .av{text-align:left;} }
+  /* positioning 2x2 */
+  .posmap{margin-top:40px;}
+  .posmap .axis-top,.posmap .axis-bot{text-align:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); padding:8px 0;}
+  .posmap .grid2{display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--rule);}
+  .posmap .q{padding:30px 26px; min-height:150px; border:1px solid var(--rule); background:var(--surface); position:relative;}
+  .posmap .q.zero{background:var(--clay-light); border-color:var(--clay);}
+  .posmap .q .qn{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;}
+  .posmap .q .brand{font-family:'Fraunces',serif; font-size:18px; color:var(--ink-soft); line-height:1.5;}
+  .posmap .q.zero .brand{color:var(--clay-deep); font-weight:600; font-size:22px;}
+  .posmap .axis-side{display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); padding:8px 2px;}
+  /* phases */
+  .phases{margin-top:42px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:860px){ .phases{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .phases{grid-template-columns:1fr;} }
+  .phase{padding:26px 22px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .phase .pk{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.13em; text-transform:uppercase; color:var(--clay-deep); font-weight:600; margin-bottom:6px;}
+  .phase .pt{font-family:'Fraunces',serif; font-size:19px; font-weight:500; color:var(--ink); margin-bottom:12px; line-height:1.1;}
+  .phase ul{list-style:none; padding:0; margin:0;}
+  .phase li{font-size:13px; line-height:1.42; color:var(--muted); padding:7px 0 7px 15px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .phase li:last-child{border-bottom:none;}
+  .phase li::before{content:""; position:absolute; left:0; top:13px; width:5px; height:5px; background:var(--clay); border-radius:50%;}
+  /* checklist */
+  .checklist{margin-top:34px; border-top:1px solid var(--rule);}
+  .ci{display:flex; gap:18px; padding:15px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+  .ci .cmark{color:var(--clay); font-weight:700; font-size:15px; min-width:18px; font-family:'IBM Plex Mono',monospace;}
+  .ci .ctxt{font-size:16px; color:var(--ink-soft); line-height:1.5;}
+  .ci .ctxt strong{color:var(--ink);}
+  /* thesis band */
+  .thesis-band{background:var(--ink); color:var(--paper); padding:74px 0; position:relative; overflow:hidden;}
+  .thesis-band::after{content:""; position:absolute; right:-80px; top:-80px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(188,91,56,0.3) 0%, transparent 70%);}
+  .thesis-band .big{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.16; letter-spacing:-0.02em; max-width:940px; position:relative;}
+  .thesis-band .big em{font-style:italic; color:#E08A5E;}
+  .thesis-band .tn{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--clay-light); margin-top:26px; position:relative;}
+  /* closing */
+  .closing{background:var(--ink); color:var(--paper); border:none;}
+  .closing h2{color:var(--paper);} .closing h2 em{color:#E08A5E;}
+  .closing .lead{color:rgba(244,238,228,0.85);} .closing .lead strong{color:var(--paper);}
+  .sig{margin-top:38px; padding-top:26px; border-top:1px solid rgba(244,238,228,0.18); display:flex; flex-wrap:wrap; gap:6px 28px; align-items:baseline;}
+  .sig .name{font-family:'Fraunces',serif; font-size:23px; font-weight:500; color:var(--paper); letter-spacing:-0.01em;}
+  .sig .role{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#E08A5E; font-weight:600;}
+  .sig .contact-line{width:100%; font-size:13.5px; color:rgba(244,238,228,0.7); margin-top:8px; font-family:'IBM Plex Mono',monospace;}
+  .footer{background:#241D18; color:rgba(244,238,228,0.72); padding:54px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--clay);}
+  .footer .small{font-size:11.5px; color:rgba(244,238,228,0.5); padding-top:24px; border-top:1px solid rgba(244,238,228,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--clay-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>ZERO Makeup Arabia<span class="sub">24-Month Roadmap</span></div>
+    <ul class="nav-links">
+      <li><a href="#opportunity">Opportunity</a></li>
+      <li><a href="#prize">Prize</a></li>
+      <li><a href="#equation">Equation</a></li>
+      <li><a href="#distribution">Distribution</a></li>
+      <li><a href="#awareness">Awareness</a></li>
+      <li><a href="#conversion">Conversion</a></li>
+      <li><a href="#retention">Retention</a></li>
+      <li><a href="#advocacy">Advocacy</a></li>
+      <li><a href="#sequence">Sequence</a></li>
+      <li><a href="#capital">Capital</a></li>
+      <li><a href="#mandate">Mandate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">24-Month Market-Share Growth Roadmap</div>
+    <h1>From a single Shopify point to a <em>dominant multi-channel</em> UAE player.</h1>
+    <p class="hero-sub">The UAE makeup market leaves its largest demographic unclaimed. This roadmap engineers market share as a multiplied equation — distribution, awareness, conversion, retention, advocacy — to win the underserved South Asian and olive/brown-skin clean-beauty consumer.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Prepared for</div><div class="value">ZERO Makeup Arabia</div></div>
+      <div class="hero-meta-item"><div class="label">Prepared by</div><div class="value">Mohammed Vaseeuddin · Lead Analyst</div></div>
+      <div class="hero-meta-item"><div class="label">Horizon</div><div class="value">24 Months · 6 Quarters</div></div>
+      <div class="hero-meta-item"><div class="label">Status</div><div class="value">May 2026 · Confidential</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="thesis-band">
+  <div class="container">
+    <div class="big">Win the underserved South Asian + olive/brown-skin clean-beauty consumer — <em>~60% of the UAE population</em> — by making ZERO available everywhere they shop, famous for two hero products, and habitual through loyalty.</div>
+    <div class="tn">Demand is not the bottleneck · Physical availability is the only ceiling</div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY / POSITIONING -->
+<section class="block" id="opportunity">
+  <div class="container">
+    <div class="section-label"><span class="num">00</span> The Opportunity</div>
+    <h2>The UAE makeup market leaves its largest demographic <em>unclaimed</em>.</h2>
+    <p class="lead">Map the market on two axes — aesthetic (clean/minimalist vs heavy glam) and complexion (global/fair vs olive/brown). The clean, olive/brown quadrant is where the volume is and where no credible brand has planted a flag.</p>
+    <div class="posmap">
+      <div class="axis-top">Clean / Minimalist aesthetic</div>
+      <div class="grid2">
+        <div class="q"><div class="qn">Clean · Global / Fair</div><div class="brand">Asteri · Glossier</div></div>
+        <div class="q zero"><div class="qn">Clean · Olive / Brown — unclaimed</div><div class="brand">ZERO Makeup</div></div>
+        <div class="q"><div class="qn">Heavy Glam · Global / Fair</div><div class="brand">MAC · Charlotte Tilbury</div></div>
+        <div class="q"><div class="qn">Heavy Glam · Olive / Brown</div><div class="brand">Huda</div></div>
+      </div>
+      <div class="axis-side"><span>← Global / Fair complexion</span><span>Olive / Brown complexion →</span></div>
+      <div class="axis-bot">Heavy Glam</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIZE / TSOM -->
+<section class="block" id="prize">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> The Prize · TAM / SAM / SOM</div>
+    <h2>Demand is not the bottleneck; <em>physical availability</em> is our only ceiling.</h2>
+    <p class="lead">A brand cannot capture demand it physically cannot reach. The 24-month target moves ZERO from a sub-1% baseline (~AED 3–5M run-rate) to an obtainable 3% SOM.</p>
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 1 — Opportunity funnel (AED, total UAE makeup lens)</div>
+      <div class="tsom">
+        <div class="tier t1"><div class="tm">TAM · AED 1.5B</div><div class="ts">Total UAE makeup market</div></div>
+        <div class="tier t2"><div class="tm">SAM · AED 450M</div><div class="ts">Premium / clean for olive &amp; brown skin</div></div>
+        <div class="tier t3"><div class="tm">SOM · AED 13.5M</div><div class="ts">24-month target · ~3% of SAM</div></div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="ttl">The trajectory</div>
+      <p>Moving from a baseline of <strong>&lt; 1% today (~AED 3–5M run-rate)</strong> to an obtainable <strong>3% SOM within 24 months</strong>. The constraint is not consumer desire — it is shelf, search, and reach. Unlock availability and the demand is already there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EQUATION -->
+<section class="block" id="equation">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> The Market-Share Equation</div>
+    <h2>Market share is an engineered equation that <em>multiplies</em> rather than adds.</h2>
+    <div class="equation">
+      <span class="term">Distribution</span><span class="op">×</span>
+      <span class="term">Awareness</span><span class="op">×</span>
+      <span class="term">Conversion</span><span class="op">×</span>
+      <span class="term">Retention</span><span class="op">×</span>
+      <span class="term">Advocacy</span><span class="op">=</span>
+      <span class="res">Share</span>
+    </div>
+    <div class="callout">
+      <div class="ttl">Why multiplication matters</div>
+      <p>Because the drivers multiply rather than add, a weakness in any single one caps the whole. <strong>A zero in any category limits the entire business.</strong> The five sections that follow engineer each driver in turn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION -->
+<section class="block" id="distribution">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> Distribution · Unlock the Gate</div>
+    <h2>Unlocking the regulatory gate <em>drastically</em> raises share capacity.</h2>
+    <p class="lead">Until Dubai Municipality (Montaji) and federal MoIAT (ECAS) per-SKU registrations are complete, marketplaces and retailers are structurally blocked. Registration is the key that opens every downstream channel.</p>
+    <div class="chain">
+      <span class="node">Shopify MENA <span style="font-weight:400;opacity:0.7;">· 60–70% margin, limited reach</span></span><span class="arr">→</span>
+      <span class="node start">Montaji + ECAS · Weeks 1–12</span><span class="arr">→</span>
+      <span class="node">Amazon.ae + Noon · Q2</span><span class="arr">→</span>
+      <span class="node">Faces · Q3</span><span class="arr">→</span>
+      <span class="node">Ulta Beauty UAE · Q4</span><span class="arr">→</span>
+      <span class="node end">Sephora UAE · Q5–Q6</span>
+    </div>
+    <div class="callout">
+      <div class="ttl">The distribution target</div>
+      <p>Scale from <strong>75 to 150 points of sale by Year 1 exit</strong>. Each gate cleared compounds the next — the registration sprint is the highest-leverage move in the entire roadmap because it is the precondition for everything downstream.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARENESS -->
+<section class="block" id="awareness">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> Awareness · Artistry × Social Proof</div>
+    <h2>Fusing thirty-five years of artistry with <em>decentralized social proof</em>.</h2>
+    <div class="cards">
+      <div class="card"><div class="roman">i.</div><div class="ttl">Founder Authority</div><div class="txt">Weekly 60-second Reels + monthly YouTube masterclasses anchoring Nabila as <strong>the South Asian makeup authority</strong>.</div></div>
+      <div class="card"><div class="roman">ii.</div><div class="ttl">Creator Seeding</div><div class="txt">50+ Pakistani-Arab bilingual mid-tier creators (10k–500k followers) on affiliate commission to lower CAC.</div></div>
+      <div class="card"><div class="roman">iii.</div><div class="ttl">Cultural Tentpoles</div><div class="txt">Ramadan &amp; Eid limited-edition scarcity drops (the Charlotte Tilbury template) to capture the GCC's Q4-equivalent demand peak.</div></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">Awareness target</div>
+      <p><strong>8% aided brand awareness by Year 1.</strong> Founder content is the zero-marginal-cost anchor; creator seeding is the scalable, low-CAC volume layer; tentpoles concentrate demand into ownable cultural moments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION -->
+<section class="block" id="conversion">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> Conversion · Price &amp; Hero Pillars</div>
+    <h2>Killing the strikethrough discount establishes <em>defensible prestige</em>.</h2>
+    <p class="lead">Regular prices invite losing comparisons; standing prices are the defensible position. Reset to one honest price and exit head-to-head MAC/Huda battles to match Hindash-tier prestige.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Product</th><th>Old "regular" price</th><th>New standing price</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Face Palette</strong></td><td><span class="pill strike">AED 199</span></td><td><strong style="color:var(--clay-deep);">AED 149</strong></td></tr>
+          <tr><td><strong>Liquid Foundation</strong></td><td><span class="pill strike">AED 145</span></td><td><strong style="color:var(--clay-deep);">AED 129</strong></td></tr>
+          <tr><td><strong>Matte Lipstick</strong></td><td><span class="pill strike">AED 168</span></td><td><strong style="color:var(--clay-deep);">AED 99</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="sub-h">Concentrate behind two repeatable iconic pillars</h3>
+    <div class="split even">
+      <div class="sub-block"><div class="sub-label">The Face Perfecting Palette</div><p>The flagship hero — built for top-of-mind recognition through one iconic, repeatable story rather than diffused spend across 10 SKUs.</p></div>
+      <div class="sub-block s"><div class="sub-label slate">The Liquid Foundation</div><p>The second pillar, demographic-calibrated for olive/brown skin. The "Blurring Pen" (AED 89) functions as the low-risk gateway trial SKU.</p></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">Conversion targets</div>
+      <p><strong>70% of marketing investment</strong> goes behind the two hero pillars. Target site conversion: <strong>2.5–3.5%</strong>. Build iconic, repeatable stories rather than spreading spend thin across the full range.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RETENTION -->
+<section class="block" id="retention">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> Retention · The True Compounder</div>
+    <h2>Habitual retention is the true compounder of <em>long-term market share</em>.</h2>
+    <div class="split">
+      <div class="snap-body">
+        <p>Foundation and palette are consumables with a ~60–90 day run-out — the natural rhythm of a repeat-purchase business. The difference between a one-time buyer and a retained buyer is the entire long-term share equation.</p>
+        <p>The mechanics: a Shopify-native "Beauty Pass" loyalty program, and an automated WhatsApp concierge — the highest-LTV channel for the diaspora core. Retention converts a single sale into a compounding revenue curve.</p>
+      </div>
+      <aside>
+        <div class="data-card"><div class="dc-figure">LTV:CAC <span class="accent">≥ 4:1</span></div><div class="dc-caption">Target by Year 2 exit.</div></div>
+        <div class="data-card"><div class="dc-figure">40% repeat</div><div class="dc-caption">Repeat-purchase rate target — the retained-buyer curve pulls decisively away from the one-time buyer.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ADVOCACY -->
+<section class="block" id="advocacy">
+  <div class="container">
+    <div class="section-label"><span class="num">07</span> Advocacy · The Self-Funding Engine</div>
+    <h2>Turning satisfied buyers into a <em>self-funding acquisition engine</em>.</h2>
+    <p class="lead">Turn customers into a distributed sales force via 50+ micro-creators on revenue-share. Each loop lowers blended CAC and feeds the next purchase.</p>
+    <div class="chain">
+      <span class="node start">Purchase</span><span class="arr">→</span>
+      <span class="node">Photo review incentive · 10% off</span><span class="arr">→</span>
+      <span class="node">Affiliate repost · 20% rev-share</span><span class="arr">→</span>
+      <span class="node">Lower CAC</span><span class="arr">→</span>
+      <span class="node end">New purchase</span>
+    </div>
+    <div class="callout">
+      <div class="ttl">Advocacy targets</div>
+      <p>Drop blended CAC by <strong>20–30% over Year 1</strong> as advocacy share rises, targeting <strong>25% of DTC revenue from referrals/affiliates by Year 2</strong>. Advocacy is the only acquisition channel that gets cheaper as it scales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEQUENCE -->
+<section class="block" id="sequence">
+  <div class="container">
+    <div class="section-label"><span class="num">08</span> The Six-Quarter Sequence</div>
+    <h2>A precise sequence to capture the <em>multi-channel prestige shelf</em>.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:18%;">Quarter</th><th>Theme</th><th>Key moves</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Q1</strong></td><td>Unblock &amp; Reset</td><td>Montaji filed; standing pricing live</td></tr>
+          <tr><td><strong>Q2</strong></td><td>Activate Volume</td><td>Amazon / Noon; 10/10 SKUs live; AED 750k GMV</td></tr>
+          <tr><td><strong>Q3</strong></td><td>Win Prestige</td><td>Faces LOI; Ramadan tentpole</td></tr>
+          <tr><td><strong>Q4</strong></td><td>Broaden</td><td>Ulta UAE indie-shelf pitch</td></tr>
+          <tr><td><strong>Q5</strong></td><td>Build Sephora Case</td><td>Compile 6-month sell-through proof</td></tr>
+          <tr class="row-em"><td><strong>Q6</strong></td><td>Premiumise &amp; Expand GCC</td><td>Sephora UAE LOI; KSA entry; AED 3M GMV</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CAPITAL -->
+<section class="block" id="capital">
+  <div class="container">
+    <div class="section-label"><span class="num">09</span> Capital Allocation · AED 2.5M Year-1</div>
+    <h2>Capital prioritizes the <em>highest-trust, lowest-CAC</em> channels.</h2>
+    <p class="lead">Spend logic reflects ZERO's lowest-CAC, highest-trust channels. Expected Year-1 ROI is a 3:1 revenue-to-spend ratio against a target AED 8–9M annualized exit rate.</p>
+    <div class="alloc">
+      <div class="alloc-row"><div class="al">Creator / Affiliates</div><div class="bar"><span style="width:100%"></span></div><div class="av">22% · 550k</div></div>
+      <div class="alloc-row"><div class="al">Ramadan / Eid Tentpoles</div><div class="bar"><span style="width:73%"></span></div><div class="av">16% · 400k</div></div>
+      <div class="alloc-row"><div class="al">Paid media</div><div class="bar"><span style="width:64%"></span></div><div class="av">14%</div></div>
+      <div class="alloc-row"><div class="al">Founder content</div><div class="bar"><span style="width:55%"></span></div><div class="av">12%</div></div>
+      <div class="alloc-row"><div class="al">Pop-ups</div><div class="bar"><span class="s" style="width:45%"></span></div><div class="av">10%</div></div>
+      <div class="alloc-row"><div class="al">Retail onboarding</div><div class="bar"><span class="s" style="width:45%"></span></div><div class="av">10%</div></div>
+      <div class="alloc-row"><div class="al">Loyalty</div><div class="bar"><span class="s" style="width:36%"></span></div><div class="av">8%</div></div>
+      <div class="alloc-row"><div class="al">Regulatory</div><div class="bar"><span class="s" style="width:27%"></span></div><div class="av">6%</div></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">The return logic</div>
+      <p>The two largest line items — Creator/Affiliates (22%) and Ramadan/Eid tentpoles (16%) — are ZERO's most efficient, highest-trust channels. <strong>Expected Year-1 ROI: 3:1 revenue-to-spend</strong>, against a target AED 8–9M annualized exit rate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section class="block" id="risk">
+  <div class="container">
+    <div class="section-label"><span class="num">10</span> Risk Map</div>
+    <h2>Anticipating and neutralizing physical and digital <em>operational friction</em>.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Risk</th><th>Impact</th><th>Likelihood</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Summer logistics</strong></td><td><span class="pill crit">High</span></td><td><span class="pill crit">High</span></td><td>Temperature-controlled fulfilment is an absolute requirement to prevent makeup degradation in transit</td></tr>
+          <tr><td>Sephora rejection</td><td><span class="pill med">Med–High</span></td><td><span class="pill med">Medium</span></td><td>Build 6-month sell-through proof at Faces / Ulta first</td></tr>
+          <tr><td>Regulatory delays</td><td><span class="pill med">Medium</span></td><td><span class="pill med">Medium–High</span></td><td>Sequence high-velocity SKUs first; use a specialist agent</td></tr>
+          <tr><td>Meta CAC inflation</td><td><span class="pill med">Medium</span></td><td><span class="pill med">Medium–High</span></td><td>Shift spend to TikTok Shop and affiliates</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MANDATE -->
+<section class="block closing" id="mandate">
+  <div class="container">
+    <div class="section-label" style="color:#E08A5E;"><span class="num" style="color:var(--paper);">→</span> The Immediate 90-Day Mandate</div>
+    <h2>Five moves to <em>ignite the growth machine</em>.</h2>
+    <div class="checklist">
+      <div class="ci"><span class="cmark">01</span><div class="ctxt" style="color:rgba(244,238,228,0.88);">File <strong style="color:var(--paper);">Montaji &amp; ECAS for all 10 SKUs</strong> — this blocks all downstream channels until done.</div></div>
+      <div class="ci"><span class="cmark">02</span><div class="ctxt" style="color:rgba(244,238,228,0.88);">Enact the <strong style="color:var(--paper);">standing-price reset</strong> and remove strikethroughs.</div></div>
+      <div class="ci"><span class="cmark">03</span><div class="ctxt" style="color:rgba(244,238,228,0.88);">Concentrate paid/creator media <strong style="color:var(--paper);">exclusively on Palette and Foundation</strong>.</div></div>
+      <div class="ci"><span class="cmark">04</span><div class="ctxt" style="color:rgba(244,238,228,0.88);">Launch the <strong style="color:var(--paper);">WhatsApp concierge and native loyalty program</strong>.</div></div>
+      <div class="ci"><span class="cmark">05</span><div class="ctxt" style="color:rgba(244,238,228,0.88);">Sign and onboard <strong style="color:var(--paper);">50 affiliate creators</strong> on revenue-share.</div></div>
+    </div>
+    <p class="lead" style="margin-top:32px;">The intersection of clean, halal, warm-climate performance for South Asian skin is unclaimed. <strong>Capturing it is the whole game.</strong></p>
+    <div class="sig">
+      <span class="name">Mohammed Vaseeuddin</span>
+      <span class="role">Technical / Business Consultant &amp; Lead Analyst</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">ZERO <span class="dot">·</span> Makeup Arabia</div>
+        <p>24-Month Market-Share Growth Roadmap.</p>
+        <p>From a single Shopify point to a dominant multi-channel UAE player.</p>
+      </div>
+      <div>
+        <h4>Prepared for</h4>
+        <p>ZERO Makeup Arabia</p>
+        <p>UAE · GCC</p>
+      </div>
+      <div>
+        <h4>Prepared by</h4>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · May 2026 · Sizing on the total-UAE-makeup lens (AED)</span>
+      <span class="conf">Confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal=(es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('reveal');observer.unobserve(e.target);}});};
+  const observer=new IntersectionObserver(reveal,{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.block, .hero').forEach(el=>observer.observe(el));
+  const sections=document.querySelectorAll('section[id]');
+  window.addEventListener('scroll',()=>{const y=window.scrollY+120;sections.forEach(s=>{const l=document.querySelector('.nav-links a[href="#'+s.getAttribute('id')+'"]');if(l){l.style.color=(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)?'var(--clay)':'';}});},{passive:true});
+</script>
+</body>
+</html>

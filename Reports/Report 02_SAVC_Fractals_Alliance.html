@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SAVC × Fractals — Activating the Alliance · GCC Market Entry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1A2B; --ink-soft:#2B3A4E; --ink-light:#52617A; --ink-faint:#8A95A4;
+    --paper:#F4F5F2; --paper-cool:#EAEBE6; --paper-deep:#E0E1DA;
+    --rule:#D7D8D0; --rule-light:#E6E7E0; --muted:#6B6F73;
+    --azure:#2479BD; --azure-deep:#15568C; --azure-light:#D6E6F3;
+    --teal:#1A938A; --teal-deep:#0F6B64; --teal-soft:#A9D8D2;
+    --surface:#FFFFFF;
+    --green:#3E8E5A; --amber:#C68A2E; --red:#C24A3A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'IBM Plex Sans',-apple-system,sans-serif; background:var(--paper); color:var(--ink); line-height:1.6; font-weight:400; font-size:17px; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 16% 16%, rgba(36,121,189,0.03) 0%, transparent 52%), radial-gradient(circle at 86% 70%, rgba(26,147,138,0.03) 0%, transparent 55%); background-attachment:fixed;}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.4;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.1 0 0 0 0 0.17 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+  .nav{position:sticky; top:0; z-index:100; background:rgba(244,245,242,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--azure); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--azure-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:16px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--azure);}
+  @media(max-width:1180px){ .nav-links{display:none;} }
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--azure);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.0; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--azure); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:820px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); gap:28px; padding-top:34px; border-top:1px solid var(--rule); max-width:1000px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:80px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.05; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:950px;}
+  .block h2 em{font-style:italic; color:var(--azure);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:800px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;} strong{color:var(--ink); font-weight:600;} em{font-style:italic;}
+  h3.sub-h{font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:52px 0 0; color:var(--ink); letter-spacing:-0.01em;}
+  /* THESIS band */
+  .thesis-band{background:var(--ink); color:var(--paper); padding:78px 0; position:relative; overflow:hidden;}
+  .thesis-band::after{content:""; position:absolute; right:-80px; top:-80px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(36,121,189,0.28) 0%, transparent 70%);}
+  .thesis-band .big{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.16; letter-spacing:-0.02em; max-width:920px; position:relative;}
+  .thesis-band .big em{font-style:italic; color:#56A8E0;}
+  .thesis-band .tn{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal-soft); margin-top:28px; position:relative;}
+  /* SNAP / data stack */
+  .snap-grid{display:grid; grid-template-columns:1.45fr 1fr; gap:66px; margin-top:8px;}
+  @media(max-width:880px){ .snap-grid{grid-template-columns:1fr; gap:42px;} }
+  .snap-body p{font-size:17.5px; line-height:1.68; color:var(--ink-soft);}
+  .data-stack{display:flex; flex-direction:column; gap:18px; padding:32px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .data-stack::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--azure); border-left:3px solid var(--azure);}
+  .data-row{padding-bottom:16px; border-bottom:1px solid var(--rule);}
+  .data-row:last-child{border-bottom:none; padding-bottom:0;}
+  .data-row .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;}
+  .data-row .figure{font-family:'Fraunces',serif; font-size:25px; font-weight:500; color:var(--ink); letter-spacing:-0.02em; line-height:1.1;}
+  .data-row .figure .accent{color:var(--azure);} .data-row .figure .teal{color:var(--teal-deep);}
+  .data-row .caption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:30px 26px 36px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-cool);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:30px; color:var(--azure); line-height:1; margin-bottom:16px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:19px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:11px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:36px;}
+  @media(max-width:880px){ .split{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:26px;} .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:11px; font-weight:600;}
+  .sub-label.teal{color:var(--teal-deep);}
+  .sub-block p{font-size:16px; line-height:1.6; color:var(--ink-soft);}
+  .sub-block ul{list-style:none; padding:0; margin:10px 0 0;}
+  .sub-block li{font-size:15px; line-height:1.5; color:var(--ink-soft); padding:8px 0 8px 18px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .sub-block li:last-child{border-bottom:none;}
+  .sub-block li::before{content:""; position:absolute; left:0; top:15px; width:6px; height:6px; background:var(--azure); border-radius:50%;}
+  .sub-block.t li::before{background:var(--teal);}
+  .data-card{padding:26px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:20px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(26px,3.2vw,36px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.08; margin-bottom:11px;}
+  .data-card .dc-figure .accent{color:#56A8E0;} .data-card .dc-figure .teal{color:var(--teal-soft);}
+  .data-card .dc-caption{font-size:13.5px; line-height:1.55; color:rgba(244,245,242,0.82); font-style:italic;}
+  .tbl-wrap{margin-top:32px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:580px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; font-weight:500; text-align:left; padding:12px 15px; vertical-align:bottom;}
+  tbody td{padding:11px 15px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(234,235,230,0.45);}
+  tbody td strong{color:var(--ink);}
+  .row-em td{background:var(--azure-light)!important;} .row-em td strong{color:var(--azure-deep);}
+  td .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:3px; font-weight:600; white-space:nowrap;}
+  .pill.az{background:var(--azure-light); color:var(--azure-deep);} .pill.tl{background:var(--teal-soft); color:var(--teal-deep);}
+  .tbl-note{font-size:12.5px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+  .callout{margin-top:32px; padding:26px 30px; background:var(--azure-light); border-left:4px solid var(--azure);}
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--azure-deep); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--azure-deep);}
+  .callout.teal{background:rgba(26,147,138,0.1); border-left-color:var(--teal);}
+  .callout.teal .ttl{color:var(--teal-deep);} .callout.teal p strong{color:var(--teal-deep);}
+  .chart-wrap{margin-top:38px; background:var(--surface); border:1px solid var(--rule); padding:34px 30px;}
+  .chart-wrap .chart-title{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:22px;}
+  svg{display:block; width:100%; height:auto;}
+  /* ECOSYSTEM MATRIX */
+  .eco{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  @media(max-width:860px){ .eco{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .eco{grid-template-columns:1fr;} }
+  .eco-col{padding:26px 22px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .eco-col .ec-n{font-family:'Fraunces',serif; font-size:30px; font-weight:500; color:var(--azure); letter-spacing:-0.02em; line-height:1;}
+  .eco-col .ec-seg{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); font-weight:600; margin:8px 0 3px;}
+  .eco-col .ec-share{font-size:12px; color:var(--teal-deep); font-family:'IBM Plex Mono',monospace; margin-bottom:14px;}
+  .eco-col ul{list-style:none; padding:0; margin:0;}
+  .eco-col li{font-size:13px; line-height:1.4; color:var(--ink-soft); padding:5px 0; border-bottom:1px solid var(--rule-light);}
+  .eco-col li:last-child{border-bottom:none;}
+  /* PIPELINE FLOW */
+  .flow{margin-top:38px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .flow .node{font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; background:var(--surface); border:1px solid var(--rule); color:var(--ink); padding:9px 15px; border-radius:5px;}
+  .flow .node.s{background:var(--azure); color:#fff; border-color:var(--azure);}
+  .flow .node.e{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep);}
+  .flow .arr{color:var(--azure); font-weight:700;}
+  /* PHASES */
+  .phases{margin-top:42px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:760px){ .phases{grid-template-columns:1fr;} }
+  .phase{padding:26px 24px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .phase .pk{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--azure-deep); font-weight:600; margin-bottom:6px;}
+  .phase .pt{font-family:'Fraunces',serif; font-size:20px; font-weight:500; color:var(--ink); margin-bottom:12px; line-height:1.08;}
+  .phase ul{list-style:none; padding:0; margin:0;}
+  .phase li{font-size:13.5px; line-height:1.45; color:var(--muted); padding:7px 0 7px 16px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .phase li:last-child{border-bottom:none;}
+  .phase li::before{content:""; position:absolute; left:0; top:14px; width:5px; height:5px; background:var(--azure); border-radius:50%;}
+  /* SUCCESS checklist */
+  .checklist{margin-top:34px; border-top:1px solid var(--rule);}
+  .ci{display:flex; gap:18px; padding:14px 0; border-bottom:1px solid var(--rule); align-items:baseline;}
+  .ci .cmark{color:var(--teal); font-weight:700; font-size:15px; min-width:16px;}
+  .ci .ctxt{font-size:15.5px; color:var(--ink-soft); line-height:1.5;}
+  .ci .ctxt strong{color:var(--ink);}
+  /* CLOSING */
+  .closing{background:var(--ink); color:var(--paper); border:none;}
+  .closing h2{color:var(--paper);} .closing h2 em{color:#56A8E0;}
+  .closing .lead{color:rgba(244,245,242,0.85);} .closing .lead strong{color:var(--paper);}
+  .sig{margin-top:38px; padding-top:26px; border-top:1px solid rgba(244,245,242,0.18); display:flex; flex-wrap:wrap; gap:6px 28px; align-items:baseline;}
+  .sig .name{font-family:'Fraunces',serif; font-size:23px; font-weight:500; color:var(--paper); letter-spacing:-0.01em;}
+  .sig .role{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#56A8E0; font-weight:600;}
+  .footer{background:#0A121E; color:rgba(244,245,242,0.72); padding:54px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--azure);}
+  .footer .small{font-size:11.5px; color:rgba(244,245,242,0.5); padding-top:24px; border-top:1px solid rgba(244,245,242,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--azure-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>SAVC × Fractals<span class="sub">Activating the Alliance</span></div>
+    <ul class="nav-links">
+      <li><a href="#alliance">Alliance</a></li>
+      <li><a href="#mou">MOU</a></li>
+      <li><a href="#sizing">Sizing</a></li>
+      <li><a href="#landscape">Landscape</a></li>
+      <li><a href="#operators">Operators</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ecosystem">Ecosystem</a></li>
+      <li><a href="#intelligence">Intelligence</a></li>
+      <li><a href="#framework">Framework</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">Strategic Alignment · Post-MOU · April 2026</div>
+    <h1>GCC buyers don't buy screens. They buy <em>risk-free execution</em>.</h1>
+    <p class="hero-sub">The SAVC × Fractals alliance pairs a premium OEM platform with GCC delivery capability into a single accountable system — exactly what specification-driven procurement evaluates and awards. This is the market, the math, and the 90-day plan to convert it.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Alliance</div><div class="value">SAVC (OEM) × Fractal Systems FZ LLC (Integrator)</div></div>
+      <div class="hero-meta-item"><div class="label">MOU signed</div><div class="value">09 April 2026</div></div>
+      <div class="hero-meta-item"><div class="label">Presented by</div><div class="value">Mohammed Vaseeuddin · Lead Analyst</div></div>
+      <div class="hero-meta-item"><div class="label">Territory</div><div class="value">UAE · KSA · wider GCC</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="thesis-band">
+  <div class="container">
+    <div class="big">They buy <em>uptime certainty</em>, bounded liabilities, and a single throat to choke. The SAVC × Fractals pairing delivers exactly what specification-driven procurement demands — a specifier-ready, deliverable, operations-ready platform.</div>
+    <div class="tn">Intelligence drives access · Access drives pipeline · Pipeline drives revenue</div>
+  </div>
+</section>
+
+<section class="block" id="alliance">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> The Alliance</div>
+    <h2>An OEM platform and a delivery engine, fused into <em>one accountable system</em>.</h2>
+    <p class="lead">The collaboration pairs SAVC's OEM manufacturing with Fractals' GCC delivery capability — aligned to how the region's specification-driven procurement evaluates and awards LED and media-façade work.</p>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">SAVC — OEM / Manufacturer</div>
+          <ul>
+            <li><strong>Premium LED platform</strong> — Nichia-powered, Taiwanese engineering depth, factory-controlled quality</li>
+            <li><strong>CMS-first architecture</strong> — centralized content, fleet monitoring, health diagnostics, operator-grade reporting</li>
+            <li><strong>Outdoor-ready design</strong> — engineered for GCC heat, dust, humidity, coastal exposure</li>
+            <li><strong>Tender enablers</strong> — spec library, datasheets, FAT docs, commissioning standards, certification support</li>
+            <li><strong>Global references</strong> — Times Square (prestige), Las Vegas (heat), Miami (coastal humidity)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="sub-block t">
+          <div class="sub-label teal">Fractals — System Integrator / GCC Delivery</div>
+          <ul>
+            <li><strong>Local execution</strong> — engineering coordination through installation, commissioning, handover</li>
+            <li><strong>Compliance &amp; approvals</strong> — municipality, civil defence, HSE, method statements, ITP execution</li>
+            <li><strong>Digital content</strong> — media programming, content creation, façade narrative development</li>
+            <li><strong>O&amp;M capability</strong> — AMC delivery, spares, RMA flow, lifecycle support</li>
+            <li><strong>Regional presence</strong> — established integrator with GCC relationships and a delivery track record</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="ttl">Together — the procurement answer</div>
+      <p>Consultants, developers, and operators get a specifier-ready, deliverable, operations-ready platform backed by bounded warranties, clear SLAs, and a single point of accountability: a <strong>tender-grade dossier</strong> (access instrument), an <strong>exclusive delivery wrapper</strong> (single throat to choke), a <strong>CMS-first + O&amp;M model</strong> (operator-grade readiness), and a <strong>premium quality/TCO narrative</strong> (Nichia-backed).</p>
+    </div>
+  </div>
+</section>
+
+<!-- MOU -->
+<section class="block" id="mou">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> MOU Framework Summary</div>
+    <h2>Signed 09 April 2026 — exclusivity that's <em>earned on the façade side</em>, performance-gated on LED.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:22%;">Element</th><th>Summary</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Strategic purpose</strong></td><td>Structured B2B integration positioning SAVC as a premium engineered alternative — differentiated from commodity suppliers — through Fractals as the exclusive media-façade system integrator</td></tr>
+          <tr><td><strong>Exclusivity</strong></td><td>Fractals appointed sole and exclusive media-façade system integrator. LED display systems non-exclusive, with an exclusivity path subject to demonstrated performance</td></tr>
+          <tr><td><strong>Territory</strong></td><td>UAE, KSA, and the wider GCC (Qatar, Kuwait, Bahrain, Oman) subject to mutual written confirmation</td></tr>
+          <tr><td><strong>Project registration</strong></td><td>Structured registration with 12-month protection, renewable upon active-pursuit evidence</td></tr>
+          <tr><td><strong>Prequalification</strong></td><td>All submissions identify Fractals as exclusive integrator; joint framework to be developed</td></tr>
+          <tr><td><strong>Roles</strong></td><td>SAVC: product, manufacturing, technical support, CMS, warranty. Fractals: market development, engineering, installation, commissioning, content, O&amp;M, approvals</td></tr>
+          <tr><td><strong>IP protection</strong></td><td>Fractals' digital content remains Fractals' property; co-developed materials available for joint use</td></tr>
+          <tr><td><strong>Term &amp; protection</strong></td><td>12-month initial term. Binding exclusivity, non-circumvention, confidentiality, and IP. 3-month post-termination protection</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SIZING -->
+<section class="block" id="sizing">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> Market Analytics &amp; Sizing</div>
+    <h2>A USD 680M serviceable market — captured one prequalified win at a time.</h2>
+    <p class="lead">The GCC LED display and media-façade opportunity sized across three lenses. UAE + KSA represent ~70% of the GCC; the premium outdoor-LED and media-façade segments the alliance targets are ~39% of the total.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Figure 1 — Opportunity funnel (2027 projected)</div>
+      <style>
+        .tsom{display:flex; flex-direction:column; align-items:center; gap:12px;}
+        .tsom .tier{width:100%; padding:26px 30px; text-align:center; color:#fff;}
+        .tsom .tier .tm{font-family:'Fraunces',serif; font-size:clamp(22px,3vw,30px); font-weight:500; letter-spacing:-0.02em; line-height:1.08;}
+        .tsom .tier .ts{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; margin-top:10px; opacity:0.9; line-height:1.45;}
+        .tsom .t1{background:#0F1A2B;}
+        .tsom .t2{background:#1A938A; max-width:74%;}
+        .tsom .t3{background:#2479BD; max-width:50%;}
+        @media(max-width:620px){ .tsom .tier{max-width:100%;} }
+      </style>
+      <div class="tsom">
+        <div class="tier t1"><div class="tm">TAM · USD 2.5B</div><div class="ts">Full GCC digital display + visual lighting systems</div></div>
+        <div class="tier t2"><div class="tm">SAM · USD 680M</div><div class="ts">UAE + KSA · premium outdoor LED + media façade</div></div>
+        <div class="tier t3"><div class="tm">SOM · USD 25–40M</div><div class="ts">Year 1–3 pipeline · ~1.5–2% capture of SAM</div></div>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Market by country &amp; growth</div>
+          <p>KSA leads with ~USD 850M of combined LED-display and media-façade spend, followed by the UAE at ~USD 540M — together ~70% of GCC demand. The premium UAE + KSA segment, the alliance's core, is projected to grow from ~USD 420M (2023) to ~USD 770M (2030) — about <strong>9% CAGR</strong>.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Sector concentration</div>
+          <p>In LED display, DOOH networks and retail mega-sites account for ~60% of addressable demand. In media façade, supertall towers and giga-projects drive ~60% of premium opportunity. The alliance targets the highest-value segments in each domain.</p>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">KSA market (2027)</div><div class="figure"><span class="accent">USD 850M</span></div><div class="caption">40–45% of regional capex; Vision 2030 giga-projects.</div></div>
+        <div class="data-row"><div class="label">UAE market (2027)</div><div class="figure">USD 540M</div><div class="caption">25–30% of regional capex; Dubai leads installations.</div></div>
+        <div class="data-row"><div class="label">Premium segment CAGR</div><div class="figure"><span class="teal">~9%</span></div><div class="caption">UAE + KSA premium, 2023 → 2030.</div></div>
+      </aside>
+    </div>
+
+    <h3 class="sub-h">SOM build-up — revenue ramp</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Period</th><th>Projects</th><th>Avg. value</th><th>Revenue</th><th>Key milestones</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Year 1</strong></td><td>3–5</td><td>USD 1–2M</td><td>USD 3–8M</td><td>First prequalified wins; reference projects; 1–2 media-façade projects</td></tr>
+          <tr><td><strong>Year 2</strong></td><td>8–12</td><td>USD 1.5–2.5M</td><td>USD 12–25M</td><td>Repeat DOOH orders; stadium packages; expanded vendor approvals</td></tr>
+          <tr class="row-em"><td><strong>Year 3</strong></td><td>12–18</td><td>USD 2–3M</td><td><strong>USD 25–40M</strong></td><td>Approved-make status; O&amp;M recurring revenue; media-façade reference projects</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">SOM estimates are conservative; actual values refine as the prequalification dossier is deployed and initial project registrations complete.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LANDSCAPE -->
+<section class="block" id="landscape">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> GCC Market Landscape</div>
+    <h2>Two demand engines: repeat-buying <em>DOOH &amp; retail</em> on the LED side, consultant-led <em>media façade</em> on the architecture side.</h2>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">LED display systems — ~USD 2B (2023) → 2.5B (2027)</div>
+          <p>KSA absorbs 40–45% of regional capex, UAE 25–30%, Qatar ~10%, the rest of the GCC 15–20%. <strong>UAE:</strong> DOOH expansion (BackLite, Hypermedia, JCDecaux AD, Alliance, Hills), retail mega-sites (Mall of the Emirates AED 5B transformation, Dubai Mall, Aldar Malls), arenas (Etihad Arena, Zayed Sports City), and smart-city/government. <strong>KSA:</strong> Rotana Signs (SAR 600M Makkah concession; 2,688 Riyadh Metro screens), Al Arabia/ACS, JCDecaux ATA; Kingdom Arena and the 2034 World Cup (15 stadiums, 5 cities); Cenomi and Al Othaim retail; and the giga-projects.</p>
+        </div>
+      </div>
+      <div>
+        <div class="sub-block t">
+          <div class="sub-label teal">Media façade lighting — consultant-led, 12–24 month cycles</div>
+          <p>Demand is driven by architectural branding, destination lighting, and programmable façades as revenue-generating media. <strong>SACO Technologies (Canada) dominates the premium segment</strong> (Burj Khalifa: 28 km V-Stick, 1.1M+ pixels) — SAVC's IRISin platform is positioned as the credible premium alternative. UAE supertall pipeline: Burj Azizi (725m), Burj Binghatti, One Za'abeel, Nebula Tower, Dubai Creek Tower (tender expected 2026). KSA: NEOM/The Line, Qiddiya, Diriyah (USD 63B), New Murabba/The Mukaab, Jeddah Tower, Red Sea Global.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout teal">
+      <div class="ttl">The positioning wedge</div>
+      <p>SACO owns the incumbent premium façade narrative; commodity Chinese LED owns the price floor. SAVC × Fractals occupies the space neither serves well: a <strong>premium, Nichia-backed, CMS-first platform wrapped in single-accountable local delivery</strong> — credible to consultants, deliverable to contractors, operable for owners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATORS -->
+<section class="block" id="operators">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> Key DOOH Operators &amp; Media Owners</div>
+    <h2>These operators control <em>repeat</em> LED procurement — and prize uptime, CMS, and spares responsiveness.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Operator</th><th>Territory</th><th>Relevance</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Rotana Signs</strong></td><td>KSA</td><td>SAR 600M Makkah concession; 2,688 Riyadh Metro screens; Dammam expansion</td></tr>
+          <tr><td><strong>Al Arabia / ACS</strong></td><td>KSA + UAE</td><td>Major DOOH operator; AED 53M UAE mall contracts; programmatic-ready</td></tr>
+          <tr><td><strong>BackLite / MMG</strong></td><td>UAE</td><td>Multiply Media Group (BackLite, Media247, Viola); premium positions</td></tr>
+          <tr><td><strong>Hypermedia (W Group)</strong></td><td>UAE</td><td>Outdoor and indoor digital network across the UAE</td></tr>
+          <tr><td><strong>JCDecaux ATA Saudi</strong></td><td>KSA</td><td>Global OOH leader, Saudi JV; transport/urban DOOH</td></tr>
+          <tr><td><strong>JCDecaux Abu Dhabi</strong></td><td>UAE</td><td>Abu Dhabi concession-based network</td></tr>
+          <tr><td>Alliance Media · Hills Advertising</td><td>UAE + KSA + GCC</td><td>Multi-country outdoor media operators with cross-GCC presence</td></tr>
+          <tr><td>ELAN Decaux · M2R · JCDecaux Bahrain · Outdoor Media</td><td>Qatar · Kuwait · Bahrain · Oman</td><td>Concession operators across the smaller GCC markets</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="block" id="projects">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> Influenceable Projects · Near-Term</div>
+    <h2>Where early positioning pays — through specification, consultant engagement, or direct outreach.</h2>
+    <h3 class="sub-h">Media-façade opportunities</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Project</th><th>Location</th><th>Developer</th><th>Opportunity</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Burj Azizi</strong> (725m)</td><td>Dubai</td><td>Azizi Developments</td><td>Supertall media façade — landmark night identity</td></tr>
+          <tr><td>Burj Binghatti (532m+)</td><td>Dubai</td><td>Binghatti Developers</td><td>Illuminated crown and façade feature lighting</td></tr>
+          <tr><td><strong>Dubai Creek Tower</strong></td><td>Dubai</td><td>Emaar Properties</td><td>Tender expected 2026 — major façade opportunity</td></tr>
+          <tr><td><strong>Jeddah Tower</strong> (1,000m+)</td><td>Jeddah</td><td>Jeddah Economic Co.</td><td>World's tallest structure — media façade (see companion dossier)</td></tr>
+          <tr><td>One Za'abeel · Nebula Tower</td><td>Dubai</td><td>Ithra/ICD · ICD Brookfield</td><td>LED + architectural lighting; supertall mixed-use</td></tr>
+          <tr><td>New Murabba / Mukaab · Diriyah · Qiddiya</td><td>Riyadh</td><td>PIF companies</td><td>World's largest building by volume; heritage &amp; entertainment façades</td></tr>
+          <tr><td>Lusail Plaza Towers</td><td>Qatar</td><td>Qatari Diar</td><td>70-storey commercial tower façades</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="sub-h">LED display / DOOH opportunities</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Account</th><th>Location</th><th>Stakeholder</th><th>Opportunity</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mall of the Emirates</strong></td><td>Dubai</td><td>Majid Al Futtaim</td><td>AED 5B redevelopment — outdoor LED + digital</td></tr>
+          <tr><td>Emaar Downtown</td><td>Dubai</td><td>Emaar Properties</td><td>Boulevard, Dubai Mall, district screens</td></tr>
+          <tr><td><strong>Kingdom Arena · 2034 World Cup</strong></td><td>KSA</td><td>GEA / Ministry of Sport</td><td>Stadium LED; 15 stadiums — repeatable packages</td></tr>
+          <tr><td>Etihad Arena / Yas</td><td>Abu Dhabi</td><td>Miral</td><td>Arena LED upgrades and venue expansion</td></tr>
+          <tr><td>Riyadh Metro Network</td><td>Riyadh</td><td>Rotana Signs</td><td>2,688 screens — refresh / expansion potential</td></tr>
+          <tr><td>Expo City · Dubai Islands · ROSHN · The Avenues</td><td>UAE · KSA · Kuwait</td><td>Various</td><td>Destination screens, community LED, mega-mall DOOH</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Project-level commercial details and pursuit strategies are maintained in separate internal documents under the MOU.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="block" id="ecosystem">
+  <div class="container">
+    <div class="section-label"><span class="num">07</span> The GCC Target Ecosystem</div>
+    <h2>40+ accounts mapped across four segments, with decision-makers identified.</h2>
+    <div class="eco">
+      <div class="eco-col">
+        <div class="ec-n">12+</div><div class="ec-seg">DOOH Operators</div><div class="ec-share">35% of LED demand</div>
+        <ul><li>Rotana Signs</li><li>Al Arabia / ACS</li><li>BackLite / MMG</li><li>Hypermedia</li><li>JCDecaux (×3)</li><li>Alliance Media</li><li>Hills Advertising</li></ul>
+      </div>
+      <div class="eco-col">
+        <div class="ec-n">08+</div><div class="ec-seg">Retail Mega-Sites</div><div class="ec-share">25% of LED demand</div>
+        <ul><li>Majid Al Futtaim</li><li>Emaar</li><li>Dubai Holding</li><li>Aldar Malls</li><li>Cenomi Centers</li><li>Al Othaim</li><li>Mabanee</li></ul>
+      </div>
+      <div class="eco-col">
+        <div class="ec-n">07+</div><div class="ec-seg">Stadiums &amp; Arenas</div><div class="ec-share">15% of LED demand</div>
+        <ul><li>GEA</li><li>Kingdom Arena</li><li>Ministry of Sport</li><li>2034 World Cup</li><li>Miral / Etihad Arena</li><li>Zayed Sports City</li><li>Aspire Zone</li></ul>
+      </div>
+      <div class="eco-col">
+        <div class="ec-n">15+</div><div class="ec-seg">Developers &amp; Giga-Projects</div><div class="ec-share">25% of LED demand</div>
+        <ul><li>NEOM</li><li>Qiddiya (PIF)</li><li>Diriyah Co.</li><li>ROSHN</li><li>New Murabba</li><li>Red Sea Global</li><li>Jeddah Economic Co.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTELLIGENCE -->
+<section class="block" id="intelligence">
+  <div class="container">
+    <div class="section-label"><span class="num">08</span> The Intelligence Engine</div>
+    <h2>Not just research — decision-ready intelligence that maps directly to <em>pipeline and revenue</em>.</h2>
+    <div class="flow">
+      <span class="node s">Identify</span><span class="arr">→</span>
+      <span class="node">Map</span><span class="arr">→</span>
+      <span class="node">Analyze</span><span class="arr">→</span>
+      <span class="node">Pursue</span><span class="arr">→</span>
+      <span class="node e">Convert</span>
+    </div>
+    <p class="lead" style="margin-top:26px;">Projects, accounts, stakeholders → decision-makers and influence routes → entry routes, competition, timing → outreach, meetings, registrations → specs, tenders, project wins. A continuous cycle from research to revenue.</p>
+    <div class="cards">
+      <div class="card"><div class="roman">i.</div><div class="ttl">Market sizing &amp; analytics</div><div class="txt">TAM / SAM / SOM models, sector distribution, growth trajectory.</div></div>
+      <div class="card"><div class="roman">ii.</div><div class="ttl">Target account mapping</div><div class="txt">Operators, developers, malls, stadiums, giga-projects mapped and prioritized.</div></div>
+      <div class="card"><div class="roman">iii.</div><div class="ttl">Project-level intelligence</div><div class="txt">Stakeholder maps, entry routes, decision-power analysis, go/no-go gates.</div></div>
+      <div class="card"><div class="roman">iv.</div><div class="ttl">Decision-maker ID</div><div class="txt">Who decides, who influences, who gates — by entity and by project.</div></div>
+      <div class="card"><div class="roman">v.</div><div class="ttl">Competitive landscape</div><div class="txt">Incumbent positioning, differentiation proof, pricing context.</div></div>
+      <div class="card"><div class="roman">vi.</div><div class="ttl">Execution roadmaps</div><div class="txt">90-day sprints, action plans, KPIs, weekly tracking frameworks.</div></div>
+    </div>
+    <div class="callout">
+      <div class="ttl">What this means for Fractals</div>
+      <p>You know exactly which projects to pursue and which to skip; you walk into meetings with verified intelligence on the buyer's decision chain; you register with vendors using a dossier built on real market evidence; and every outreach is backed by project-specific positioning — not a generic pitch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="block" id="framework">
+  <div class="container">
+    <div class="section-label"><span class="num">09</span> Collaboration Framework &amp; Engagement</div>
+    <h2>Clear accountability at <em>every</em> project stage — and a single dossier as the access gate.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>SAVC</th><th>Fractals</th></tr></thead>
+        <tbody>
+          <tr><td>Design-assist &amp; specification</td><td><strong>Accountable</strong> (spec library)</td><td>Consulted</td></tr>
+          <tr><td>Module selection &amp; config</td><td><strong>Accountable</strong></td><td>Consulted</td></tr>
+          <tr><td>Engineering (structural / MEP)</td><td>Consulted</td><td><strong>Accountable</strong></td></tr>
+          <tr><td>Shop drawings &amp; interfaces</td><td>Input provider</td><td><strong>Accountable</strong></td></tr>
+          <tr><td>Manufacturing &amp; FAT</td><td><strong>Accountable</strong> (factory QA)</td><td>Witness / input</td></tr>
+          <tr><td>Logistics &amp; import</td><td>Informed</td><td><strong>Accountable</strong></td></tr>
+          <tr><td>Installation &amp; execution</td><td>Support</td><td><strong>Accountable</strong></td></tr>
+          <tr><td>Commissioning &amp; SAT</td><td>Support (calibration)</td><td><strong>Accountable</strong> (SAT)</td></tr>
+          <tr><td>CMS integration</td><td><strong>Accountable</strong> (CMS/API)</td><td>Responsible (site)</td></tr>
+          <tr><td>Warranty</td><td><strong>Accountable</strong> (product)</td><td>Back-to-back</td></tr>
+          <tr><td>O&amp;M / AMC</td><td>Tech escalation</td><td><strong>Accountable</strong> (SLA/RMA)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Client engagement model</div>
+          <p>Joint registration with lighting designers (CD+M, BDP, WSP, Aurecon), façade consultants, and AV/ELV specifiers; specification inclusion targeting approved-make lists and basis-of-design; direct outreach to DOOH operators, malls, stadiums, developers — with a target of <strong>minimum 10 projects annually</strong> incorporating SAVC products (per MOU). Brand visibility via co-branded materials and exhibitions: GITEX, ISE ME, Saudi Light &amp; Sound, Integrate Middle East.</p>
+        </div>
+      </div>
+      <div>
+        <div class="sub-block t">
+          <div class="sub-label teal">Joint prequalification — the access gate</div>
+          <p>Without tender-grade documentation, an OEM stays non-approved for tier-1 projects. The co-branded <strong>master dossier</strong> covers corporate/governance, QA/QC + HSE + ITPs, the technical product library + CMS readiness, delivery/commissioning/warranty boundaries, and the SAVC global reference pack (Times Square, Las Vegas, Miami). <strong>Sector variants</strong> tailor it for DOOH, retail, stadiums, government/transport, and media façade. Target: initial batch in 30–45 days; 6–10 submissions within 90 days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="block" id="roadmap">
+  <div class="container">
+    <div class="section-label"><span class="num">10</span> The 90-Day Roadmap</div>
+    <h2>From foundation to a tracked pipeline — in <em>three phases</em>.</h2>
+    <div class="phases">
+      <div class="phase"><div class="pk">Phase 1 · Day 01–30</div><div class="pt">Foundation</div><ul><li>Finalize prequalification dossier content</li><li>Begin vendor-registration submissions</li><li>Consultant registration + specifier outreach</li><li>Deploy SAVC demo module</li><li>Weekly reporting + pipeline tracking</li></ul></div>
+      <div class="phase"><div class="pk">Phase 2 · Day 31–60</div><div class="pt">Engagement</div><ul><li>10–15 senior stakeholder meetings</li><li>Register initial project opportunities</li><li>Co-branded marketing materials live</li><li>Media-façade positioning on 2+ projects</li><li>DOOH operator discovery meetings</li></ul></div>
+      <div class="phase"><div class="pk">Phase 3 · Day 61–90</div><div class="pt">Pipeline</div><ul><li>3–5 qualified opportunities identified</li><li>1–2 tenders or RFQs in flight</li><li>6–10 vendor registrations complete</li><li>Sector-variant dossiers deployed</li><li>Pipeline review with measurable KPIs</li></ul></div>
+    </div>
+
+    <h3 class="sub-h">90-day success definition</h3>
+    <div class="checklist">
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt">Joint prequalification dossier (master + sector variants) completed and deployment-ready</div></div>
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt"><strong>6–10 vendor registration submissions</strong> completed and tracked weekly</div></div>
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt"><strong>10–15 senior stakeholder meetings</strong> with operators, retail groups, developers, and venues</div></div>
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt"><strong>3–5 qualified opportunities</strong> identified (scope, timeline, procurement route, buyer)</div></div>
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt">1–2 tenders or RFQs in flight; weekly reporting cadence with shared pipeline visibility</div></div>
+      <div class="ci"><span class="cmark">✓</span><div class="ctxt">Co-branded materials deployed; media-façade positioning underway on at least 2 opportunities</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="block closing" id="closing">
+  <div class="container">
+    <div class="section-label" style="color:#56A8E0;"><span class="num" style="color:var(--paper);">→</span> Closing</div>
+    <h2>The foundation is built. The work ahead is <em>execution</em>.</h2>
+    <p class="lead">SAVC brings a premium OEM platform with global reference credibility. Fractals brings local execution, compliance ownership, and established GCC relationships. The opportunity is real, measurable, and immediate — across DOOH, retail, stadiums, and landmark media façade — and the alliance matches exactly how this market buys: through prequalification, specification, and single-accountable delivery. <strong>Intelligence drives access. Access drives pipeline. Pipeline drives revenue.</strong></p>
+    <div class="sig">
+      <span class="name">Mohammed Vaseeuddin</span>
+      <span class="role">Technical / Business Consultant &amp; Lead Analyst · Zenith&amp;</span>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">SAVC <span class="dot">×</span> Fractals</div>
+        <p>Activating the Alliance — Market Entry Execution for the GCC.</p>
+        <p>Presented on the signing of the MOU between SAVC and Fractal Systems FZ LLC, 09 April 2026.</p>
+      </div>
+      <div>
+        <h4>Alliance</h4>
+        <p>SAVC · Star Asia Vision Corporation</p>
+        <p>Fractal Systems FZ LLC</p>
+      </div>
+      <div>
+        <h4>Presented by</h4>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+        <p>Zenith&amp;</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · Directional document — project-level commercials governed under the MOU &amp; annexures</span>
+      <span class="conf">Confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal = (entries) => { entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('reveal'); observer.unobserve(e.target); } }); };
+  const observer = new IntersectionObserver(reveal, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.block, .hero').forEach(el => observer.observe(el));
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 120;
+    sections.forEach(sec => {
+      const link = document.querySelector('.nav-links a[href="#' + sec.getAttribute('id') + '"]');
+      if (link){ link.style.color = (y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight) ? 'var(--azure)' : ''; }
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>

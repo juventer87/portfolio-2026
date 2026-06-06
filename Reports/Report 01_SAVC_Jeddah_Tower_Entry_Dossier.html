@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jeddah Tower — SAVC Entry Dossier · Media Façade / Architectural LED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* SAVC PALETTE — midnight ink + luminous azure + teal on cool near-white (light on a dark façade) */
+    --ink:#0F1A2B; --ink-soft:#2B3A4E; --ink-light:#52617A; --ink-faint:#8A95A4;
+    --paper:#F4F5F2; --paper-cool:#EAEBE6; --paper-deep:#E0E1DA;
+    --rule:#D7D8D0; --rule-light:#E6E7E0; --muted:#6B6F73;
+    --azure:#2479BD; --azure-deep:#15568C; --azure-light:#D6E6F3;
+    --teal:#1A938A; --teal-deep:#0F6B64; --teal-soft:#A9D8D2;
+    --surface:#FFFFFF;
+    --green:#3E8E5A; --amber:#C68A2E; --red:#C24A3A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans',-apple-system,sans-serif;
+    background:var(--paper); color:var(--ink);
+    line-height:1.6; font-weight:400; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 16% 16%, rgba(36,121,189,0.03) 0%, transparent 52%), radial-gradient(circle at 86% 70%, rgba(26,147,138,0.03) 0%, transparent 55%);
+    background-attachment:fixed;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.4;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.1 0 0 0 0 0.17 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .container{max-width:1180px; margin:0 auto; padding:0 48px; position:relative; z-index:2;}
+  @media(max-width:680px){ .container{padding:0 22px;} body{font-size:16px;} }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+
+  /* NAV */
+  .nav{position:sticky; top:0; z-index:100; background:rgba(244,245,242,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--rule); padding:14px 0;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 48px;}
+  @media(max-width:680px){ .nav-inner{padding:0 22px;} }
+  .nav-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); display:flex; align-items:center;}
+  .nav-brand .dot{display:inline-block; width:8px; height:8px; background:var(--azure); border-radius:50%; margin-right:9px; box-shadow:0 0 0 3px var(--azure-light);}
+  .nav-brand .sub{font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-left:10px; padding-left:10px; border-left:1px solid var(--rule);}
+  .nav-links{display:flex; gap:16px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{color:var(--muted); text-decoration:none; transition:color 0.2s ease; font-weight:500;}
+  .nav-links a:hover{color:var(--azure);}
+  @media(max-width:1180px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:96px 0 76px; position:relative; overflow:hidden;}
+  .hero-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:30px; display:flex; align-items:center; gap:14px;}
+  .hero-tag::before{content:""; display:inline-block; width:38px; height:2px; background:var(--azure);}
+  .hero h1{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.0; letter-spacing:-0.025em; color:var(--ink); margin-bottom:32px; max-width:1000px;}
+  .hero h1 em{font-style:italic; color:var(--azure); font-weight:400;}
+  .hero-sub{font-family:'Fraunces',serif; font-size:clamp(19px,2vw,25px); font-weight:300; line-height:1.42; color:var(--ink-soft); max-width:820px; letter-spacing:-0.01em; margin-bottom:52px;}
+  .hero-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(166px,1fr)); gap:28px; padding-top:34px; border-top:1px solid var(--rule); max-width:1000px;}
+  .hero-meta-item .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .hero-meta-item .value{font-family:'Fraunces',serif; font-size:17px; font-weight:500; color:var(--ink); letter-spacing:-0.01em; line-height:1.25;}
+
+  /* SECTION SCAFFOLD */
+  section{position:relative;}
+  .section-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:26px; display:flex; align-items:center; gap:12px;}
+  .section-label .num{color:var(--ink); font-weight:600;}
+  .block{padding:80px 0; border-top:1px solid var(--rule);}
+  .block h2{font-family:'Fraunces',serif; font-weight:400; font-size:clamp(30px,4vw,48px); line-height:1.05; letter-spacing:-0.022em; color:var(--ink); margin-bottom:26px; max-width:950px;}
+  .block h2 em{font-style:italic; color:var(--azure);}
+  .lead{font-size:18px; line-height:1.62; color:var(--ink-soft); max-width:800px; margin-bottom:14px;}
+  .lead strong{color:var(--ink); font-weight:600;}
+  p{margin-bottom:16px;}
+  strong{color:var(--ink); font-weight:600;}
+  em{font-style:italic;}
+  h3.sub-h{font-family:'Fraunces',serif; font-weight:500; font-size:22px; margin:52px 0 0; color:var(--ink); letter-spacing:-0.01em;}
+
+  /* SNAPSHOT / thesis */
+  .snap{background:linear-gradient(180deg, transparent 0%, rgba(234,235,230,0.5) 100%);}
+  .snap-grid{display:grid; grid-template-columns:1.45fr 1fr; gap:66px; margin-top:8px;}
+  @media(max-width:880px){ .snap-grid{grid-template-columns:1fr; gap:42px;} }
+  .snap-body p{font-size:17.5px; line-height:1.68; color:var(--ink-soft);}
+  .data-stack{display:flex; flex-direction:column; gap:18px; padding:32px; background:var(--surface); border:1px solid var(--rule); position:relative; align-self:start;}
+  .data-stack::before{content:""; position:absolute; top:-1px; left:-1px; width:34px; height:34px; border-top:3px solid var(--azure); border-left:3px solid var(--azure);}
+  .data-row{padding-bottom:16px; border-bottom:1px solid var(--rule);}
+  .data-row:last-child{border-bottom:none; padding-bottom:0;}
+  .data-row .label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;}
+  .data-row .figure{font-family:'Fraunces',serif; font-size:25px; font-weight:500; color:var(--ink); letter-spacing:-0.02em; line-height:1.1;}
+  .data-row .figure .accent{color:var(--azure);}
+  .data-row .figure .teal{color:var(--teal-deep);}
+  .data-row .caption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45;}
+
+  /* GATES inline */
+  .gates{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;}
+  .gate{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.05em; background:var(--azure-light); color:var(--azure-deep); padding:7px 14px; border-radius:4px; font-weight:600;}
+
+  /* CARD GRID */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  .card{padding:30px 26px 36px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface); position:relative; overflow:hidden; transition:background 0.3s ease;}
+  .card:hover{background:var(--paper-cool);}
+  .card .roman{font-family:'Fraunces',serif; font-style:italic; font-size:30px; color:var(--azure); line-height:1; margin-bottom:16px; font-weight:400;}
+  .card .ttl{font-family:'Fraunces',serif; font-size:19px; font-weight:500; line-height:1.16; letter-spacing:-0.01em; color:var(--ink); margin-bottom:11px;}
+  .card .txt{font-size:14px; line-height:1.5; color:var(--muted);}
+
+  /* DECISION POWER MAP */
+  .dpm{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule); margin-top:42px;}
+  @media(max-width:780px){ .dpm{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .dpm{grid-template-columns:1fr;} }
+  .dpm-cell{padding:24px 22px 26px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .dpm-cell .who{font-family:'Fraunces',serif; font-size:18px; font-weight:500; color:var(--ink); margin-bottom:10px; letter-spacing:-0.01em;}
+  .dpm-cell .tag{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; padding:3px 9px; border-radius:3px; display:inline-block; margin-bottom:10px;}
+  .dpm-cell .tag.dec{background:var(--azure-light); color:var(--azure-deep);}
+  .dpm-cell .tag.inf{background:var(--teal-soft); color:var(--teal-deep);}
+  .dpm-cell .tag.app{background:var(--paper-deep); color:var(--ink-soft);}
+  .dpm-cell .role{font-size:13.5px; line-height:1.5; color:var(--muted);}
+
+  /* SPLIT */
+  .split{display:grid; grid-template-columns:1.5fr 1fr; gap:68px; margin-top:36px;}
+  @media(max-width:880px){ .split{grid-template-columns:1fr; gap:40px;} }
+  .sub-block{margin-bottom:28px;}
+  .sub-block:last-child{margin-bottom:0;}
+  .sub-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:11px; font-weight:600;}
+  .sub-block p{font-size:16px; line-height:1.6; color:var(--ink-soft);}
+  .data-card{padding:26px; background:var(--ink); color:var(--paper); position:relative; overflow:hidden; margin-bottom:20px;}
+  .data-card:last-child{margin-bottom:0;}
+  .data-card .dc-figure{font-family:'Fraunces',serif; font-size:clamp(26px,3.2vw,36px); font-weight:500; color:var(--paper); letter-spacing:-0.025em; line-height:1.08; margin-bottom:11px;}
+  .data-card .dc-figure .accent{color:#56A8E0;}
+  .data-card .dc-figure .teal{color:var(--teal-soft);}
+  .data-card .dc-caption{font-size:13.5px; line-height:1.55; color:rgba(244,245,242,0.82); font-style:italic;}
+
+  /* TABLES */
+  .tbl-wrap{margin-top:32px; overflow-x:auto; border:1px solid var(--rule); background:var(--surface);}
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:580px;}
+  thead th{background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; font-weight:500; text-align:left; padding:12px 15px; vertical-align:bottom;}
+  tbody td{padding:11px 15px; border-bottom:1px solid var(--rule-light); color:var(--ink-soft); vertical-align:top; line-height:1.45;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:rgba(234,235,230,0.45);}
+  tbody td strong{color:var(--ink);}
+  td .pill{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:3px; font-weight:600; white-space:nowrap;}
+  .pill.hi{background:rgba(62,142,90,0.16); color:#2c6b41;}
+  .pill.med{background:rgba(198,138,46,0.18); color:#8a5e16;}
+  .pill.low,.pill.ver{background:var(--paper-deep); color:var(--ink-soft);}
+  .pill.az{background:var(--azure-light); color:var(--azure-deep);}
+  .pill.crit{background:var(--red); color:#fff;}
+  .pill.p1{background:var(--azure);color:#fff;} .pill.p2{background:var(--teal-soft);color:var(--teal-deep);}
+  .tbl-note{font-size:12.5px; color:var(--muted); margin-top:12px; line-height:1.5; font-style:italic;}
+
+  /* CALLOUT */
+  .callout{margin-top:32px; padding:26px 30px; background:var(--azure-light); border-left:4px solid var(--azure);}
+  .callout .ttl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--azure-deep); font-weight:600; margin-bottom:10px;}
+  .callout p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); margin:0;}
+  .callout p strong{color:var(--azure-deep);}
+  .callout.teal{background:rgba(26,147,138,0.1); border-left-color:var(--teal);}
+  .callout.teal .ttl{color:var(--teal-deep);}
+  .callout.teal p strong{color:var(--teal-deep);}
+
+  /* ROUTING CHAIN */
+  .chain{margin-top:34px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;}
+  .chain .node{font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600; background:var(--surface); border:1px solid var(--rule); color:var(--ink); padding:9px 14px; border-radius:5px;}
+  .chain .node.start{background:var(--azure); color:#fff; border-color:var(--azure);}
+  .chain .node.end{background:var(--teal-deep); color:#fff; border-color:var(--teal-deep);}
+  .chain .arr{color:var(--azure); font-weight:700;}
+
+  /* NUMBERED STEPS / moves */
+  .moves{margin-top:40px; border-top:1px solid var(--rule);}
+  .move{display:grid; grid-template-columns:78px 1fr; gap:26px; padding:28px 0; border-bottom:1px solid var(--rule); align-items:start;}
+  @media(max-width:620px){ .move{grid-template-columns:1fr; gap:8px;} }
+  .move .mnum{font-family:'Fraunces',serif; font-style:italic; font-size:48px; line-height:0.8; color:var(--azure); font-weight:400;}
+  .move .mttl{font-family:'Fraunces',serif; font-size:21px; font-weight:500; color:var(--ink); margin-bottom:7px; letter-spacing:-0.01em;}
+  .move .mtxt{font-size:15.5px; line-height:1.55; color:var(--ink-soft);}
+  .move .mtxt ul{margin:8px 0 0; padding-left:18px;}
+  .move .mtxt li{margin-bottom:4px;}
+
+  /* CHECKPOINTS */
+  .checkpoints{margin-top:42px; display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-left:1px solid var(--rule); border-top:1px solid var(--rule);}
+  @media(max-width:760px){ .checkpoints{grid-template-columns:1fr;} }
+  .cp{padding:26px 24px 30px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:var(--surface);}
+  .cp .ck{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--azure-deep); font-weight:600; margin-bottom:6px;}
+  .cp .ct{font-family:'Fraunces',serif; font-size:19px; font-weight:500; color:var(--ink); margin-bottom:12px;}
+  .cp ul{list-style:none; padding:0; margin:0;}
+  .cp li{font-size:13.5px; line-height:1.45; color:var(--muted); padding:7px 0 7px 16px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .cp li:last-child{border-bottom:none;}
+  .cp li::before{content:""; position:absolute; left:0; top:14px; width:5px; height:5px; background:var(--teal); border-radius:50%;}
+
+  /* GO / NO-GO */
+  .gng{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:38px;}
+  @media(max-width:680px){ .gng{grid-template-columns:1fr;} }
+  .gng-col{padding:30px 28px; background:var(--surface); border:1px solid var(--rule); border-top:4px solid var(--azure);}
+  .gng-col.no{border-top-color:var(--red);}
+  .gng-col h4{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--azure-deep); margin-bottom:16px; font-weight:600;}
+  .gng-col.no h4{color:#962f22;}
+  .gng-col ul{list-style:none; padding:0; margin:0;}
+  .gng-col li{font-size:14.5px; line-height:1.5; color:var(--ink-soft); padding:9px 0 9px 20px; position:relative; border-bottom:1px solid var(--rule-light);}
+  .gng-col li:last-child{border-bottom:none;}
+  .gng-col li::before{content:"›"; position:absolute; left:0; color:var(--azure); font-weight:700;}
+  .gng-col.no li::before{content:"×"; color:var(--red);}
+
+  /* FOOTER */
+  .footer{background:var(--ink); color:rgba(244,245,242,0.72); padding:54px 0 36px; font-size:13.5px; position:relative; z-index:2;}
+  .footer-cols{display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; margin-bottom:34px;}
+  @media(max-width:768px){ .footer-cols{grid-template-columns:1fr; gap:28px;} }
+  .footer h4{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:var(--paper); font-weight:600; margin-bottom:14px;}
+  .footer p{line-height:1.6; margin-bottom:8px;}
+  .footer .wordmark{font-family:'Fraunces',serif; font-size:24px; color:var(--paper); font-weight:500; letter-spacing:-0.01em; margin-bottom:14px;}
+  .footer .wordmark .dot{color:var(--azure);}
+  .footer .small{font-size:11.5px; color:rgba(244,245,242,0.5); padding-top:24px; border-top:1px solid rgba(244,245,242,0.14); margin-top:8px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .footer .small .conf{color:var(--azure-light); font-weight:600; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-size:10px;}
+
+  .block, .hero{opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .block.reveal, .hero.reveal{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .block,.hero{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>SAVC · Jeddah Tower<span class="sub">Entry Dossier</span></div>
+    <ul class="nav-links">
+      <li><a href="#snapshot">Snapshot</a></li>
+      <li><a href="#roles">Roles</a></li>
+      <li><a href="#scopes">Scopes</a></li>
+      <li><a href="#interfaces">Interfaces</a></li>
+      <li><a href="#access">Access</a></li>
+      <li><a href="#regulatory">Compliance</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#risk">Risk</a></li>
+      <li><a href="#gng">Go / No-Go</a></li>
+      <li><a href="#wayforward">Way Forward</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">SAVC Entry Dossier · Media Façade / Architectural LED + Control</div>
+    <h1>The world's tallest tower has restarted — and the façade package is <em>live</em>.</h1>
+    <p class="hero-sub">Jeddah Tower's curtain wall is awarded and underway. SAVC's highest-probability entry is an embedded media-façade system routed through Jangho, with parallel design-team acceptance via AS+GG and Fisher Marantz Stone — sequenced to land before the integration window closes.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="label">Prepared for</div><div class="value">SAVC · Star Asia Vision Corporation</div></div>
+      <div class="hero-meta-item"><div class="label">Research by</div><div class="value">Mohammed Vaseeuddin · Lead Analyst</div></div>
+      <div class="hero-meta-item"><div class="label">Asset</div><div class="value">Jeddah Tower · Saudi Arabia</div></div>
+      <div class="hero-meta-item"><div class="label">Research window (UTC)</div><div class="value">11 Jan – 24 Jan 2026</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="block snap" id="snapshot">
+  <div class="container">
+    <div class="section-label"><span class="num">00</span> Executive Snapshot · Decision-Ready</div>
+    <h2>Restart confirmed, delivery chain named, façade active — a <em>practical gateway</em> for embedded technology.</h2>
+    <div class="snap-grid">
+      <div class="snap-body">
+        <p>Project restart and delivery-chain activity are confirmed by primary sources. JEC signed a completion agreement with SBG (SAR 7.2bn; 42-month period), Jangho commenced curtain-wall works with the first unit installed on 30 Nov 2025, and KONE publicly identifies Turner as project management and DAR as engineering support.</p>
+        <p><strong>Opportunity posture:</strong> a landmark national asset whose façade package is active — which is exactly what creates a practical gateway for embedded technology. <strong>Best route:</strong> dual-track approvals — Jangho technical integration plus AS+GG / FMS design acceptance — while aligning submittals with Turner/DAR governance.</p>
+        <p>The window matters more than the pitch. Unitized panels require an early design freeze; late lighting changes become high-cost retrofits. The immediate gates are sponsor access, confirmation that façade lighting/media scope is still buyable (new package or VO), and interface allowances inside the curtain-wall shop drawings.</p>
+        <div class="gates">
+          <span class="gate">Gate 1 · Sponsor access</span>
+          <span class="gate">Gate 2 · Scope still buyable?</span>
+          <span class="gate">Gate 3 · Interface allowances in shop drawings</span>
+        </div>
+      </div>
+      <aside class="data-stack">
+        <div class="data-row"><div class="label">Restart contract (JEC ↔ SBG)</div><div class="figure"><span class="accent">SAR 7.2bn</span></div><div class="caption">~AED 7.05B · USD 1.92B · 42-month period. Signed Oct 2024.</div></div>
+        <div class="data-row"><div class="label">Façade commencement</div><div class="figure">30 Nov 2025</div><div class="caption">First curtain-wall unit installed by Jangho; façade officially underway.</div></div>
+        <div class="data-row"><div class="label">Curtain-wall sub-contract</div><div class="figure"><span class="teal">SAR 1.05bn</span></div><div class="caption">Jangho bid; ~160,000 m² unitized curtain-wall area disclosed.</div></div>
+        <div class="data-row"><div class="label">Highest-leverage carrier</div><div class="figure">Jangho</div><div class="caption">Controls whether SAVC tech embeds into curtain-wall units.</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES + DECISION POWER MAP -->
+<section class="block" id="roles">
+  <div class="container">
+    <div class="section-label"><span class="num">01</span> Who's Who &amp; the Decision Power Map</div>
+    <h2>Scope and budget sit with the owner; embed-ability is gated by <em>Jangho</em>; acceptance runs through AS+GG and FMS.</h2>
+    <p class="lead">Seven parties define the project. The strategic distinction for SAVC is between those who <strong>decide</strong> (commercial award, package, access) and those who <strong>influence</strong> (technical acceptance, spec compliance, routing).</p>
+    <div class="dpm">
+      <div class="dpm-cell"><span class="tag dec">Decides</span><div class="who">JEC / Kingdom</div><div class="role">Owner / developer. Ultimate sponsor for add-scope, VO, and brand-led façade-media intent — budget and owner sign-off.</div></div>
+      <div class="dpm-cell"><span class="tag dec">Decides</span><div class="who">SBG</div><div class="role">Principal contractor. Executes procurement on site; can block or unblock access and nominated-sub pathways.</div></div>
+      <div class="dpm-cell"><span class="tag dec">Decides / Influences</span><div class="who">Jangho</div><div class="role">Façade subcontractor (unitized curtain wall). Decides the practicality of embedding SAVC tech — panel method, shop drawings, QA/QC, maintainability.</div></div>
+      <div class="dpm-cell"><span class="tag inf">Influences</span><div class="who">Turner</div><div class="role">Project management. Controls submittal routing, governance, schedule gates — what gets reviewed, and when.</div></div>
+      <div class="dpm-cell"><span class="tag inf">Influences</span><div class="who">Dar Al-Handasah</div><div class="role">Engineering support. Engineering acceptance and compliance alignment for façade-integrated systems — interfaces, loads, safety, maintainability.</div></div>
+      <div class="dpm-cell"><span class="tag inf">Influences</span><div class="who">AS+GG + FMS</div><div class="role">Architect + lighting consultant. Design intent and performance criteria; can enable "Approved Alternate / BoD acceptance" and set mock-up requirements.</div></div>
+      <div class="dpm-cell"><span class="tag inf">Influences</span><div class="who">Forcade</div><div class="role">Wayfinding / branding. Placemaking and digital touchpoints (site-wide signage, ~5,500 signs) — relevant if façade content/identity screens emerge.</div></div>
+      <div class="dpm-cell"><span class="tag app">Approves</span><div class="who">Authorities</div><div class="role">SBC, SASO/SABER, Civil Defence, Municipality (Balady) — code, conformity, fire, and external-installation permits.</div></div>
+    </div>
+
+    <h3 class="sub-h">Verified project facts (evidence)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Fact</th><th>Published</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr><td>JEC signed agreement with SBG to resume construction; SAR 7.2bn; ~42-month period</td><td>02 Oct 2024</td><td><span class="pill hi">High</span></td></tr>
+          <tr><td>Jangho won curtain-wall sub-contract (bid ~SAR 1.052bn); provided technical services after restart</td><td>23 Oct 2025</td><td><span class="pill hi">High</span></td></tr>
+          <tr><td>Jangho installed first curtain-wall unit 30 Nov 2025; façade construction officially commenced</td><td>03 Dec 2025</td><td><span class="pill hi">High</span></td></tr>
+          <tr><td>KONE release names AS+GG (architect), Turner (PM), DAR (engineering support)</td><td>08 Oct 2025</td><td><span class="pill hi">High</span></td></tr>
+          <tr><td>CTBUH listing includes Fisher Marantz Stone (lighting) and Forcade (wayfinding)</td><td>Accessed</td><td><span class="pill med">Medium</span></td></tr>
+          <tr><td>Forcade project page: "Jeddah Tower Development Wayfinding" (exterior, base building, digital)</td><td>Active</td><td><span class="pill med">Medium</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">FMS is widely cited in project references — treat as an "influencer gate" until reconfirmed in the current design-team directory. All sources accessed on the research entry date unless otherwise stated.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPES -->
+<section class="block" id="scopes">
+  <div class="container">
+    <div class="section-label"><span class="num">02</span> What's Still Buyable &amp; Where SAVC Fits</div>
+    <h2>Curtain wall is awarded. SAVC must target scopes that <em>embed</em> under Jangho — or issue as dedicated façade-lighting packages.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Scope</th><th>Assessment</th><th>Routing party</th><th>Fit / status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Façade-integrated architectural LED</strong> (linear + pixel nodes)</td><td>Best buyability if mounting/cable pathways are still open in curtain-wall shop drawings; otherwise becomes high-risk retrofit</td><td>Jangho → SBG (nominated subsystem)</td><td><span class="pill hi">High</span></td></tr>
+          <tr><td><strong>Defined media-façade zones</strong> (podium / crown / spire accents)</td><td>Often VO-able once branding intent is confirmed; may be packaged with control/CMS late in schedule</td><td>JEC / Turner (scope) + Jangho (execution)</td><td><span class="pill med">Medium–High</span></td></tr>
+          <tr><td><strong>Control / CMS + monitoring + governance</strong></td><td>Often procured later; can be separated if interfaces are defined (DMX/Art-Net edge, IP backbone)</td><td>Turner / DAR + local integrator</td><td><span class="pill med">Medium</span></td></tr>
+          <tr><td>Prior media-façade proposals / submittals</td><td>Unknown. Request historic submittals, alternates, or concept packages already reviewed</td><td>Turner (data room) + FMS + SBG</td><td><span class="pill ver">To verify</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <div class="ttl">Positioning — "Media Façade-ready Architectural Lighting," not a "screen"</div>
+      <p><strong>Primary scope:</strong> linear + node-based façade luminaires integrated into unitized panels — corrosion-resistant, serviceable from interior, factory QA/QC aligned with Jangho panel production. <strong>Control:</strong> centralized servers + distributed nodes with show mode, scheduling, event triggers, remote diagnostics, redundancy. <strong>Optional media layer:</strong> select zones running low-resolution pixel content for national days, events, and branding moments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK PACKAGES + INTERFACES -->
+<section class="block" id="interfaces">
+  <div class="container">
+    <div class="section-label"><span class="num">03</span> Scope Map · Work Packages, Interfaces &amp; Risk</div>
+    <h2>To be accepted, SAVC must bring <em>interface clarity</em> — where SAVC ends and Jangho begins.</h2>
+    <div class="cards">
+      <div class="card"><div class="roman">1.</div><div class="ttl">Media façade lighting hardware</div><div class="txt">Linear/tube luminaires, pixel nodes, mounting channels, brackets, connectors.</div></div>
+      <div class="card"><div class="roman">2.</div><div class="ttl">Media façade control system</div><div class="txt">Drivers, decoders, data distribution, network switches, gateways.</div></div>
+      <div class="card"><div class="roman">3.</div><div class="ttl">Central CMS / show control</div><div class="txt">Scheduling, scenes, pixel mapping, monitoring dashboards, user roles.</div></div>
+      <div class="card"><div class="roman">4.</div><div class="ttl">Engineering &amp; submittals</div><div class="txt">Shop-drawing support, method statements, ITP/QCP, calculations, testing plans.</div></div>
+      <div class="card"><div class="roman">5.</div><div class="ttl">Mockups &amp; testing</div><div class="txt">Sample panel mockup at Jangho factory + on-site night test.</div></div>
+      <div class="card"><div class="roman">6.</div><div class="ttl">Commissioning + training</div><div class="txt">Handover, O&amp;M manuals, staff training, as-builts.</div></div>
+      <div class="card"><div class="roman">7.</div><div class="ttl">O&amp;M + SLA <span style="font-size:12px;color:var(--teal-deep);">(strategic)</span></div><div class="txt">24/7 monitoring, quarterly inspections, spares management.</div></div>
+    </div>
+
+    <h3 class="sub-h">Interfaces — who owns what</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Interface</th><th>Owner</th><th>Risk if unclear</th><th>SAVC value-add</th></tr></thead>
+        <tbody>
+          <tr><td>LED integration in unitized panels</td><td><strong>Jangho</strong></td><td>Panel redesign late; water ingress</td><td>"Panel-friendly" design; minimal penetrations; defined service-hatch logic</td></tr>
+          <tr><td>Design intent / aesthetics</td><td><strong>FMS + AS+GG</strong></td><td>Rejection at mockup</td><td>Full mockup plan + alternate optics + dimming curves</td></tr>
+          <tr><td>Local compliance &amp; approvals</td><td><strong>DAR</strong></td><td>Submittal delays</td><td>Compliance pack aligned to SBC + SASO/SABER</td></tr>
+          <tr><td>Procurement &amp; commercial route</td><td><strong>SBG</strong></td><td>Delayed award</td><td>Package options + schedule-aligned delivery plan</td></tr>
+          <tr><td>Governance / documentation</td><td><strong>Turner</strong></td><td>Gate reviews fail</td><td>"Turner-ready" submittal matrix + RFI-log discipline</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Risk concentrates at four points: schedule lock-in (unitized panels freeze early), Red Sea coastal durability (salt + humidity + heat), designed-in maintenance access for a megatall façade, and mockup acceptance — the decisive event.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS + SUBMITTAL ROUTING -->
+<section class="block" id="access">
+  <div class="container">
+    <div class="section-label"><span class="num">04</span> Procurement Status &amp; Access Routes</div>
+    <h2>Public sources confirm the macro contract; <em>package-level</em> visibility must be requested through a targeted data room.</h2>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Three practical access routes (by probability)</div>
+          <p><strong>Design-led (recommended):</strong> secure AS+GG + FMS acceptance, then route to DAR/Turner for inclusion and commercialize via SBG. <strong>Façade-led:</strong> partner with Jangho as their nominated LED/control subsystem, then seek FMS/AS+GG acceptance via façade mockup. <strong>Contractor-led:</strong> SBG vendor registration and bid the package if opened — harder without design pull.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Secure design acceptance, then route submittals</div>
+          <p><strong>Weeks 1–3:</strong> performance-based concept pack to AS+GG + FMS (photometrics, IP/thermal, corrosion, control topology). <strong>Weeks 4–8:</strong> integration workshop with Jangho (mounting, wiring, access, responsibilities). <strong>Weeks 9–15:</strong> submit the Approved Alternate pack via DAR/Turner templates, including SABER compliance plan and the mock-up plan.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure">Confirmed <span class="accent">publicly</span></div>
+          <div class="dc-caption">JEC↔SBG agreement (SAR 7.2B, 42 months); the Turner &amp; DAR delivery chain; and the curtain-wall scope actively held by Jangho.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">Must <span class="teal">request</span></div>
+          <div class="dc-caption">Package procurement plan (Turner); Jangho panel shop-drawing schedule + mockup plan; FMS basis-of-design; submittal routing protocol; SBG vendor prequal requirements.</div>
+        </div>
+      </aside>
+    </div>
+
+    <h3 class="sub-h">Submittal routing — the acceptance chain</h3>
+    <div class="chain">
+      <span class="node start">AS+GG / FMS endorsement</span><span class="arr">→</span>
+      <span class="node">DAR acceptance</span><span class="arr">→</span>
+      <span class="node">Turner governance</span><span class="arr">→</span>
+      <span class="node">SBG procurement</span><span class="arr">→</span>
+      <span class="node">Jangho integration + install</span><span class="arr">→</span>
+      <span class="node end">SAVC commissioning · SAT · handover</span>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY -->
+<section class="block" id="regulatory">
+  <div class="container">
+    <div class="section-label"><span class="num">05</span> Regulatory &amp; Compliance Checklist · KSA</div>
+    <h2>SABER/SASO conformity is <em>mandatory</em> for imported electricals; SBC alignment and Civil Defence must be coordinated early.</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Area</th><th>Checklist items</th><th>Authority</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Saudi Building Code (SBC)</strong></td><td>Alignment for electrical/fire/structural interfaces; document penetrations and firestopping; DAR alignment</td><td>sbc.gov.sa</td></tr>
+          <tr><td><strong>SASO / SABER</strong></td><td>Register products on SABER; plan PCoC/SCoC and test reports; HS-code mapping</td><td>saber.sa · saso.gov.sa</td></tr>
+          <tr><td><strong>Saudi Civil Defence</strong></td><td>Fire-safety approvals and material compliance; coordinate façade-mounted enclosures; emergency override modes</td><td>998.gov.sa</td></tr>
+          <tr><td><strong>Municipality / Balady</strong></td><td>External-installation permits; signage/advertising/show rules; confirm content authority path if DOOH emerges</td><td>balady.gov.sa</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Compliance pack to prepare before the first formal meeting: product category mapping + test reports (EMC, electrical safety, IP, thermal, corrosion, burn-in); an SBC alignment memo (glare/strobing limits, cable routing, fire-stopping, structural attachment); Civil Defence coordination (safe scenes, cable fire-rating); and a municipality/public-realm note treating any DOOH content as a separate licensed workstream.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="block" id="partners">
+  <div class="container">
+    <div class="section-label"><span class="num">06</span> Partner Map · KSA Shortlist</div>
+    <h2>Pair SAVC with a façade carrier (<em>Jangho</em>) and a local integrator — credibility in KSA needs both.</h2>
+    <div class="split">
+      <div>
+        <div class="sub-block">
+          <div class="sub-label">Minimum viable consortium</div>
+          <p><strong>Façade package owner:</strong> Jangho (already on the project). <strong>Local AOR / compliance interface:</strong> DAR (already on the project). <strong>Local integrator</strong> (ELV / control / network / commissioning): candidate <strong>Fractal Systems</strong>, subject to reference verification.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Jangho — highest leverage</div>
+          <p>Jangho's own disclosures show it controls the curtain-wall engineering narrative and has executed performance testing. It is the logical "carrier" for SAVC tech if SAVC positions as panel-integrated, factory-testable modules that are serviceable from the interior with minimal disruption to Jangho fabrication.</p>
+        </div>
+        <div class="sub-block">
+          <div class="sub-label">Fractal Systems — proceed to NDA if they can supply</div>
+          <p>Three relevant KSA references (project, client, scope, value band, contacts); an ELV/network team org chart; and a maintenance/SLA model for mission-critical façade systems. They must demonstrate KSA-based commissioning and accept SAVC's control architecture, documentation discipline, and site staffing requirements.</p>
+        </div>
+      </div>
+      <aside>
+        <div class="data-card">
+          <div class="dc-figure">Technical concept</div>
+          <div class="dc-caption">Engineer as a façade subsystem: corrosion-resistant, IP66–IP67 on exposed components, thermally derated for Jeddah, designed for unitized-panel production and replacement. Marine-grade fasteners, coated PCBs, sealed connectors.</div>
+        </div>
+        <div class="data-card">
+          <div class="dc-figure">Pitch <span class="accent">ranges</span></div>
+          <div class="dc-caption">Far-view façade identity ~50–120 mm; mid-view podium/plaza zones ~25–60 mm. Luminance dimmable with scene-based caps to control glare. Final values confirmed against FMS design intent and the mockup.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- RISK + COMPETITION -->
+<section class="block" id="risk">
+  <div class="container">
+    <div class="section-label"><span class="num">07</span> Competitive Context &amp; Risk Register</div>
+    <h2>Two existential risks: being <em>too late</em> for façade integration, and failing <em>mockup acceptance</em>.</h2>
+    <p class="lead">Treat SACO as the direct competitor for GCC media-façade / architectural-LED packages. SAVC's winning differentiation is façade-integration readiness (the Jangho route), design-team acceptance, and lifecycle operability — monitoring, spares strategy, and repair-time metrics.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Risk</th><th>Impact</th><th>Likelihood</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Late entry vs curtain-wall design freeze</strong></td><td>Loss of integration role</td><td><span class="pill med">Med–High</span></td><td>Engage Jangho immediately; propose minimal-change integration kits; lock the mockup date fast</td></tr>
+          <tr><td><strong>FMS / AS+GG rejection at mockup</strong></td><td>Scope lost</td><td><span class="pill med">Medium</span></td><td>Strong BoD/Alternate pack; multiple optics + dimming curves; pre-mockup lab tests</td></tr>
+          <tr><td>Procurement opacity under SBG</td><td>Delays</td><td><span class="pill crit">High</span></td><td>Vendor registration + Turner procurement-plan request + submittal-ready documentation</td></tr>
+          <tr><td>Coastal corrosion failures</td><td>Warranty risk</td><td><span class="pill med">Medium</span></td><td>Conformal coating, marine hardware, sealed connectors, accelerated corrosion tests, cleaning cycles</td></tr>
+          <tr><td>Maintenance access impractical</td><td>Long-term failure</td><td><span class="pill med">Medium</span></td><td>Design for interior service; modular replacements; spares policy; integrate access strategy early</td></tr>
+          <tr><td>"Media façade" branding sensitivity</td><td>Scope reduction</td><td><span class="pill low">Low–Med</span></td><td>Position as identity/placemaking first; DOOH only if the owner wants it</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- GO / NO-GO -->
+<section class="block" id="gng">
+  <div class="container">
+    <div class="section-label"><span class="num">08</span> Go / No-Go Decision Gate</div>
+    <h2>Go only if access and acceptance can be secured within the <em>next sprint</em>.</h2>
+    <div class="gng">
+      <div class="gng-col">
+        <h4>GO — if all achieved in 30–45 days</h4>
+        <ul>
+          <li><strong>Access:</strong> confirmed workshops with Jangho + FMS and a named Turner/SBG procurement interface</li>
+          <li><strong>Timing:</strong> curtain-wall integration window still open (shop-drawing / fabrication freeze not passed) — verify via Jangho</li>
+          <li><strong>Budget intent:</strong> owner accepts a façade lighting/media budget band, even if phased</li>
+          <li><strong>Exclusivity leverage:</strong> Jangho agrees to treat SAVC as a nominated subsystem partner (non-exclusive acceptable, but the nomination must be real)</li>
+        </ul>
+      </div>
+      <div class="gng-col no">
+        <h4>NO-GO — if any two are true</h4>
+        <ul>
+          <li>No access to an FMS / AS+GG acceptance pathway</li>
+          <li>Jangho declines integration or insists on their own nominated tech</li>
+          <li>SBG procurement cannot confirm package buyability or blocks vendor onboarding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAY FORWARD -->
+<section class="block" id="wayforward">
+  <div class="container">
+    <div class="section-label"><span class="num">09</span> The Practical Way Forward · Jangho-Led Route</div>
+    <h2>Make it easy for Jangho to say: <em>"yes, we can embed this without redesign pain."</em></h2>
+    <p class="lead">A disciplined first-contact package that proves SAVC is mockup-ready and interface-ready — not just a product vendor. Six moves, run with a dual-track contact strategy and clear checkpoints.</p>
+
+    <div class="moves">
+      <div class="move"><div class="mnum">1.</div><div><div class="mttl">Build a "Jangho-ready" offer</div><div class="mtxt">Send four short, technical pieces: a façade-integration one-pager (where fixtures mount inside a unitized panel, cable routing, service access); a risk-removal promise (FAT + panel mockup plan, responsibilities matrix); a control-architecture one-pager (central server + zone controllers + redundancy/monitoring); and a KSA compliance starter pack (existing test reports + what will be delivered for submittals). Jangho's biggest fear is late changes and interface blame — the pack must show <em>we reduce risk</em>.</div></div></div>
+      <div class="move"><div class="mnum">2.</div><div><div class="mttl">Approach Jangho on a dual track</div><div class="mtxt">Track A — Jangho Group HQ (Beijing) to reach a senior group-level façade exec. Track B — the Jangho Curtain Wall / Middle East channel. Ask for three keys: the Jeddah Tower façade Project Director/Systems Manager (name + contact), what's still buyable under the façade package, and a joint intro meeting with SBG procurement, the Turner submittal coordinator, and the DAR façade reviewer. First pack: English + a Mandarin executive summary.</div></div></div>
+      <div class="move"><div class="mnum">3.</div><div><div class="mttl">Secure design acceptance (AS+GG + FMS)</div><div class="mtxt">Ask AS+GG for the formal path for an Approved Alternate for façade lighting/media components and who signs off. Ask FMS for the acceptance criteria (uniformity, glare, dimming curves, max luminance, maintenance access) and to schedule a mockup review aligned with Jangho's panel. Keep Forcade in view for façade content/identity and digital touchpoints.</div></div></div>
+      <div class="move"><div class="mnum">4.</div><div><div class="mttl">Use Turner to get the rules of the game</div><div class="mtxt">Request the submittal register template + naming conventions; confirm whether façade lighting sits in the façade package (Jangho) or MEP/ELV (SBG); and get the required mockup stages and meeting cadence.</div></div></div>
+      <div class="move"><div class="mnum">5.</div><div><div class="mttl">Align with DAR early</div><div class="mtxt">Ask DAR for the minimum compliance bundle for façade-integrated lighting/control equipment, and which SBC / Civil Defence / municipal requirements typically impact façade-lighting installations — so compliance doesn't kill the scope late.</div></div></div>
+      <div class="move"><div class="mnum">6.</div><div><div class="mttl">Make SBG procurement-ready</div><div class="mtxt">Register SAVC (and the local integrator) in the SBG vendor portal immediately, then route to the relevant package buyer as a nominated façade-lighting/control subsystem via Jangho.</div></div></div>
+    </div>
+
+    <h3 class="sub-h">What success looks like — checkpoints</h3>
+    <div class="checkpoints">
+      <div class="cp"><div class="ck">10-day · Access</div><div class="ct">Doors open</div><ul><li>Named Jangho façade systems owner + confirmed technical workshop date</li><li>Turner confirms submittal routing + the reviewer set</li></ul></div>
+      <div class="cp"><div class="ck">30-day · Acceptance path</div><div class="ct">Path agreed</div><ul><li>FMS + AS+GG agree to evaluate SAVC as Approved Alternate</li><li>Mockup definition agreed — panel sample + night test</li></ul></div>
+      <div class="cp"><div class="ck">60-day · Commercialization</div><div class="ct">Route confirmed</div><ul><li>Jangho issues a nomination letter / internal endorsement</li><li>SBG confirms the procurement channel — façade-package VO vs separate package</li></ul></div>
+    </div>
+
+    <h3 class="sub-h">Contact entry points &amp; internal ownership</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Entity</th><th>Role in decision</th><th>Outreach owner</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td><strong>JEC / Kingdom</strong></td><td>Owner/developer; approves scope and brand intent</td><td>Local / Vasee</td><td><span class="pill p1">P1</span></td></tr>
+          <tr><td><strong>SBG</strong></td><td>Principal contractor; procurement execution; site access</td><td>Local / Vasee</td><td><span class="pill p1">P1</span></td></tr>
+          <tr><td><strong>Jangho / Jangho Arabia</strong></td><td>Façade subcontract; embedded-subsystem gate</td><td>SAVC Leadership</td><td><span class="pill p1">P1</span></td></tr>
+          <tr><td><strong>Turner</strong></td><td>Program management; governance; routing</td><td>SAVC Leadership</td><td><span class="pill p1">P1</span></td></tr>
+          <tr><td><strong>DAR</strong></td><td>Engineering support; compliance acceptance</td><td>SAVC Technical Team</td><td><span class="pill p1">P1</span></td></tr>
+          <tr><td><strong>AS+GG</strong></td><td>Architect; design intent and BoD influence</td><td>SAVC Design Team</td><td><span class="pill p2">P2</span></td></tr>
+          <tr><td><strong>FMS</strong></td><td>Lighting consultant; performance criteria; mockup acceptance</td><td>SAVC Design Team</td><td><span class="pill p2">P2</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <div class="wordmark">SAVC <span class="dot">·</span> Jeddah Tower</div>
+        <p>Entry Dossier — Media Façade / Architectural LED + Control.</p>
+        <p>Incorporating the JANGHO-led Practical Way Forward (24 Jan 2026).</p>
+      </div>
+      <div>
+        <h4>Prepared for</h4>
+        <p>SAVC</p>
+        <p>Star Asia Vision Corporation</p>
+      </div>
+      <div>
+        <h4>Research by</h4>
+        <p><strong style="color:var(--paper);">Mohammed Vaseeuddin</strong></p>
+        <p>Technical / Business Consultant &amp; Lead Analyst</p>
+        <p>Zenith&amp;</p>
+      </div>
+    </div>
+    <div class="small">
+      <span>Prepared by Mohammed Vaseeuddin · Research window 11–24 Jan 2026 · Sources accessed on research entry date unless stated</span>
+      <span class="conf">Confidential</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal = (entries) => { entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('reveal'); observer.unobserve(e.target); } }); };
+  const observer = new IntersectionObserver(reveal, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.block, .hero').forEach(el => observer.observe(el));
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 120;
+    sections.forEach(sec => {
+      const link = document.querySelector('.nav-links a[href="#' + sec.getAttribute('id') + '"]');
+      if (link){ link.style.color = (y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight) ? 'var(--azure)' : ''; }
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
