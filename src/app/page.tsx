@@ -15,9 +15,9 @@ export default function Home() {
           .
         </h1>
         <p className="mt-8 max-w-[48ch] text-[clamp(1.05rem,1.8vw,1.3rem)] leading-relaxed text-muted">
-          Sixteen years building brands and entering markets across the GCC,
-          MENA, India, Pakistan, and the UK. Every project below is the work of
-          one person, start to finish.
+          Sixteen years building brands and entering markets. Every project
+          below includes an extract of the following work, managed from start to
+          finish.
         </p>
       </section>
 
